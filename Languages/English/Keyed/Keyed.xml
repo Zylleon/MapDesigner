@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+  <ZMD_ModName>Map Designer</ZMD_ModName>
+  
+  <!-- Hills -->
+  
+  <ZMD_hillAmount0>Hill amount: Very flat, maybe no hills at all</ZMD_hillAmount0>
+  <ZMD_hillAmount1>Hill amount: Low</ZMD_hillAmount1>
+  <ZMD_hillAmount2>Hill amount: Vanilla</ZMD_hillAmount2>
+  <ZMD_hillAmount3>Hill amount: High</ZMD_hillAmount3>
+  <ZMD_hillAmount4>Hill amount: Very high</ZMD_hillAmount4>
+  <ZMD_hillAmount5>Hill amount: Almost solid</ZMD_hillAmount5>
+  
+  <ZMD_hillSize0>Hill size: Huge</ZMD_hillSize0>
+  <ZMD_hillSize1>Hill size: Vanilla</ZMD_hillSize1>
+  <ZMD_hillSize2>Hill size: Small</ZMD_hillSize2>
+  <ZMD_hillSize3>Hill size: Tiny</ZMD_hillSize3>
+  <ZMD_hillSize4>Hill size: Very tiny</ZMD_hillSize4>
+
+  <ZMD_hillSmoothness0>Hill smoothness: Very smooth</ZMD_hillSmoothness0>
+  <ZMD_hillSmoothness1>Hill smoothness: Smooth</ZMD_hillSmoothness1>
+  <ZMD_hillSmoothness2>Hill smoothness: Vanilla</ZMD_hillSmoothness2>
+  <ZMD_hillSmoothness3>Hill smoothness: Rough</ZMD_hillSmoothness3>
+  <ZMD_hillSmoothness4>Hill smoothness: Very rough</ZMD_hillSmoothness4>
+
+  
+  <!--  -->
+  
+	<ZMD_FlagCaves>Allow caves</ZMD_FlagCaves>
+	<ZMD_FlagCavesTooltip>Unchecking this prevents caves from ever spawning, even on tiles with mouuntains or large hills.</ZMD_FlagCavesTooltip>
+	
+  <!--  -->
+  
+  <!--  -->
+  
+  <!--  -->
+  
+  
+  </LanguageData>

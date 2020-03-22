@@ -30,50 +30,36 @@ namespace MapDesigner
     {
         static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
         {
-            //CodeInstruction[] codeInstructions = instructions as CodeInstruction[] ?? instructions.ToArray();
-            //foreach (CodeInstruction instruction in codeInstructions)
-            //{
-            //    yield return instruction;
-            //}
-            //int endIndex = -1;
-            //int lacunIndex = -1;
-            //int freqIndex = -1;
-
-            //MethodInfo noise = AccessTools.Method(type: typeof(Scatterer_WaterBiomeFix), name: nameof(Scatterer_WaterBiomeFix.AllowedInWaterBiome));
-            //ConstructorInfo noise = AccessTools.Constructor(type: typeof(Verse.Noise.Perlin));
-
             var codes = new List<CodeInstruction>(instructions);
+            int hillSizeIndex = -1;
+            int hillSmoothnessIndex = -1;
+            float result = -1f;
 
             for (int i = 0; i < codes.Count; i++)
             {
-                if(codes[i].opcode == OpCodes.Ldc_R8)  
+                if (codes[i].opcode == OpCodes.Ldc_R8)
                 {
-                    //Log.Message("Found float code at line " + i);
-                    //Log.Message("Value: " + codes[i].operand);
-                    //if (freqIndex == -1 && (float)codes[i].operand == 0.021f)
-                    //{
-                    //    freqIndex = i;
-                    //    Log.Message("Freq index: " + freqIndex);
-                    //    codes[i] = new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(HelperMethods), name: nameof(HelperMethods.GetHillSize)));
-                    //}
-
-                    //if (lacunIndex == -1 &&(float)codes[i].operand == 2f)
-                    //{
-                    //    lacunIndex = i;
-                    //    Log.Message("Lacun index: " + lacunIndex);
-                    //}
-
-                    //if ((float)codes[i].operand == 2f)
-                    //{
-
-                    //}
-
+                    if (float.TryParse(codes[i].operand.ToString(), out result))
+                    {
+                        if (hillSmoothnessIndex == -1 && result == 2f)
+                        {
+                            hillSmoothnessIndex = i;
+                        }
+                        if (hillSizeIndex == -1 && result == 0.021f)
+                        {
+                            hillSizeIndex = i;
+                        }
+                    }
+                }
+                if (hillSizeIndex != -1 && hillSmoothnessIndex != -1)
+                {
+                    break;
                 }
             }
-
-            codes[8] = new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(HelperMethods), name: nameof(HelperMethods.GetHillSize)));
-
-            codes[9] = new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(HelperMethods), name: nameof(HelperMethods.GetHillSmoothness)));
+            //codes[8] = new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(HelperMethods), name: nameof(HelperMethods.GetHillSize)));
+            //codes[9] = new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(HelperMethods), name: nameof(HelperMethods.GetHillSmoothness)));
+            codes[hillSizeIndex] = new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(HelperMethods), name: nameof(HelperMethods.GetHillSize)));
+            codes[hillSmoothnessIndex] = new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(HelperMethods), name: nameof(HelperMethods.GetHillSmoothness)));
 
             return codes.AsEnumerable();
         }

@@ -25,7 +25,7 @@
   <ZMD_hillSmoothness4>Hill smoothness: Very rough</ZMD_hillSmoothness4>
 
   
-  <!--  -->
+  <!-- Misc options -->
   
 	<ZMD_FlagCaves>Allow caves</ZMD_FlagCaves>
 	<ZMD_FlagCavesTooltip>Unchecking this prevents caves from ever spawning, even on tiles with mouuntains or large hills.</ZMD_FlagCavesTooltip>

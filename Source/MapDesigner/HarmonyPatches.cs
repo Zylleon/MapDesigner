@@ -20,6 +20,25 @@ namespace MapDesigner
         static MapDesigner()
         {
             new Harmony("zylle.MapDesigner").PatchAll();
+
+            HelperMethods.InitBiomeDefaults();
+            HelperMethods.ApplyBiomeSettings();
+            //foreach (BiomeDef biome in DefDatabase<BiomeDef>.AllDefs)
+            //{
+            //    BiomeDefault biodef = new BiomeDefault();
+            //    biodef.animalDensity = biome.animalDensity;
+            //    biodef.plantDensity = biome.plantDensity;
+            //    biodef.wildPlantRegrowDays = biome.wildPlantRegrowDays;
+            //    biodef.terrainsByFertility = biome.terrainsByFertility;
+            //    biodef.terrainPatchMakers = biome.terrainPatchMakers;
+
+            //    biomeDefaults.Add(biome.defName, biodef);
+            //}
+
+            //LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>().biomeDefaults;
+
+
+
         }
     }
 
@@ -79,6 +98,7 @@ namespace MapDesigner
 
     }
 
+
     [HarmonyPatch(typeof(RimWorld.Planet.World))]
     [HarmonyPatch(nameof(RimWorld.Planet.World.HasCaves))]
     static class BiomeMapSettings_Caves
@@ -114,6 +134,7 @@ namespace MapDesigner
     }
 
 
-    
+    #region not patches
+    #endregion
 
 }

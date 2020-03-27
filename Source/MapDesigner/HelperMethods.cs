@@ -32,26 +32,34 @@ namespace MapDesigner
                 biodef.animalDensity = biome.animalDensity;
                 biodef.plantDensity = biome.plantDensity;
                 biodef.wildPlantRegrowDays = biome.wildPlantRegrowDays;
-                biodef.terrainsByFertility = biome.terrainsByFertility;
-                biodef.terrainPatchMakers = biome.terrainPatchMakers;
 
                 biomeDefaults.Add(biome.defName, biodef);
             }
 
             LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>().biomeDefaults = biomeDefaults;
+
+            Dictionary<string, FloatRange> densityDefaults = new Dictionary<string, FloatRange>();
+
+            GenStepDef step = DefDatabase<GenStepDef>.GetNamed("ScatterRuinsSimple");
+            densityDefaults.Add(step.defName, (step.genStep as GenStep_Scatterer).countPer10kCellsRange);
+
+            step = DefDatabase<GenStepDef>.GetNamed("SteamGeysers");
+            densityDefaults.Add(step.defName, (step.genStep as GenStep_Scatterer).countPer10kCellsRange);
+
+            LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>().densityDefaults = densityDefaults;
         }
+
 
         public static void ApplyBiomeSettings()
         {
             Dictionary<string, BiomeDefault> biomeDefaults = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>().biomeDefaults;
-            float densityAnimal = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>().densityAnimal;
-            float densityPlant = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>().densityPlant;
 
+            float densityPlant = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>().densityPlant;
+            float densityAnimal = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>().densityAnimal;
 
             foreach (BiomeDef biome in DefDatabase<BiomeDef>.AllDefs)
             {
                 biome.animalDensity = biomeDefaults[biome.defName].animalDensity * densityAnimal;
-
 
                 biome.plantDensity = biomeDefaults[biome.defName].plantDensity * densityPlant;
 
@@ -60,16 +68,17 @@ namespace MapDesigner
                     biome.wildPlantRegrowDays = biomeDefaults[biome.defName].wildPlantRegrowDays / biome.plantDensity;
                     biome.plantDensity = 1f;
                 }
-
-                //float newPlantDensity = biomeDefaults[biome.defName].plantDensity * densityPlant;
-
-                //if (newPlantDensity > 1f)
-                //{
-                //    biome.wildPlantRegrowDays = biomeDefaults[biome.defName].wildPlantRegrowDays / newPlantDensity;
-                //    biome.plantDensity = 1f;
-                //}
-
             }
+
+            Dictionary<string, FloatRange> densityDefaults = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>().densityDefaults;
+            float densityRuins = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>().densityRuins;
+            if (densityRuins > 1)
+            {
+                densityRuins = (float)Math.Pow(densityRuins, 3);
+            }
+            (DefDatabase<GenStepDef>.GetNamed("ScatterRuinsSimple").genStep as GenStep_Scatterer).countPer10kCellsRange.min = densityDefaults["ScatterRuinsSimple"].min * densityRuins;
+            (DefDatabase<GenStepDef>.GetNamed("ScatterRuinsSimple").genStep as GenStep_Scatterer).countPer10kCellsRange.max = densityDefaults["ScatterRuinsSimple"].max * densityRuins;
+
         }
 
     }

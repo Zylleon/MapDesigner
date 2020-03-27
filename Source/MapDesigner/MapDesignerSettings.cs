@@ -20,35 +20,11 @@ namespace MapDesigner
         public static bool flagCaves = true;
         public float densityPlant = 1.0f;
         public float densityAnimal = 1.0f;
+        public float densityRuins = 1.0f;
 
 
         public Dictionary<string, BiomeDefault> biomeDefaults;
-
-        //public Dictionary<string, BiomeDefault> BiomeDefaults
-        //{
-        //    get
-        //    {
-        //        if (biomeDefaults == null)
-        //        {
-        //            biomeDefaults = new Dictionary<string, BiomeDefault>();
-
-        //            foreach (BiomeDef biome in DefDatabase<BiomeDef>.AllDefs)
-        //            {
-        //                BiomeDefault biodef = new BiomeDefault();
-        //                biodef.animalDensity = biome.animalDensity;
-        //                biodef.plantDensity = biome.plantDensity;
-        //                biodef.wildPlantRegrowDays = biome.wildPlantRegrowDays;
-        //                biodef.terrainsByFertility = biome.terrainsByFertility;
-        //                biodef.terrainPatchMakers = biome.terrainPatchMakers;
-
-        //                biomeDefaults.Add(biome.defName, biodef);
-        //            }
-        //        }
-
-        //        return biomeDefaults;
-        //    }
-        //}
-
+        public Dictionary<string, FloatRange> densityDefaults;
 
         public override void ExposeData()
         {
@@ -56,9 +32,11 @@ namespace MapDesigner
             Scribe_Values.Look(ref hillSize, "hillSize", 0.021f);
             Scribe_Values.Look(ref hillSmoothness, "hillSmoothness", 2.0f);
 
-            Scribe_Values.Look(ref flagCaves, "flagCaves", true);
             Scribe_Values.Look(ref densityPlant, "densityPlant", 1.0f);
             Scribe_Values.Look(ref densityAnimal, "densityAnimal", 1.0f);
+            Scribe_Values.Look(ref densityRuins, "densityRuins", 1.0f);
+
+            Scribe_Values.Look(ref flagCaves, "flagCaves", true);
         }
     }
 
@@ -73,33 +51,128 @@ namespace MapDesigner
         }
 
 
+        private string hillAmountLabel
+        {
+            get
+            {
+                int label = 0;
+                if (settings.hillAmount > 0.5f)
+                {
+                    label++;
+                }
+                if (settings.hillAmount > 0.8f)
+                {
+                    label++;
+                }
+                if (settings.hillAmount > 1.2f)
+                {
+                    label++;
+                }
+                if (settings.hillAmount > 1.5f)
+                {
+                    label++;
+                }
+                if (settings.hillAmount > 1.75f)
+                {
+                    label++;
+                }
+                return FormatLabel("ZMD_hillAmountLabel", "ZMD_hillAmount" + label);
+            }
+        }
+
+
+        private string hillSizeLabel
+        {
+            get
+            {
+                int label = 0;                      // huge
+
+                if (settings.hillSize > 0.013f)   // vanilla
+                {
+                    label++;
+                }
+                if (settings.hillSize > 0.033f)  // small
+                {
+                    label++;
+                }
+                if (settings.hillSize > 0.055f)    // tiny
+                {
+                    label++;
+                }
+                if (settings.hillSize > 0.085f)   // very tiny
+                {
+                    label++;
+                }
+
+                return FormatLabel("ZMD_hillSizeLabel", "ZMD_hillSize" + label);
+            }
+        }
+
+
+        private string hillSmoothnessLabel
+        {
+            get
+            {
+                int label = 0;
+                if (settings.hillSmoothness > 0.8f)
+                {
+                    label++;
+                }
+                if (settings.hillSmoothness > 1.5f)
+                {
+                    label++;
+                }
+                if (settings.hillSmoothness > 2.5f)
+                {
+                    label++;
+                }
+                if (settings.hillSmoothness > 3.8f)
+                {
+                    label++;
+                }
+
+                return FormatLabel("ZMD_hillSmoothnessLabel", "ZMD_hillSmoothness" + label);
+            }
+        }
+
+
         public override void DoSettingsWindowContents(Rect inRect)
         {
-            //inRect.width = 450f;
             Listing_Standard listingStandard = new Listing_Standard();
             listingStandard.Begin(inRect);
 
-            int hillAmountLabel = GetHillAmountLabel(settings.hillAmount);
-            listingStandard.Label(("ZMD_hillAmount" + hillAmountLabel).Translate());
+            // mountains
+            listingStandard.Label(hillAmountLabel);
             settings.hillAmount = listingStandard.Slider(settings.hillAmount, 0f, 2.5f);
 
-            listingStandard.Label(("ZMD_hillSize" + GetHillSizeLabel(settings.hillSize)).Translate());
+            listingStandard.Label(hillSizeLabel);
             settings.hillSize = listingStandard.Slider(settings.hillSize, 0.01f, 0.10f);
 
-            listingStandard.Label(("ZMD_hillSmoothness" + GetHillSmoothnesstLabel(settings.hillSmoothness)).Translate());
+            listingStandard.Label(hillSmoothnessLabel);
             settings.hillSmoothness = listingStandard.Slider(settings.hillSmoothness, 0f, 5f);
 
-            listingStandard.CheckboxLabeled("ZMD_flagCaves".Translate(), ref MapDesignerSettings.flagCaves, "ZMD_FlagCavesTooltip".Translate());
+            // stuff density
+            listingStandard.GapLine();
+
+            listingStandard.Label(FormatLabel("ZMD_densityPlant", "ZMD_scale" + GetDensityLabel(settings.densityPlant)));
+            settings.densityPlant = listingStandard.Slider(settings.densityPlant, 0f, 2.5f);
+
+            listingStandard.Label(FormatLabel("ZMD_densityAnimal", "ZMD_scale" + GetDensityLabel(settings.densityAnimal)));
+            settings.densityAnimal = listingStandard.Slider(settings.densityAnimal, 0f, 2.5f);
+
+            listingStandard.Label(FormatLabel("ZMD_densityRuins", "ZMD_scale" + GetDensityLabel(settings.densityRuins)));
+            settings.densityRuins = listingStandard.Slider(settings.densityRuins, 0f, 2.5f);
+
+            // misc
 
             listingStandard.GapLine();
 
-            listingStandard.Label(String.Format("{0} : {1}","ZMD_densityPlant".Translate(), ("ZMD_scale" + GetDensityLabel(settings.densityPlant)).Translate()));
-            settings.densityPlant = listingStandard.Slider(settings.densityPlant, 0f, 2.5f);
+            listingStandard.CheckboxLabeled("ZMD_flagCaves".Translate(), ref MapDesignerSettings.flagCaves, "ZMD_flagCavesTooltip".Translate());
 
-            listingStandard.Label(String.Format("{0} : {1}", "ZMD_densityAnimal".Translate(), ("ZMD_scale" + GetDensityLabel(settings.densityAnimal)).Translate()));
-            settings.densityAnimal = listingStandard.Slider(settings.densityAnimal, 0f, 2.5f);
+            // reset button
+            listingStandard.GapLine();
 
-            if(listingStandard.ButtonText("ZMD_Reset".Translate()))
+            if (listingStandard.ButtonText("ZMD_Reset".Translate()))
             {
                 ResetAllSettings();
             }
@@ -131,9 +204,15 @@ namespace MapDesigner
             MapDesignerSettings.flagCaves = true;
             settings.densityPlant = 1.0f;
             settings.densityAnimal = 1.0f;
+            settings.densityRuins = 1.0f;
         }
 
         #region labels
+
+        private string FormatLabel(string label, string desc)
+        {
+            return String.Format("{0}: {1}", label.Translate(), desc.Translate());
+        }
 
         private static int GetDensityLabel(float density)
         {
@@ -165,88 +244,7 @@ namespace MapDesigner
             return output;
         }
 
-
-
-
-        private static int GetHillSizeLabel(float hillSize)
-        {
-            int label = 0;
-
-            if(hillSize > 0.013f)   // vanilla
-            {
-                label++;
-            }
-            if (hillSize > 0.033f)  // small
-            {
-                label++;
-            }
-            if(hillSize > 0.055f)    // tiny
-            {
-                label++;
-            }
-            if (hillSize > 0.085f)   // very tiny
-            {
-                label++;
-            }
-
-            return label;
-
-        }
-
-        private static int GetHillAmountLabel(float hillAmount)
-        {
-            int label = 0;
-            if(hillAmount > 0.5f)
-            {
-                label++;
-            }
-            if (hillAmount > 0.8f)
-            {
-                label++;
-            }
-            if (hillAmount > 1.2f)
-            {
-                label++;
-            }
-            if (hillAmount > 1.5f)
-            {
-                label++;
-            }
-            if (hillAmount > 1.75f)
-            {
-                label++;
-            }
-            return label;
-            //return 3;
-        }
-
-        private static int GetHillSmoothnesstLabel(float hillSmoothness)
-        {
-            int label = 0;
-            if (hillSmoothness > 0.8f)
-            {
-                label++;
-            }
-            if (hillSmoothness > 1.5f)
-            {
-                label++;
-            }
-            if (hillSmoothness > 2.5f)
-            {
-                label++;
-            }
-            if (hillSmoothness > 3.8f)
-            {
-                label++;
-            }
-            return label;
-        }
-       
-        
-        
-
-
-        
+    
         #endregion
     }
 }

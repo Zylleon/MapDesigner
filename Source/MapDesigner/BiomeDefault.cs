@@ -13,7 +13,6 @@ namespace MapDesigner
 
         public float plantDensity;
         public float wildPlantRegrowDays;
-        public List<TerrainThreshold> terrainsByFertility = new List<TerrainThreshold>();
-        public List<TerrainPatchMaker> terrainPatchMakers = new List<TerrainPatchMaker>();
+
     }
 }

@@ -23,22 +23,6 @@ namespace MapDesigner
 
             HelperMethods.InitBiomeDefaults();
             HelperMethods.ApplyBiomeSettings();
-            //foreach (BiomeDef biome in DefDatabase<BiomeDef>.AllDefs)
-            //{
-            //    BiomeDefault biodef = new BiomeDefault();
-            //    biodef.animalDensity = biome.animalDensity;
-            //    biodef.plantDensity = biome.plantDensity;
-            //    biodef.wildPlantRegrowDays = biome.wildPlantRegrowDays;
-            //    biodef.terrainsByFertility = biome.terrainsByFertility;
-            //    biodef.terrainPatchMakers = biome.terrainPatchMakers;
-
-            //    biomeDefaults.Add(biome.defName, biodef);
-            //}
-
-            //LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>().biomeDefaults;
-
-
-
         }
     }
 
@@ -94,8 +78,6 @@ namespace MapDesigner
                 elevation[current] *= hillAmount;
             }
         }
-
-
     }
 
 
@@ -132,9 +114,5 @@ namespace MapDesigner
             //return true;
         }
     }
-
-
-    #region not patches
-    #endregion
 
 }

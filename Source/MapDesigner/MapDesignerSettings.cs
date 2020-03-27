@@ -17,10 +17,16 @@ namespace MapDesigner
         public float hillSize = 0.021f;
         public float hillSmoothness = 2.0f;
 
-        public static bool flagCaves = true;
         public float densityPlant = 1.0f;
         public float densityAnimal = 1.0f;
         public float densityRuins = 1.0f;
+        public float densityGeyser = 1.0f;
+        public float densityOre = 1.0f;
+
+        public float sizeRiver = 1.0f;
+
+        public static bool flagCaves = true;
+
 
 
         public Dictionary<string, BiomeDefault> biomeDefaults;
@@ -35,6 +41,10 @@ namespace MapDesigner
             Scribe_Values.Look(ref densityPlant, "densityPlant", 1.0f);
             Scribe_Values.Look(ref densityAnimal, "densityAnimal", 1.0f);
             Scribe_Values.Look(ref densityRuins, "densityRuins", 1.0f);
+            Scribe_Values.Look(ref densityGeyser, "densityGeyser", 1.0f);
+            Scribe_Values.Look(ref densityOre, "densityOre", 1.0f);
+
+            Scribe_Values.Look(ref sizeRiver, "sizeRiver", 1.0f);
 
             Scribe_Values.Look(ref flagCaves, "flagCaves", true);
         }
@@ -154,18 +164,26 @@ namespace MapDesigner
             // stuff density
             listingStandard.GapLine();
 
-            listingStandard.Label(FormatLabel("ZMD_densityPlant", "ZMD_scale" + GetDensityLabel(settings.densityPlant)));
+            listingStandard.Label(FormatLabel("ZMD_densityPlant", "ZMD_density" + GetDensityLabel(settings.densityPlant)));
             settings.densityPlant = listingStandard.Slider(settings.densityPlant, 0f, 2.5f);
 
-            listingStandard.Label(FormatLabel("ZMD_densityAnimal", "ZMD_scale" + GetDensityLabel(settings.densityAnimal)));
+            listingStandard.Label(FormatLabel("ZMD_densityAnimal", "ZMD_density" + GetDensityLabel(settings.densityAnimal)));
             settings.densityAnimal = listingStandard.Slider(settings.densityAnimal, 0f, 2.5f);
 
-            listingStandard.Label(FormatLabel("ZMD_densityRuins", "ZMD_scale" + GetDensityLabel(settings.densityRuins)));
+            listingStandard.Label(FormatLabel("ZMD_densityRuins", "ZMD_density" + GetDensityLabel(settings.densityRuins)));
             settings.densityRuins = listingStandard.Slider(settings.densityRuins, 0f, 2.5f);
 
-            // misc
+            listingStandard.Label(FormatLabel("ZMD_densityGeyser", "ZMD_density" + GetDensityLabel(settings.densityGeyser)));
+            settings.densityGeyser = listingStandard.Slider(settings.densityGeyser, 0f, 2.5f);
 
+            listingStandard.Label(FormatLabel("ZMD_densityOre", "ZMD_density" + GetDensityLabel(settings.densityOre)));
+            settings.densityOre = listingStandard.Slider(settings.densityOre, 0f, 2.5f);
+
+            // misc
             listingStandard.GapLine();
+
+            listingStandard.Label(FormatLabel("ZMD_sizeRiver", "ZMD_size" + GetDensityLabel(settings.sizeRiver)));
+            settings.sizeRiver = listingStandard.Slider(settings.sizeRiver, 0.1f, 2.5f);
 
             listingStandard.CheckboxLabeled("ZMD_flagCaves".Translate(), ref MapDesignerSettings.flagCaves, "ZMD_flagCavesTooltip".Translate());
 
@@ -201,11 +219,16 @@ namespace MapDesigner
             settings.hillSize = 0.021f;
             settings.hillSmoothness = 2.0f;
 
-            MapDesignerSettings.flagCaves = true;
             settings.densityPlant = 1.0f;
             settings.densityAnimal = 1.0f;
             settings.densityRuins = 1.0f;
+            settings.densityGeyser = 1.0f;
+            settings.densityOre = 1.0f;
+
+            MapDesignerSettings.flagCaves = true;
+            settings.sizeRiver = 1.0f;
         }
+
 
         #region labels
 

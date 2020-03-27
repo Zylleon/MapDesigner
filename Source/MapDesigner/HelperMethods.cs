@@ -52,6 +52,7 @@ namespace MapDesigner
 
         public static void ApplyBiomeSettings()
         {
+            // densities
             Dictionary<string, BiomeDefault> biomeDefaults = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>().biomeDefaults;
 
             float densityPlant = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>().densityPlant;
@@ -70,6 +71,7 @@ namespace MapDesigner
                 }
             }
 
+            // geysers and ruins
             Dictionary<string, FloatRange> densityDefaults = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>().densityDefaults;
             float densityRuins = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>().densityRuins;
             if (densityRuins > 1)
@@ -79,6 +81,37 @@ namespace MapDesigner
             (DefDatabase<GenStepDef>.GetNamed("ScatterRuinsSimple").genStep as GenStep_Scatterer).countPer10kCellsRange.min = densityDefaults["ScatterRuinsSimple"].min * densityRuins;
             (DefDatabase<GenStepDef>.GetNamed("ScatterRuinsSimple").genStep as GenStep_Scatterer).countPer10kCellsRange.max = densityDefaults["ScatterRuinsSimple"].max * densityRuins;
 
+            float densityGeyser = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>().densityGeyser;
+
+            (DefDatabase<GenStepDef>.GetNamed("SteamGeysers").genStep as GenStep_Scatterer).countPer10kCellsRange.min = densityDefaults["ScatterRuinsSimple"].min * densityGeyser;
+            (DefDatabase<GenStepDef>.GetNamed("SteamGeysers").genStep as GenStep_Scatterer).countPer10kCellsRange.max = densityDefaults["ScatterRuinsSimple"].max * densityGeyser;
+
+
+            //rivers
+
+            float sizeRiver = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>().sizeRiver;
+            float widthOnMap = 6;
+            foreach (RiverDef river in DefDatabase<RiverDef>.AllDefs)
+            {
+               switch(river.defName)
+               {
+                    case "HugeRiver":
+                        widthOnMap = 30f;
+                        break;
+                    case "LargeRiver":
+                        widthOnMap = 14f;
+                        break;
+                    case "River":
+                        widthOnMap = 6f;
+                        break;
+                    case "Creek":
+                        widthOnMap = 4f;
+                        break;
+               }
+
+                river.widthOnMap = widthOnMap * sizeRiver;
+
+            }
         }
 
     }

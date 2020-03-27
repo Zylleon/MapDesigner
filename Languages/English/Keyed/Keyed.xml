@@ -6,16 +6,26 @@
   
   
   <!-- Levels -->
+    <ZMD_size0>None</ZMD_size0>
+	<ZMD_size1>Tiny</ZMD_size1>
+	<ZMD_size2>Small</ZMD_size2>
+	<ZMD_size3>Average</ZMD_size3>
+	<ZMD_size4>Big</ZMD_size4>
+	<ZMD_size5>Huge</ZMD_size5>
+	<ZMD_size6>Enormous</ZMD_size6>
+
+	<ZMD_sizeV>Vanilla</ZMD_sizeV>
   
-	<ZMD_scale0>None</ZMD_scale0>
-	<ZMD_scale1>Very low</ZMD_scale1>
-	<ZMD_scale2>Low</ZMD_scale2>
-	<ZMD_scale3>Average</ZMD_scale3>
-	<ZMD_scale4>High</ZMD_scale4>
-	<ZMD_scale5>Very high</ZMD_scale5>
-	<ZMD_scale6>Extremely high</ZMD_scale6>
+  
+	<ZMD_density0>None</ZMD_density0>
+	<ZMD_density1>Very low</ZMD_density1>
+	<ZMD_density2>Low</ZMD_density2>
+	<ZMD_density3>Average</ZMD_density3>
+	<ZMD_density4>High</ZMD_density4>
+	<ZMD_density5>Very high</ZMD_density5>
+	<ZMD_density6>Extremely high</ZMD_density6>
 	
-	<ZMD_scaleV>Vanilla</ZMD_scaleV>
+	<ZMD_densityV>Vanilla</ZMD_densityV>
 	
 	
   <!-- Hills -->
@@ -28,13 +38,11 @@
 	<ZMD_hillAmount5>Almost solid</ZMD_hillAmount5>
 
 	<ZMD_hillSizeLabel>Hill size</ZMD_hillSizeLabel>
-	<ZMD_hillSizeToolTip></ZMD_hillSizeToolTip>
 	<ZMD_hillSize0>Huge</ZMD_hillSize0>
 	<ZMD_hillSize1>Vanilla</ZMD_hillSize1>
 	<ZMD_hillSize2>Small</ZMD_hillSize2>
 	<ZMD_hillSize3>Tiny</ZMD_hillSize3>
 	<ZMD_hillSize4>Very tiny</ZMD_hillSize4>
-
 
 	<ZMD_hillSmoothnessLabel>Hill smoothness</ZMD_hillSmoothnessLabel>
 	<ZMD_hillSmoothness0>Very smooth</ZMD_hillSmoothness0>
@@ -49,12 +57,15 @@
 	<ZMD_flagCaves>Allow caves</ZMD_flagCaves>
 	<ZMD_flagCavesTooltip>Unchecking this prevents caves from ever spawning, even on tiles with mouuntains or large hills.</ZMD_flagCavesTooltip>
 	
+	<ZMD_sizeRiver>River size</ZMD_sizeRiver>
 	
   <!-- Densities -->
   
 	<ZMD_densityPlant>Plant density</ZMD_densityPlant>
 	<ZMD_densityAnimal>Animal density</ZMD_densityAnimal>
 	<ZMD_densityRuins>Ruins density</ZMD_densityRuins>
+	<ZMD_densityGeyser>Steam geyser density</ZMD_densityGeyser>
+	<ZMD_densityOre>Ore density</ZMD_densityOre>
 	
   <!--  -->
 	

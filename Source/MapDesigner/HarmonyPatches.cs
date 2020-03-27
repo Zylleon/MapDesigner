@@ -80,6 +80,25 @@ namespace MapDesigner
         }
     }
 
+    [HarmonyPatch(typeof(RimWorld.GenStep_ScatterLumpsMineable))]
+    [HarmonyPatch(nameof(RimWorld.GenStep_ScatterLumpsMineable.Generate))]
+    internal static class OreDensityPatch
+    {
+        static bool Prefix(ref GenStep_ScatterLumpsMineable  __instance)
+        {
+            float densityOre = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>().densityOre;
+            if(densityOre > 1f)
+            {
+                densityOre *= densityOre;
+            }
+
+            __instance.countPer10kCellsRange.min *= densityOre;
+            __instance.countPer10kCellsRange.max *= densityOre;
+
+            return true;
+        }
+    }
+
 
     [HarmonyPatch(typeof(RimWorld.Planet.World))]
     [HarmonyPatch(nameof(RimWorld.Planet.World.HasCaves))]
@@ -93,25 +112,6 @@ namespace MapDesigner
                 return false;
             }
             return true;
-
-            //var world = Traverse.Create(__instance);
-            //WorldGrid worldGrid = world.Field("grid").GetValue<WorldGrid>();
-            //if (!worldGrid[tile].biome.HasModExtension<ZMDBiomeModExtension>())
-            //{
-            //    return true;
-            //}
-            //bool? hasCaves = worldGrid[tile].biome.GetModExtension<ZMDBiomeModExtension>().biomeMapSettings?.caves;
-            //if (hasCaves == true)
-            //{
-            //    __result = true;
-            //    return false;
-            //}
-            //if (hasCaves == false)
-            //{
-            //    __result = true;
-            //    return false;
-            //}
-            //return true;
         }
     }
 

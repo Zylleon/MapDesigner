@@ -55,10 +55,99 @@ namespace MapDesigner
     {
         MapDesignerSettings settings;
 
+        //ZMD_LakeSettings lakeSettings;
+
         public MapDesigner_Mod(ModContentPack content) : base(content)
         {
             this.settings = GetSettings<MapDesignerSettings>();
         }
+
+
+        public override void DoSettingsWindowContents(Rect inRect)
+        {
+            Listing_Standard listingStandard = new Listing_Standard();
+            listingStandard.Begin(inRect);
+
+            // mountains
+            listingStandard.Label(hillAmountLabel);
+            settings.hillAmount = listingStandard.Slider(settings.hillAmount, 0f, 2.5f);
+
+            listingStandard.Label(hillSizeLabel);
+            settings.hillSize = listingStandard.Slider(settings.hillSize, 0.01f, 0.10f);
+
+            listingStandard.Label(hillSmoothnessLabel);
+            settings.hillSmoothness = listingStandard.Slider(settings.hillSmoothness, 0f, 5f);
+
+            // stuff density
+            listingStandard.GapLine();
+
+            listingStandard.Label(FormatLabel("ZMD_densityPlant", "ZMD_density" + GetDensityLabel(settings.densityPlant)));
+            settings.densityPlant = listingStandard.Slider(settings.densityPlant, 0f, 2.5f);
+
+            listingStandard.Label(FormatLabel("ZMD_densityAnimal", "ZMD_density" + GetDensityLabel(settings.densityAnimal)));
+            settings.densityAnimal = listingStandard.Slider(settings.densityAnimal, 0f, 2.5f);
+
+            listingStandard.Label(FormatLabel("ZMD_densityRuins", "ZMD_density" + GetDensityLabel(settings.densityRuins)));
+            settings.densityRuins = listingStandard.Slider(settings.densityRuins, 0f, 2.5f);
+
+            listingStandard.Label(FormatLabel("ZMD_densityGeyser", "ZMD_density" + GetDensityLabel(settings.densityGeyser)));
+            settings.densityGeyser = listingStandard.Slider(settings.densityGeyser, 0f, 2.5f);
+
+            listingStandard.Label(FormatLabel("ZMD_densityOre", "ZMD_density" + GetDensityLabel(settings.densityOre)));
+            settings.densityOre = listingStandard.Slider(settings.densityOre, 0f, 2.5f);
+
+            // misc
+            listingStandard.GapLine();
+
+            listingStandard.Label(FormatLabel("ZMD_sizeRiver", "ZMD_size" + GetDensityLabel(settings.sizeRiver)));
+            settings.sizeRiver = listingStandard.Slider(settings.sizeRiver, 0.1f, 2.5f);
+
+            listingStandard.CheckboxLabeled("ZMD_flagCaves".Translate(), ref MapDesignerSettings.flagCaves, "ZMD_flagCavesTooltip".Translate());
+
+            // reset button
+            listingStandard.GapLine();
+
+            if (listingStandard.ButtonText("ZMD_Reset".Translate()))
+            {
+                ResetAllSettings();
+            }
+
+
+            listingStandard.End();
+
+            base.DoSettingsWindowContents(inRect);
+        }
+
+        public override void WriteSettings()
+        {
+            base.WriteSettings();
+            HelperMethods.ApplyBiomeSettings();
+        }
+
+        public override string SettingsCategory()
+        {
+            return "ZMD_ModName".Translate();
+        }
+
+
+        private void ResetAllSettings()
+        {
+            settings.hillAmount = 1.0f;
+            settings.hillSize = 0.021f;
+            settings.hillSmoothness = 2.0f;
+
+            settings.densityPlant = 1.0f;
+            settings.densityAnimal = 1.0f;
+            settings.densityRuins = 1.0f;
+            settings.densityGeyser = 1.0f;
+            settings.densityOre = 1.0f;
+
+            MapDesignerSettings.flagCaves = true;
+            settings.sizeRiver = 1.0f;
+        }
+
+
+        #region labels
 
 
         private string hillAmountLabel
@@ -146,92 +235,6 @@ namespace MapDesigner
         }
 
 
-        public override void DoSettingsWindowContents(Rect inRect)
-        {
-            Listing_Standard listingStandard = new Listing_Standard();
-            listingStandard.Begin(inRect);
-
-            // mountains
-            listingStandard.Label(hillAmountLabel);
-            settings.hillAmount = listingStandard.Slider(settings.hillAmount, 0f, 2.5f);
-
-            listingStandard.Label(hillSizeLabel);
-            settings.hillSize = listingStandard.Slider(settings.hillSize, 0.01f, 0.10f);
-
-            listingStandard.Label(hillSmoothnessLabel);
-            settings.hillSmoothness = listingStandard.Slider(settings.hillSmoothness, 0f, 5f);
-
-            // stuff density
-            listingStandard.GapLine();
-
-            listingStandard.Label(FormatLabel("ZMD_densityPlant", "ZMD_density" + GetDensityLabel(settings.densityPlant)));
-            settings.densityPlant = listingStandard.Slider(settings.densityPlant, 0f, 2.5f);
-
-            listingStandard.Label(FormatLabel("ZMD_densityAnimal", "ZMD_density" + GetDensityLabel(settings.densityAnimal)));
-            settings.densityAnimal = listingStandard.Slider(settings.densityAnimal, 0f, 2.5f);
-
-            listingStandard.Label(FormatLabel("ZMD_densityRuins", "ZMD_density" + GetDensityLabel(settings.densityRuins)));
-            settings.densityRuins = listingStandard.Slider(settings.densityRuins, 0f, 2.5f);
-
-            listingStandard.Label(FormatLabel("ZMD_densityGeyser", "ZMD_density" + GetDensityLabel(settings.densityGeyser)));
-            settings.densityGeyser = listingStandard.Slider(settings.densityGeyser, 0f, 2.5f);
-
-            listingStandard.Label(FormatLabel("ZMD_densityOre", "ZMD_density" + GetDensityLabel(settings.densityOre)));
-            settings.densityOre = listingStandard.Slider(settings.densityOre, 0f, 2.5f);
-
-            // misc
-            listingStandard.GapLine();
-
-            listingStandard.Label(FormatLabel("ZMD_sizeRiver", "ZMD_size" + GetDensityLabel(settings.sizeRiver)));
-            settings.sizeRiver = listingStandard.Slider(settings.sizeRiver, 0.1f, 2.5f);
-
-            listingStandard.CheckboxLabeled("ZMD_flagCaves".Translate(), ref MapDesignerSettings.flagCaves, "ZMD_flagCavesTooltip".Translate());
-
-            // reset button
-            listingStandard.GapLine();
-
-            if (listingStandard.ButtonText("ZMD_Reset".Translate()))
-            {
-                ResetAllSettings();
-            }
-
-
-            listingStandard.End();
-
-            base.DoSettingsWindowContents(inRect);
-        }
-
-        public override void WriteSettings()
-        {
-            base.WriteSettings();
-            HelperMethods.ApplyBiomeSettings();
-        }
-
-        public override string SettingsCategory()
-        {
-            return "ZMD_ModName".Translate();
-        }
-
-        
-        private void ResetAllSettings()
-        {
-            settings.hillAmount = 1.0f;
-            settings.hillSize = 0.021f;
-            settings.hillSmoothness = 2.0f;
-
-            settings.densityPlant = 1.0f;
-            settings.densityAnimal = 1.0f;
-            settings.densityRuins = 1.0f;
-            settings.densityGeyser = 1.0f;
-            settings.densityOre = 1.0f;
-
-            MapDesignerSettings.flagCaves = true;
-            settings.sizeRiver = 1.0f;
-        }
-
-
-        #region labels
-
         private string FormatLabel(string label, string desc)
         {
             return String.Format("{0}: {1}", label.Translate(), desc.Translate());
@@ -240,9 +243,9 @@ namespace MapDesigner
         private static int GetDensityLabel(float density)
         {
             int output = 0;
-            if(density > 0.1f) //very low
+            if (density > 0.1f) //very low
             {
-                output ++;
+                output++;
             }
             if (density > 0.4f)  //low
             {
@@ -267,7 +270,7 @@ namespace MapDesigner
             return output;
         }
 
-    
+
         #endregion
     }
 }

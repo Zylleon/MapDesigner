@@ -295,10 +295,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BiomeDefault.cs" />
+    <Compile Include="ZMD_GenStep_Lake.cs" />
     <Compile Include="HarmonyPatches.cs" />
     <Compile Include="HelperMethods.cs" />
     <Compile Include="MapDesignerSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ZMD_GenStep_Feature.cs" />
+    <Compile Include="ZMD_LakeSettings.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

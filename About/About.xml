@@ -15,7 +15,27 @@
 		</li>
 	</modDependencies>
   <description>
-Lets you adjust your maps. Should work with most modded maps. Not compatible with configurable maps.
+  
+More options for customizing maps. Adjust hill size and shape, and amount of ore, geysers, ruins, plants, and animals.
+
+
+-----
+
+Compatible with Map Reroll. You can change settings between rerolling!
+
+Compatible with most modded biomes. 
+
+-----
+
+Biomes! Islands-- Islands should generate normally, terrain will not be changed. Plant and animal density adjustments will work. 
+
+Not compatible with Configurable Maps.
+
+-----
+
+Github: https://github.com/Zylleon/MapDesigner/releases/latest
+Discord: https://discord.gg/4EFv76C
+ko-fi: https://ko-fi.com/zylleon
 
 </description>
 </ModMetaData>

@@ -43,6 +43,9 @@ namespace MapDesigner
             GenStepDef step = DefDatabase<GenStepDef>.GetNamed("ScatterRuinsSimple");
             densityDefaults.Add(step.defName, (step.genStep as GenStep_Scatterer).countPer10kCellsRange);
 
+            //step = DefDatabase<GenStepDef>.GetNamed("ScatterShrines");
+            //densityDefaults.Add(step.defName, (step.genStep as GenStep_Scatterer).countPer10kCellsRange);
+
             step = DefDatabase<GenStepDef>.GetNamed("SteamGeysers");
             densityDefaults.Add(step.defName, (step.genStep as GenStep_Scatterer).countPer10kCellsRange);
 
@@ -81,14 +84,20 @@ namespace MapDesigner
             (DefDatabase<GenStepDef>.GetNamed("ScatterRuinsSimple").genStep as GenStep_Scatterer).countPer10kCellsRange.min = densityDefaults["ScatterRuinsSimple"].min * densityRuins;
             (DefDatabase<GenStepDef>.GetNamed("ScatterRuinsSimple").genStep as GenStep_Scatterer).countPer10kCellsRange.max = densityDefaults["ScatterRuinsSimple"].max * densityRuins;
 
+            // geysers
             float densityGeyser = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>().densityGeyser;
+            if (densityGeyser > 1)
+            {
+                densityGeyser = (float)Math.Pow(densityGeyser, 2);
+            }
+            //(DefDatabase<GenStepDef>.GetNamed("SteamGeysers").genStep as GenStep_Scatterer).countPer10kCellsRange.min = densityDefaults["SteamGeysers"].min * densityGeyser;
+            //(DefDatabase<GenStepDef>.GetNamed("SteamGeysers").genStep as GenStep_Scatterer).countPer10kCellsRange.max = densityDefaults["SteamGeysers"].max * densityGeyser;
 
-            (DefDatabase<GenStepDef>.GetNamed("SteamGeysers").genStep as GenStep_Scatterer).countPer10kCellsRange.min = densityDefaults["ScatterRuinsSimple"].min * densityGeyser;
-            (DefDatabase<GenStepDef>.GetNamed("SteamGeysers").genStep as GenStep_Scatterer).countPer10kCellsRange.max = densityDefaults["ScatterRuinsSimple"].max * densityGeyser;
+            (DefDatabase<GenStepDef>.GetNamed("SteamGeysers").genStep as GenStep_Scatterer).countPer10kCellsRange.min = densityDefaults["SteamGeysers"].min * densityGeyser;
+            (DefDatabase<GenStepDef>.GetNamed("SteamGeysers").genStep as GenStep_Scatterer).countPer10kCellsRange.max = densityDefaults["SteamGeysers"].max * densityGeyser;
 
 
-            //rivers
-
+            // rivers
             float sizeRiver = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>().sizeRiver;
             float widthOnMap = 6;
             foreach (RiverDef river in DefDatabase<RiverDef>.AllDefs)

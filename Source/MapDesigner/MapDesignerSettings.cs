@@ -16,10 +16,13 @@ namespace MapDesigner
         public float hillAmount = 1.0f;
         public float hillSize = 0.021f;
         public float hillSmoothness = 2.0f;
+        public static bool flagHillClumping = false;
+
 
         public float densityPlant = 1.0f;
         public float densityAnimal = 1.0f;
         public float densityRuins = 1.0f;
+        //public float densityDanger = 1.0f;
         public float densityGeyser = 1.0f;
         public float densityOre = 1.0f;
 
@@ -38,9 +41,12 @@ namespace MapDesigner
             Scribe_Values.Look(ref hillSize, "hillSize", 0.021f);
             Scribe_Values.Look(ref hillSmoothness, "hillSmoothness", 2.0f);
 
+            Scribe_Values.Look(ref flagHillClumping, "flagHillClumping", false);
+
             Scribe_Values.Look(ref densityPlant, "densityPlant", 1.0f);
             Scribe_Values.Look(ref densityAnimal, "densityAnimal", 1.0f);
             Scribe_Values.Look(ref densityRuins, "densityRuins", 1.0f);
+            //Scribe_Values.Look(ref densityDanger, "densityDanger", 1.0f);
             Scribe_Values.Look(ref densityGeyser, "densityGeyser", 1.0f);
             Scribe_Values.Look(ref densityOre, "densityOre", 1.0f);
 
@@ -75,8 +81,14 @@ namespace MapDesigner
             listingStandard.Label(hillSizeLabel);
             settings.hillSize = listingStandard.Slider(settings.hillSize, 0.01f, 0.10f);
 
+            if(settings.hillSize > 0.02f)
+            {
+                listingStandard.CheckboxLabeled("ZMD_flagHillClumping".Translate(), ref MapDesignerSettings.flagHillClumping, "ZMD_flagHillClumpingTooltip".Translate());
+            }
+
             listingStandard.Label(hillSmoothnessLabel);
             settings.hillSmoothness = listingStandard.Slider(settings.hillSmoothness, 0f, 5f);
+
 
             // stuff density
             listingStandard.GapLine();
@@ -89,6 +101,10 @@ namespace MapDesigner
 
             listingStandard.Label(FormatLabel("ZMD_densityRuins", "ZMD_density" + GetDensityLabel(settings.densityRuins)));
             settings.densityRuins = listingStandard.Slider(settings.densityRuins, 0f, 2.5f);
+
+            //listingStandard.Label(FormatLabel("ZMD_densityDanger", "ZMD_density" + GetDensityLabel(settings.densityDanger)));
+            //settings.densityDanger = listingStandard.Slider(settings.densityDanger, 0f, 2.5f);
+
 
             listingStandard.Label(FormatLabel("ZMD_densityGeyser", "ZMD_density" + GetDensityLabel(settings.densityGeyser)));
             settings.densityGeyser = listingStandard.Slider(settings.densityGeyser, 0f, 2.5f);
@@ -135,10 +151,13 @@ namespace MapDesigner
             settings.hillAmount = 1.0f;
             settings.hillSize = 0.021f;
             settings.hillSmoothness = 2.0f;
+            MapDesignerSettings.flagHillClumping = false;
+
 
             settings.densityPlant = 1.0f;
             settings.densityAnimal = 1.0f;
             settings.densityRuins = 1.0f;
+            //settings.densityDanger = 1.0f;
             settings.densityGeyser = 1.0f;
             settings.densityOre = 1.0f;
 

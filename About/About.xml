@@ -14,6 +14,9 @@
 			<downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
 		</li>
 	</modDependencies>
+	<incompatibleWith>
+	<li>configurablemaps.kv.rw</li>
+	</incompatibleWith>
   <description>
   
 More options for customizing maps. Adjust hill size and shape, and amount of ore, geysers, ruins, plants, and animals.

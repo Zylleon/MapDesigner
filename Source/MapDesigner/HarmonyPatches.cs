@@ -10,7 +10,7 @@ using RimWorld;
 using System.Reflection;
 using System.Reflection.Emit;
 using RimWorld.Planet;
-
+using Verse.Noise;
 
 namespace MapDesigner
 {
@@ -70,6 +70,7 @@ namespace MapDesigner
 
         static void Postfix(Map map, GenStepParams parms)
         {
+            // hill size
             MapGenFloatGrid elevation = MapGenerator.Elevation;
             float hillAmount = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>().hillAmount;
 
@@ -77,6 +78,28 @@ namespace MapDesigner
             {
                 elevation[current] *= hillAmount;
             }
+
+            // clumping
+            if (MapDesignerSettings.flagHillClumping)
+            {
+                float hillSize = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>().hillSize;
+
+                if (hillSize > 0.02f)       // vanilla or smaller only, else skip this step
+                {
+                    float clumpSize = Rand.Range(0.01f, Math.Min(0.04f, hillSize));
+                    float clumpStrength = Rand.Range(0.3f, 0.7f);
+
+                    ModuleBase hillClumping = new Perlin(clumpSize, 0.0, 0.5, 6, Rand.Range(0, 2147483647), QualityMode.Low);
+
+                    foreach (IntVec3 current in map.AllCells)
+                    {
+                        elevation[current] += clumpStrength * hillClumping.GetValue(current);
+                    }
+
+                }
+
+            }
+           
         }
     }
 

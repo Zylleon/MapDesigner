@@ -79,12 +79,12 @@ namespace MapDesigner
                 elevation[current] *= hillAmount;
             }
 
-            // clumping
+            // natural distribution
             if (MapDesignerSettings.flagHillClumping)
             {
                 float hillSize = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>().hillSize;
 
-                if (hillSize > 0.02f)       // vanilla or smaller only, else skip this step
+                if (hillSize > 0.022f)       // smaller than vanilla only, else skip this step
                 {
                     float clumpSize = Rand.Range(0.01f, Math.Min(0.04f, hillSize));
                     float clumpStrength = Rand.Range(0.3f, 0.7f);

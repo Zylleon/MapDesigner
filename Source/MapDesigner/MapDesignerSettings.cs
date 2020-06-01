@@ -81,7 +81,7 @@ namespace MapDesigner
             listingStandard.Label(hillSizeLabel);
             settings.hillSize = listingStandard.Slider(settings.hillSize, 0.01f, 0.10f);
 
-            if(settings.hillSize > 0.02f)
+            if(settings.hillSize > 0.022f)
             {
                 listingStandard.CheckboxLabeled("ZMD_flagHillClumping".Translate(), ref MapDesignerSettings.flagHillClumping, "ZMD_flagHillClumpingTooltip".Translate());
             }

@@ -51,8 +51,8 @@
 	<ZMD_hillSmoothness3>Rough</ZMD_hillSmoothness3>
 	<ZMD_hillSmoothness4>Very rough</ZMD_hillSmoothness4>
 
-	<ZMD_flagHillClumping>Clump hills</ZMD_flagHillClumping>
-	<ZMD_flagHillClumpingTooltip>Will cause hills to be naturally clumped instead of evenly distributed. For small hills.</ZMD_flagHillClumpingTooltip>
+	<ZMD_flagHillClumping>Natural hill distribution</ZMD_flagHillClumping>
+	<ZMD_flagHillClumpingTooltip>For small hills. Will make hills clump naturally instead of being evenly distributed.</ZMD_flagHillClumpingTooltip>
 
   <!-- Misc settings -->
   

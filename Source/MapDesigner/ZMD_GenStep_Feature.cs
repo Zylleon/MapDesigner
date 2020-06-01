@@ -21,7 +21,8 @@ namespace MapDesigner
 
         public override void Generate(Map map, GenStepParams parms)
         {
-            
+            Log.Message("Genning features");
+            (new ZMD_GenStep_Lake()).Generate(map, parms);
            
         }
 

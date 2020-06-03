@@ -123,5 +123,32 @@ namespace MapDesigner
             }
         }
 
+
+    
+        public static float DistanceBetweenPoints(IntVec3 point1, IntVec3 point2)
+        {
+            float dist = 0;
+            double xDist = Math.Pow(point1.x - point2.x, 2);
+            double zDist = Math.Pow(point1.z - point2.z, 2);
+            dist = (float)Math.Sqrt(xDist + zDist);
+
+            return dist;
+        }
+
+        public static List<IntVec3> GenCircle(Map map, IntVec3 center, float radius)
+        {
+            List<IntVec3> circle = new List<IntVec3>();
+
+            foreach (IntVec3 current in map.AllCells)
+            {
+                if (DistanceBetweenPoints(center, current) < radius)
+                {
+                    circle.Add(current);
+                }
+            }
+
+            return circle;
+        }
+
     }
 }

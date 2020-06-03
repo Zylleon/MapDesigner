@@ -19,7 +19,6 @@ namespace MapDesigner
             }
         }
 
-        //public ZMD_LakeSettings settings;
         private int beachSize = 20;
         private int lakeSize = 15;
         private int lakeRoundness = 30;        // 0 is round, 30 is very not round
@@ -37,7 +36,7 @@ namespace MapDesigner
             List<IntVec3> bigCircle = new List<IntVec3>();
             foreach (IntVec3 current in map.AllCells)
             {
-                if (DistanceBetweenPoints(mapCenter, current) < lakeSize)
+                if (HelperMethods.DistanceBetweenPoints(mapCenter, current) < lakeSize)
                 {
                     bigCircle.Add(current);
                 }
@@ -219,16 +218,6 @@ namespace MapDesigner
             }
         }
 
-
-        private float DistanceBetweenPoints(IntVec3 point1, IntVec3 point2)
-        {
-            float dist = 0;
-            double xDist = Math.Pow(point1.x - point2.x, 2);
-            double zDist = Math.Pow(point1.z - point2.z, 2);
-            dist = (float)Math.Sqrt(xDist + zDist);
-
-            return dist;
-        }
 
     }
 }

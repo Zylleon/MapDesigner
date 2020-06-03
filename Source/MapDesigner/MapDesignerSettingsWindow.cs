@@ -48,25 +48,25 @@ namespace MapDesigner
 
             List<TabRecord> list = new List<TabRecord>();
 
-            TabRecord mountainTab = new TabRecord("ZMD_MountainTab".Translate(), delegate
+            TabRecord mountainTab = new TabRecord("ZMD_mountainTab".Translate(), delegate
             {
                 this.tab = MapDesigner_Mod.InfoCardTab.Mountains;
             }, this.tab == MapDesigner_Mod.InfoCardTab.Mountains);
             list.Add(mountainTab);
 
-            TabRecord ThingsTab = new TabRecord("ZMD_ThingsTab".Translate(), delegate
+            TabRecord ThingsTab = new TabRecord("ZMD_thingsTab".Translate(), delegate
             {
                 this.tab = MapDesigner_Mod.InfoCardTab.Things;
             }, this.tab == MapDesigner_Mod.InfoCardTab.Things);
             list.Add(ThingsTab);
 
-            TabRecord featureTab = new TabRecord("ZMD_FeatureTab".Translate(), delegate
+            TabRecord featureTab = new TabRecord("ZMD_featureTab".Translate(), delegate
             {
                 this.tab = MapDesigner_Mod.InfoCardTab.Feature;
             }, this.tab == MapDesigner_Mod.InfoCardTab.Feature);
             list.Add(featureTab);
 
-            TabRecord betaTab = new TabRecord("ZMD_BetaTab".Translate(), delegate
+            TabRecord betaTab = new TabRecord("ZMD_betaTab".Translate(), delegate
             {
                 this.tab = MapDesigner_Mod.InfoCardTab.Beta;
             }, this.tab == MapDesigner_Mod.InfoCardTab.Beta);
@@ -177,7 +177,7 @@ namespace MapDesigner
 
             listingStandard.GapLine();
 
-            if (listingStandard.ButtonText("ZMD_ResetThings".Translate()))
+            if (listingStandard.ButtonText("ZMD_resetThings".Translate()))
             {
                 ResetThingsSettings();
             }
@@ -192,16 +192,29 @@ namespace MapDesigner
             Listing_Standard listingStandard = new Listing_Standard();
             listingStandard.Begin(rect);
 
-            listingStandard.Label("ZMD_FeatureTabInfo".Translate());
+            listingStandard.Label("ZMD_featureTabInfo".Translate());
 
 
-            listingStandard.GapLine();
-            if (listingStandard.ButtonText("ZMD_ResePage".Translate()))
+            if (listingStandard.ButtonTextLabeled("ZMD_selectFeature".Translate(), settings.selectedFeature.ToString()))
             {
-                ResetFeatureSettings();
+                List<FloatMenuOption> testList = new List<FloatMenuOption>();
+
+                foreach (MapDesignerSettings.Features feature in (MapDesignerSettings.Features[])Enum.GetValues(typeof(MapDesignerSettings.Features)))
+                {
+                    testList.Add(new FloatMenuOption(feature.ToString(), delegate
+                    {
+                        settings.selectedFeature = feature;
+                    }, MenuOptionPriority.Default, null, null, 0f, null, null));
+                }
+                Find.WindowStack.Add(new FloatMenu(testList));
             }
 
+            listingStandard.GapLine();
+
+            (new FeatureCardUtility()).DrawFeatureOptions(listingStandard);
+
             listingStandard.End();
+
         }
 
         #endregion

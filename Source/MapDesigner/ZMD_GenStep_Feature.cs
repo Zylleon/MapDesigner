@@ -21,9 +21,16 @@ namespace MapDesigner
 
         public override void Generate(Map map, GenStepParams parms)
         {
-            Log.Message("Genning features");
+
+            MapDesignerSettings settings = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>();
+
+            if(settings.selectedFeature == MapDesignerSettings.Features.RoundIsland)
+            {
+                (new GenStep_RoundIsland()).Generate(map, parms);
+            }
+
             //(new ZMD_GenStep_Lake()).Generate(map, parms);
-           
+
         }
 
     }

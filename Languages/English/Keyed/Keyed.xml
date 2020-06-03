@@ -2,10 +2,11 @@
 <LanguageData>
 
 	<ZMD_ModName>Map Designer</ZMD_ModName>
-	<ZMD_Reset>Reset everything to default</ZMD_Reset>
-	<ZMD_ResetTab>Reset these settings</ZMD_ResetTab>
-	<ZMD_ResetMountain>Reset mountains to default</ZMD_ResetMountain>
-	<ZMD_ResetThings>Reset things to default</ZMD_ResetThings>
+	
+	<ZMD_reset>Reset everything to default</ZMD_reset>
+	<ZMD_resetPage>Reset these settings</ZMD_resetPage>
+	<ZMD_resetMountain>Reset mountains to default</ZMD_resetMountain>
+	<ZMD_resetThings>Reset Things to default</ZMD_resetThings>
   
   <!-- Levels -->
     <ZMD_size0>None</ZMD_size0>
@@ -74,18 +75,41 @@
 	
 	
   <!-- Tabs -->
-	<ZMD_MountainTab>Mountains</ZMD_MountainTab>
-	<ZMD_MountainTabInfo>Settings relating to hills</ZMD_MountainTabInfo>
-	<ZMD_ThingsTab>Things</ZMD_ThingsTab>
-	<ZMD_ThingsTabInfo>Ore density, etc</ZMD_ThingsTabInfo>
-	<ZMD_MiscTab>Misc</ZMD_MiscTab>
-	<ZMD_MiscTabInfo>Other settings</ZMD_MiscTabInfo>
-	<ZMD_FeatureTab>Map Features</ZMD_FeatureTab>
-	<ZMD_FeatureTabInfo>Add specific features to your home map. These will not spawn on other maps, like quest maps.\n\nThese will NOT show up in Map Reroll previews, but can still be rerolled.</ZMD_FeatureTabInfo>
-	<ZMD_BetaTab>Beta</ZMD_BetaTab>
-	<ZMD_BetaTabInfo>These options are in beta and may be changed or removed at any time</ZMD_BetaTabInfo>
+	<ZMD_mountainTab>Mountains</ZMD_mountainTab>
+	<ZMD_mountainTabInfo>Settings relating to hills</ZMD_mountainTabInfo>
+	<ZMD_thingsTab>Things</ZMD_thingsTab>
+	<ZMD_thingsTabInfo>Ore density, etc</ZMD_thingsTabInfo>
+	<ZMD_miscTab>Misc</ZMD_miscTab>
+	<ZMD_miscTabInfo>Other settings</ZMD_miscTabInfo>
+	<ZMD_featureTab>Map Features</ZMD_featureTab>
+	<ZMD_featureTabInfo>Add specific features to your home map. These will not spawn on other maps, like quest maps.\n\nThese will NOT show up in Map Reroll previews, but can still be rerolled.</ZMD_featureTabInfo>
+	<ZMD_betaTab>Beta</ZMD_betaTab>
+	<ZMD_betaTabInfo>These options are in beta and may be changed or removed at any time.</ZMD_betaTabInfo>
 	
-  <!--  -->
+	
+	
+<!-- ===================================	Features	================================= -->
+
+  <!-- Features -->
+  <ZMD_selectFeature>Select feature</ZMD_selectFeature>
   
+  <ZMD_featureNone>No feature</ZMD_featureNone>
+  <ZMD_featureNoneInfo>Baseline map.</ZMD_featureNoneInfo>
+  
+  <ZMD_featurePRI>Perfectly round islands</ZMD_featurePRI>
+  <ZMD_featurePRIInfo>One or more perfectly round islands, surrounded by shallow water.</ZMD_featurePRIInfo>
+  
+  <ZMD_featureLake>Lake</ZMD_featureLake>
+  <ZMD_featureLakeInfo>A natural looking lake.</ZMD_featureLakeInfo>
+  
+  
+  
+  <!-- Perfectly Round Islands -->
+  <ZMD_priIslandSizeLabel>Island size</ZMD_priIslandSizeLabel>
+  <ZMD_priBeachSizeLabel>Beach size</ZMD_priBeachSizeLabel>
+  <ZMD_priMultiSpawnLabel>Spawn multiple islands</ZMD_priMultiSpawnLabel>
+  
+  <ZPRI_MarshyBeachesLabel>Marshy islands have marsh beaches</ZPRI_MarshyBeachesLabel>
+  <ZPRI_MarshyBeachesTooltip>Looks better, less solid ground to build on.</ZPRI_MarshyBeachesTooltip>
   
 </LanguageData>

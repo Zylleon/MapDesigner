@@ -14,7 +14,7 @@ namespace MapDesigner
         private enum InfoCardTab : byte
         {
             Mountains,
-            Misc,
+            Things,
             Feature,
             Beta
         }
@@ -29,9 +29,7 @@ namespace MapDesigner
 
         public override string SettingsCategory()
         {
-            //return "Map Designer test";
             return "ZMD_ModName".Translate();
-
         }
 
         public override void WriteSettings()
@@ -41,50 +39,13 @@ namespace MapDesigner
         }
 
 
-        private void ResetAllSettings()
-        {
-            ResetMountainSettings();
-            ResetMiscSettings();
-        }
-
-        private void ResetMountainSettings()
-        {
-            settings.hillAmount = 1.0f;
-            settings.hillSize = 0.021f;
-            settings.hillSmoothness = 2.0f;
-            MapDesignerSettings.flagHillClumping = false;
-            MapDesignerSettings.flagCaves = true;
-
-        }
-
-        private void ResetMiscSettings()
-        {
-            settings.densityPlant = 1.0f;
-            settings.densityAnimal = 1.0f;
-            settings.densityRuins = 1.0f;
-            //settings.densityDanger = 1.0f;
-            settings.densityGeyser = 1.0f;
-            settings.densityOre = 1.0f;
-            settings.sizeRiver = 1.0f;
-
-        }
-
         public override void DoSettingsWindowContents(Rect inRect)
         {
-            //Listing_Standard listingStandard = new Listing_Standard();
-            //listingStandard.Begin(inRect);
+            Listing_Standard listingStandard = new Listing_Standard();
+            listingStandard.Begin(inRect);
 
-            //Rect rect = new Rect(inRect);
-            //rect = rect.ContractedBy(18f);
-            //rect.height = 34f;
-            //Text.Font = GameFont.Medium;
-            //Widgets.Label(rect, this.tab.ToString().Translate());
-            //Widgets.Label(rect, "ZMD_ModName".Translate());
-            Rect rect2 = new Rect(inRect);
-            //rect2.yMin = rect.yMax;
-            rect2.yMax -= 38f;
-            Rect rect3 = rect2;
-            rect3.yMin += 45f;
+            Rect rect3 = new Rect(inRect);
+
             List<TabRecord> list = new List<TabRecord>();
 
             TabRecord mountainTab = new TabRecord("ZMD_MountainTab".Translate(), delegate
@@ -93,11 +54,11 @@ namespace MapDesigner
             }, this.tab == MapDesigner_Mod.InfoCardTab.Mountains);
             list.Add(mountainTab);
 
-            TabRecord miscTab = new TabRecord("ZMD_MiscTab".Translate(), delegate
+            TabRecord ThingsTab = new TabRecord("ZMD_ThingsTab".Translate(), delegate
             {
-                this.tab = MapDesigner_Mod.InfoCardTab.Misc;
-            }, this.tab == MapDesigner_Mod.InfoCardTab.Misc);
-            list.Add(miscTab);
+                this.tab = MapDesigner_Mod.InfoCardTab.Things;
+            }, this.tab == MapDesigner_Mod.InfoCardTab.Things);
+            list.Add(ThingsTab);
 
             TabRecord featureTab = new TabRecord("ZMD_FeatureTab".Translate(), delegate
             {
@@ -114,6 +75,8 @@ namespace MapDesigner
             TabDrawer.DrawTabs(rect3, list, 200f);
             this.FillCard(rect3.ContractedBy(18f));
 
+            listingStandard.End();
+
             //base.DoSettingsWindowContents(inRect);
         }
 
@@ -125,17 +88,17 @@ namespace MapDesigner
                 // do mountain tab
                 DrawMountainCard(cardRect);
             }
-            else if (this.tab == MapDesigner_Mod.InfoCardTab.Misc)
+            else if (this.tab == MapDesigner_Mod.InfoCardTab.Things)
             {
-                // do misc tab
-                DrawMiscCard(cardRect);
+                // do Things tab
+                DrawThingsCard(cardRect);
             }
             else if (this.tab == MapDesigner_Mod.InfoCardTab.Feature)
             {
                 // do feature tab
 
-                //cardRect.yMin += 8f;
-                //HealthCardUtility.DrawPawnHealthCard(cardRect, (Pawn)this.thing, false, false, null);
+                DrawFeaturesCard(cardRect);
+
             }
             else if (this.tab == MapDesigner_Mod.InfoCardTab.Beta)
             {
@@ -146,8 +109,11 @@ namespace MapDesigner
         }
 
 
+        #region draw cards
+
         private void DrawMountainCard(Rect rect)
         {
+
             Listing_Standard listingStandard = new Listing_Standard();
             listingStandard.Begin(rect);
 
@@ -168,18 +134,20 @@ namespace MapDesigner
 
             listingStandard.CheckboxLabeled("ZMD_flagCaves".Translate(), ref MapDesignerSettings.flagCaves, "ZMD_flagCavesTooltip".Translate());
 
+            listingStandard.GapLine();
             if (listingStandard.ButtonText("ZMD_ResetMountain".Translate()))
             {
                 ResetMountainSettings();
             }
+
+            listingStandard.End();
         }
 
-        private void DrawMiscCard(Rect rect)
+        private void DrawThingsCard(Rect rect)
         {
             Listing_Standard listingStandard = new Listing_Standard();
             listingStandard.Begin(rect);
             // stuff density
-            listingStandard.GapLine();
 
             listingStandard.Label(FormatLabel("ZMD_densityPlant", "ZMD_density" + GetDensityLabel(settings.densityPlant)));
             settings.densityPlant = listingStandard.Slider(settings.densityPlant, 0f, 2.5f);
@@ -200,18 +168,83 @@ namespace MapDesigner
             listingStandard.Label(FormatLabel("ZMD_densityOre", "ZMD_density" + GetDensityLabel(settings.densityOre)));
             settings.densityOre = listingStandard.Slider(settings.densityOre, 0f, 2.5f);
 
-            // misc
+            // Things
             listingStandard.GapLine();
 
             listingStandard.Label(FormatLabel("ZMD_sizeRiver", "ZMD_size" + GetDensityLabel(settings.sizeRiver)));
             settings.sizeRiver = listingStandard.Slider(settings.sizeRiver, 0.1f, 2.5f);
 
-            if (listingStandard.ButtonText("ZMD_ResetMisc".Translate()))
+
+            listingStandard.GapLine();
+
+            if (listingStandard.ButtonText("ZMD_ResetThings".Translate()))
             {
-                ResetMiscSettings();
+                ResetThingsSettings();
             }
+            listingStandard.End();
 
         }
+
+
+        private void DrawFeaturesCard(Rect rect)
+        {
+
+            Listing_Standard listingStandard = new Listing_Standard();
+            listingStandard.Begin(rect);
+
+            listingStandard.Label("ZMD_FeatureTabInfo".Translate());
+
+
+            listingStandard.GapLine();
+            if (listingStandard.ButtonText("ZMD_ResePage".Translate()))
+            {
+                ResetFeatureSettings();
+            }
+
+            listingStandard.End();
+        }
+
+        #endregion
+
+
+        #region reset buttons
+
+        private void ResetAllSettings()
+        {
+            ResetMountainSettings();
+            ResetThingsSettings();
+            ResetFeatureSettings();
+        }
+
+
+        private void ResetMountainSettings()
+        {
+            settings.hillAmount = 1.0f;
+            settings.hillSize = 0.021f;
+            settings.hillSmoothness = 2.0f;
+            MapDesignerSettings.flagHillClumping = false;
+            MapDesignerSettings.flagCaves = true;
+        }
+
+
+        private void ResetThingsSettings()
+        {
+            settings.densityPlant = 1.0f;
+            settings.densityAnimal = 1.0f;
+            settings.densityRuins = 1.0f;
+            //settings.densityDanger = 1.0f;
+            settings.densityGeyser = 1.0f;
+            settings.densityOre = 1.0f;
+            settings.sizeRiver = 1.0f;
+        }
+
+        private void ResetFeatureSettings()
+        {
+            
+
+        }
+
+        #endregion
 
 
         #region labels

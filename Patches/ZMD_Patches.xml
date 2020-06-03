@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Patch>
 
-	<!--
+	
 	<Operation Class="PatchOperationAdd">
-		<xpath>Defs/MapGeneratorDef[@defName="Base_Player"]/genSteps</xpath>
+		<xpath>Defs/MapGeneratorDef[defName="Base_Player"]/genSteps</xpath>
 		<value>
 			<li>ZMD_GenStepFeature</li>
 		</value>
 	</Operation>
-			-->
+			
 		
-
+<!--
 	<Operation Class="PatchOperationAdd">
 		<xpath>Defs/MapGeneratorDef[@Name="MapCommonBase"]/genSteps</xpath>
 		<value>
 			<li>ZMD_GenStepFeature</li>
 		</value>
 	</Operation>
-
+-->
 </Patch>

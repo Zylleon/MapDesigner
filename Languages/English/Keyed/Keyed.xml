@@ -3,8 +3,9 @@
 
 	<ZMD_ModName>Map Designer</ZMD_ModName>
 	<ZMD_Reset>Reset everything to default</ZMD_Reset>
+	<ZMD_ResetTab>Reset these settings</ZMD_ResetTab>
 	<ZMD_ResetMountain>Reset mountains to default</ZMD_ResetMountain>
-	<ZMD_ResetMisc>Reset misc to default</ZMD_ResetMisc>
+	<ZMD_ResetThings>Reset things to default</ZMD_ResetThings>
   
   <!-- Levels -->
     <ZMD_size0>None</ZMD_size0>
@@ -71,13 +72,16 @@
 	<ZMD_densityGeyser>Steam geyser density</ZMD_densityGeyser>
 	<ZMD_densityOre>Ore density</ZMD_densityOre>
 	
+	
   <!-- Tabs -->
 	<ZMD_MountainTab>Mountains</ZMD_MountainTab>
 	<ZMD_MountainTabInfo>Settings relating to hills</ZMD_MountainTabInfo>
+	<ZMD_ThingsTab>Things</ZMD_ThingsTab>
+	<ZMD_ThingsTabInfo>Ore density, etc</ZMD_ThingsTabInfo>
 	<ZMD_MiscTab>Misc</ZMD_MiscTab>
 	<ZMD_MiscTabInfo>Other settings</ZMD_MiscTabInfo>
-	<ZMD_FeatureTab>Features</ZMD_FeatureTab>
-	<ZMD_FeatureTabInfo>Add specific features to your home map. These will not spawn on other maps, like quest maps.</ZMD_FeatureTabInfo>
+	<ZMD_FeatureTab>Map Features</ZMD_FeatureTab>
+	<ZMD_FeatureTabInfo>Add specific features to your home map. These will not spawn on other maps, like quest maps.\n\nThese will NOT show up in Map Reroll previews, but can still be rerolled.</ZMD_FeatureTabInfo>
 	<ZMD_BetaTab>Beta</ZMD_BetaTab>
 	<ZMD_BetaTabInfo>These options are in beta and may be changed or removed at any time</ZMD_BetaTabInfo>
 	

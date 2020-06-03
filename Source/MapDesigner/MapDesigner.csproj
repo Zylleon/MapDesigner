@@ -295,6 +295,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BiomeDefault.cs" />
+    <Compile Include="MapDesignerSettingsWindow.cs" />
+    <Compile Include="SettingsTabWindow.cs" />
     <Compile Include="ZMD_GenStep_Lake.cs" />
     <Compile Include="HarmonyPatches.cs" />
     <Compile Include="HelperMethods.cs" />

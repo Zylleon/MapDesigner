@@ -56,7 +56,7 @@ namespace MapDesigner
         }
     }
 
-
+    /*
     public class MapDesigner_Mod : Mod
     {
         MapDesignerSettings settings;
@@ -292,4 +292,6 @@ namespace MapDesigner
 
         #endregion
     }
+
+    */
 }

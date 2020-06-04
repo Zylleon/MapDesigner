@@ -23,13 +23,27 @@ namespace MapDesigner
         {
 
             MapDesignerSettings settings = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>();
-
-            if(settings.selectedFeature == MapDesignerSettings.Features.RoundIsland)
+            if (settings.selectedFeature == MapDesignerSettings.Features.None)
             {
+                return;
+            }
+           
+            if (settings.selectedFeature == MapDesignerSettings.Features.RoundIsland)
+            {
+                if (map.Biome.defName.Contains("BiomesIsland"))
+                {
+                    Log.Message("Can't make round islands, this is already an island!");
+                    return;
+                }
+
                 (new GenStep_RoundIsland()).Generate(map, parms);
             }
 
-            //(new ZMD_GenStep_Lake()).Generate(map, parms);
+            // FOR LAKE FEATURE
+            //else if (settings.selectedFeature == MapDesignerSettings.Features.Lake)
+            //{
+            //    (new ZMD_GenStep_Lake()).Generate(map, parms);
+            //}
 
         }
 

@@ -19,15 +19,42 @@
 	</incompatibleWith>
   <description>
   
-More options for customizing maps. Adjust hill size and shape, and amount of ore, geysers, ruins, plants, and animals.
+More options for customizing maps! Use from mod settings under Options > Mod Settings > Map Designer.
+
+Mountains:
+	- hill size
+	- hill shape
+	- make flat or solid maps
+	- caves
+
+Things:
+	- plants
+	- animals
+	- ruins
+	- steam geysers
+	- ore
+	- rivers
+	
+Map Features: optional special features you can add to your home map.
+	- perfectly round islands: your map will generate as one or more perfectly round islands, surrounded by shallow water. Raids and trade caravans will still path in normally from the sides.
 
 -----
+
+Compatibility:
 
 Compatible with Map Reroll. You can change settings between rerolling!
 
 Compatible with most modded biomes. 
 
 Biomes! Islands-- Islands should generate normally, terrain will not be changed. Plant and animal density adjustments will work. 
+
+Coastlines-- compatible
+
+Real Ruins-- compatible
+
+Grand Rivers reborn-- overridden by this mod
+
+Ongoing games-- can be added or removed. Plant and animal density can change on existing maps. Existing terrain will not change.
 
 -----
 

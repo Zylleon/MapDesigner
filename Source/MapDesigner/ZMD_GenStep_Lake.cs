@@ -22,7 +22,7 @@ namespace MapDesigner
         private int beachSize = 20;
         private int lakeSize = 15;
         private int lakeRoundness = 30;        // 0 is round, 30 is very not round
-        private int roughness = 10;            // o is smooth
+        private int roughness = 15;            // o is smooth
 
         public override void Generate(Map map, GenStepParams parms)
         {
@@ -52,17 +52,19 @@ namespace MapDesigner
 
             foreach(IntVec3 tile in bigCircle)
             {
-                IntVec3 newCenter = tile;
-                newCenter.x += (int)(lakeRoundness * lakeSquiggleX.GetValue(tile));
-                newCenter.z += (int)(lakeRoundness * lakeSquiggleZ.GetValue(tile));
+                if(Rand.Chance(0.1f))
+                {
+                    IntVec3 newCenter = tile;
+                    newCenter.x += (int)(lakeRoundness * lakeSquiggleX.GetValue(tile));
+                    newCenter.z += (int)(lakeRoundness * lakeSquiggleZ.GetValue(tile));
 
-                //lake.AddRange(GenRadial.RadialCellsAround(newCenter, lakeRoundness + 2, true));
-                lake.AddRange(GenRadial.RadialCellsAround(newCenter, 2 + lakeRoundness / 2, true).Except(lake));
-
+                    //lake.AddRange(GenRadial.RadialCellsAround(newCenter, lakeRoundness + 2, true));
+                    lake.AddRange(GenRadial.RadialCellsAround(newCenter, 2 + lakeRoundness / 2, true).Except(lake));
+                }
             }
 
             //RoughenShape(lake, "ZMD_Lake", map);
-            RoughenShape(lake, lakeGrid, map);
+            lakeGrid = RoughenShape(lake, lakeGrid, map);
 
             Log.Message(lake.Count + " lake tiles");
 
@@ -70,17 +72,18 @@ namespace MapDesigner
 
             foreach (IntVec3 tile in lake)
             {
-                //shore.AddRange(GenRadial.RadialCellsAround(tile, beachSize, true));
-                shore.AddRange(GenRadial.RadialCellsAround(tile, lakeRoundness + 2, true).Except(shore));
-
+                if (Rand.Chance(0.1f))
+                {
+                    //shore.AddRange(GenRadial.RadialCellsAround(tile, beachSize, true));
+                    shore.AddRange(GenRadial.RadialCellsAround(tile, lakeRoundness + 2, true).Except(shore));
+                }
             }
-            Log.Message("gonna roughen beach");
-            Log.Message(shore.Count + " shore tiles");
+
             MapGenFloatGrid shoreGrid = MapGenerator.FloatGridNamed("ZMD_LakeShore");
 
             //RoughenShape(lake, "ZMD_LakeShore", map);
-            RoughenShape(lake, shoreGrid, map);
-
+            shoreGrid = RoughenShape(lake, shoreGrid, map);
+            shoreGrid = RoughenShape(lake, shoreGrid, map);
 
             //foreach (IntVec3 tile in bigCircle)
             //{
@@ -118,36 +121,15 @@ namespace MapDesigner
             // apply lake terrains
             foreach (IntVec3 current in map.AllCells)
             {
-                if (lakeGrid[current] > 0.02f)
+                if (lakeGrid[current] > 0.05f)
                 {
                     if (!terrainGrid.TerrainAt(current).IsWater)
                     {
                         terrainGrid.SetTerrain(current, shallowTerr);
                     }
-
-                    //if (Rand.Chance(0.1f))
-                    //{
-                    //    List<IntVec3> circle = new List<IntVec3>();
-                    //    int innerRad = Rand.Range(1, beachSize);
-                    //    if(Rand.Bool)
-                    //    {
-                    //        innerRad = Math.Min(56, innerRad * 3);
-                    //    }
-                    //    circle = GenRadial.RadialCellsAround(current, innerRad, true).ToList();
-
-                    //    foreach (IntVec3 t in circle)
-                    //    {
-                    //        if (t.InBounds(map))
-                    //        {
-                    //            shoreGrid[t] += 0.01f;
-                    //        }
-                    //    }
-                    //}
-
-                    
                 }
 
-                if (lakeGrid[current] > 0.5f)
+                if (lakeGrid[current] > 0.2f)
                 {
                     terrainGrid.SetTerrain(current, deepTerr);
 
@@ -160,46 +142,43 @@ namespace MapDesigner
             {
                 if (!terrainGrid.TerrainAt(current).IsWater)
                 {
-                    if (shoreGrid[current] > 0.02f)
+                    if (shoreGrid[current] > 0.05f)
                     {
                         terrainGrid.SetTerrain(current, shoreOuterTerr);
                     }
-                    if (shoreGrid[current] > 0.3f)
-                    {
-                        terrainGrid.SetTerrain(current, shoreInnerTerr);
-                    }
-                    
                 }
 
             }
 
-            foreach(IntVec3 c in shore)
-            {
-                if (c.InBounds(map))
-                {
-                    terrainGrid.SetTerrain(c, TerrainDefOf.Ice);
-                }
-            }
+            //foreach(IntVec3 c in shore)
+            //{
+            //    if (c.InBounds(map))
+            //    {
+            //        terrainGrid.SetTerrain(c, TerrainDefOf.Ice);
+            //    }
+            //}
 
-            foreach (IntVec3 c in lake)
-            {
-                if (c.InBounds(map))
-                {
-                    terrainGrid.SetTerrain(c, TerrainDefOf.Bridge);
-                }
-            }
+            //foreach (IntVec3 c in lake)
+            //{
+            //    if (c.InBounds(map))
+            //    {
+            //        terrainGrid.SetTerrain(c, TerrainDefOf.Bridge);
+            //    }
+            //}
         }
 
 
 
-        private void RoughenShape(List<IntVec3> shape, /*string gridName,*/MapGenFloatGrid grid, Map map)
+        private MapGenFloatGrid RoughenShape(List<IntVec3> shape, /*string gridName,*/MapGenFloatGrid grid, Map map)
         {
             Log.Message("Roughening shape");
             //MapGenFloatGrid grid = MapGenerator.FloatGridNamed("gridName");
 
+            float incr = 0.001f * roughness;
+
             foreach(IntVec3 tile in shape)
             {
-                if(Rand.Chance(1 / (roughness + 1)))
+                if (Rand.Chance(1f / (roughness + 1.0f)))
                 {
                     float radius = Rand.Range(1, roughness + 2);
                     if (Rand.Chance(0.3f))
@@ -211,11 +190,13 @@ namespace MapDesigner
                     {
                         if (t.InBounds(map))
                         {
-                            grid[t] += 0.01f;
+                            grid[t] += incr;
                         }
                     }
                 }
             }
+
+            return grid;
         }
 
 

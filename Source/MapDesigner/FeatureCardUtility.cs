@@ -28,11 +28,11 @@ namespace MapDesigner
             {
                 DrawRoundIslandOptions(listing);
             }
-
-            else if (settings.selectedFeature == MapDesignerSettings.Features.Lake)
-            {
-                DrawLakeOptions(listing);
-            }
+            // FOR LAKE FEATURE
+            //else if (settings.selectedFeature == MapDesignerSettings.Features.Lake)
+            //{
+            //    DrawLakeOptions(listing);
+            //}
 
         }
 
@@ -47,7 +47,7 @@ namespace MapDesigner
             listing.Label("ZMD_featurePRIInfo".Translate());
 
             listing.Label("ZMD_priIslandSizeLabel".Translate());
-            this.settings.priIslandSize = listing.Slider(this.settings.priIslandSize, 20f, 56f);
+            this.settings.priIslandSize = listing.Slider(this.settings.priIslandSize, 5f, 45f);
 
             listing.Label("ZMD_priBeachSizeLabel".Translate());
             this.settings.priBeachSize = listing.Slider(this.settings.priBeachSize, 1f, 18f);
@@ -63,6 +63,24 @@ namespace MapDesigner
 
 
         }
+
+        public string GetFeatureLabel(MapDesignerSettings.Features feature)
+        {
+            if(feature == MapDesignerSettings.Features.None)
+            {
+                return "ZMD_featureNone".Translate();
+            }
+            if (feature == MapDesignerSettings.Features.RoundIsland)
+            {
+                return "ZMD_featurePRI".Translate();
+            }
+            if (feature == MapDesignerSettings.Features.Lake)
+            {
+                return "ZMD_featureLake".Translate();
+            }
+            return "ZMD_selectFeature".Translate();
+        }
+
 
         public void DrawLakeOptions(Listing_Standard listing)
         {

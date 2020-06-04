@@ -23,7 +23,7 @@ namespace MapDesigner
         {
             IntVec3 center = map.Center;
 
-            int outerRadius = (int)LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>().priIslandSize;
+            int outerRadius =(int)(0.01 * map.Size.x * LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>().priIslandSize);
             int beachSize = (int)LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>().priBeachSize;
             int innerRadius = outerRadius - beachSize;
 
@@ -51,11 +51,11 @@ namespace MapDesigner
                     {
                         if (c.Center.DistanceToEdge(map) >= 15)
                         {
-                            List<IntVec3> newCells = GenRadial.RadialCellsAround(c.Center, c.Radius + 2, true).ToList();
+                            List<IntVec3> newCells = HelperMethods.GenCircle(map, c.Center, c.Radius);
                             if (!newCells.Intersect(beachCells).Any())
                             {
                                 finalIslands.Add(c);
-                                beachCells.AddRange(GenRadial.RadialCellsAround(c.Center, c.Radius, true));
+                                beachCells.AddRange(HelperMethods.GenCircle(map, c.Center, c.Radius));
                             }
 
                         }
@@ -67,9 +67,8 @@ namespace MapDesigner
                 {
                     if (f.Radius > beachSize * 2)
                     {
-                        landCells.AddRange(GenRadial.RadialCellsAround(f.Center, f.Radius - beachSize, true));
-                        beachCells = beachCells.Except(GenRadial.RadialCellsAround(f.Center, f.Radius - beachSize, true)).ToList();
-
+                        landCells.AddRange(HelperMethods.GenCircle(map, f.Center, f.Radius - beachSize));
+                        beachCells = beachCells.Except(HelperMethods.GenCircle(map, f.Center, f.Radius - beachSize)).ToList();
                     }
                 }
 
@@ -82,27 +81,19 @@ namespace MapDesigner
             }
 
             TerrainDef sandTerr = TerrainDef.Named("Sand");
-
-            //if (ZPRI_Settings.marshyBeaches)
-            //{
-            //    List<string> marshyMaps = new List<string> { "ZPRI_Tundra", "ZPRI_TropicalSwamp", "ZPRI_TropicalRainforest", "ZPRI_TemperateSwamp", "ZPRI_BorealForest" };
-
-            //    if (marshyMaps.Contains(map.Biome.defName))
-            //    {
-            //        sandTerr = TerrainDef.Named("MarshyTerrain");
-
-            //    }
-            //}
-
-
             TerrainDef waterTerr = TerrainDef.Named("WaterOceanShallow");
+
             List<IntVec3> listRemoved = new List<IntVec3>();
 
             foreach (IntVec3 current in map.AllCells)
             {
                 if (beachCells.Contains(current))
                 {
-                    map.terrainGrid.SetTerrain(current, sandTerr);
+                    if(!map.terrainGrid.TerrainAt(current).IsRiver)
+                    {
+                        map.terrainGrid.SetTerrain(current, sandTerr);
+                    }
+                   
                     map.roofGrid.SetRoof(current, null);
 
                     Building edifice = current.GetEdifice(map);

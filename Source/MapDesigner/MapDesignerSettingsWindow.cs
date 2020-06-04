@@ -66,11 +66,11 @@ namespace MapDesigner
             }, this.tab == MapDesigner_Mod.InfoCardTab.Feature);
             list.Add(featureTab);
 
-            TabRecord betaTab = new TabRecord("ZMD_betaTab".Translate(), delegate
-            {
-                this.tab = MapDesigner_Mod.InfoCardTab.Beta;
-            }, this.tab == MapDesigner_Mod.InfoCardTab.Beta);
-            list.Add(betaTab);
+            //TabRecord betaTab = new TabRecord("ZMD_betaTab".Translate(), delegate
+            //{
+            //    this.tab = MapDesigner_Mod.InfoCardTab.Beta;
+            //}, this.tab == MapDesigner_Mod.InfoCardTab.Beta);
+            //list.Add(betaTab);
 
             TabDrawer.DrawTabs(rect3, list, 200f);
             this.FillCard(rect3.ContractedBy(18f));
@@ -135,7 +135,7 @@ namespace MapDesigner
             listingStandard.CheckboxLabeled("ZMD_flagCaves".Translate(), ref MapDesignerSettings.flagCaves, "ZMD_flagCavesTooltip".Translate());
 
             listingStandard.GapLine();
-            if (listingStandard.ButtonText("ZMD_ResetMountain".Translate()))
+            if (listingStandard.ButtonText("ZMD_resetMountain".Translate()))
             {
                 ResetMountainSettings();
             }
@@ -195,17 +195,27 @@ namespace MapDesigner
             listingStandard.Label("ZMD_featureTabInfo".Translate());
 
 
-            if (listingStandard.ButtonTextLabeled("ZMD_selectFeature".Translate(), settings.selectedFeature.ToString()))
+            if (listingStandard.ButtonTextLabeled("ZMD_selectFeature".Translate(), (new FeatureCardUtility()).GetFeatureLabel(settings.selectedFeature)))
             {
                 List<FloatMenuOption> testList = new List<FloatMenuOption>();
 
-                foreach (MapDesignerSettings.Features feature in (MapDesignerSettings.Features[])Enum.GetValues(typeof(MapDesignerSettings.Features)))
+                testList.Add(new FloatMenuOption("ZMD_featureNone".Translate(), delegate
                 {
-                    testList.Add(new FloatMenuOption(feature.ToString(), delegate
-                    {
-                        settings.selectedFeature = feature;
-                    }, MenuOptionPriority.Default, null, null, 0f, null, null));
-                }
+                    settings.selectedFeature = MapDesignerSettings.Features.None;
+                }, MenuOptionPriority.Default, null, null, 0f, null, null));
+
+                testList.Add(new FloatMenuOption("ZMD_featurePRI".Translate(), delegate
+                {
+                    settings.selectedFeature = MapDesignerSettings.Features.RoundIsland;
+                }, MenuOptionPriority.Default, null, null, 0f, null, null));
+
+                //foreach (MapDesignerSettings.Features feature in (MapDesignerSettings.Features[])Enum.GetValues(typeof(MapDesignerSettings.Features)))
+                //{
+                //    testList.Add(new FloatMenuOption(feature.ToString(), delegate
+                //    {
+                //        settings.selectedFeature = feature;
+                //    }, MenuOptionPriority.Default, null, null, 0f, null, null));
+                //}
                 Find.WindowStack.Add(new FloatMenu(testList));
             }
 

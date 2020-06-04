@@ -60,7 +60,7 @@
   <!-- Misc settings -->
   
 	<ZMD_flagCaves>Allow caves</ZMD_flagCaves>
-	<ZMD_flagCavesTooltip>Unchecking this prevents caves from ever spawning, even on tiles with mouuntains or large hills.</ZMD_flagCavesTooltip>
+	<ZMD_flagCavesTooltip>Unchecking this prevents caves from ever spawning, even on tiles with mountains or large hills.</ZMD_flagCavesTooltip>
 	
 	<ZMD_sizeRiver>River size</ZMD_sizeRiver>
 	
@@ -97,11 +97,10 @@
   <ZMD_featureNoneInfo>Baseline map.</ZMD_featureNoneInfo>
   
   <ZMD_featurePRI>Perfectly round islands</ZMD_featurePRI>
-  <ZMD_featurePRIInfo>One or more perfectly round islands, surrounded by shallow water.</ZMD_featurePRIInfo>
+  <ZMD_featurePRIInfo>One or more perfectly round islands, surrounded by shallow water. Trade caravans, raids and wild animals will still enter normally from the sides.</ZMD_featurePRIInfo>
   
   <ZMD_featureLake>Lake</ZMD_featureLake>
   <ZMD_featureLakeInfo>A natural looking lake.</ZMD_featureLakeInfo>
-  
   
   
   <!-- Perfectly Round Islands -->
@@ -109,7 +108,9 @@
   <ZMD_priBeachSizeLabel>Beach size</ZMD_priBeachSizeLabel>
   <ZMD_priMultiSpawnLabel>Spawn multiple islands</ZMD_priMultiSpawnLabel>
   
-  <ZPRI_MarshyBeachesLabel>Marshy islands have marsh beaches</ZPRI_MarshyBeachesLabel>
-  <ZPRI_MarshyBeachesTooltip>Looks better, less solid ground to build on.</ZPRI_MarshyBeachesTooltip>
+  <!-- Lakes -->
+  
+  
+  
   
 </LanguageData>

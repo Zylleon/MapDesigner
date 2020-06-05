@@ -31,6 +31,11 @@ namespace MapDesigner
     [HarmonyPatch(nameof(RimWorld.GenStep_ElevationFertility.Generate))]
     internal static class MountainSettingsPatch
     {
+        /// <summary>
+        /// Mountain size and smoothness
+        /// </summary>
+        /// <param name="instructions"></param>
+        /// <returns></returns>
         static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
         {
             var codes = new List<CodeInstruction>(instructions);
@@ -67,12 +72,18 @@ namespace MapDesigner
             return codes.AsEnumerable();
         }
 
-
+        /// <summary>
+        /// Mountain amount
+        /// Natural hill distribution
+        /// </summary>
+        /// <param name="map"></param>
+        /// <param name="parms"></param>
         static void Postfix(Map map, GenStepParams parms)
         {
+            MapDesignerSettings settings = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>();
             // hill size
             MapGenFloatGrid elevation = MapGenerator.Elevation;
-            float hillAmount = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>().hillAmount;
+            float hillAmount = settings.hillAmount;
 
             foreach (IntVec3 current in map.AllCells)
             {
@@ -99,7 +110,22 @@ namespace MapDesigner
                 }
 
             }
-           
+
+
+            // LAKE FEATURE
+
+            // pushes hills away from center
+            // TODO: link this to lake size option once that's implemented
+            if (settings.selectedFeature == MapDesignerSettings.Features.Lake)
+            {
+                IntVec3 center = map.Center;
+                int size = map.Size.x / 2;
+                foreach (IntVec3 current in map.AllCells)
+                {
+                    float distance = (float)Math.Sqrt(Math.Pow(current.x - center.x, 2) + Math.Pow(current.z - center.z, 2));
+                    elevation[current] *= Math.Min(1.0f, 1.3f * distance / size);
+                }
+            }
         }
     }
 

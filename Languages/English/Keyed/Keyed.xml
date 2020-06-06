@@ -112,13 +112,13 @@
 	<ZMD_densityPlant>Plant density</ZMD_densityPlant>
 	<ZMD_densityAnimal>Animal density</ZMD_densityAnimal>
 	<ZMD_densityRuins>Ruins density</ZMD_densityRuins>
-	<ZMD_densityDanger>Ancient danger density</ZMD_densityDanger>
+	<ZMD_densityDanger>Ancient danger amount</ZMD_densityDanger>
+	<ZMD_densityDangerTooltip>NOTE: Ancient dangers will not spawn on completely flat maps</ZMD_densityDangerTooltip>
 	<ZMD_densityGeyser>Steam geyser density</ZMD_densityGeyser>
 	<ZMD_densityOre>Ore density</ZMD_densityOre>
 	
 	<ZMD_sizeRiver>River size</ZMD_sizeRiver>
 
-	
 	
 	
 <!-- ===================================	Features	================================= -->

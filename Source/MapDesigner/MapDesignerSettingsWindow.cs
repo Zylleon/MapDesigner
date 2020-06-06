@@ -173,9 +173,8 @@ namespace MapDesigner
             listingStandard.Label(FormatLabel("ZMD_densityRuins", "ZMD_density" + GetDensityLabel(settings.densityRuins)));
             settings.densityRuins = listingStandard.Slider(settings.densityRuins, 0f, 2.5f);
 
-            //listingStandard.Label(FormatLabel("ZMD_densityDanger", "ZMD_density" + GetDensityLabel(settings.densityDanger)));
-            //settings.densityDanger = listingStandard.Slider(settings.densityDanger, 0f, 2.5f);
-
+            listingStandard.Label(FormatLabel("ZMD_densityDanger", "ZMD_density" + GetDensityLabel(settings.densityDanger)), -1, "ZMD_densityDangerTooltip".Translate());
+            settings.densityDanger = listingStandard.Slider(settings.densityDanger, 0f, 2.5f);
 
             listingStandard.Label(FormatLabel("ZMD_densityGeyser", "ZMD_density" + GetDensityLabel(settings.densityGeyser)));
             settings.densityGeyser = listingStandard.Slider(settings.densityGeyser, 0f, 2.5f);
@@ -187,7 +186,7 @@ namespace MapDesigner
             listingStandard.GapLine();
 
             listingStandard.Label(FormatLabel("ZMD_sizeRiver", "ZMD_size" + GetDensityLabel(settings.sizeRiver)));
-            settings.sizeRiver = listingStandard.Slider(settings.sizeRiver, 0.1f, 2.5f);
+            settings.sizeRiver = listingStandard.Slider(settings.sizeRiver, 0.1f, 3f);
 
 
             listingStandard.GapLine();
@@ -268,7 +267,7 @@ namespace MapDesigner
             settings.densityPlant = 1.0f;
             settings.densityAnimal = 1.0f;
             settings.densityRuins = 1.0f;
-            //settings.densityDanger = 1.0f;
+            settings.densityDanger = 1.0f;
             settings.densityGeyser = 1.0f;
             settings.densityOre = 1.0f;
             settings.sizeRiver = 1.0f;

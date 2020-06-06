@@ -31,7 +31,7 @@ namespace MapDesigner
         public float densityPlant = 1.0f;
         public float densityAnimal = 1.0f;
         public float densityRuins = 1.0f;
-        //public float densityDanger = 1.0f;
+        public float densityDanger = 1.0f;
 
 
         public float densityGeyser = 1.0f;
@@ -81,7 +81,7 @@ namespace MapDesigner
             Scribe_Values.Look(ref densityPlant, "densityPlant", 1.0f);
             Scribe_Values.Look(ref densityAnimal, "densityAnimal", 1.0f);
             Scribe_Values.Look(ref densityRuins, "densityRuins", 1.0f);
-            //Scribe_Values.Look(ref densityDanger, "densityDanger", 1.0f);
+            Scribe_Values.Look(ref densityDanger, "densityDanger", 1.0f);
             Scribe_Values.Look(ref densityGeyser, "densityGeyser", 1.0f);
             Scribe_Values.Look(ref densityOre, "densityOre", 1.0f);
 

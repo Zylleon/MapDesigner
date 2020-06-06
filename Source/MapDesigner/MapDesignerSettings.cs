@@ -17,14 +17,23 @@ namespace MapDesigner
         public float hillAmount = 1.0f;
         public float hillSize = 0.021f;
         public float hillSmoothness = 2.0f;
-        public static bool flagHillClumping = false;
         public static bool flagCaves = true;
+
+        public static bool flagHillClumping = false;
+
+        public static bool flagHillRadial = false;
+        public float hillRadialAmt = 1.0f;
+        public float hillRadialSize = 0.65f;
+
+        
 
         // Things
         public float densityPlant = 1.0f;
         public float densityAnimal = 1.0f;
         public float densityRuins = 1.0f;
         //public float densityDanger = 1.0f;
+
+
         public float densityGeyser = 1.0f;
         public float densityOre = 1.0f;
 
@@ -55,13 +64,20 @@ namespace MapDesigner
 
         public override void ExposeData()
         {
+            // Mountains
             Scribe_Values.Look(ref hillAmount, "hillAmount", 1.0f);
             Scribe_Values.Look(ref hillSize, "hillSize", 0.021f);
             Scribe_Values.Look(ref hillSmoothness, "hillSmoothness", 2.0f);
-
-            Scribe_Values.Look(ref flagHillClumping, "flagHillClumping", false);
             Scribe_Values.Look(ref flagCaves, "flagCaves", true);
 
+            Scribe_Values.Look(ref flagHillClumping, "flagHillClumping", false);
+
+            Scribe_Values.Look(ref flagHillRadial, "flagHillRadial", false);
+            Scribe_Values.Look(ref hillRadialAmt, "hillRadialAmt", 0.0f);
+            Scribe_Values.Look(ref hillRadialSize, "hillRadialSize", 0.55f);
+
+
+            // Things
             Scribe_Values.Look(ref densityPlant, "densityPlant", 1.0f);
             Scribe_Values.Look(ref densityAnimal, "densityAnimal", 1.0f);
             Scribe_Values.Look(ref densityRuins, "densityRuins", 1.0f);
@@ -71,10 +87,10 @@ namespace MapDesigner
 
             Scribe_Values.Look(ref sizeRiver, "sizeRiver", 1.0f);
 
-            Scribe_Values.Look(ref selectedFeature, "selectedFeature", Features.None);
-
 
             // Features
+            Scribe_Values.Look(ref selectedFeature, "selectedFeature", Features.None);
+
             // Round islands
             Scribe_Values.Look(ref priIslandSize, "priIslandSize", 40f);
             Scribe_Values.Look(ref priBeachSize, "priBeachSize", 5f);

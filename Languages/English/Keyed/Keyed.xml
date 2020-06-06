@@ -7,7 +7,23 @@
 	<ZMD_resetPage>Reset these settings</ZMD_resetPage>
 	<ZMD_resetMountain>Reset mountains to default</ZMD_resetMountain>
 	<ZMD_resetThings>Reset Things to default</ZMD_resetThings>
-  
+	
+	
+    <!-- Tabs -->
+	<ZMD_mountainTab>Mountains</ZMD_mountainTab>
+	<ZMD_mountainTabInfo>Settings relating to hills</ZMD_mountainTabInfo>
+	<ZMD_thingsTab>Things</ZMD_thingsTab>
+	<ZMD_thingsTabInfo>Ore density, etc</ZMD_thingsTabInfo>
+	<ZMD_miscTab>Misc</ZMD_miscTab>
+	<ZMD_miscTabInfo>Other settings</ZMD_miscTabInfo>
+	<ZMD_featureTab>Map Features</ZMD_featureTab>
+	<ZMD_featureTabInfo>Add specific features to your home map. These will not spawn on other maps, like quest maps.\n\nThese will NOT show up in Map Reroll previews, but can still be rerolled.</ZMD_featureTabInfo>
+	<ZMD_betaTab>Beta</ZMD_betaTab>
+	<ZMD_betaTabInfo>These options are in beta and may be changed or removed at any time.</ZMD_betaTabInfo>
+	
+	
+<!-- ===================================	General Use		================================= -->
+
   <!-- Levels -->
     <ZMD_size0>None</ZMD_size0>
 	<ZMD_size1>Tiny</ZMD_size1>
@@ -31,6 +47,8 @@
 	<ZMD_densityV>Vanilla</ZMD_densityV>
 	
 	
+<!-- ===================================	Mountains	================================= -->
+
   <!-- Hills -->
 	<ZMD_hillAmountLabel>Hill amount</ZMD_hillAmountLabel>
 	<ZMD_hillAmount0>Very flat, maybe no hills at all</ZMD_hillAmount0>
@@ -56,14 +74,39 @@
 
 	<ZMD_flagHillClumping>Natural hill distribution</ZMD_flagHillClumping>
 	<ZMD_flagHillClumpingTooltip>For small hills. Will make hills clump naturally instead of being evenly distributed.</ZMD_flagHillClumpingTooltip>
+	
+	<ZMD_flagHillRadial>Central hill distribution</ZMD_flagHillRadial>
+	<ZMD_flagHillRadialTooltip>Push the mountains to the edges of your map, or clump them all in the center.</ZMD_flagHillRadialTooltip>
+	<ZMD_hillRadialAmtLabel>Skew amount</ZMD_hillRadialAmtLabel>
+	<ZMD_hillRadialAmtTooltip>How much of a difference there is between the center and edges of the map</ZMD_hillRadialAmtTooltip>
+	<ZMD_hillRadialSizeLabel>Center size</ZMD_hillRadialSizeLabel>
+	<ZMD_hillRadialSizeTooltip>Push hills just out of the center, or all the way to the edges</ZMD_hillRadialSizeTooltip>
+	
+	<ZMD_hillRadialAmt0>Tightly clustered in the center</ZMD_hillRadialAmt0>
+	<ZMD_hillRadialAmt1>Moderate shift towards center</ZMD_hillRadialAmt1>
+	<ZMD_hillRadialAmt2>Slightly more in the center</ZMD_hillRadialAmt2>
+	<ZMD_hillRadialAmt3>Little to no change</ZMD_hillRadialAmt3>
+	<ZMD_hillRadialAmt4>Slightly more on the edges</ZMD_hillRadialAmt4>
+	<ZMD_hillRadialAmt5>Moderate shift towards center</ZMD_hillRadialAmt5>
+	<ZMD_hillRadialAmt6>Almost entirely around the edges</ZMD_hillRadialAmt6>
+	
+	<ZMD_hillRadialSize0>Tiny</ZMD_hillRadialSize0>
+	<ZMD_hillRadialSize1>Small</ZMD_hillRadialSize1>
+	<ZMD_hillRadialSize2>Average</ZMD_hillRadialSize2>
+	<ZMD_hillRadialSize3>Big</ZMD_hillRadialSize3>
+	<ZMD_hillRadialSize4>Edges</ZMD_hillRadialSize4>
 
+	
   <!-- Misc settings -->
   
 	<ZMD_flagCaves>Allow caves</ZMD_flagCaves>
 	<ZMD_flagCavesTooltip>Unchecking this prevents caves from ever spawning, even on tiles with mountains or large hills.</ZMD_flagCavesTooltip>
 	
-	<ZMD_sizeRiver>River size</ZMD_sizeRiver>
+
 	
+	
+<!-- ===================================	Things	================================= -->
+
   <!-- Densities -->
   
 	<ZMD_densityPlant>Plant density</ZMD_densityPlant>
@@ -73,18 +116,8 @@
 	<ZMD_densityGeyser>Steam geyser density</ZMD_densityGeyser>
 	<ZMD_densityOre>Ore density</ZMD_densityOre>
 	
-	
-  <!-- Tabs -->
-	<ZMD_mountainTab>Mountains</ZMD_mountainTab>
-	<ZMD_mountainTabInfo>Settings relating to hills</ZMD_mountainTabInfo>
-	<ZMD_thingsTab>Things</ZMD_thingsTab>
-	<ZMD_thingsTabInfo>Ore density, etc</ZMD_thingsTabInfo>
-	<ZMD_miscTab>Misc</ZMD_miscTab>
-	<ZMD_miscTabInfo>Other settings</ZMD_miscTabInfo>
-	<ZMD_featureTab>Map Features</ZMD_featureTab>
-	<ZMD_featureTabInfo>Add specific features to your home map. These will not spawn on other maps, like quest maps.\n\nThese will NOT show up in Map Reroll previews, but can still be rerolled.</ZMD_featureTabInfo>
-	<ZMD_betaTab>Beta</ZMD_betaTab>
-	<ZMD_betaTabInfo>These options are in beta and may be changed or removed at any time.</ZMD_betaTabInfo>
+	<ZMD_sizeRiver>River size</ZMD_sizeRiver>
+
 	
 	
 	

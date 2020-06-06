@@ -85,26 +85,19 @@ namespace MapDesigner
         {
             if (this.tab == MapDesigner_Mod.InfoCardTab.Mountains)
             {
-                // do mountain tab
                 DrawMountainCard(cardRect);
             }
             else if (this.tab == MapDesigner_Mod.InfoCardTab.Things)
             {
-                // do Things tab
                 DrawThingsCard(cardRect);
             }
             else if (this.tab == MapDesigner_Mod.InfoCardTab.Feature)
             {
-                // do feature tab
-
                 DrawFeaturesCard(cardRect);
-
             }
             else if (this.tab == MapDesigner_Mod.InfoCardTab.Beta)
             {
                 // do beta tab
-
-                //RecordsCardUtility.DrawRecordsCard(cardRect, (Pawn)this.thing);
             }
         }
 
@@ -124,16 +117,38 @@ namespace MapDesigner
             listingStandard.Label(hillSizeLabel);
             settings.hillSize = listingStandard.Slider(settings.hillSize, 0.01f, 0.10f);
 
-            if (settings.hillSize > 0.022f)
-            {
-                listingStandard.CheckboxLabeled("ZMD_flagHillClumping".Translate(), ref MapDesignerSettings.flagHillClumping, "ZMD_flagHillClumpingTooltip".Translate());
-            }
-
             listingStandard.Label(hillSmoothnessLabel);
             settings.hillSmoothness = listingStandard.Slider(settings.hillSmoothness, 0f, 5f);
 
             listingStandard.CheckboxLabeled("ZMD_flagCaves".Translate(), ref MapDesignerSettings.flagCaves, "ZMD_flagCavesTooltip".Translate());
 
+            // hill distribution
+            if (settings.hillSize > 0.022f)
+            {
+                listingStandard.CheckboxLabeled("ZMD_flagHillClumping".Translate(), ref MapDesignerSettings.flagHillClumping, "ZMD_flagHillClumpingTooltip".Translate());
+            }
+
+            
+            listingStandard.CheckboxLabeled("ZMD_flagHillRadial".Translate(), ref MapDesignerSettings.flagHillRadial, "ZMD_flagHillRadialTooltip".Translate());
+            if (MapDesignerSettings.flagHillRadial)
+            {
+                Rect hillRadialRect = listingStandard.GetRect(60f + Text.CalcHeight(hillRadialAmtLabel, listingStandard.ColumnWidth - 40f) * 2);
+                hillRadialRect.xMin += 20f;
+                hillRadialRect.xMax -= 20f;
+
+                Listing_Standard hillRadialListing = new Listing_Standard();
+                hillRadialListing.Begin(hillRadialRect);
+
+                hillRadialListing.Label(hillRadialAmtLabel, -1, "ZMD_hillRadialAmtTooltip".Translate());
+                settings.hillRadialAmt = hillRadialListing.Slider(settings.hillRadialAmt, -3.0f, 3.0f);
+
+                hillRadialListing.Label(hillRadialSizeLabel, -1, "ZMD_hillRadialSizeTooltip".Translate());
+                settings.hillRadialSize = hillRadialListing.Slider(settings.hillRadialSize, 0.2f, 1.1f);
+
+                hillRadialListing.End();
+            }
+
+            // reset
             listingStandard.GapLine();
             if (listingStandard.ButtonText("ZMD_resetMountain".Translate()))
             {
@@ -197,26 +212,19 @@ namespace MapDesigner
 
             if (listingStandard.ButtonTextLabeled("ZMD_selectFeature".Translate(), (new FeatureCardUtility()).GetFeatureLabel(settings.selectedFeature)))
             {
-                List<FloatMenuOption> testList = new List<FloatMenuOption>();
+                List<FloatMenuOption> featureList = new List<FloatMenuOption>();
 
-                testList.Add(new FloatMenuOption("ZMD_featureNone".Translate(), delegate
+                featureList.Add(new FloatMenuOption("ZMD_featureNone".Translate(), delegate
                 {
                     settings.selectedFeature = MapDesignerSettings.Features.None;
                 }, MenuOptionPriority.Default, null, null, 0f, null, null));
 
-                testList.Add(new FloatMenuOption("ZMD_featurePRI".Translate(), delegate
+                featureList.Add(new FloatMenuOption("ZMD_featurePRI".Translate(), delegate
                 {
                     settings.selectedFeature = MapDesignerSettings.Features.RoundIsland;
                 }, MenuOptionPriority.Default, null, null, 0f, null, null));
 
-                //foreach (MapDesignerSettings.Features feature in (MapDesignerSettings.Features[])Enum.GetValues(typeof(MapDesignerSettings.Features)))
-                //{
-                //    testList.Add(new FloatMenuOption(feature.ToString(), delegate
-                //    {
-                //        settings.selectedFeature = feature;
-                //    }, MenuOptionPriority.Default, null, null, 0f, null, null));
-                //}
-                Find.WindowStack.Add(new FloatMenu(testList));
+                Find.WindowStack.Add(new FloatMenu(featureList));
             }
 
             listingStandard.GapLine();
@@ -236,7 +244,7 @@ namespace MapDesigner
         {
             ResetMountainSettings();
             ResetThingsSettings();
-            ResetFeatureSettings();
+            //ResetFeatureSettings();
         }
 
 
@@ -245,8 +253,13 @@ namespace MapDesigner
             settings.hillAmount = 1.0f;
             settings.hillSize = 0.021f;
             settings.hillSmoothness = 2.0f;
-            MapDesignerSettings.flagHillClumping = false;
             MapDesignerSettings.flagCaves = true;
+
+            MapDesignerSettings.flagHillClumping = false;
+
+            MapDesignerSettings.flagHillRadial = false;
+            settings.hillRadialAmt = 1.0f;
+            settings.hillRadialSize = 0.65f;
         }
 
 
@@ -261,17 +274,72 @@ namespace MapDesigner
             settings.sizeRiver = 1.0f;
         }
 
-        private void ResetFeatureSettings()
-        {
-            
-
-        }
 
         #endregion
 
 
         #region labels
 
+        private string hillRadialAmtLabel
+        {
+            get
+            {
+                float radialAmt = settings.hillRadialAmt;
+                int label = 0;
+                if (radialAmt > -2.0f)    //1
+                {
+                    label++;
+                }
+                if (radialAmt > -1.0f)    //2
+                {
+                    label++;
+                }
+                if (radialAmt > -0.4f)    //no cluster = 3
+                {
+                    label++;
+                }
+                if (radialAmt > 0.4f)     //4
+                {
+                    label++;
+                }
+                if (radialAmt > 1.0f)     //5
+                {
+                    label++;
+                }
+                if (radialAmt > 2.0f)     //6
+                {
+                    label++;
+                }
+                return FormatLabel("ZMD_hillRadialAmtLabel", "ZMD_hillRadialAmt" + label);
+            }
+        }
+
+
+        private string hillRadialSizeLabel
+        {
+            get
+            {
+                float radialSize = settings.hillRadialSize;
+                int label = 0;
+                if (radialSize > 0.35f)
+                {
+                    label++;
+                }
+                if (radialSize > 0.55f)
+                {
+                    label++;
+                }
+                if (radialSize > 0.80f)
+                {
+                    label++;
+                }
+                if (radialSize > 0.95f)
+                {
+                    label++;
+                }
+                return FormatLabel("ZMD_hillRadialSizeLabel", "ZMD_hillRadialSize" + label);
+            }
+        }
 
         private string hillAmountLabel
         {

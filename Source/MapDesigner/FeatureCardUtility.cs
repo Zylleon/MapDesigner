@@ -29,10 +29,10 @@ namespace MapDesigner
                 DrawRoundIslandOptions(listing);
             }
             // FOR LAKE FEATURE
-            //else if (settings.selectedFeature == MapDesignerSettings.Features.Lake)
-            //{
-            //    DrawLakeOptions(listing);
-            //}
+            else if (settings.selectedFeature == MapDesignerSettings.Features.Lake)
+            {
+                DrawLakeOptions(listing);
+            }
 
         }
 

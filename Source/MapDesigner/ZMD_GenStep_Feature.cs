@@ -40,10 +40,10 @@ namespace MapDesigner
             }
 
             // FOR LAKE FEATURE
-            else if (settings.selectedFeature == MapDesignerSettings.Features.Lake)
-            {
-                (new ZMD_GenStep_Lake()).Generate(map, parms);
-            }
+            //else if (settings.selectedFeature == MapDesignerSettings.Features.Lake)
+            //{
+            //    (new ZMD_GenStep_Lake()).Generate(map, parms);
+            //}
 
         }
 

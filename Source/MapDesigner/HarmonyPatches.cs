@@ -112,22 +112,26 @@ namespace MapDesigner
             }
 
 
-            // LAKE FEATURE
-
             // pushes hills away from center
-            // TODO: link this to lake size option once that's implemented
-            if (settings.selectedFeature == MapDesignerSettings.Features.Lake)
+            if (MapDesignerSettings.flagHillRadial)
             {
                 IntVec3 center = map.Center;
                 int size = map.Size.x / 2;
+                float centerSize = settings.hillRadialSize * size;
+                float multiplier = 1.2f * settings.hillRadialAmt / size;
+                Log.Message("Pushing hills with value " + settings.hillRadialAmt);
                 foreach (IntVec3 current in map.AllCells)
                 {
                     float distance = (float)Math.Sqrt(Math.Pow(current.x - center.x, 2) + Math.Pow(current.z - center.z, 2));
-                    elevation[current] *= Math.Min(1.0f, 1.3f * distance / size);
+
+                    elevation[current] *= (1f + (settings.hillRadialAmt * (distance - centerSize) / size));
+
+                    //elevation[current] *= (1f + (settings.hillRadialAmt * (distance - size / 2) / size));
                 }
             }
         }
     }
+
 
     [HarmonyPatch(typeof(RimWorld.GenStep_ScatterLumpsMineable))]
     [HarmonyPatch(nameof(RimWorld.GenStep_ScatterLumpsMineable.Generate))]

@@ -120,7 +120,10 @@ namespace MapDesigner
             listingStandard.Label(hillSmoothnessLabel);
             settings.hillSmoothness = listingStandard.Slider(settings.hillSmoothness, 0f, 5f);
 
+            // general mountain related
             listingStandard.CheckboxLabeled("ZMD_flagCaves".Translate(), ref MapDesignerSettings.flagCaves, "ZMD_flagCavesTooltip".Translate());
+
+            listingStandard.CheckboxLabeled("ZMD_flagOneRock".Translate(), ref MapDesignerSettings.flagOneRock, "ZMD_flagOneRockTooltip".Translate());
 
             // hill distribution
             if (settings.hillSize > 0.022f)
@@ -253,6 +256,7 @@ namespace MapDesigner
             settings.hillSize = 0.021f;
             settings.hillSmoothness = 2.0f;
             MapDesignerSettings.flagCaves = true;
+            MapDesignerSettings.flagOneRock = false;
 
             MapDesignerSettings.flagHillClumping = false;
 

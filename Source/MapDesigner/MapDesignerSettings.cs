@@ -19,6 +19,8 @@ namespace MapDesigner
         public float hillSmoothness = 2.0f;
         public static bool flagCaves = true;
 
+        public static bool flagOneRock = false;
+
         public static bool flagHillClumping = false;
 
         public static bool flagHillRadial = false;
@@ -69,6 +71,7 @@ namespace MapDesigner
             Scribe_Values.Look(ref hillSize, "hillSize", 0.021f);
             Scribe_Values.Look(ref hillSmoothness, "hillSmoothness", 2.0f);
             Scribe_Values.Look(ref flagCaves, "flagCaves", true);
+            Scribe_Values.Look(ref flagOneRock, "flagOneRock", false);
 
             Scribe_Values.Look(ref flagHillClumping, "flagHillClumping", false);
 

@@ -78,7 +78,7 @@
 	<ZMD_flagHillRadial>Central hill distribution</ZMD_flagHillRadial>
 	<ZMD_flagHillRadialTooltip>Push the mountains to the edges of your map, or clump them all in the center.</ZMD_flagHillRadialTooltip>
 	<ZMD_hillRadialAmtLabel>Skew amount</ZMD_hillRadialAmtLabel>
-	<ZMD_hillRadialAmtTooltip>How much of a difference there is between the center and edges of the map</ZMD_hillRadialAmtTooltip>
+	<ZMD_hillRadialAmtTooltip>How much difference there is between the center and edges of the map</ZMD_hillRadialAmtTooltip>
 	<ZMD_hillRadialSizeLabel>Center size</ZMD_hillRadialSizeLabel>
 	<ZMD_hillRadialSizeTooltip>Push hills just out of the center, or all the way to the edges</ZMD_hillRadialSizeTooltip>
 	
@@ -102,6 +102,8 @@
 	<ZMD_flagCaves>Allow caves</ZMD_flagCaves>
 	<ZMD_flagCavesTooltip>Unchecking this prevents caves from ever spawning, even on tiles with mountains or large hills.</ZMD_flagCavesTooltip>
 	
+	<ZMD_flagOneRock>One rock type per map</ZMD_flagOneRock>
+	<ZMD_flagOneRockTooltip>Must be toggled before world generation. Will limit each map to one rock type.</ZMD_flagOneRockTooltip>
 
 	
 	

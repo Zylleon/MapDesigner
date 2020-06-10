@@ -1,15 +1,11 @@
-﻿using System;
+﻿using HarmonyLib;
+using RimWorld;
+using RimWorld.Planet;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Reflection;
-using Verse;
-using HarmonyLib;
-using RimWorld;
-using System.Reflection;
 using System.Reflection.Emit;
-using RimWorld.Planet;
+using Verse;
 using Verse.Noise;
 
 namespace MapDesigner
@@ -165,6 +161,22 @@ namespace MapDesigner
                 return false;
             }
             return true;
+        }
+    }
+
+
+    [HarmonyPatch(typeof(RimWorld.Planet.World))]
+    [HarmonyPatch(nameof(RimWorld.Planet.World.NaturalRockTypesIn))]
+    internal static class RockTypesPatch
+    {
+        static void Finalizer(ref IEnumerable<ThingDef> __result)
+        {
+            if(MapDesignerSettings.flagOneRock)
+            {
+                List<ThingDef> test = new List<ThingDef>();
+                test.Add(__result.First());
+                __result = test.AsEnumerable();
+            }
         }
     }
 

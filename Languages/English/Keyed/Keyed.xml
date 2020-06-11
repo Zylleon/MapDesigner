@@ -134,7 +134,7 @@
   <ZMD_featurePRI>Perfectly round islands</ZMD_featurePRI>
   <ZMD_featurePRIInfo>One or more perfectly round islands, surrounded by shallow water. Trade caravans, raids and wild animals will still enter normally from the sides.</ZMD_featurePRIInfo>
   
-  <ZMD_featureLake>Lake</ZMD_featureLake>
+  <ZMD_featureLake>Natural Lake</ZMD_featureLake>
   <ZMD_featureLakeInfo>A natural looking lake.</ZMD_featureLakeInfo>
   
   
@@ -145,7 +145,11 @@
   
   <!-- Lakes -->
   
-  
-  
+  <ZMD_lakeSize>Lake size</ZMD_lakeSize>
+  <ZMD_lakeRoughness>Lake roughness</ZMD_lakeRoughness>
+  <ZMD_lakeBeachSize>Lake beach size</ZMD_lakeBeachSize>
+  <ZMD_lakeDepth>Lake depth</ZMD_lakeDepth>
+  <ZMD_flagLakeSalty>Saltwater lake</ZMD_flagLakeSalty>
+  <ZMD_lakeShore>Shore terrain</ZMD_lakeShore>
   
 </LanguageData>

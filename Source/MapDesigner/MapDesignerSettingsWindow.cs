@@ -225,6 +225,10 @@ namespace MapDesigner
                 {
                     settings.selectedFeature = MapDesignerSettings.Features.RoundIsland;
                 }, MenuOptionPriority.Default, null, null, 0f, null, null));
+                featureList.Add(new FloatMenuOption("ZMD_featureLake".Translate(), delegate
+                {
+                    settings.selectedFeature = MapDesignerSettings.Features.Lake;
+                }, MenuOptionPriority.Default, null, null, 0f, null, null));
 
                 Find.WindowStack.Add(new FloatMenu(featureList));
             }

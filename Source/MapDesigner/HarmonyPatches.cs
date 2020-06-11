@@ -115,7 +115,7 @@ namespace MapDesigner
                 int size = map.Size.x / 2;
                 float centerSize = settings.hillRadialSize * size;
                 float multiplier = 1.2f * settings.hillRadialAmt / size;
-                Log.Message("Pushing hills with value " + settings.hillRadialAmt);
+                //Log.Message("Pushing hills with value " + settings.hillRadialAmt);
                 foreach (IntVec3 current in map.AllCells)
                 {
                     float distance = (float)Math.Sqrt(Math.Pow(current.x - center.x, 2) + Math.Pow(current.z - center.z, 2));

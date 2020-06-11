@@ -59,19 +59,19 @@ namespace MapDesigner
         {
             listing.Label("ZMD_featureLakeInfo".Translate());
 
-            listing.Label("ZMD_lakeSize".Translate() + " " + settings.lakeSize);
+            listing.Label("ZMD_lakeSize".Translate());
             this.settings.lakeSize = listing.Slider(this.settings.lakeSize, 0.04f, 1.0f);
 
-            listing.Label("ZMD_lakeRoughness".Translate() + " " + settings.lakeRoughness);
-            this.settings.lakeRoughness = listing.Slider(this.settings.lakeRoughness, 0f, 3f);
+            listing.Label(lakeRoundnessLabel);
+            this.settings.lakeRoundness = listing.Slider(this.settings.lakeRoundness, 0f, 3.5f);
 
-            listing.Label("ZMD_lakeBeachSize".Translate() + " " + settings.lakeBeachSize);
+            listing.Label("ZMD_lakeBeachSize".Translate());
             this.settings.lakeBeachSize = listing.Slider(this.settings.lakeBeachSize, 0f, 30f);
 
-            listing.Label("ZMD_lakeDepth".Translate() + " " + settings.lakeDepth);
+            listing.Label(lakeDepthLabel);
             this.settings.lakeDepth = listing.Slider(this.settings.lakeDepth, 0f, 1f);
 
-            listing.CheckboxLabeled("ZMD_flagLakeSalty".Translate(), ref MapDesignerSettings.flagLakeSalty);
+            listing.CheckboxLabeled("ZMD_flagLakeSalty".Translate(), ref MapDesignerSettings.flagLakeSalty, "ZMD_flagLakeSalty".Translate());
 
             List<TerrainDef> shoreOptions = new List<TerrainDef>();
 
@@ -96,6 +96,7 @@ namespace MapDesigner
 
         }
 
+        #region labels
 
         public string GetFeatureLabel(MapDesignerSettings.Features feature)
         {
@@ -114,5 +115,56 @@ namespace MapDesigner
             return "ZMD_selectFeature".Translate();
         }
 
+        private string lakeRoundnessLabel
+        {
+            get
+            {
+                int label = 0;
+                if (settings.lakeRoundness > 0.3f)
+                {
+                    label++;
+                }
+                if (settings.lakeRoundness > 0.75f)
+                {
+                    label++;
+                }
+                if (settings.lakeRoundness > 2f)
+                {
+                    label++;
+                }
+                if (settings.lakeRoundness > 2.75f)
+                {
+                    label++;
+                }
+                return MapDesigner_Mod.FormatLabel("ZMD_lakeRoundness", "ZMD_lakeRoundness" + label);
+            }
+        }
+
+
+        private string lakeDepthLabel
+        {
+            get
+            {
+                int label = 0;
+                if (settings.lakeDepth > 0.2f)
+                {
+                    label++;
+                }
+                if (settings.lakeDepth > 0.4f)
+                {
+                    label++;
+                }
+                if (settings.lakeDepth > 0.6f)
+                {
+                    label++;
+                }
+                if (settings.lakeDepth > 0.8f)
+                {
+                    label++;
+                }
+                return MapDesigner_Mod.FormatLabel("ZMD_lakeDepth", "ZMD_lakeDepth" + label);
+            }
+        }
+        #endregion
     }
 }

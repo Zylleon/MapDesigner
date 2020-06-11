@@ -119,10 +119,7 @@ namespace MapDesigner
                 foreach (IntVec3 current in map.AllCells)
                 {
                     float distance = (float)Math.Sqrt(Math.Pow(current.x - center.x, 2) + Math.Pow(current.z - center.z, 2));
-
                     elevation[current] *= (1f + (settings.hillRadialAmt * (distance - centerSize) / size));
-
-                    //elevation[current] *= (1f + (settings.hillRadialAmt * (distance - size / 2) / size));
                 }
             }
         }

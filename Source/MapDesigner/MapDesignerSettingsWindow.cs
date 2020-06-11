@@ -250,7 +250,6 @@ namespace MapDesigner
         {
             ResetMountainSettings();
             ResetThingsSettings();
-            //ResetFeatureSettings();
         }
 
 
@@ -433,7 +432,7 @@ namespace MapDesigner
         }
 
 
-        private string FormatLabel(string label, string desc)
+        public static string FormatLabel(string label, string desc)
         {
             return String.Format("{0}: {1}", label.Translate(), desc.Translate());
         }

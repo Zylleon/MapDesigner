@@ -58,8 +58,8 @@ namespace MapDesigner
 
         // Lake
         public float lakeSize = 0.20f;                  // proportion of map size
-        public float lakeBeachSize = 5f;                // in tiles
-        public float lakeRoughness = 1.5f;              // 0 = perfectly round
+        public float lakeBeachSize = 10f;                // in tiles
+        public float lakeRoundness = 1.5f;              // 0 = perfectly round
         public float lakeDepth = 0.5f;                  // proportion of deep water
         public static bool flagLakeSalty = false;
         public string lakeShore = "Sand";
@@ -83,7 +83,6 @@ namespace MapDesigner
             Scribe_Values.Look(ref flagHillRadial, "flagHillRadial", false);
             Scribe_Values.Look(ref hillRadialAmt, "hillRadialAmt", 0.0f);
             Scribe_Values.Look(ref hillRadialSize, "hillRadialSize", 0.55f);
-            Scribe_Values.Look(ref lakeShore, "lakeShore", "Sand");
 
 
             // Things
@@ -107,12 +106,13 @@ namespace MapDesigner
 
             // Lake
             Scribe_Values.Look(ref lakeSize, "lakeSize", 0.20f);
-            Scribe_Values.Look(ref lakeBeachSize, "lakeBeachSize", 5f);
-            Scribe_Values.Look(ref lakeRoughness, "lakeRoughness", 1.5f);
+            Scribe_Values.Look(ref lakeBeachSize, "lakeBeachSize", 10f);
+            Scribe_Values.Look(ref lakeRoundness, "lakeRoundness", 1.5f);
             Scribe_Values.Look(ref lakeDepth, "lakeDepth", 0.5f);
             Scribe_Values.Look(ref flagLakeSalty, "flagLakeSalty", false);
+            Scribe_Values.Look(ref lakeShore, "lakeShore", "Sand");
 
-             
+
 
         }
     }

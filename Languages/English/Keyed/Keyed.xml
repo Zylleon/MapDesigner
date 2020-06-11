@@ -94,7 +94,7 @@
 	<ZMD_hillRadialSize1>Small</ZMD_hillRadialSize1>
 	<ZMD_hillRadialSize2>Average</ZMD_hillRadialSize2>
 	<ZMD_hillRadialSize3>Big</ZMD_hillRadialSize3>
-	<ZMD_hillRadialSize4>Edges</ZMD_hillRadialSize4>
+	<ZMD_hillRadialSize4>To the edge of the map</ZMD_hillRadialSize4>
 
 	
   <!-- Misc settings -->
@@ -103,7 +103,7 @@
 	<ZMD_flagCavesTooltip>Unchecking this prevents caves from ever spawning, even on tiles with mountains or large hills.</ZMD_flagCavesTooltip>
 	
 	<ZMD_flagOneRock>One rock type per map</ZMD_flagOneRock>
-	<ZMD_flagOneRockTooltip>Must be toggled before world generation. Will limit each map to one rock type.</ZMD_flagOneRockTooltip>
+	<ZMD_flagOneRockTooltip>One rock type per map</ZMD_flagOneRockTooltip>
 
 	
 	
@@ -135,7 +135,7 @@
   <ZMD_featurePRIInfo>One or more perfectly round islands, surrounded by shallow water. Trade caravans, raids and wild animals will still enter normally from the sides.</ZMD_featurePRIInfo>
   
   <ZMD_featureLake>Natural Lake</ZMD_featureLake>
-  <ZMD_featureLakeInfo>A natural looking lake.</ZMD_featureLakeInfo>
+  <ZMD_featureLakeInfo>A natural lake.\nMountains can spawn inside the lake by default. If you don't want this, use the "Central hill distribution" option on the Mountains tab.</ZMD_featureLakeInfo>
   
   
   <!-- Perfectly Round Islands -->
@@ -146,10 +146,22 @@
   <!-- Lakes -->
   
   <ZMD_lakeSize>Lake size</ZMD_lakeSize>
-  <ZMD_lakeRoughness>Lake roughness</ZMD_lakeRoughness>
+  <ZMD_lakeRoundness>Lake roundness</ZMD_lakeRoundness>
   <ZMD_lakeBeachSize>Lake beach size</ZMD_lakeBeachSize>
   <ZMD_lakeDepth>Lake depth</ZMD_lakeDepth>
   <ZMD_flagLakeSalty>Saltwater lake</ZMD_flagLakeSalty>
   <ZMD_lakeShore>Shore terrain</ZMD_lakeShore>
   
+  <ZMD_lakeDepth0>Very shallow</ZMD_lakeDepth0>
+  <ZMD_lakeDepth1>Shallow</ZMD_lakeDepth1>
+  <ZMD_lakeDepth2>Average</ZMD_lakeDepth2>
+  <ZMD_lakeDepth3>Deep</ZMD_lakeDepth3>
+  <ZMD_lakeDepth4>Very deep</ZMD_lakeDepth4>
+
+  <ZMD_lakeRoundness0>Perfectly round</ZMD_lakeRoundness0>
+  <ZMD_lakeRoundness1>Mostly round</ZMD_lakeRoundness1>
+  <ZMD_lakeRoundness2>Average</ZMD_lakeRoundness2>
+  <ZMD_lakeRoundness3>Somewhat blobular</ZMD_lakeRoundness3>
+  <ZMD_lakeRoundness4>Shapeless</ZMD_lakeRoundness4>
+
 </LanguageData>

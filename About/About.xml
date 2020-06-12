@@ -26,6 +26,7 @@ Mountains:
 	- hill shape
 	- make flat or solid maps
 	- caves
+	- one stone type per map
 
 Things:
 	- plants
@@ -37,6 +38,7 @@ Things:
 	
 Map Features: optional special features you can add to your home map.
 	- perfectly round islands: your map will generate as one or more perfectly round islands, surrounded by shallow water. Raids and trade caravans will still path in normally from the sides.
+	- natural lakes: adds a configurable lake to the center of your map.
 
 -----
 

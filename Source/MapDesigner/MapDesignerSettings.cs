@@ -20,6 +20,8 @@ namespace MapDesigner
         public static bool flagCaves = true;
 
         public static bool flagOneRock = false;
+        public IntRange rockTypeRange = new IntRange(2, 3);
+        public static bool flagBiomeRocks = false;
 
         public static bool flagHillClumping = false;
 
@@ -77,6 +79,9 @@ namespace MapDesigner
             Scribe_Values.Look(ref hillSmoothness, "hillSmoothness", 2.0f);
             Scribe_Values.Look(ref flagCaves, "flagCaves", true);
             Scribe_Values.Look(ref flagOneRock, "flagOneRock", false);
+
+            Scribe_Values.Look(ref rockTypeRange, "rockTypeRange", new IntRange(2, 3));
+            Scribe_Values.Look(ref flagBiomeRocks, "flagBiomeRocks", false);
 
             Scribe_Values.Look(ref flagHillClumping, "flagHillClumping", false);
 

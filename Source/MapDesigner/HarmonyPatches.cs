@@ -4,6 +4,7 @@ using RimWorld.Planet;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Reflection.Emit;
 using Verse;
 using Verse.Noise;
@@ -15,11 +16,73 @@ namespace MapDesigner
     {
         static MapDesigner()
         {
-            new Harmony("zylle.MapDesigner").PatchAll();
+            Harmony harmony = new Harmony("zylle.MapDesigner");
+
+            harmony.PatchAll();
+
+            //MethodInfo targetmethod = AccessTools.Method(typeof(RimWorld.GenStep_Terrain), "GenerateRiver");
+            //HarmonyMethod transpiler = new HarmonyMethod(typeof(HarmonyPatches).GetMethod("RiverDirectionTranspiler"));
+            //harmony.Patch(targetmethod, null, null, transpiler);
 
             HelperMethods.InitBiomeDefaults();
             HelperMethods.ApplyBiomeSettings();
         }
+    }
+
+
+    static class HarmonyPatches
+    {
+        public static IEnumerable<CodeInstruction> RiverDirectionTranspiler(IEnumerable<CodeInstruction> instructions)
+        {
+            var codes = new List<CodeInstruction>(instructions);
+            int startIndex = -1;
+            int dirIndex = -1;
+            MethodInfo test = AccessTools.Method(typeof(WorldGrid), "GetHeadingFromTo", new Type[] { typeof(Int32), typeof(Int32) });
+
+
+            for (int i = 0; i < codes.Count; i++)
+            {
+                if (codes[i].opcode == OpCodes.Ret && startIndex == -1)
+                {
+                    Log.Message("start on line " + (i + 1));
+
+                    startIndex = i + 1;
+                }
+
+                if (codes[i].opcode == OpCodes.Callvirt)
+                {
+                    //Log.Message("Line " + i + " ..... operand " + codes[i].operand);
+                    if ((MethodInfo)codes[i].operand == test)
+                    {
+                        Log.Message("FOUND IT ON LINE " + i);
+                        dirIndex = i;
+                    }
+                }
+            }
+
+            //codes[startIndex].opcode = OpCodes.Nop;
+            //codes[dirIndex] = new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(HelperMethods), name: nameof(HelperMethods.GetRiverDirection)));
+
+            Log.Message("Start index is " + startIndex);
+            Log.Message("dir index is " + dirIndex);
+
+            if (startIndex > -1 && dirIndex > -1)
+            {
+                // we cannot remove the first code of our range since some jump actually jumps to
+                // it, so we replace it with a no-op instead of fixing that jump (easier).
+                //codes[startIndex].opcode = OpCodes.Nop;
+                //codes.RemoveRange(startIndex + 1, endIndex - startIndex - 1);
+
+                codes[startIndex].opcode = OpCodes.Ldarg_1;
+                codes[dirIndex] = new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(HelperMethods), name: nameof(HelperMethods.GetRiverDirection)));
+
+                codes.RemoveRange(startIndex + 1, dirIndex - startIndex - 2);
+
+            }
+
+            return codes.AsEnumerable();
+        }
+
     }
 
 
@@ -166,15 +229,81 @@ namespace MapDesigner
     [HarmonyPatch(nameof(RimWorld.Planet.World.NaturalRockTypesIn))]
     internal static class RockTypesPatch
     {
-        static void Finalizer(ref IEnumerable<ThingDef> __result)
+        static void Finalizer(int tile, ref IEnumerable<ThingDef> __result)
         {
-            if(MapDesignerSettings.flagOneRock)
+            Rand.PushState();
+            Rand.Seed = tile;
+
+            IntRange rockTypeRange = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>().rockTypeRange;
+
+            int num = Rand.RangeInclusive(rockTypeRange.min, rockTypeRange.max);
+
+            //List<ThingDef> rocks = new List<ThingDef>();
+
+            List<ThingDef> rocks = __result.ToList();
+
+            // If it's a modded biome with special stone, check that the user allows this to change before continuing
+            if (__result.Count() == 1 && !MapDesignerSettings.flagBiomeRocks)
             {
-                List<ThingDef> test = new List<ThingDef>();
-                test.Add(__result.First());
-                __result = test.AsEnumerable();
+                Rand.PopState();
+
+                return;
             }
+
+            // shorten if the list is already long enough
+            if (__result.Count() >= num)
+            {
+                __result = __result.Take(num);
+            }
+            else
+            {
+                //Rand.PushState();
+                //Rand.Seed = tile;
+                List<ThingDef> list = (from d in DefDatabase<ThingDef>.AllDefs
+                                       where d.category == ThingCategory.Building && d.building.isNaturalRock && !d.building.isResourceRock && !d.IsSmoothed && !rocks.Contains(d)
+                                       select d).ToList<ThingDef>();
+                while (rocks.Count() < num && list.Count() > 0)
+                {
+                    ThingDef item = list.RandomElement<ThingDef>();
+                    list.Remove(item);
+                    rocks.Add(item);
+                }
+
+
+                __result = rocks.ToList();
+            }
+
+            //// correctly counts rock type on original map
+            //if (__result.Count() > 1)
+            //{
+            //    test.Add(ThingDefOf.Sandstone);
+            //}
+            //else
+            //{
+            //    test.Add(ThingDefOf.Granite);
+            //}
+
+            __result = rocks.AsEnumerable();
+            Rand.PopState();
+
         }
     }
+
+
+
+    /*
+    // TEST RIVER GENSTEPS
+   [HarmonyPatch(typeof(RimWorld.GenStep_Terrain))]
+   [HarmonyPatch(nameof(RimWorld.GenStep_Terrain.Generate))]
+   static class TestRiverPatch
+   {
+       static bool Prefix(Map map, GenStepParams parms)
+       {
+           (new ZMD_GenStep_Terrain()).Generate(map, parms);
+           return false;
+       }
+   }
+   */
+
 
 }

@@ -77,7 +77,7 @@
 	
 	<ZMD_flagHillRadial>Central hill distribution</ZMD_flagHillRadial>
 	<ZMD_flagHillRadialTooltip>Push the mountains to the edges of your map, or clump them all in the center.</ZMD_flagHillRadialTooltip>
-	<ZMD_hillRadialAmtLabel>Skew amount</ZMD_hillRadialAmtLabel>
+	<ZMD_hillRadialAmtLabel>Skew</ZMD_hillRadialAmtLabel>
 	<ZMD_hillRadialAmtTooltip>How much difference there is between the center and edges of the map</ZMD_hillRadialAmtTooltip>
 	<ZMD_hillRadialSizeLabel>Center size</ZMD_hillRadialSizeLabel>
 	<ZMD_hillRadialSizeTooltip>Push hills just out of the center, or all the way to the edges</ZMD_hillRadialSizeTooltip>
@@ -87,8 +87,10 @@
 	<ZMD_hillRadialAmt2>Slightly more in the center</ZMD_hillRadialAmt2>
 	<ZMD_hillRadialAmt3>Little to no change</ZMD_hillRadialAmt3>
 	<ZMD_hillRadialAmt4>Slightly more on the edges</ZMD_hillRadialAmt4>
-	<ZMD_hillRadialAmt5>Moderate shift towards center</ZMD_hillRadialAmt5>
+	<ZMD_hillRadialAmt5>Moderate shift towards edges</ZMD_hillRadialAmt5>
 	<ZMD_hillRadialAmt6>Almost entirely around the edges</ZMD_hillRadialAmt6>
+	<ZMD_center>Center</ZMD_center>
+	<ZMD_edges>Edges</ZMD_edges>
 	
 	<ZMD_hillRadialSize0>Tiny</ZMD_hillRadialSize0>
 	<ZMD_hillRadialSize1>Small</ZMD_hillRadialSize1>
@@ -105,19 +107,21 @@
 	<ZMD_flagOneRock>One rock type per map</ZMD_flagOneRock>
 	<ZMD_flagOneRockTooltip>One rock type per map</ZMD_flagOneRockTooltip>
 
+	<ZMD_rockTypeRange>Number of rock types per map</ZMD_rockTypeRange>
+	<ZMD_flagBiomeRocks>Allow modded biomes with special rocks, like Atolls or the Ocular Forest, to have more rock types</ZMD_flagBiomeRocks>
 	
 	
 <!-- ===================================	Things	================================= -->
 
   <!-- Densities -->
   
-	<ZMD_densityPlant>Plant density</ZMD_densityPlant>
-	<ZMD_densityAnimal>Animal density</ZMD_densityAnimal>
-	<ZMD_densityRuins>Ruins density</ZMD_densityRuins>
+	<ZMD_densityPlant>Plants amount</ZMD_densityPlant>
+	<ZMD_densityAnimal>Animals amount</ZMD_densityAnimal>
+	<ZMD_densityRuins>Ruins amount</ZMD_densityRuins>
 	<ZMD_densityDanger>Ancient danger amount</ZMD_densityDanger>
 	<ZMD_densityDangerTooltip>NOTE: Ancient dangers will not spawn on completely flat maps</ZMD_densityDangerTooltip>
-	<ZMD_densityGeyser>Steam geyser density</ZMD_densityGeyser>
-	<ZMD_densityOre>Ore density</ZMD_densityOre>
+	<ZMD_densityGeyser>Steam geyser amount</ZMD_densityGeyser>
+	<ZMD_densityOre>Ore amount</ZMD_densityOre>
 	
 	<ZMD_sizeRiver>River size</ZMD_sizeRiver>
 
@@ -145,7 +149,7 @@
   
   <!-- Lakes -->
   
-  <ZMD_lakeSize>Lake size</ZMD_lakeSize>
+  <ZMD_lakeSize>Lake size: {0} % of map</ZMD_lakeSize>
   <ZMD_lakeRoundness>Lake roundness</ZMD_lakeRoundness>
   <ZMD_lakeBeachSize>Lake beach size</ZMD_lakeBeachSize>
   <ZMD_lakeDepth>Lake depth</ZMD_lakeDepth>

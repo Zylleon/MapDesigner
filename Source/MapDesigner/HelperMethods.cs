@@ -131,7 +131,10 @@ namespace MapDesigner
             }
         }
 
-
+        public static float GetRiverDirection()
+        {
+            return 0f;
+        }
     
         public static float DistanceBetweenPoints(IntVec3 point1, IntVec3 point2)
         {

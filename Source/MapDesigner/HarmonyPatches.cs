@@ -291,6 +291,17 @@ namespace MapDesigner
 
 
 
+    [HarmonyPatch(typeof(RimWorld.GenStep_AnimaTrees))]
+    [HarmonyPatch(nameof(RimWorld.GenStep_AnimaTrees.DesiredTreeCountForMap))]
+    static class AnimaTreePatch
+    {
+        static void Postfix(ref int __result)
+        {
+            float animaCount = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>().animaCount;
+            __result *= (int)animaCount;
+        }
+    }
+
     /*
     // TEST RIVER GENSTEPS
    [HarmonyPatch(typeof(RimWorld.GenStep_Terrain))]

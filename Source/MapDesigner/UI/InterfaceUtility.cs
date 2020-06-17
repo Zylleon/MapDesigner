@@ -42,8 +42,30 @@ namespace MapDesigner.UI
         }
 
 
+        public static void LabeledIntRange(Listing_Standard listing, ref IntRange range, int min, int max, string label, string tooltip = null)
+        {
+            Rect rect = new Rect(listing.GetRect(44f));
+            Widgets.DrawHighlightIfMouseover(rect);
+
+            Rect innerRect = rect;
+            innerRect.yMin += 8f;
+            innerRect.yMax -= 8f;
 
 
+            Rect leftSide = innerRect;
+            Rect rightSide = innerRect;
+            leftSide.xMax -= 0.76f * innerRect.width;
+            rightSide.xMin += 0.26f * innerRect.width;
+
+            Widgets.Label(leftSide, label);
+
+            Widgets.IntRange(rightSide, (int)listing.CurHeight, ref range, min, max, null, 0);
+
+            if (tooltip != null)
+            {
+                TooltipHandler.TipRegion(rect, tooltip);
+            }
+        }
 
 
         public static string FormatLabel(string label, string desc)

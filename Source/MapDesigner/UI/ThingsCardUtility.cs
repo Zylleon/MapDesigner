@@ -31,6 +31,11 @@ namespace MapDesigner.UI
 
             settings.densityOre = InterfaceUtility.LabeledSlider(listingStandard, settings.densityOre, 0f, 2.5f, InterfaceUtility.FormatLabel("ZMD_densityOre", "ZMD_density" + GetDensityLabel(settings.densityOre)), "ZMD_density0".Translate(), "ZMD_density6".Translate());
 
+            if (ModsConfig.RoyaltyActive)
+            {
+                settings.animaCount = InterfaceUtility.LabeledSlider(listingStandard, settings.animaCount, 1f, 15f, "ZMD_animaCount".Translate(), "1", "15");
+            }
+
 
             // River
             listingStandard.GapLine();
@@ -40,10 +45,12 @@ namespace MapDesigner.UI
 
             // Rock types
             listingStandard.GapLine();
-            listingStandard.Label("ZMD_rockTypeRange".Translate());
-            listingStandard.IntRange(ref settings.rockTypeRange, 1, 5);
-            listingStandard.CheckboxLabeled("ZMD_flagBiomeRocks".Translate(), ref MapDesignerSettings.flagBiomeRocks, "ZMD_flagBiomeRocks".Translate());
 
+            InterfaceUtility.LabeledIntRange(listingStandard, ref settings.rockTypeRange, 1, 5, "ZMD_rockTypeRange".Translate());
+
+            listingStandard.CheckboxLabeled("ZMD_flagBiomeRocks".Translate(), ref MapDesignerSettings.flagBiomeRocks, "ZMD_flagBiomeRocksTooltip".Translate());
+
+            // reset
             listingStandard.GapLine();
 
             if (listingStandard.ButtonText("ZMD_resetThings".Translate()))
@@ -51,7 +58,6 @@ namespace MapDesigner.UI
                 ResetThingsSettings();
             }
             listingStandard.End();
-
         }
 
 
@@ -64,6 +70,7 @@ namespace MapDesigner.UI
             settings.densityGeyser = 1.0f;
             settings.densityOre = 1.0f;
             settings.sizeRiver = 1.0f;
+            settings.animaCount = 1.0f;
 
             settings.rockTypeRange = new IntRange(2, 3);
             MapDesignerSettings.flagBiomeRocks = false;

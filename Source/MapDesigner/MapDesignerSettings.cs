@@ -29,7 +29,9 @@ namespace MapDesigner
         public float hillRadialAmt = 1.0f;
         public float hillRadialSize = 0.65f;
 
-        
+        public IntRange animaCountRange = new IntRange(1, 1);
+        public float animaCount = 1.0f;
+
 
         // Things
         public float densityPlant = 1.0f;
@@ -97,6 +99,8 @@ namespace MapDesigner
             Scribe_Values.Look(ref densityDanger, "densityDanger", 1.0f);
             Scribe_Values.Look(ref densityGeyser, "densityGeyser", 1.0f);
             Scribe_Values.Look(ref densityOre, "densityOre", 1.0f);
+            Scribe_Values.Look(ref animaCountRange, "animaCountRange", new IntRange(1, 1));
+            Scribe_Values.Look(ref animaCount, "animaCount", 1.0f);
 
             Scribe_Values.Look(ref sizeRiver, "sizeRiver", 1.0f);
 

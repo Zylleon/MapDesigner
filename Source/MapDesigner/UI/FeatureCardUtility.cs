@@ -22,8 +22,12 @@ namespace MapDesigner.UI
 
             listingStandard.Label("ZMD_featureTabInfo".Translate());
 
+            Rect selectRect = listingStandard.GetRect(30f).LeftHalf();
 
-            if (listingStandard.ButtonTextLabeled("ZMD_selectFeature".Translate(), (new FeatureCardUtility()).GetFeatureLabel(settings.selectedFeature)))
+            Listing_Standard featureSelectListing = new Listing_Standard();
+            featureSelectListing.Begin(selectRect);
+
+            if (featureSelectListing.ButtonTextLabeled("ZMD_selectFeature".Translate(), (new FeatureCardUtility()).GetFeatureLabel(settings.selectedFeature)))
             {
                 List<FloatMenuOption> featureList = new List<FloatMenuOption>();
 
@@ -43,6 +47,7 @@ namespace MapDesigner.UI
 
                 Find.WindowStack.Add(new FloatMenu(featureList));
             }
+            featureSelectListing.End();
 
             listingStandard.GapLine();
 

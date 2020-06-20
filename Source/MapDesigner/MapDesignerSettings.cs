@@ -13,6 +13,9 @@ namespace MapDesigner
 
     public class MapDesignerSettings : ModSettings
     {
+        // General
+        public static bool flagPopup = true;
+
         // Mountains
         public float hillAmount = 1.0f;
         public float hillSize = 0.021f;
@@ -28,10 +31,7 @@ namespace MapDesigner
         public static bool flagHillRadial = false;
         public float hillRadialAmt = 1.0f;
         public float hillRadialSize = 0.65f;
-
-        public IntRange animaCountRange = new IntRange(1, 1);
         public float animaCount = 1.0f;
-
 
         // Things
         public float densityPlant = 1.0f;
@@ -39,11 +39,12 @@ namespace MapDesigner
         public float densityRuins = 1.0f;
         public float densityDanger = 1.0f;
 
-
         public float densityGeyser = 1.0f;
         public float densityOre = 1.0f;
 
         public float sizeRiver = 1.0f;
+        public static bool flagRiverBeach = false;
+
 
         // Features
         public enum Features : byte
@@ -75,6 +76,9 @@ namespace MapDesigner
 
         public override void ExposeData()
         {
+            // General
+            Scribe_Values.Look(ref flagPopup, "flagPopup", true);
+
             // Mountains
             Scribe_Values.Look(ref hillAmount, "hillAmount", 1.0f);
             Scribe_Values.Look(ref hillSize, "hillSize", 0.021f);
@@ -91,7 +95,6 @@ namespace MapDesigner
             Scribe_Values.Look(ref hillRadialAmt, "hillRadialAmt", 0.0f);
             Scribe_Values.Look(ref hillRadialSize, "hillRadialSize", 0.55f);
 
-
             // Things
             Scribe_Values.Look(ref densityPlant, "densityPlant", 1.0f);
             Scribe_Values.Look(ref densityAnimal, "densityAnimal", 1.0f);
@@ -99,11 +102,10 @@ namespace MapDesigner
             Scribe_Values.Look(ref densityDanger, "densityDanger", 1.0f);
             Scribe_Values.Look(ref densityGeyser, "densityGeyser", 1.0f);
             Scribe_Values.Look(ref densityOre, "densityOre", 1.0f);
-            Scribe_Values.Look(ref animaCountRange, "animaCountRange", new IntRange(1, 1));
             Scribe_Values.Look(ref animaCount, "animaCount", 1.0f);
 
             Scribe_Values.Look(ref sizeRiver, "sizeRiver", 1.0f);
-
+            Scribe_Values.Look(ref flagRiverBeach, "flagFertileRivers", false);
 
             // Features
             Scribe_Values.Look(ref selectedFeature, "selectedFeature", Features.None);

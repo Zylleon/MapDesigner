@@ -14,6 +14,8 @@ namespace MapDesigner.UI
         public static float LabeledSlider(Listing_Standard listing, float val, float min, float max, string label, string leftLabel = null, string rightLabel = null, string tooltip = null)
         {
             Rect rect = new Rect(listing.GetRect(44f));
+            //Rect rect = new Rect(listing.GetRect(60f));
+
             Widgets.DrawHighlightIfMouseover(rect);
 
             Rect leftSide = rect;
@@ -23,21 +25,34 @@ namespace MapDesigner.UI
             float result = val;
 
             Widgets.Label(leftSide, label);
-            if(string.IsNullOrEmpty(leftLabel) && string.IsNullOrEmpty(rightLabel))
-            {
-                rightSide.yMin += 16f;
-                result = Widgets.HorizontalSlider(rightSide, val, min, max);
-            }
+            //if(string.IsNullOrEmpty(leftLabel) && string.IsNullOrEmpty(rightLabel))
+            //{
+            //    //rightSide.yMin += 16f;
+            //    //rightSide.yMax -= 16f;
 
-            else
-            {
-                result = Widgets.HorizontalSlider(rightSide, val, min, max, false, " ", leftLabel, rightLabel);
-            }
+            //    result = Widgets.HorizontalSlider(rightSide, val, min, max, true);
+            //}
+
+            //else
+            //{
+            //    result = Widgets.HorizontalSlider(rightSide, val, min, max, true, " ", leftLabel, rightLabel);
+            //}
+
+
+            //Listing_Standard rightListing = new Listing_Standard();
+            //rightListing.Begin(rightSide);
+
+            result = Widgets.HorizontalSlider(rightSide, val, min, max, false, " ", leftLabel, rightLabel);
+            //rightListing.Gap(listing.verticalSpacing);
+            //rightListing.End();
+
 
             if (tooltip != null)
             {
                 TooltipHandler.TipRegion(rect, tooltip);
             }
+
+            
             return result;
         }
 

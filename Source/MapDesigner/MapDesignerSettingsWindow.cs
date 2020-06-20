@@ -21,6 +21,8 @@ namespace MapDesigner
         }
         private MapDesigner_Mod.InfoCardTab tab;
 
+        private Vector2 scrollPosition = Vector2.zero;
+
         MapDesignerSettings settings;
 
         public MapDesigner_Mod(ModContentPack content) : base(content)
@@ -49,11 +51,11 @@ namespace MapDesigner
 
             List<TabRecord> list = new List<TabRecord>();
 
-            //TabRecord generalTab = new TabRecord("ZMD_generalTab".Translate(), delegate
+            //TabRecord generaltab = new TabRecord("ZMD_generalTab".Translate(), delegate
             //{
             //    this.tab = MapDesigner_Mod.InfoCardTab.General;
             //}, this.tab == MapDesigner_Mod.InfoCardTab.General);
-            //list.Add(generalTab);
+            //list.Add(generaltab);
 
             TabRecord mountainTab = new TabRecord("ZMD_mountainTab".Translate(), delegate
             {
@@ -79,7 +81,7 @@ namespace MapDesigner
             }, this.tab == MapDesigner_Mod.InfoCardTab.Feature);
             list.Add(featureTab);
 
-            TabDrawer.DrawTabs(rect3, list, 200f);
+            TabDrawer.DrawTabs(rect3, list, 150f);
             this.FillCard(rect3.ContractedBy(18f));
 
             listingStandard.End();
@@ -89,22 +91,23 @@ namespace MapDesigner
 
         protected void FillCard(Rect cardRect)
         {
+            cardRect.height -= 20f;
             switch(tab)
             {
                 case MapDesigner_Mod.InfoCardTab.Mountains:
-                    (new UI.MountainCardUtility()).DrawMountainCard(cardRect);
+                    UI.MountainCardUtility.DrawMountainCard(cardRect);
                     break;
                 case MapDesigner_Mod.InfoCardTab.Things:
-                    (new UI.ThingsCardUtility()).DrawThingsCard(cardRect);
+                    UI.ThingsCardUtility.DrawThingsCard(cardRect);
                     break;
                 case MapDesigner_Mod.InfoCardTab.Rocks:
-                    (new UI.RocksCardUtility()).DrawRocksCard(cardRect);
+                    UI.RocksCardUtility.DrawRocksCard(cardRect);
                     break;
                 case MapDesigner_Mod.InfoCardTab.Feature:
-                    (new UI.FeatureCardUtility()).DrawFeaturesCard(cardRect);
+                    UI.FeatureCardUtility.DrawFeaturesCard(cardRect);
                     break;
                 default:
-                    (new UI.GeneralCardUtility()).DrawGeneralCard(cardRect);
+                    tab = MapDesigner_Mod.InfoCardTab.Mountains;
                     break;
             }
         }

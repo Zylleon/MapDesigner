@@ -10,12 +10,14 @@ using RimWorld;
 namespace MapDesigner.UI
 {
 
-    public  class MountainCardUtility
+    public static class MountainCardUtility
     {
         //public MapDesignerSettings settings = MapDesigner_Mod.GetSettings<MapDesignerSettings>();
-        public MapDesignerSettings settings = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>();
+        public static MapDesignerSettings settings = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>();
+        private static float viewHeight;
 
-        public void DrawMountainCard(Rect rect)
+
+        public static void DrawMountainCard(Rect rect)
         {
 
             Listing_Standard listingStandard = new Listing_Standard();
@@ -69,7 +71,8 @@ namespace MapDesigner.UI
             listingStandard.End();
         }
 
-        private void ResetMountainSettings()
+
+        public static void ResetMountainSettings()
         {
             settings.hillAmount = 1.0f;
             settings.hillSize = 0.021f;
@@ -88,7 +91,7 @@ namespace MapDesigner.UI
         }
 
 
-        private string hillRadialAmtLabel
+        private static string hillRadialAmtLabel
         {
             get
             {
@@ -123,7 +126,7 @@ namespace MapDesigner.UI
         }
 
 
-        private string hillRadialSizeLabel
+        private static string hillRadialSizeLabel
         {
             get
             {
@@ -149,7 +152,8 @@ namespace MapDesigner.UI
             }
         }
 
-        public string hillAmountLabel
+
+        public static string hillAmountLabel
         {
             get
             {
@@ -179,7 +183,7 @@ namespace MapDesigner.UI
         }
 
 
-        private string hillSizeLabel
+        private static string hillSizeLabel
         {
             get
             {
@@ -207,7 +211,7 @@ namespace MapDesigner.UI
         }
 
 
-        private string hillSmoothnessLabel
+        private static string hillSmoothnessLabel
         {
             get
             {
@@ -232,9 +236,6 @@ namespace MapDesigner.UI
                 return InterfaceUtility.FormatLabel("ZMD_hillSmoothnessLabel", "ZMD_hillSmoothness" + label);
             }
         }
-
-
-
 
     }
 }

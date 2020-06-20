@@ -8,6 +8,7 @@ using System.Reflection;
 using System.Reflection.Emit;
 using Verse;
 using Verse.Noise;
+using UnityEngine;
 
 namespace MapDesigner
 {
@@ -20,9 +21,14 @@ namespace MapDesigner
 
             harmony.PatchAll();
 
+
             //MethodInfo targetmethod = AccessTools.Method(typeof(RimWorld.GenStep_Terrain), "GenerateRiver");
             //HarmonyMethod transpiler = new HarmonyMethod(typeof(HarmonyPatches).GetMethod("RiverDirectionTranspiler"));
             //harmony.Patch(targetmethod, null, null, transpiler);
+
+            MethodInfo targetmethod = AccessTools.Method(typeof(RimWorld.GenStep_Terrain), "TerrainFrom");
+            HarmonyMethod postfix = new HarmonyMethod(typeof(HarmonyPatches).GetMethod("RiverBeachPostfix"));
+            harmony.Patch(targetmethod, null, postfix);
 
             HelperMethods.InitBiomeDefaults();
             HelperMethods.ApplyBiomeSettings();
@@ -32,6 +38,7 @@ namespace MapDesigner
 
     static class HarmonyPatches
     {
+
         public static IEnumerable<CodeInstruction> RiverDirectionTranspiler(IEnumerable<CodeInstruction> instructions)
         {
             var codes = new List<CodeInstruction>(instructions);
@@ -83,10 +90,29 @@ namespace MapDesigner
             return codes.AsEnumerable();
         }
 
+
+        /// <summary>
+        /// GenStep_Terrain.TerrainFrom
+        /// lets river beaches override coast beaches
+        /// </summary>
+        /// <returns></returns>
+        public static void RiverBeachPostfix(IntVec3 c, Map map, float elevation, float fertility, RiverMaker river, bool preferSolid, ref TerrainDef __result)
+        {
+            if (!MapDesignerSettings.flagRiverBeach)
+            {
+                return;
+            }
+
+            if (river.TerrainAt(c, true) != null && BeachMaker.BeachTerrainAt(c, map.Biome)?.IsWater != true)
+            {
+                __result = river.TerrainAt(c, true);
+            }
+        }
+
     }
 
 
-    [HarmonyPatch(typeof(RimWorld.GenStep_ElevationFertility))]
+        [HarmonyPatch(typeof(RimWorld.GenStep_ElevationFertility))]
     [HarmonyPatch(nameof(RimWorld.GenStep_ElevationFertility.Generate))]
     internal static class MountainSettingsPatch
     {
@@ -290,7 +316,6 @@ namespace MapDesigner
     }
 
 
-
     [HarmonyPatch(typeof(RimWorld.GenStep_AnimaTrees))]
     [HarmonyPatch(nameof(RimWorld.GenStep_AnimaTrees.DesiredTreeCountForMap))]
     static class AnimaTreePatch
@@ -301,6 +326,33 @@ namespace MapDesigner
             __result *= (int)animaCount;
         }
     }
+
+
+    [HarmonyPatch(typeof(RimWorld.RiverMaker))]
+    [HarmonyPatch(nameof(RimWorld.RiverMaker.TerrainAt))]
+    static class FertileRivers
+    {
+        static void Postfix(ref TerrainDef __result, /*ref RiverMaker __instance,*/ ModuleBase ___generator, float ___surfaceLevel, IntVec3 loc, bool recordForValidation = false )
+        {
+            if (!MapDesignerSettings.flagRiverBeach)
+            {
+                return;
+            }
+
+            float value = ___generator.GetValue(loc);
+            float num = ___surfaceLevel - Mathf.Abs(value);
+
+            if (num < 0 && num > -10)
+            {
+                __result = TerrainDef.Named("SoilRich");
+            }
+        }
+    }
+
+
+
+
+
 
     /*
     // TEST RIVER GENSTEPS

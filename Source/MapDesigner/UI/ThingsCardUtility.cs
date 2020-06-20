@@ -9,11 +9,11 @@ using RimWorld;
 
 namespace MapDesigner.UI
 {
-    public class ThingsCardUtility
+    public static class ThingsCardUtility
     {
-        public MapDesignerSettings settings = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>();
+        public static MapDesignerSettings settings = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>();
 
-        public void DrawThingsCard(Rect rect)
+        public static void DrawThingsCard(Rect rect)
         {
             Listing_Standard listingStandard = new Listing_Standard();
             listingStandard.Begin(rect);
@@ -41,14 +41,10 @@ namespace MapDesigner.UI
             listingStandard.GapLine();
 
             settings.sizeRiver = InterfaceUtility.LabeledSlider(listingStandard, settings.sizeRiver, 0.1f, 3f, InterfaceUtility.FormatLabel("ZMD_sizeRiver", "ZMD_size" + GetDensityLabel(settings.sizeRiver)), "ZMD_size1".Translate(), "ZMD_size6".Translate());
+            listingStandard.Gap(listingStandard.verticalSpacing);
 
+            listingStandard.CheckboxLabeled("ZMD_flagRiverBeach".Translate(), ref MapDesignerSettings.flagRiverBeach, "ZMD_flagRiverBeach".Translate());
 
-            // Rock types
-            listingStandard.GapLine();
-
-            InterfaceUtility.LabeledIntRange(listingStandard, ref settings.rockTypeRange, 1, 5, "ZMD_rockTypeRange".Translate());
-
-            listingStandard.CheckboxLabeled("ZMD_flagBiomeRocks".Translate(), ref MapDesignerSettings.flagBiomeRocks, "ZMD_flagBiomeRocksTooltip".Translate());
 
             // reset
             listingStandard.GapLine();
@@ -61,7 +57,7 @@ namespace MapDesigner.UI
         }
 
 
-        private void ResetThingsSettings()
+        public static void ResetThingsSettings()
         {
             settings.densityPlant = 1.0f;
             settings.densityAnimal = 1.0f;
@@ -69,11 +65,13 @@ namespace MapDesigner.UI
             settings.densityDanger = 1.0f;
             settings.densityGeyser = 1.0f;
             settings.densityOre = 1.0f;
-            settings.sizeRiver = 1.0f;
             settings.animaCount = 1.0f;
 
-            settings.rockTypeRange = new IntRange(2, 3);
-            MapDesignerSettings.flagBiomeRocks = false;
+            settings.sizeRiver = 1.0f;
+            MapDesignerSettings.flagRiverBeach = false;
+
+            //settings.rockTypeRange = new IntRange(2, 3);
+            //MapDesignerSettings.flagBiomeRocks = false;
         }
 
 

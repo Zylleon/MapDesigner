@@ -10,46 +10,54 @@ using UnityEngine;
 
 namespace MapDesigner.UI
 {
-    public class RocksCardUtility
+    public static class RocksCardUtility
     {
-        public MapDesignerSettings settings = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>();
+        public static MapDesignerSettings settings = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>();
 
-        private Vector2 scrollPosition;
-        private bool testBool = true;
+        private static Vector2 scrollPosition = Vector2.zero;
+        private static float viewHeight;
 
-        public void DrawRocksCard(Rect rect)
+        public static void DrawRocksCard(Rect rect)
         {
+            rect.height -= 50f;
+            Listing_Standard outerListing = new Listing_Standard();
+            outerListing.Begin(rect);
 
+            InterfaceUtility.LabeledIntRange(outerListing, ref settings.rockTypeRange, 1, 5, "ZMD_rockTypeRange".Translate());
 
-            Rect test = rect.ContractedBy(4f);
-
-            Rect viewRect = new Rect(0f, 0f, test.width - 16f, 900f);
-
-            Widgets.BeginScrollView(test, ref scrollPosition, viewRect, true);
+            outerListing.CheckboxLabeled("ZMD_flagBiomeRocks".Translate(), ref MapDesignerSettings.flagBiomeRocks, "ZMD_flagBiomeRocksTooltip".Translate());
+            outerListing.GapLine();
 
             Listing_Standard listing = new Listing_Standard();
+            //Rect rect2 = rect.ContractedBy(4f);
+            Rect rect2 = outerListing.GetRect(rect.height - outerListing.CurHeight).ContractedBy(4f);
+            Rect viewRect = new Rect(0f, 0f, rect2.width - 18f, viewHeight + 2000f);
+
+            Widgets.BeginScrollView(rect2, ref scrollPosition, viewRect, true);
+           
             listing.Begin(viewRect);
 
-            listing.Label("ZMD_rocksTabInfo".Translate());
-
-            List<ThingDef> rockList = (from d in DefDatabase<ThingDef>.AllDefs
-                                   where d.category == ThingCategory.Building && d.building.isNaturalRock && !d.building.isResourceRock && !d.IsSmoothed
-                                   select d).ToList<ThingDef>();
-            foreach (ThingDef rock in rockList)
+            // Rock types
+            for (int i = 0; i < 50; i++)
             {
-                listing.CheckboxLabeled(rock.label, ref testBool);
+                listing.Label("This is row # " + i);
             }
 
-
-
-
-            listing.End();
+            listing.Label("That's all there is.............................");
 
             viewRect.height = listing.CurHeight;
 
+            listing.End();
+
             Widgets.EndScrollView();
+            outerListing.End();
         }
 
+        public static void ResetRocksSettings()
+        {
+            settings.rockTypeRange = new IntRange(2, 3);
+            MapDesignerSettings.flagBiomeRocks = false;
+        }
 
     }
 }

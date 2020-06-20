@@ -9,12 +9,12 @@ using RimWorld;
 
 namespace MapDesigner.UI
 {
-    public class FeatureCardUtility
+    public static class FeatureCardUtility
     {
-        public MapDesignerSettings settings = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>();
+        public static MapDesignerSettings settings = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>();
 
 
-        public void DrawFeaturesCard(Rect rect)
+        public static void DrawFeaturesCard(Rect rect)
         {
 
             Listing_Standard listingStandard = new Listing_Standard();
@@ -27,7 +27,7 @@ namespace MapDesigner.UI
             Listing_Standard featureSelectListing = new Listing_Standard();
             featureSelectListing.Begin(selectRect);
 
-            if (featureSelectListing.ButtonTextLabeled("ZMD_selectFeature".Translate(), (new FeatureCardUtility()).GetFeatureLabel(settings.selectedFeature)))
+            if (featureSelectListing.ButtonTextLabeled("ZMD_selectFeature".Translate(), GetFeatureLabel(settings.selectedFeature)))
             {
                 List<FloatMenuOption> featureList = new List<FloatMenuOption>();
 
@@ -51,14 +51,14 @@ namespace MapDesigner.UI
 
             listingStandard.GapLine();
 
-            (new FeatureCardUtility()).DrawFeatureOptions(listingStandard);
+            DrawFeatureOptions(listingStandard);
 
             listingStandard.End();
 
         }
 
 
-        public void DrawFeatureOptions(Listing_Standard listing)
+        public static void DrawFeatureOptions(Listing_Standard listing)
         {
             //this.settings = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>();
 
@@ -79,27 +79,27 @@ namespace MapDesigner.UI
 
         }
 
-        public void DrawNoOptions(Listing_Standard listing)
+        public static void DrawNoOptions(Listing_Standard listing)
         {
             listing.Label("ZMD_featureNoneInfo".Translate());
 
         }
 
-        public void DrawRoundIslandOptions(Listing_Standard listing)
+        public static  void DrawRoundIslandOptions(Listing_Standard listing)
         {
             listing.Label("ZMD_featurePRIInfo".Translate());
 
             listing.Label("ZMD_priIslandSizeLabel".Translate());
-            this.settings.priIslandSize = listing.Slider(this.settings.priIslandSize, 5f, 45f);
+            settings.priIslandSize = listing.Slider(settings.priIslandSize, 5f, 45f);
 
             listing.Label("ZMD_priBeachSizeLabel".Translate());
-            this.settings.priBeachSize = listing.Slider(this.settings.priBeachSize, 1f, 18f);
+            settings.priBeachSize = listing.Slider(settings.priBeachSize, 1f, 18f);
 
             listing.CheckboxLabeled("ZMD_priMultiSpawnLabel".Translate(), ref MapDesignerSettings.priMultiSpawn);
         }
 
 
-        public void DrawLakeOptions(Listing_Standard listing)
+        public static void DrawLakeOptions(Listing_Standard listing)
         {
             listing.Label("ZMD_featureLakeInfo".Translate());
 
@@ -138,7 +138,7 @@ namespace MapDesigner.UI
 
         #region labels
 
-        public string GetFeatureLabel(MapDesignerSettings.Features feature)
+        public static string GetFeatureLabel(MapDesignerSettings.Features feature)
         {
             if(feature == MapDesignerSettings.Features.None)
             {
@@ -155,7 +155,7 @@ namespace MapDesigner.UI
             return "ZMD_selectFeature".Translate();
         }
 
-        private string lakeRoundnessLabel
+        private static  string lakeRoundnessLabel
         {
             get
             {
@@ -180,8 +180,7 @@ namespace MapDesigner.UI
             }
         }
 
-
-        private string lakeDepthLabel
+        private static string lakeDepthLabel
         {
             get
             {
@@ -205,6 +204,7 @@ namespace MapDesigner.UI
                 return InterfaceUtility.FormatLabel("ZMD_lakeDepth", "ZMD_lakeDepth" + label);
             }
         }
+        
         #endregion
     }
 }

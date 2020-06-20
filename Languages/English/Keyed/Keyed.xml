@@ -1,10 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <LanguageData>
 
-<!-- ===================================	General Use		================================= -->
+<!-- ===================================	general use		================================= -->
 
 	<ZMD_ModName>Map Designer</ZMD_ModName>
 	
+<!-- ===================================	general mod settings	================================= -->
+
 	<ZMD_reset>Reset everything to default</ZMD_reset>
 	<ZMD_resetPage>Reset these settings</ZMD_resetPage>
 	<ZMD_resetMountain>Reset mountains to default</ZMD_resetMountain>
@@ -15,8 +17,15 @@
 	<ZMD_generalTab>General</ZMD_generalTab>
 	<ZMD_generalTabInfo>Get started with the most popular settings! More detailed options are available on the other tabs.</ZMD_generalTabInfo>
 	
+	<ZMD_flagPopup>Show this for new maps</ZMD_flagPopup>
+	<ZMD_flagPopupDesc>You can access these settings any time from Menu -> Options -> Mod Settings -> Map Designer</ZMD_flagPopupDesc>
+	
+	<ZMD_mapInfo>Customize before landing</ZMD_mapInfo>
+	
+	
+	
 	<ZMD_rocksTab>Rocks</ZMD_rocksTab>
-	<ZMD_rocksTabInfo>OPTIONS FOR ROCKS</ZMD_rocksTabInfo>
+	<ZMD_rocksTabInfo>OPTIONS FOR ROOOOOCKS</ZMD_rocksTabInfo>
 	
   <!-- Levels -->
     <ZMD_size0>None</ZMD_size0>
@@ -43,6 +52,7 @@
 	<ZMD_mountainTabInfo>Settings relating to hills</ZMD_mountainTabInfo>
   <!-- Hills -->
 	<ZMD_hillAmountLabel>Hill amount</ZMD_hillAmountLabel>
+	<ZMD_hillAmountTooltip>How mountainous your map will be</ZMD_hillAmountTooltip>
 	<ZMD_hillAmount0>Very flat, maybe no hills at all</ZMD_hillAmount0>
 	<ZMD_hillAmount1>Low</ZMD_hillAmount1>
 	<ZMD_hillAmount2>Vanilla</ZMD_hillAmount2>
@@ -51,6 +61,7 @@
 	<ZMD_hillAmount5>Almost solid</ZMD_hillAmount5>
 
 	<ZMD_hillSizeLabel>Hill size</ZMD_hillSizeLabel>
+	<ZMD_hillSizeTooltip>Size of individual hills. Big hills for maps with 1-2 big mountains, small hills for jagged landscapes with lots of corners and semi-closed spaces.</ZMD_hillSizeTooltip>
 	<ZMD_hillSize0>Huge</ZMD_hillSize0>
 	<ZMD_hillSize1>Vanilla</ZMD_hillSize1>
 	<ZMD_hillSize2>Small</ZMD_hillSize2>
@@ -64,11 +75,15 @@
 	<ZMD_hillSmoothness3>Rough</ZMD_hillSmoothness3>
 	<ZMD_hillSmoothness4>Very rough</ZMD_hillSmoothness4>
 
+	<ZMD_hillArrangement>Arrange hills</ZMD_hillArrangement>
+	<ZMD_hillArrangementDesc>How hills are positioned on your map. Create customized valleys and mountains.
+	Disable all = vanilla </ZMD_hillArrangementDesc>
+
 	<ZMD_flagHillClumping>Natural hill distribution</ZMD_flagHillClumping>
-	<ZMD_flagHillClumpingTooltip>For small hills. Will make hills clump naturally instead of being evenly distributed.</ZMD_flagHillClumpingTooltip>
+	<ZMD_flagHillClumpingTooltip>For small hills. Will make hills vary naturally instead of being evenly distributed.</ZMD_flagHillClumpingTooltip>
 	
-	<ZMD_flagHillRadial>Central hill distribution</ZMD_flagHillRadial>
-	<ZMD_flagHillRadialTooltip>Push the mountains to the edges of your map, or clump them all in the center.</ZMD_flagHillRadialTooltip>
+	<ZMD_flagHillRadial>Centralized</ZMD_flagHillRadial>
+	<ZMD_flagHillRadialTooltip>Push the mountains to the edges of your map for a valley, or pull them to the center and build in a solid mountain.</ZMD_flagHillRadialTooltip>
 	<ZMD_hillRadialAmtLabel>Skew</ZMD_hillRadialAmtLabel>
 	<ZMD_hillRadialAmtTooltip>How much difference there is between the center and edges of the map</ZMD_hillRadialAmtTooltip>
 	<ZMD_hillRadialSizeLabel>Center size</ZMD_hillRadialSizeLabel>
@@ -120,6 +135,7 @@
 	<ZMD_animaCount>Anima trees</ZMD_animaCount>
 	
 	<ZMD_sizeRiver>River size</ZMD_sizeRiver>
+	<ZMD_flagRiverBeach>Fertile rivers</ZMD_flagRiverBeach>
 
 	
 	

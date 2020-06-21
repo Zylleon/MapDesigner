@@ -25,34 +25,33 @@ namespace MapDesigner.UI
             float result = val;
 
             Widgets.Label(leftSide, label);
-            //if(string.IsNullOrEmpty(leftLabel) && string.IsNullOrEmpty(rightLabel))
-            //{
-            //    //rightSide.yMin += 16f;
-            //    //rightSide.yMax -= 16f;
+            Rect sliderRect = rightSide;
+            sliderRect.yMin += 16f;
 
-            //    result = Widgets.HorizontalSlider(rightSide, val, min, max, true);
-            //}
+            result = GUI.HorizontalSlider(sliderRect, val, min, max);
 
-            //else
-            //{
-            //    result = Widgets.HorizontalSlider(rightSide, val, min, max, true, " ", leftLabel, rightLabel);
-            //}
+            TextAnchor anchor = Text.Anchor;
+            GameFont font = Text.Font;
+            Text.Font = GameFont.Tiny;
 
+            if (!leftLabel.NullOrEmpty())
+            {
+                Text.Anchor = TextAnchor.UpperLeft;
+                Widgets.Label(rightSide, leftLabel);
+            }
+            if (!rightLabel.NullOrEmpty())
+            {
+                Text.Anchor = TextAnchor.UpperRight;
+                Widgets.Label(rightSide, rightLabel);
+            }
 
-            //Listing_Standard rightListing = new Listing_Standard();
-            //rightListing.Begin(rightSide);
-
-            result = Widgets.HorizontalSlider(rightSide, val, min, max, false, " ", leftLabel, rightLabel);
-            //rightListing.Gap(listing.verticalSpacing);
-            //rightListing.End();
-
+            Text.Anchor = anchor;
+            Text.Font = font;
 
             if (tooltip != null)
             {
                 TooltipHandler.TipRegion(rect, tooltip);
             }
-
-            
             return result;
         }
 
@@ -65,7 +64,6 @@ namespace MapDesigner.UI
             Rect innerRect = rect;
             innerRect.yMin += 8f;
             innerRect.yMax -= 8f;
-
 
             Rect leftSide = innerRect;
             Rect rightSide = innerRect;

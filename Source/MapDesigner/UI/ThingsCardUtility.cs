@@ -45,7 +45,7 @@ namespace MapDesigner.UI
 
             listingStandard.CheckboxLabeled("ZMD_flagRiverBeach".Translate(), ref MapDesignerSettings.flagRiverBeach, "ZMD_flagRiverBeach".Translate());
 
-
+            //listingStandard.Label("Line height " + listingStandard.verticalSpacing);
             // reset
             listingStandard.GapLine();
 

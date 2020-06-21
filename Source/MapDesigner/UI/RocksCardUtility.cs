@@ -53,6 +53,7 @@ namespace MapDesigner.UI
             outerListing.End();
         }
 
+
         public static void ResetRocksSettings()
         {
             settings.rockTypeRange = new IntRange(2, 3);

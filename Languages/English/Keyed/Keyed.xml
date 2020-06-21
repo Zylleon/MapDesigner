@@ -11,6 +11,7 @@
 	<ZMD_resetPage>Reset these settings</ZMD_resetPage>
 	<ZMD_resetMountain>Reset mountains to default</ZMD_resetMountain>
 	<ZMD_resetThings>Reset Things to default</ZMD_resetThings>
+	<ZMD_resetRivers>Reset Rivers to default</ZMD_resetRivers>
 	
     <!-- Tabs -->
 
@@ -134,9 +135,17 @@
 	<ZMD_densityOre>Ore amount</ZMD_densityOre>
 	<ZMD_animaCount>Anima trees</ZMD_animaCount>
 	
-	<ZMD_sizeRiver>River size</ZMD_sizeRiver>
-	<ZMD_flagRiverBeach>Fertile rivers</ZMD_flagRiverBeach>
 
+
+	
+<!-- ===================================	Rivers	================================= -->
+	
+	<ZMD_riverTab>Rivers</ZMD_riverTab>
+	
+	<ZMD_sizeRiver>River size</ZMD_sizeRiver>
+	
+	<ZMD_flagRiverBeach>Rivers have beaches</ZMD_flagRiverBeach>
+	<ZMD_riverBeachSize>River beach size</ZMD_riverBeachSize>
 	
 	
 <!-- ===================================	Features	================================= -->
@@ -148,7 +157,7 @@
   <!-- Features -->
   <ZMD_selectFeature>Select feature</ZMD_selectFeature>
   
-  <ZMD_featureNone>No feature</ZMD_featureNone>
+  <ZMD_featureNone>No added feature</ZMD_featureNone>
   <ZMD_featureNoneInfo>Baseline map.</ZMD_featureNoneInfo>
   
   <ZMD_featurePRI>Perfectly round islands</ZMD_featurePRI>

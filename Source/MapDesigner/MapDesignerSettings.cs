@@ -42,8 +42,13 @@ namespace MapDesigner
         public float densityGeyser = 1.0f;
         public float densityOre = 1.0f;
 
+        
+
+        // Rivers
         public float sizeRiver = 1.0f;
         public static bool flagRiverBeach = false;
+        public string riverShore = "SoilRich";
+        public float riverBeachSize = 10f;                // in tiles
 
 
         // Features

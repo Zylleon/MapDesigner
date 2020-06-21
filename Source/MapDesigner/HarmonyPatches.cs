@@ -341,10 +341,13 @@ namespace MapDesigner
 
             float value = ___generator.GetValue(loc);
             float num = ___surfaceLevel - Mathf.Abs(value);
+            MapDesignerSettings settings = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>();
 
-            if (num < 0 && num > -10)
+            if (num < 0 && num > 0 - settings.riverBeachSize)
             {
-                __result = TerrainDef.Named("SoilRich");
+                __result = TerrainDef.Named(settings.riverShore);
+
+                //__result = TerrainDef.Named("SoilRich");
             }
         }
     }

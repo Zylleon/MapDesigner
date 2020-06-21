@@ -16,7 +16,8 @@ namespace MapDesigner
             General,
             Mountains,
             Things,
-            Rocks,
+            //Rocks,
+            Rivers,
             Feature,
         }
         private MapDesigner_Mod.InfoCardTab tab;
@@ -69,11 +70,17 @@ namespace MapDesigner
             }, this.tab == MapDesigner_Mod.InfoCardTab.Things);
             list.Add(ThingsTab);
 
-            TabRecord rockTab = new TabRecord("ZMD_rocksTab".Translate(), delegate
+            //TabRecord rockTab = new TabRecord("ZMD_rocksTab".Translate(), delegate
+            //{
+            //    this.tab = MapDesigner_Mod.InfoCardTab.Rocks;
+            //}, this.tab == MapDesigner_Mod.InfoCardTab.Rocks);
+            //list.Add(rockTab);
+
+            TabRecord riverTab = new TabRecord("ZMD_riverTab".Translate(), delegate
             {
-                this.tab = MapDesigner_Mod.InfoCardTab.Rocks;
-            }, this.tab == MapDesigner_Mod.InfoCardTab.Rocks);
-            list.Add(rockTab);
+                this.tab = MapDesigner_Mod.InfoCardTab.Rivers;
+            }, this.tab == MapDesigner_Mod.InfoCardTab.Rivers);
+            list.Add(riverTab);
 
             TabRecord featureTab = new TabRecord("ZMD_featureTab".Translate(), delegate
             {
@@ -100,8 +107,11 @@ namespace MapDesigner
                 case MapDesigner_Mod.InfoCardTab.Things:
                     UI.ThingsCardUtility.DrawThingsCard(cardRect);
                     break;
-                case MapDesigner_Mod.InfoCardTab.Rocks:
-                    UI.RocksCardUtility.DrawRocksCard(cardRect);
+                //case MapDesigner_Mod.InfoCardTab.Rocks:
+                //    UI.RocksCardUtility.DrawRocksCard(cardRect);
+                //    break;
+                case MapDesigner_Mod.InfoCardTab.Rivers:
+                    UI.RiversCardUtility.DrawRiversCard(cardRect);
                     break;
                 case MapDesigner_Mod.InfoCardTab.Feature:
                     UI.FeatureCardUtility.DrawFeaturesCard(cardRect);

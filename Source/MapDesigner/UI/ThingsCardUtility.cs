@@ -36,14 +36,19 @@ namespace MapDesigner.UI
                 settings.animaCount = InterfaceUtility.LabeledSlider(listingStandard, settings.animaCount, 1f, 15f, "ZMD_animaCount".Translate(), "1", "15");
             }
 
-
-            // River
+            // Rocks
             listingStandard.GapLine();
+            InterfaceUtility.LabeledIntRange(listingStandard, ref settings.rockTypeRange, 1, 5, "ZMD_rockTypeRange".Translate());
 
-            settings.sizeRiver = InterfaceUtility.LabeledSlider(listingStandard, settings.sizeRiver, 0.1f, 3f, InterfaceUtility.FormatLabel("ZMD_sizeRiver", "ZMD_size" + GetDensityLabel(settings.sizeRiver)), "ZMD_size1".Translate(), "ZMD_size6".Translate());
-            listingStandard.Gap(listingStandard.verticalSpacing);
+            listingStandard.CheckboxLabeled("ZMD_flagBiomeRocks".Translate(), ref MapDesignerSettings.flagBiomeRocks, "ZMD_flagBiomeRocksTooltip".Translate());
 
-            listingStandard.CheckboxLabeled("ZMD_flagRiverBeach".Translate(), ref MapDesignerSettings.flagRiverBeach, "ZMD_flagRiverBeach".Translate());
+            //// River
+            //listingStandard.GapLine();
+
+            //settings.sizeRiver = InterfaceUtility.LabeledSlider(listingStandard, settings.sizeRiver, 0.1f, 3f, InterfaceUtility.FormatLabel("ZMD_sizeRiver", "ZMD_size" + GetDensityLabel(settings.sizeRiver)), "ZMD_size1".Translate(), "ZMD_size6".Translate());
+            //listingStandard.Gap(listingStandard.verticalSpacing);
+
+            //listingStandard.CheckboxLabeled("ZMD_flagRiverBeach".Translate(), ref MapDesignerSettings.flagRiverBeach, "ZMD_flagRiverBeach".Translate());
 
             //listingStandard.Label("Line height " + listingStandard.verticalSpacing);
             // reset
@@ -67,16 +72,16 @@ namespace MapDesigner.UI
             settings.densityOre = 1.0f;
             settings.animaCount = 1.0f;
 
-            settings.sizeRiver = 1.0f;
-            MapDesignerSettings.flagRiverBeach = false;
+            //settings.sizeRiver = 1.0f;
+            //MapDesignerSettings.flagRiverBeach = false;
 
-            //settings.rockTypeRange = new IntRange(2, 3);
-            //MapDesignerSettings.flagBiomeRocks = false;
+            settings.rockTypeRange = new IntRange(2, 3);
+            MapDesignerSettings.flagBiomeRocks = false;
         }
 
 
 
-        private static int GetDensityLabel(float density)
+        public static int GetDensityLabel(float density)
         {
             int output = 0;
             if (density > 0.1f) //very low

@@ -206,10 +206,6 @@ namespace MapDesigner
 
             int num = Rand.RangeInclusive(rockTypeRange.min, rockTypeRange.max);
 
-            //List<ThingDef> rocks = new List<ThingDef>();
-
-            List<ThingDef> rocks = __result.ToList();
-
             // If it's a modded biome with special stone, check that the user allows this to change before continuing
             if (__result.Count() == 1 && !MapDesignerSettings.flagBiomeRocks)
             {
@@ -222,11 +218,11 @@ namespace MapDesigner
             if (__result.Count() >= num)
             {
                 __result = __result.Take(num);
+                Log.Message("New rocks: " + __result.Count());
             }
             else
             {
-                //Rand.PushState();
-                //Rand.Seed = tile;
+                List<ThingDef> rocks = __result.ToList();
                 List<ThingDef> list = (from d in DefDatabase<ThingDef>.AllDefs
                                        where d.category == ThingCategory.Building && d.building.isNaturalRock && !d.building.isResourceRock && !d.IsSmoothed && !rocks.Contains(d)
                                        select d).ToList<ThingDef>();
@@ -236,22 +232,9 @@ namespace MapDesigner
                     list.Remove(item);
                     rocks.Add(item);
                 }
-
-
                 __result = rocks.ToList();
             }
 
-            //// correctly counts rock type on original map
-            //if (__result.Count() > 1)
-            //{
-            //    test.Add(ThingDefOf.Sandstone);
-            //}
-            //else
-            //{
-            //    test.Add(ThingDefOf.Granite);
-            //}
-
-            __result = rocks.AsEnumerable();
             Rand.PopState();
 
         }

@@ -295,7 +295,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BiomeDefault.cs" />
-    <Compile Include="UI\GeneralCardUtility.cs" />
     <Compile Include="UI\MountainCardUtility.cs" />
     <Compile Include="UI\FeatureCardUtility.cs" />
     <Compile Include="GenStep_RoundIsland.cs" />
@@ -310,8 +309,6 @@
     <Compile Include="UI\ThingsCardUtility.cs" />
     <Compile Include="ZMD_GenStep_Feature.cs" />
     <Compile Include="ZMD_GenStep_Lake.cs" />
-    <Compile Include="ZMD_GenStep_Terrain.cs" />
-    <Compile Include="ZMD_RiverMaker.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

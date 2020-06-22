@@ -22,21 +22,24 @@
 More options for customizing maps! Use from mod settings under Options > Mod Settings > Map Designer.
 
 Mountains:
-	- hill size
-	- hill shape
 	- make flat or solid maps
+	- hill size, shape, and positioning
+	- hill shape
 	- disable caves
-	- change how hills are positioned
+	- stone types per map
 
-Things:
+Things - increase or decrease amount of:
 	- plants
 	- animals
 	- ruins
 	- steam geysers
 	- ore
-	- rivers
 	- anima trees (if Royalty is active)
-	- stone types per map
+	
+Rivers:
+	- size
+	- add "beaches" of rand, rich soil, or other terrain around rivers
+	
 	
 Map Features: optional special features you can add to your home map.
 	- perfectly round islands: your map will generate as one or more perfectly round islands, surrounded by shallow water. Raids and trade caravans will still path in normally from the sides.

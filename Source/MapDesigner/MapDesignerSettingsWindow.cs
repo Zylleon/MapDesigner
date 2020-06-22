@@ -16,7 +16,6 @@ namespace MapDesigner
             General,
             Mountains,
             Things,
-            //Rocks,
             Rivers,
             Feature,
         }
@@ -52,12 +51,6 @@ namespace MapDesigner
 
             List<TabRecord> list = new List<TabRecord>();
 
-            //TabRecord generaltab = new TabRecord("ZMD_generalTab".Translate(), delegate
-            //{
-            //    this.tab = MapDesigner_Mod.InfoCardTab.General;
-            //}, this.tab == MapDesigner_Mod.InfoCardTab.General);
-            //list.Add(generaltab);
-
             TabRecord mountainTab = new TabRecord("ZMD_mountainTab".Translate(), delegate
             {
                 this.tab = MapDesigner_Mod.InfoCardTab.Mountains;
@@ -69,12 +62,6 @@ namespace MapDesigner
                 this.tab = MapDesigner_Mod.InfoCardTab.Things;
             }, this.tab == MapDesigner_Mod.InfoCardTab.Things);
             list.Add(ThingsTab);
-
-            //TabRecord rockTab = new TabRecord("ZMD_rocksTab".Translate(), delegate
-            //{
-            //    this.tab = MapDesigner_Mod.InfoCardTab.Rocks;
-            //}, this.tab == MapDesigner_Mod.InfoCardTab.Rocks);
-            //list.Add(rockTab);
 
             TabRecord riverTab = new TabRecord("ZMD_riverTab".Translate(), delegate
             {

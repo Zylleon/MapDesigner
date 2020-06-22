@@ -21,11 +21,6 @@ namespace MapDesigner
 
             harmony.PatchAll();
 
-
-            //MethodInfo targetmethod = AccessTools.Method(typeof(RimWorld.GenStep_Terrain), "GenerateRiver");
-            //HarmonyMethod transpiler = new HarmonyMethod(typeof(HarmonyPatches).GetMethod("RiverDirectionTranspiler"));
-            //harmony.Patch(targetmethod, null, null, transpiler);
-
             MethodInfo targetmethod = AccessTools.Method(typeof(RimWorld.GenStep_Terrain), "TerrainFrom");
             HarmonyMethod postfix = new HarmonyMethod(typeof(HarmonyPatches).GetMethod("RiverBeachPostfix"));
             harmony.Patch(targetmethod, null, postfix);
@@ -38,59 +33,6 @@ namespace MapDesigner
 
     static class HarmonyPatches
     {
-
-        public static IEnumerable<CodeInstruction> RiverDirectionTranspiler(IEnumerable<CodeInstruction> instructions)
-        {
-            var codes = new List<CodeInstruction>(instructions);
-            int startIndex = -1;
-            int dirIndex = -1;
-            MethodInfo test = AccessTools.Method(typeof(WorldGrid), "GetHeadingFromTo", new Type[] { typeof(Int32), typeof(Int32) });
-
-
-            for (int i = 0; i < codes.Count; i++)
-            {
-                if (codes[i].opcode == OpCodes.Ret && startIndex == -1)
-                {
-                    Log.Message("start on line " + (i + 1));
-
-                    startIndex = i + 1;
-                }
-
-                if (codes[i].opcode == OpCodes.Callvirt)
-                {
-                    //Log.Message("Line " + i + " ..... operand " + codes[i].operand);
-                    if ((MethodInfo)codes[i].operand == test)
-                    {
-                        Log.Message("FOUND IT ON LINE " + i);
-                        dirIndex = i;
-                    }
-                }
-            }
-
-            //codes[startIndex].opcode = OpCodes.Nop;
-            //codes[dirIndex] = new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(HelperMethods), name: nameof(HelperMethods.GetRiverDirection)));
-
-            Log.Message("Start index is " + startIndex);
-            Log.Message("dir index is " + dirIndex);
-
-            if (startIndex > -1 && dirIndex > -1)
-            {
-                // we cannot remove the first code of our range since some jump actually jumps to
-                // it, so we replace it with a no-op instead of fixing that jump (easier).
-                //codes[startIndex].opcode = OpCodes.Nop;
-                //codes.RemoveRange(startIndex + 1, endIndex - startIndex - 1);
-
-                codes[startIndex].opcode = OpCodes.Ldarg_1;
-                codes[dirIndex] = new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(HelperMethods), name: nameof(HelperMethods.GetRiverDirection)));
-
-                codes.RemoveRange(startIndex + 1, dirIndex - startIndex - 2);
-
-            }
-
-            return codes.AsEnumerable();
-        }
-
-
         /// <summary>
         /// GenStep_Terrain.TerrainFrom
         /// lets river beaches override coast beaches
@@ -112,7 +54,7 @@ namespace MapDesigner
     }
 
 
-        [HarmonyPatch(typeof(RimWorld.GenStep_ElevationFertility))]
+    [HarmonyPatch(typeof(RimWorld.GenStep_ElevationFertility))]
     [HarmonyPatch(nameof(RimWorld.GenStep_ElevationFertility.Generate))]
     internal static class MountainSettingsPatch
     {
@@ -332,7 +274,7 @@ namespace MapDesigner
     [HarmonyPatch(nameof(RimWorld.RiverMaker.TerrainAt))]
     static class FertileRivers
     {
-        static void Postfix(ref TerrainDef __result, /*ref RiverMaker __instance,*/ ModuleBase ___generator, float ___surfaceLevel, IntVec3 loc, bool recordForValidation = false )
+        static void Postfix(ref TerrainDef __result, ModuleBase ___generator, float ___surfaceLevel, IntVec3 loc, bool recordForValidation = false )
         {
             if (!MapDesignerSettings.flagRiverBeach)
             {
@@ -346,30 +288,8 @@ namespace MapDesigner
             if (num < 0 && num > 0 - settings.riverBeachSize)
             {
                 __result = TerrainDef.Named(settings.riverShore);
-
-                //__result = TerrainDef.Named("SoilRich");
             }
         }
     }
-
-
-
-
-
-
-    /*
-    // TEST RIVER GENSTEPS
-   [HarmonyPatch(typeof(RimWorld.GenStep_Terrain))]
-   [HarmonyPatch(nameof(RimWorld.GenStep_Terrain.Generate))]
-   static class TestRiverPatch
-   {
-       static bool Prefix(Map map, GenStepParams parms)
-       {
-           (new ZMD_GenStep_Terrain()).Generate(map, parms);
-           return false;
-       }
-   }
-   */
-
 
 }

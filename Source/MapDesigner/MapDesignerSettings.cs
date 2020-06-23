@@ -31,7 +31,15 @@ namespace MapDesigner
         public static bool flagHillRadial = false;
         public float hillRadialAmt = 1.0f;
         public float hillRadialSize = 0.65f;
-        public float animaCount = 1.0f;
+
+        public static bool flagHillSide = false;
+        public float hillSideAmt = 1.0f;
+        public float hillSideDir = 0f;
+
+        public static bool flagHillSplit = false;
+        public float hillSplitAmt = 1.0f;
+        public float hillSplitDir = 0f;
+
 
         // Things
         public float densityPlant = 1.0f;
@@ -41,8 +49,9 @@ namespace MapDesigner
 
         public float densityGeyser = 1.0f;
         public float densityOre = 1.0f;
+        public float animaCount = 1.0f;
 
-        
+
 
         // Rivers
         public float sizeRiver = 1.0f;
@@ -91,17 +100,19 @@ namespace MapDesigner
             Scribe_Values.Look(ref flagCaves, "flagCaves", true);
             Scribe_Values.Look(ref flagOneRock, "flagOneRock", false);
 
-            Scribe_Values.Look(ref rockTypeRange, "rockTypeRange", new IntRange(2, 3));
-            Scribe_Values.Look(ref flagBiomeRocks, "flagBiomeRocks", false);
-
             Scribe_Values.Look(ref flagHillClumping, "flagHillClumping", false);
 
             Scribe_Values.Look(ref flagHillRadial, "flagHillRadial", false);
             Scribe_Values.Look(ref hillRadialAmt, "hillRadialAmt", 0.0f);
             Scribe_Values.Look(ref hillRadialSize, "hillRadialSize", 0.55f);
 
-            // Things
-            Scribe_Values.Look(ref densityPlant, "densityPlant", 1.0f);
+            Scribe_Values.Look(ref flagHillSide, "flagHillSide", false);
+            Scribe_Values.Look(ref hillSideAmt, "hillSideAmt", 1.0f);
+            Scribe_Values.Look(ref hillSideDir, "hillSideDir", 0f);
+
+
+        // Things
+        Scribe_Values.Look(ref densityPlant, "densityPlant", 1.0f);
             Scribe_Values.Look(ref densityAnimal, "densityAnimal", 1.0f);
             Scribe_Values.Look(ref densityRuins, "densityRuins", 1.0f);
             Scribe_Values.Look(ref densityDanger, "densityDanger", 1.0f);
@@ -109,8 +120,14 @@ namespace MapDesigner
             Scribe_Values.Look(ref densityOre, "densityOre", 1.0f);
             Scribe_Values.Look(ref animaCount, "animaCount", 1.0f);
 
+            Scribe_Values.Look(ref rockTypeRange, "rockTypeRange", new IntRange(2, 3));
+            Scribe_Values.Look(ref flagBiomeRocks, "flagBiomeRocks", false);
+
+            // Rivers
             Scribe_Values.Look(ref sizeRiver, "sizeRiver", 1.0f);
             Scribe_Values.Look(ref flagRiverBeach, "flagFertileRivers", false);
+            Scribe_Values.Look(ref riverShore, "riverShore", "SoilRich");
+            Scribe_Values.Look(ref riverBeachSize, "riverBeachSize", 10f);
 
             // Features
             Scribe_Values.Look(ref selectedFeature, "selectedFeature", Features.None);

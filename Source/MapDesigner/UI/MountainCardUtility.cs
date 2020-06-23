@@ -60,6 +60,10 @@ namespace MapDesigner.UI
                 hillRadialListing.End();
             }
 
+            listingStandard.CheckboxLabeled("ZMD_flagHillSide".Translate(), ref MapDesignerSettings.flagHillSide, "ZMD_flagHillSide".Translate());
+
+            settings.hillSideAmt = InterfaceUtility.LabeledSlider(listingStandard, settings.hillSideAmt, -3.0f, 3.0f, "Skew: " + settings.hillSideAmt, "ZMD_center".Translate(), "ZMD_edges".Translate(), "ZMD_hillRadialAmtTooltip".Translate());
+            
 
             // reset
             listingStandard.GapLine();

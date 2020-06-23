@@ -80,6 +80,7 @@
 	<ZMD_hillArrangementDesc>How hills are positioned on your map. Create customized valleys and mountains.
 	Disable all = vanilla </ZMD_hillArrangementDesc>
 
+<!-- Mountain distribution -->
 	<ZMD_flagHillClumping>Natural hill distribution</ZMD_flagHillClumping>
 	<ZMD_flagHillClumpingTooltip>For small hills. Will make hills vary naturally instead of being evenly distributed.</ZMD_flagHillClumpingTooltip>
 	
@@ -106,6 +107,9 @@
 	<ZMD_hillRadialSize3>Big</ZMD_hillRadialSize3>
 	<ZMD_hillRadialSize4>To the edge of the map</ZMD_hillRadialSize4>
 
+
+	<ZMD_flagHillSide>More hills on one side</ZMD_flagHillSide>
+	<ZMD_hillSideDir>Direction</ZMD_hillSideDir>
 	
   <!-- Misc settings -->
   

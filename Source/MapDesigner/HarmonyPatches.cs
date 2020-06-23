@@ -133,9 +133,7 @@ namespace MapDesigner
                     {
                         elevation[current] += clumpStrength * hillClumping.GetValue(current);
                     }
-
                 }
-
             }
 
 
@@ -145,7 +143,7 @@ namespace MapDesigner
                 IntVec3 center = map.Center;
                 int size = map.Size.x / 2;
                 float centerSize = settings.hillRadialSize * size;
-                float multiplier = 1.2f * settings.hillRadialAmt / size;
+                //float multiplier = 1.2f * settings.hillRadialAmt / size;
                 //Log.Message("Pushing hills with value " + settings.hillRadialAmt);
                 foreach (IntVec3 current in map.AllCells)
                 {
@@ -153,7 +151,30 @@ namespace MapDesigner
                     elevation[current] *= (1f + (settings.hillRadialAmt * (distance - centerSize) / size));
                 }
             }
+
+
+            // hills to both sides
+
+
+
+            // hills to one side
+            if (MapDesignerSettings.flagHillSide)
+            {
+                float angle = settings.hillSideDir;
+
+                float skew = settings.hillSideAmt;
+                int size = map.Size.x;
+
+                ModuleBase slope = new AxisAsValueX();
+
+                slope = new Rotate(0, angle, 0, slope);
+                foreach (IntVec3 current in map.AllCells)
+                {
+                    elevation[current] *= (skew * slope.GetValue(current) / size - (-1f + skew / 2));
+                }
+            }
         }
+
     }
 
 

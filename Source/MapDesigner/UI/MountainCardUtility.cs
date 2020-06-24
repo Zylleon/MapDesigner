@@ -15,13 +15,16 @@ namespace MapDesigner.UI
         //public MapDesignerSettings settings = MapDesigner_Mod.GetSettings<MapDesignerSettings>();
         public static MapDesignerSettings settings = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>();
         private static float viewHeight;
-
+        private static Vector2 scrollPosition = Vector2.zero;
 
         public static void DrawMountainCard(Rect rect)
         {
+            Rect rect2 = rect.ContractedBy(4f);
+            Rect viewRect = new Rect(0f, 0f, rect2.width - 18f, viewHeight + 200f);
+            Widgets.BeginScrollView(rect2, ref scrollPosition, viewRect, true);
 
             Listing_Standard listingStandard = new Listing_Standard();
-            listingStandard.Begin(rect);
+            listingStandard.Begin(viewRect);
 
             // mountains
             settings.hillAmount = InterfaceUtility.LabeledSlider(listingStandard, settings.hillAmount, 0f, 2.5f, hillAmountLabel, "ZMD_hillAmount0".Translate(), "ZMD_hillAmount5".Translate());
@@ -45,26 +48,49 @@ namespace MapDesigner.UI
             listingStandard.CheckboxLabeled("ZMD_flagHillRadial".Translate(), ref MapDesignerSettings.flagHillRadial, "ZMD_flagHillRadialTooltip".Translate());
             if (MapDesignerSettings.flagHillRadial)
             {
-                Rect hillRadialRect = listingStandard.GetRect(60f + Text.CalcHeight(hillRadialAmtLabel, listingStandard.ColumnWidth - 40f) * 2);
+                Rect hillRadialRect = listingStandard.GetRect(100f);
                 hillRadialRect.xMin += 20f;
                 hillRadialRect.xMax -= 20f;
 
                 Listing_Standard hillRadialListing = new Listing_Standard();
                 hillRadialListing.Begin(hillRadialRect);
 
-                settings.hillRadialAmt = InterfaceUtility.LabeledSlider(hillRadialListing, settings.hillRadialAmt, -3.0f, 3.0f, hillRadialAmtLabel, "ZMD_center".Translate(), "ZMD_edges".Translate(), "ZMD_hillRadialAmtTooltip".Translate());
-
+                settings.hillRadialAmt = InterfaceUtility.LabeledSlider(hillRadialListing, settings.hillRadialAmt, -3.0f, 3.0f, GetHillRadialAmtLabel(settings.hillRadialAmt), "ZMD_center".Translate(), "ZMD_edges".Translate(), "ZMD_hillRadialAmtTooltip".Translate());
                 settings.hillRadialSize = InterfaceUtility.LabeledSlider(hillRadialListing, settings.hillRadialSize, 0.2f, 1.1f, hillRadialSizeLabel, "ZMD_center".Translate(), "ZMD_edges".Translate(), "ZMD_hillRadialSizeTooltip".Translate());
 
                 hillRadialListing.End();
             }
 
-            listingStandard.CheckboxLabeled("ZMD_flagHillSide".Translate(), ref MapDesignerSettings.flagHillSplit, "ZMD_flagHillSide".Translate());
+            listingStandard.CheckboxLabeled("ZMD_flagHillSplit".Translate(), ref MapDesignerSettings.flagHillSplit, "ZMD_flagHillSplit".Translate());
+            if (MapDesignerSettings.flagHillSplit)
+            {
+                Rect hillSplitRect = listingStandard.GetRect(140f);
+                hillSplitRect.xMin += 20f;
+                hillSplitRect.xMax -= 20f;
+                Listing_Standard hillSplitListing = new Listing_Standard();
+                hillSplitListing.Begin(hillSplitRect);
 
-            settings.hillSplitAmt = InterfaceUtility.LabeledSlider(listingStandard, settings.hillSplitAmt, -3.0f, 3.0f, "Skew: " + settings.hillSplitAmt, "ZMD_center".Translate(), "ZMD_edges".Translate(), "ZMD_hillRadialAmtTooltip".Translate());
-            settings.hillSplitSize = InterfaceUtility.LabeledSlider(listingStandard, settings.hillSplitSize, 0.05f, 1.1f, "Size: " + settings.hillSplitSize, "ZMD_center".Translate(), "ZMD_edges".Translate(), "ZMD_hillRadialSizeTooltip".Translate());
+                settings.hillSplitAmt = InterfaceUtility.LabeledSlider(hillSplitListing, settings.hillSplitAmt, -3.0f, 3.0f, "ZMD_skew".Translate(), "ZMD_center".Translate(), "ZMD_edges".Translate(), "ZMD_hillRadialAmtTooltip".Translate());
+                settings.hillSplitSize = InterfaceUtility.LabeledSlider(hillSplitListing, settings.hillSplitSize, 0.05f, 1.1f, "ZMD_size".Translate(), "ZMD_center".Translate(), "ZMD_edges".Translate(), "ZMD_hillRadialSizeTooltip".Translate());
+                settings.hillSplitDir = InterfaceUtility.AnglePicker(hillSplitListing, settings.hillSplitDir, "ZMD_Angle".Translate());
 
-            settings.hillSplitDir = InterfaceUtility.AnglePicker(listingStandard, settings.hillSplitDir, "ZMD_Angle".Translate());
+                hillSplitListing.End();
+            }
+
+            listingStandard.CheckboxLabeled("ZMD_flagHillSide".Translate(), ref MapDesignerSettings.flagHillSide, "ZMD_flagHillSide".Translate());
+            if(MapDesignerSettings.flagHillSide)
+            {
+                Rect hillSideRect = listingStandard.GetRect(100f);
+                hillSideRect.xMin += 20f;
+                hillSideRect.xMax -= 20f;
+                Listing_Standard hillSideListing = new Listing_Standard();
+                hillSideListing.Begin(hillSideRect);
+
+                settings.hillSideAmt = InterfaceUtility.LabeledSlider(hillSideListing, settings.hillSideAmt, 0.2f, 3.0f, "ZMD_skew".Translate());
+                settings.hillSideDir = InterfaceUtility.AnglePicker(hillSideListing, settings.hillSideDir, "ZMD_Angle".Translate(), 3, true);
+
+                hillSideListing.End();
+            }
 
             // reset
             listingStandard.GapLine();
@@ -74,6 +100,11 @@ namespace MapDesigner.UI
             }
 
             listingStandard.End();
+
+            viewHeight = listingStandard.CurHeight;
+            Widgets.EndScrollView();
+
+
         }
 
 
@@ -83,7 +114,6 @@ namespace MapDesigner.UI
             settings.hillSize = 0.021f;
             settings.hillSmoothness = 2.0f;
             MapDesignerSettings.flagCaves = true;
-            MapDesignerSettings.flagOneRock = false;
 
             MapDesignerSettings.flagHillClumping = false;
 
@@ -102,38 +132,34 @@ namespace MapDesigner.UI
         }
 
 
-        private static string hillRadialAmtLabel
+        private static string GetHillRadialAmtLabel(float val)
         {
-            get
-            {
-                float radialAmt = settings.hillRadialAmt;
                 int label = 0;
-                if (radialAmt > -2.0f)    //1
+                if (val > -2.0f)    //1
                 {
                     label++;
                 }
-                if (radialAmt > -1.0f)    //2
+                if (val > -1.0f)    //2
                 {
                     label++;
                 }
-                if (radialAmt > -0.4f)    //no cluster = 3
+                if (val > -0.4f)    //no cluster = 3
                 {
                     label++;
                 }
-                if (radialAmt > 0.4f)     //4
+                if (val > 0.4f)     //4
                 {
                     label++;
                 }
-                if (radialAmt > 1.0f)     //5
+                if (val > 1.0f)     //5
                 {
                     label++;
                 }
-                if (radialAmt > 2.0f)     //6
+                if (val > 2.0f)     //6
                 {
                     label++;
                 }
                 return InterfaceUtility.FormatLabel("ZMD_hillRadialAmtLabel", "ZMD_hillRadialAmt" + label);
-            }
         }
 
 

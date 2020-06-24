@@ -98,8 +98,14 @@
 	<ZMD_hillRadialAmt4>Slightly more on the edges</ZMD_hillRadialAmt4>
 	<ZMD_hillRadialAmt5>Moderate shift towards edges</ZMD_hillRadialAmt5>
 	<ZMD_hillRadialAmt6>Almost entirely around the edges</ZMD_hillRadialAmt6>
+	
+	
 	<ZMD_center>Center</ZMD_center>
 	<ZMD_edges>Edges</ZMD_edges>
+	<ZMD_direction>Direction</ZMD_direction>
+	<ZMD_skew>Skew</ZMD_skew>
+	<ZMD_size>Size</ZMD_size>
+	
 	
 	<ZMD_hillRadialSize0>Tiny</ZMD_hillRadialSize0>
 	<ZMD_hillRadialSize1>Small</ZMD_hillRadialSize1>
@@ -107,9 +113,10 @@
 	<ZMD_hillRadialSize3>Big</ZMD_hillRadialSize3>
 	<ZMD_hillRadialSize4>To the edge of the map</ZMD_hillRadialSize4>
 
-
+	<ZMD_flagHillSplit>Down the middle</ZMD_flagHillSplit>
+	
 	<ZMD_flagHillSide>More hills on one side</ZMD_flagHillSide>
-	<ZMD_hillSideDir>Direction</ZMD_hillSideDir>
+	
 	
   <!-- Misc settings -->
   

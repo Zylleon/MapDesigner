@@ -136,7 +136,6 @@ namespace MapDesigner
                 }
             }
 
-
             // pushes hills away from center
             if (MapDesignerSettings.flagHillRadial)
             {
@@ -161,7 +160,7 @@ namespace MapDesigner
                 float skew = settings.hillSplitAmt;
 
                 ModuleBase slope = new AxisAsValueX();
-                slope = new Rotate(0.0, 180.0 - angle, 0.0, slope);
+                slope = new Rotate(0.0, 360.0 - angle, 0.0, slope);
                 slope = new Translate(0.0 - map.Center.x, 0.0, 0.0 - map.Center.z, slope);
 
                 float multiplier = 1.5f * skew / mapSize;
@@ -187,17 +186,18 @@ namespace MapDesigner
             if (MapDesignerSettings.flagHillSide)
             {
                 float angle = settings.hillSideDir;
-
                 float skew = settings.hillSideAmt;
-                int size = map.Size.x;
 
                 ModuleBase slope = new AxisAsValueX();
-
-                slope = new Rotate(0, angle, 0, slope);
+                slope = new Rotate(0.0, 180.0 - angle, 0.0, slope);
+                slope = new Translate(0.0 - map.Center.x, 0.0, 0.0 - map.Center.z, slope);
+                float multiplier = skew / map.Size.x;
                 foreach (IntVec3 current in map.AllCells)
                 {
-                    elevation[current] *= (skew * slope.GetValue(current) / size - (-1f + skew / 2));
+                    elevation[current] *= (1 + slope.GetValue(current) * multiplier);
+                    elevation[current] += 0.5f * slope.GetValue(current) * multiplier;
                 }
+
             }
         }
 

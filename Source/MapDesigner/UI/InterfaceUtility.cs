@@ -32,7 +32,6 @@ namespace MapDesigner.UI
             Texture2D spinner = ContentFinder<Texture2D>.Get(texPath, true);
             Widgets.DrawTextureRotated(spinnerRect, spinner, val);
 
-
             float result = val;
             float max = fullCircle ? 36f : 18f;
             result = 10f * (float)Math.Round(GUI.HorizontalSlider(sliderRect, val * 0.1f, 0f, max));
@@ -43,7 +42,6 @@ namespace MapDesigner.UI
         public static float LabeledSlider(Listing_Standard listing, float val, float min, float max, string label, string leftLabel = null, string rightLabel = null, string tooltip = null)
         {
             Rect rect = new Rect(listing.GetRect(44f));
-            //Rect rect = new Rect(listing.GetRect(60f));
 
             Widgets.DrawHighlightIfMouseover(rect);
 

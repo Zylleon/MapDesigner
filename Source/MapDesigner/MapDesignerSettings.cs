@@ -22,7 +22,6 @@ namespace MapDesigner
         public float hillSmoothness = 2.0f;
         public static bool flagCaves = true;
 
-        public static bool flagOneRock = false;
         public IntRange rockTypeRange = new IntRange(2, 3);
         public static bool flagBiomeRocks = false;
 
@@ -32,15 +31,14 @@ namespace MapDesigner
         public float hillRadialAmt = 1.0f;
         public float hillRadialSize = 0.65f;
 
-        public static bool flagHillSide = false;
-        public float hillSideAmt = 1.0f;
-        public float hillSideDir = 0f;
-
         public static bool flagHillSplit = false;
         public float hillSplitAmt = 1.5f;
         public float hillSplitDir = 0f;
         public float hillSplitSize = 0.35f;
 
+        public static bool flagHillSide = false;
+        public float hillSideAmt = 1.0f;
+        public float hillSideDir = 0f;
 
         // Things
         public float densityPlant = 1.0f;
@@ -99,7 +97,6 @@ namespace MapDesigner
             Scribe_Values.Look(ref hillSize, "hillSize", 0.021f);
             Scribe_Values.Look(ref hillSmoothness, "hillSmoothness", 2.0f);
             Scribe_Values.Look(ref flagCaves, "flagCaves", true);
-            Scribe_Values.Look(ref flagOneRock, "flagOneRock", false);
 
             Scribe_Values.Look(ref flagHillClumping, "flagHillClumping", false);
 
@@ -107,18 +104,18 @@ namespace MapDesigner
             Scribe_Values.Look(ref hillRadialAmt, "hillRadialAmt", 0.0f);
             Scribe_Values.Look(ref hillRadialSize, "hillRadialSize", 0.65f);
 
-            Scribe_Values.Look(ref flagHillSide, "flagHillSide", false);
-            Scribe_Values.Look(ref hillSideAmt, "hillSideAmt", 1.0f);
-            Scribe_Values.Look(ref hillSideDir, "hillSideDir", 0f);
-
             Scribe_Values.Look(ref flagHillSplit, "flagHillSplit", false);
             Scribe_Values.Look(ref hillSplitAmt, "hillSplitAmt", 1.5f);
             Scribe_Values.Look(ref hillSplitDir, "hillSplitDir", 0f);
             Scribe_Values.Look(ref hillSplitSize, "hillSplitSize", 0.35f);
 
+            Scribe_Values.Look(ref flagHillSide, "flagHillSide", false);
+            Scribe_Values.Look(ref hillSideAmt, "hillSideAmt", 1.0f);
+            Scribe_Values.Look(ref hillSideDir, "hillSideDir", 0f);
 
-        // Things
-        Scribe_Values.Look(ref densityPlant, "densityPlant", 1.0f);
+
+            // Things
+            Scribe_Values.Look(ref densityPlant, "densityPlant", 1.0f);
             Scribe_Values.Look(ref densityAnimal, "densityAnimal", 1.0f);
             Scribe_Values.Look(ref densityRuins, "densityRuins", 1.0f);
             Scribe_Values.Look(ref densityDanger, "densityDanger", 1.0f);

@@ -28,7 +28,6 @@ namespace MapDesigner.UI
 
             // It's reversed because that's more intuitive for the user. Smaller numbers = bigger hills
             settings.hillSize = InterfaceUtility.LabeledSlider(listingStandard, settings.hillSize, 0.1f, 0.010f, hillSizeLabel, "ZMD_hillSize4".Translate(), "ZMD_hillSize0".Translate());
-
             settings.hillSmoothness = InterfaceUtility.LabeledSlider(listingStandard, settings.hillSmoothness, 0f, 5f, hillSmoothnessLabel, "ZMD_hillSmoothness0".Translate(), "ZMD_hillSmoothness4".Translate());
 
 
@@ -55,15 +54,17 @@ namespace MapDesigner.UI
 
                 settings.hillRadialAmt = InterfaceUtility.LabeledSlider(hillRadialListing, settings.hillRadialAmt, -3.0f, 3.0f, hillRadialAmtLabel, "ZMD_center".Translate(), "ZMD_edges".Translate(), "ZMD_hillRadialAmtTooltip".Translate());
 
-                settings.hillRadialSize = InterfaceUtility.LabeledSlider(hillRadialListing, settings.hillRadialSize, -0.2f, 1.1f, hillRadialSizeLabel, "ZMD_center".Translate(), "ZMD_edges".Translate(), "ZMD_hillRadialSizeTooltip".Translate());
+                settings.hillRadialSize = InterfaceUtility.LabeledSlider(hillRadialListing, settings.hillRadialSize, 0.2f, 1.1f, hillRadialSizeLabel, "ZMD_center".Translate(), "ZMD_edges".Translate(), "ZMD_hillRadialSizeTooltip".Translate());
 
                 hillRadialListing.End();
             }
 
-            listingStandard.CheckboxLabeled("ZMD_flagHillSide".Translate(), ref MapDesignerSettings.flagHillSide, "ZMD_flagHillSide".Translate());
+            listingStandard.CheckboxLabeled("ZMD_flagHillSide".Translate(), ref MapDesignerSettings.flagHillSplit, "ZMD_flagHillSide".Translate());
 
-            settings.hillSideAmt = InterfaceUtility.LabeledSlider(listingStandard, settings.hillSideAmt, -3.0f, 3.0f, "Skew: " + settings.hillSideAmt, "ZMD_center".Translate(), "ZMD_edges".Translate(), "ZMD_hillRadialAmtTooltip".Translate());
-            
+            settings.hillSplitAmt = InterfaceUtility.LabeledSlider(listingStandard, settings.hillSplitAmt, -3.0f, 3.0f, "Skew: " + settings.hillSplitAmt, "ZMD_center".Translate(), "ZMD_edges".Translate(), "ZMD_hillRadialAmtTooltip".Translate());
+            settings.hillSplitSize = InterfaceUtility.LabeledSlider(listingStandard, settings.hillSplitSize, 0.05f, 1.1f, "Size: " + settings.hillSplitSize, "ZMD_center".Translate(), "ZMD_edges".Translate(), "ZMD_hillRadialSizeTooltip".Translate());
+
+            settings.hillSplitDir = InterfaceUtility.AnglePicker(listingStandard, settings.hillSplitDir, "ZMD_Angle".Translate());
 
             // reset
             listingStandard.GapLine();
@@ -90,8 +91,14 @@ namespace MapDesigner.UI
             settings.hillRadialAmt = 1.0f;
             settings.hillRadialSize = 0.65f;
 
-            //settings.rockTypeRange = new IntRange(2, 3);
-            //MapDesignerSettings.flagBiomeRocks = false;
+            MapDesignerSettings.flagHillSide = false;
+            settings.hillSideAmt = 1.0f;
+            settings.hillSideDir = 0f;
+
+            MapDesignerSettings.flagHillSplit = false;
+            settings.hillSplitAmt = 1.5f;
+            settings.hillSplitDir = 0f;
+            settings.hillSplitSize = 0.35f;
         }
 
 

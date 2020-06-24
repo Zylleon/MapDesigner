@@ -12,7 +12,7 @@
 	<ZMD_resetMountain>Reset mountains to default</ZMD_resetMountain>
 	<ZMD_resetThings>Reset Things to default</ZMD_resetThings>
 	<ZMD_resetRivers>Reset Rivers to default</ZMD_resetRivers>
-	
+	<ZMD_Angle>Angle</ZMD_Angle>
     <!-- Tabs -->
 
 	<ZMD_generalTab>General</ZMD_generalTab>

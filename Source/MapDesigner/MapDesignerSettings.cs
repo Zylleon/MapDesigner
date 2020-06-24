@@ -37,8 +37,9 @@ namespace MapDesigner
         public float hillSideDir = 0f;
 
         public static bool flagHillSplit = false;
-        public float hillSplitAmt = 1.0f;
+        public float hillSplitAmt = 1.5f;
         public float hillSplitDir = 0f;
+        public float hillSplitSize = 0.35f;
 
 
         // Things
@@ -104,11 +105,16 @@ namespace MapDesigner
 
             Scribe_Values.Look(ref flagHillRadial, "flagHillRadial", false);
             Scribe_Values.Look(ref hillRadialAmt, "hillRadialAmt", 0.0f);
-            Scribe_Values.Look(ref hillRadialSize, "hillRadialSize", 0.55f);
+            Scribe_Values.Look(ref hillRadialSize, "hillRadialSize", 0.65f);
 
             Scribe_Values.Look(ref flagHillSide, "flagHillSide", false);
             Scribe_Values.Look(ref hillSideAmt, "hillSideAmt", 1.0f);
             Scribe_Values.Look(ref hillSideDir, "hillSideDir", 0f);
+
+            Scribe_Values.Look(ref flagHillSplit, "flagHillSplit", false);
+            Scribe_Values.Look(ref hillSplitAmt, "hillSplitAmt", 1.5f);
+            Scribe_Values.Look(ref hillSplitDir, "hillSplitDir", 0f);
+            Scribe_Values.Look(ref hillSplitSize, "hillSplitSize", 0.35f);
 
 
         // Things

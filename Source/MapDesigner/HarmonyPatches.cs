@@ -143,8 +143,6 @@ namespace MapDesigner
                 IntVec3 center = map.Center;
                 int size = map.Size.x / 2;
                 float centerSize = settings.hillRadialSize * size;
-                //float multiplier = 1.2f * settings.hillRadialAmt / size;
-                //Log.Message("Pushing hills with value " + settings.hillRadialAmt);
                 foreach (IntVec3 current in map.AllCells)
                 {
                     float distance = (float)Math.Sqrt(Math.Pow(current.x - center.x, 2) + Math.Pow(current.z - center.z, 2));
@@ -154,6 +152,34 @@ namespace MapDesigner
 
 
             // hills to both sides
+            if (MapDesignerSettings.flagHillSplit)
+            {
+                float angle = settings.hillSplitDir * 10f;
+
+                int mapSize = map.Size.x;
+                float gapSize = 0.5f * mapSize * settings.hillSplitSize;
+                float skew = settings.hillSplitAmt;
+
+                ModuleBase slope = new AxisAsValueX();
+                slope = new Rotate(0.0, 180.0 - angle, 0.0, slope);
+                slope = new Translate(0.0 - map.Center.x, 0.0, 0.0 - map.Center.z, slope);
+
+                float multiplier = 1.5f * skew / mapSize;
+
+                foreach (IntVec3 current in map.AllCells)
+                {
+                    float value = slope.GetValue(current);
+                    //float num = size - Math.Abs(value);
+                    float num = Math.Abs(value) - gapSize;
+
+                    //num = 1 + (skew * num / mapSize);
+                    num = 1 + num * multiplier;
+
+                    elevation[current] *= num;
+                    elevation[current] += num - 1;
+                }
+            }
+
 
 
 

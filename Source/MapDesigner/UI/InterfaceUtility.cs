@@ -11,6 +11,35 @@ namespace MapDesigner.UI
 {
     public static class InterfaceUtility
     {
+        public static float AnglePicker(Listing_Standard listing, float val, string label, int spinnerType = 1, bool fullCircle = false, bool snap = true)
+        {
+            Rect rect = new Rect(listing.GetRect(44f));
+            Widgets.DrawHighlightIfMouseover(rect);
+            Rect leftSide = rect;
+            Rect rightSide = rect;
+            leftSide.xMax -= 0.76f * rect.width;
+            rightSide.xMin += 0.26f * rect.width;
+            Rect sliderRect = rightSide;
+            sliderRect.yMin += 16f;
+
+            Widgets.Label(leftSide, String.Format("{0}: {1}°", label, val));
+
+            Rect spinnerRect = new Rect(leftSide);
+            spinnerRect.xMax -= 10f;
+            spinnerRect.xMin = spinnerRect.xMax - spinnerRect.height;
+
+            string texPath = String.Format("GUI/ZMD_spinner{0}", spinnerType);
+            Texture2D spinner = ContentFinder<Texture2D>.Get(texPath, true);
+            Widgets.DrawTextureRotated(spinnerRect, spinner, val);
+
+
+            float result = val;
+            float max = fullCircle ? 36f : 18f;
+            result = 10f * (float)Math.Round(GUI.HorizontalSlider(sliderRect, val * 0.1f, 0f, max));
+            return result;
+        }
+
+
         public static float LabeledSlider(Listing_Standard listing, float val, float min, float max, string label, string leftLabel = null, string rightLabel = null, string tooltip = null)
         {
             Rect rect = new Rect(listing.GetRect(44f));
@@ -53,6 +82,7 @@ namespace MapDesigner.UI
                 TooltipHandler.TipRegion(rect, tooltip);
             }
             return result;
+
         }
 
 

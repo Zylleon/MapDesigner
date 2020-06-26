@@ -40,9 +40,20 @@ namespace MapDesigner.UI
             // hill distribution
             listingStandard.GapLine();
 
+            //GameFont font = Text.Font;
+            //Text.Font = GameFont.Medium;
+            //listingStandard.Label("ZMD_hillArrangement".Translate());
+            //Text.Font = font;
+            listingStandard.Label("ZMD_hillArrangementDesc".Translate());
+            listingStandard.Gap();
+
+            //listingStandard.GapLine();
+
             if (settings.hillSize > 0.022f)
             {
                 listingStandard.CheckboxLabeled("ZMD_flagHillClumping".Translate(), ref MapDesignerSettings.flagHillClumping, "ZMD_flagHillClumpingTooltip".Translate());
+                listingStandard.Gap();
+
             }
 
             listingStandard.CheckboxLabeled("ZMD_flagHillRadial".Translate(), ref MapDesignerSettings.flagHillRadial, "ZMD_flagHillRadialTooltip".Translate());
@@ -59,7 +70,10 @@ namespace MapDesigner.UI
                 settings.hillRadialSize = InterfaceUtility.LabeledSlider(hillRadialListing, settings.hillRadialSize, 0.2f, 1.1f, hillRadialSizeLabel, "ZMD_center".Translate(), "ZMD_edges".Translate(), "ZMD_hillRadialSizeTooltip".Translate());
 
                 hillRadialListing.End();
+
             }
+            listingStandard.Gap();
+            //listingStandard.GapLine();
 
             listingStandard.CheckboxLabeled("ZMD_flagHillSplit".Translate(), ref MapDesignerSettings.flagHillSplit, "ZMD_flagHillSplit".Translate());
             if (MapDesignerSettings.flagHillSplit)
@@ -75,7 +89,10 @@ namespace MapDesigner.UI
                 settings.hillSplitDir = InterfaceUtility.AnglePicker(hillSplitListing, settings.hillSplitDir, "ZMD_Angle".Translate());
 
                 hillSplitListing.End();
+
             }
+            listingStandard.Gap();
+            //listingStandard.GapLine();
 
             listingStandard.CheckboxLabeled("ZMD_flagHillSide".Translate(), ref MapDesignerSettings.flagHillSide, "ZMD_flagHillSide".Translate());
             if(MapDesignerSettings.flagHillSide)
@@ -90,6 +107,7 @@ namespace MapDesigner.UI
                 settings.hillSideDir = InterfaceUtility.AnglePicker(hillSideListing, settings.hillSideDir, "ZMD_Angle".Translate(), 3, true);
 
                 hillSideListing.End();
+
             }
 
             // reset
@@ -121,14 +139,15 @@ namespace MapDesigner.UI
             settings.hillRadialAmt = 1.0f;
             settings.hillRadialSize = 0.65f;
 
-            MapDesignerSettings.flagHillSide = false;
-            settings.hillSideAmt = 1.0f;
-            settings.hillSideDir = 0f;
-
             MapDesignerSettings.flagHillSplit = false;
             settings.hillSplitAmt = 1.5f;
-            settings.hillSplitDir = 0f;
+            settings.hillSplitDir = 90f;
             settings.hillSplitSize = 0.35f;
+
+            MapDesignerSettings.flagHillSide = false;
+            settings.hillSideAmt = 1.0f;
+            settings.hillSideDir = 180f;
+
         }
 
 

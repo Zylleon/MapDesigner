@@ -108,14 +108,79 @@ namespace MapDesigner
         static void Postfix(Map map, GenStepParams parms)
         {
             MapDesignerSettings settings = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>();
-            // hill size
             MapGenFloatGrid elevation = MapGenerator.Elevation;
-            float hillAmount = settings.hillAmount;
 
+            // pushes hills away from center
+            if (MapDesignerSettings.flagHillRadial)
+            {
+                IntVec3 center = map.Center;
+                int size = map.Size.x / 2;
+                float centerSize = settings.hillRadialSize * size;
+                foreach (IntVec3 current in map.AllCells)
+                {
+                    float distance = (float)Math.Sqrt(Math.Pow(current.x - center.x, 2) + Math.Pow(current.z - center.z, 2));
+                    elevation[current] += (settings.hillRadialAmt * (distance - centerSize) / size);
+                }
+            }
+
+            // hills to both sides
+            if (MapDesignerSettings.flagHillSplit)
+            {
+                float angle = settings.hillSplitDir;
+
+                int mapSize = map.Size.x;
+                float gapSize = 0.5f * mapSize * settings.hillSplitSize;
+                float skew = settings.hillSplitAmt;
+
+                ModuleBase slope = new AxisAsValueX();
+                slope = new Rotate(0.0, 180.0 - angle, 0.0, slope);
+
+                slope = new Translate(0.0 - map.Center.x, 0.0, 0.0 - map.Center.z, slope);
+
+                float multiplier = skew / mapSize;
+
+                foreach (IntVec3 current in map.AllCells)
+                {
+                    float value = slope.GetValue(current);
+                    //float num = size - Math.Abs(value);
+                    float num = Math.Abs(value) - gapSize;
+
+                    //num = 1 + (skew * num / mapSize);
+                    //num = 1 + num * multiplier;
+                    elevation[current] += num * multiplier;
+                    //elevation[current] *= num;
+                    //elevation[current] += num - 1;
+                }
+            }
+
+            // hills to one side
+            if (MapDesignerSettings.flagHillSide)
+            {
+                float angle = settings.hillSideDir;
+                float skew = settings.hillSideAmt;
+
+                ModuleBase slope = new AxisAsValueX();
+                slope = new Rotate(0.0, 180.0 - angle, 0.0, slope);
+                slope = new Translate(0.0 - map.Center.x, 0.0, 0.0 - map.Center.z, slope);
+                float multiplier = skew / map.Size.x;
+                foreach (IntVec3 current in map.AllCells)
+                {
+                    //elevation[current] *= (1 + slope.GetValue(current) * multiplier);
+                    //elevation[current] += 0.5f * slope.GetValue(current) * multiplier;
+                    elevation[current] += slope.GetValue(current) * multiplier;
+
+                }
+
+            }
+
+
+            // hill amount
+            float hillAmount = settings.hillAmount;
             foreach (IntVec3 current in map.AllCells)
             {
                 elevation[current] *= hillAmount;
             }
+
 
             // natural distribution
             if (MapDesignerSettings.flagHillClumping)
@@ -136,69 +201,6 @@ namespace MapDesigner
                 }
             }
 
-            // pushes hills away from center
-            if (MapDesignerSettings.flagHillRadial)
-            {
-                IntVec3 center = map.Center;
-                int size = map.Size.x / 2;
-                float centerSize = settings.hillRadialSize * size;
-                foreach (IntVec3 current in map.AllCells)
-                {
-                    float distance = (float)Math.Sqrt(Math.Pow(current.x - center.x, 2) + Math.Pow(current.z - center.z, 2));
-                    elevation[current] *= (1f + (settings.hillRadialAmt * (distance - centerSize) / size));
-                }
-            }
-
-
-            // hills to both sides
-            if (MapDesignerSettings.flagHillSplit)
-            {
-                float angle = settings.hillSplitDir * 10f;
-
-                int mapSize = map.Size.x;
-                float gapSize = 0.5f * mapSize * settings.hillSplitSize;
-                float skew = settings.hillSplitAmt;
-
-                ModuleBase slope = new AxisAsValueX();
-                slope = new Rotate(0.0, 360.0 - angle, 0.0, slope);
-                slope = new Translate(0.0 - map.Center.x, 0.0, 0.0 - map.Center.z, slope);
-
-                float multiplier = 1.5f * skew / mapSize;
-
-                foreach (IntVec3 current in map.AllCells)
-                {
-                    float value = slope.GetValue(current);
-                    //float num = size - Math.Abs(value);
-                    float num = Math.Abs(value) - gapSize;
-
-                    //num = 1 + (skew * num / mapSize);
-                    num = 1 + num * multiplier;
-
-                    elevation[current] *= num;
-                    elevation[current] += num - 1;
-                }
-            }
-
-
-
-
-            // hills to one side
-            if (MapDesignerSettings.flagHillSide)
-            {
-                float angle = settings.hillSideDir;
-                float skew = settings.hillSideAmt;
-
-                ModuleBase slope = new AxisAsValueX();
-                slope = new Rotate(0.0, 180.0 - angle, 0.0, slope);
-                slope = new Translate(0.0 - map.Center.x, 0.0, 0.0 - map.Center.z, slope);
-                float multiplier = skew / map.Size.x;
-                foreach (IntVec3 current in map.AllCells)
-                {
-                    elevation[current] *= (1 + slope.GetValue(current) * multiplier);
-                    elevation[current] += 0.5f * slope.GetValue(current) * multiplier;
-                }
-
-            }
         }
 
     }

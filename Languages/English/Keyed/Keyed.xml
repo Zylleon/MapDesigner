@@ -124,12 +124,7 @@
 	<ZMD_flagCaves>Allow caves</ZMD_flagCaves>
 	<ZMD_flagCavesTooltip>Unchecking this prevents caves from ever spawning, even on tiles with mountains or large hills.</ZMD_flagCavesTooltip>
 	
-	<ZMD_flagOneRock>One rock type per map</ZMD_flagOneRock>
-	<ZMD_flagOneRockTooltip>One rock type per map</ZMD_flagOneRockTooltip>
 
-	<ZMD_rockTypeRange>Number of rock types per map</ZMD_rockTypeRange>
-	<ZMD_flagBiomeRocks>Allow modded biomes with special rocks, like Atolls or the Ocular Forest, to have more rock types.</ZMD_flagBiomeRocks>
-	<ZMD_flagBiomeRocksTooltip> This can drastically change game balance in some modded biomes.</ZMD_flagBiomeRocksTooltip>
 	
 <!-- ===================================	Things	================================= -->
     <!-- Tabs -->
@@ -146,9 +141,13 @@
 	<ZMD_densityGeyser>Steam geysers</ZMD_densityGeyser>
 	<ZMD_densityOre>Ore amount</ZMD_densityOre>
 	<ZMD_animaCount>Anima trees</ZMD_animaCount>
-	
 
+	<ZMD_flagOneRock>One rock type per map</ZMD_flagOneRock>
+	<ZMD_flagOneRockTooltip>One rock type per map</ZMD_flagOneRockTooltip>
 
+	<ZMD_rockTypeRange>Number of rock types per map</ZMD_rockTypeRange>
+	<ZMD_flagBiomeRocks>Allow modded biomes with special rocks, like Atolls or the Ocular Forest, to have more rock types.</ZMD_flagBiomeRocks>
+	<ZMD_flagBiomeRocksTooltip> This can drastically change game balance in some modded biomes.</ZMD_flagBiomeRocksTooltip>
 	
 <!-- ===================================	Rivers	================================= -->
 	
@@ -156,8 +155,8 @@
 	
 	<ZMD_sizeRiver>River size</ZMD_sizeRiver>
 	
-	<ZMD_flagRiverBeach>Rivers have beaches</ZMD_flagRiverBeach>
-	<ZMD_riverBeachSize>River beach size</ZMD_riverBeachSize>
+	<ZMD_flagRiverBeach>River banks</ZMD_flagRiverBeach>
+	<ZMD_riverBeachSize>River bank size</ZMD_riverBeachSize>
 	
 	
 <!-- ===================================	Features	================================= -->

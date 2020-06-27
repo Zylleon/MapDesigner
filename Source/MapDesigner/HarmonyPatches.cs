@@ -267,7 +267,7 @@ namespace MapDesigner
             if (__result.Count() >= num)
             {
                 __result = __result.Take(num);
-                Log.Message("New rocks: " + __result.Count());
+                //Log.Message("New rocks: " + __result.Count());
             }
             else
             {

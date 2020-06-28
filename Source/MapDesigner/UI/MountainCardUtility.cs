@@ -20,9 +20,24 @@ namespace MapDesigner.UI
         public static void DrawMountainCard(Rect rect)
         {
             Rect rect2 = rect.ContractedBy(4f);
-            Rect viewRect = new Rect(0f, 0f, rect2.width - 18f, Math.Max(500f, viewHeight + 200f));
-            Widgets.BeginScrollView(rect2, ref scrollPosition, viewRect, true);
 
+            // to correctly initialize scrollview height
+            float height = 500f;
+            if (MapDesignerSettings.flagHillRadial)
+            {
+                height += 100f;
+            }
+            if (MapDesignerSettings.flagHillSplit)
+            {
+                height += 140f;
+            }
+            if (MapDesignerSettings.flagHillSide)
+            {
+                height += 100f;
+            }
+
+            Rect viewRect = new Rect(0f, 0f, rect2.width - 18f, Math.Max(height, viewHeight + 200f));
+            Widgets.BeginScrollView(rect2, ref scrollPosition, viewRect, true);
             Listing_Standard listingStandard = new Listing_Standard();
             listingStandard.Begin(viewRect);
 

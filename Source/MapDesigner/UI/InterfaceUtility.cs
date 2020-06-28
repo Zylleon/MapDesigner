@@ -26,7 +26,7 @@ namespace MapDesigner.UI
 
             Rect spinnerRect = new Rect(leftSide);
             spinnerRect.xMax -= 10f;
-            spinnerRect.xMin = spinnerRect.xMax - spinnerRect.height;
+            spinnerRect.xMin = spinnerRect.xMax - 44f;
 
             string texPath = String.Format("GUI/ZMD_spinner{0}", spinnerType);
             Texture2D spinner = ContentFinder<Texture2D>.Get(texPath, true);

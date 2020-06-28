@@ -295,12 +295,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BiomeDefault.cs" />
+    <Compile Include="Patches\AnimaTreePatch.cs" />
+    <Compile Include="Patches\CaveSettingsPatch.cs" />
+    <Compile Include="Patches\HarmonyPatches.cs" />
+    <Compile Include="Patches\MountainSettingsPatch.cs" />
+    <Compile Include="Patches\OreDensityPatch.cs" />
+    <Compile Include="Patches\RiverBankPatch.cs" />
+    <Compile Include="Patches\RockTypesPatch.cs" />
+    <Compile Include="Patches\TerrainSettingsPatch.cs" />
     <Compile Include="UI\MountainCardUtility.cs" />
     <Compile Include="UI\FeatureCardUtility.cs" />
     <Compile Include="GenStep_RoundIsland.cs" />
     <Compile Include="UI\InterfaceUtility.cs" />
     <Compile Include="MapDesignerSettingsWindow.cs" />
-    <Compile Include="HarmonyPatches.cs" />
     <Compile Include="HelperMethods.cs" />
     <Compile Include="MapDesignerSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

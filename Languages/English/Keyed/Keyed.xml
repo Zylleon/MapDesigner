@@ -204,4 +204,23 @@
   <ZMD_lakeRoundness3>Somewhat blobular</ZMD_lakeRoundness3>
   <ZMD_lakeRoundness4>Shapeless</ZMD_lakeRoundness4>
 
+
+
+	
+<!-- ===================================	Beta	================================= -->
+    <!-- Tabs -->
+
+	<ZMD_betaTab>Beta</ZMD_betaTab>
+	<ZMD_betaTabInfo>USE AT YOUR OWN RISK! These options are in beta. They may or may not work, and can be removed or changed at any time.\n\nPlease report any issues, or lack thereof.</ZMD_betaTabInfo>
+	
+	
+	<ZMD_flagTerrainFert>Terrain fertility adjustment</ZMD_flagTerrainFert>
+	
+	<ZMD_terrainFertAmt>Fertility amount. 1 = vanilla: </ZMD_terrainFertAmt>
+	
+	
+	
+	
+	
+	
 </LanguageData>

@@ -303,6 +303,9 @@
     <Compile Include="Patches\RiverBankPatch.cs" />
     <Compile Include="Patches\RockTypesPatch.cs" />
     <Compile Include="Patches\TerrainSettingsPatch.cs" />
+    <Compile Include="TerrainDefault.cs" />
+    <Compile Include="UI\BetaCardUtility.cs" />
+    <Compile Include="UI\GeneralCardUtility.cs" />
     <Compile Include="UI\MountainCardUtility.cs" />
     <Compile Include="UI\FeatureCardUtility.cs" />
     <Compile Include="GenStep_RoundIsland.cs" />

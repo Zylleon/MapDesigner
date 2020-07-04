@@ -136,6 +136,92 @@ namespace MapDesigner
             return 0f;
         }
     
+
+        public static TerrainDefault StretchTerrains(TerrainDefault input, Map map)
+        {
+            MapDesignerSettings settings = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>();
+
+            List<TerrainThreshold> oldThreshes = map.Biome.terrainsByFertility;
+            List<TerrainThreshold> newThreshes = new List<TerrainThreshold>();
+
+            // Find the boundaries
+            MapGenFloatGrid fertility = MapGenerator.Fertility;
+
+            float minMapFert = 999f;
+            float maxMapFert = -999f;
+            foreach (IntVec3 current in map.AllCells)
+            {
+                maxMapFert = Math.Max(maxMapFert, fertility[current]);
+                minMapFert = Math.Min(minMapFert, fertility[current]);
+            }
+
+            float rangeSize = maxMapFert - minMapFert;
+
+            List<TBF> listTbf = new List<TBF>();
+
+            oldThreshes = oldThreshes.OrderBy(t => t.terrain.fertility).ToList();
+
+            for (int i = 0; i < oldThreshes.Count(); i++)
+            {
+                TBF item = new TBF()
+                {
+                    fertRank = i,
+                    thresh = oldThreshes[i],
+                    size = Math.Min(oldThreshes[i].max, maxMapFert) - Math.Max(oldThreshes[i].min, minMapFert)
+                };
+                listTbf.Add(item);
+            }
+
+
+            // the actual adjustments
+            listTbf.Where(t => !t.thresh.terrain.IsWater).First().size /= settings.terrainFert;
+            listTbf.Where(t => !t.thresh.terrain.IsWater).Last().size *= settings.terrainFert;
+
+            float rangeSizeNew = listTbf.Sum(t => t.size);
+            float ratio = rangeSize / rangeSizeNew;
+
+            // make new threshes
+            // it's still sorted, go in order
+            float curValue = 0f;
+            foreach (TBF tbf in listTbf)
+            {
+                TerrainThreshold thresh = new TerrainThreshold()
+                {
+                    terrain = tbf.thresh.terrain,
+                    min = curValue,
+                    max = curValue + ratio * tbf.size
+                };
+
+                curValue = thresh.max;
+                newThreshes.Add(thresh);
+            }
+
+            // reset to original range, hopefully
+            foreach (TerrainThreshold t in newThreshes)
+            {
+                t.min += minMapFert;
+                t.max += minMapFert;
+            }
+
+            // stretch to cover full range. ideally this doesn't matter, but it's safer
+            newThreshes = newThreshes.OrderBy(t => t.min).ToList();
+
+            newThreshes[0].min = -999f;
+            newThreshes.Last().max = 999f;
+
+
+            foreach (TerrainThreshold t in newThreshes)
+            {
+                Log.Message(String.Format("Terrain: {0} | min={1}, max={2}", t.terrain.defName, t.min, t.max));
+            }
+            //map.Biome.terrainsByFertility = newThreshes;
+
+            input.terrainsByFertility = newThreshes;
+
+            return input;
+        }
+
+
         public static float DistanceBetweenPoints(IntVec3 point1, IntVec3 point2)
         {
             float dist = 0;

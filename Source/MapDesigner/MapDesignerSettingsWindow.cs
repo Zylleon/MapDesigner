@@ -18,6 +18,7 @@ namespace MapDesigner
             Things,
             Rivers,
             Feature,
+            Beta,
         }
         private MapDesigner_Mod.InfoCardTab tab;
 
@@ -51,6 +52,12 @@ namespace MapDesigner
 
             List<TabRecord> list = new List<TabRecord>();
 
+            TabRecord generalTab = new TabRecord("ZMD_generalTab".Translate(), delegate
+            {
+                this.tab = MapDesigner_Mod.InfoCardTab.General;
+            }, this.tab == MapDesigner_Mod.InfoCardTab.General);
+            list.Add(generalTab);
+
             TabRecord mountainTab = new TabRecord("ZMD_mountainTab".Translate(), delegate
             {
                 this.tab = MapDesigner_Mod.InfoCardTab.Mountains;
@@ -74,6 +81,15 @@ namespace MapDesigner
                 this.tab = MapDesigner_Mod.InfoCardTab.Feature;
             }, this.tab == MapDesigner_Mod.InfoCardTab.Feature);
             list.Add(featureTab);
+
+            if(Prefs.DevMode)
+            {
+                TabRecord betaTab = new TabRecord("ZMD_betaTab".Translate(), delegate
+                {
+                    this.tab = MapDesigner_Mod.InfoCardTab.Beta;
+                }, this.tab == MapDesigner_Mod.InfoCardTab.Beta);
+                list.Add(betaTab);
+            }
 
             TabDrawer.DrawTabs(rect3, list, 150f);
             this.FillCard(rect3.ContractedBy(18f));
@@ -103,9 +119,16 @@ namespace MapDesigner
                 case MapDesigner_Mod.InfoCardTab.Feature:
                     UI.FeatureCardUtility.DrawFeaturesCard(cardRect);
                     break;
-                default:
-                    tab = MapDesigner_Mod.InfoCardTab.Mountains;
+                case MapDesigner_Mod.InfoCardTab.Beta:
+                    UI.BetaCardUtility.DrawBetaCard(cardRect);
                     break;
+                default:
+                    //tab = MapDesigner_Mod.InfoCardTab.Mountains;
+                    //tab = MapDesigner_Mod.InfoCardTab.General;
+                    UI.GeneralCardUtility.DrawGeneralCard(cardRect);
+                    break;
+
+
             }
         }
 

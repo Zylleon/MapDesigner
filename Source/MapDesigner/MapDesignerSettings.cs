@@ -58,6 +58,9 @@ namespace MapDesigner
         public string riverShore = "SoilRich";
         public float riverBeachSize = 10f;                // in tiles
 
+        // Terrain
+        public static bool flagTerrain = false;
+        public float terrainFert = 1f;
 
         // Features
         public enum Features : byte
@@ -131,6 +134,12 @@ namespace MapDesigner
             Scribe_Values.Look(ref flagRiverBeach, "flagFertileRivers", false);
             Scribe_Values.Look(ref riverShore, "riverShore", "SoilRich");
             Scribe_Values.Look(ref riverBeachSize, "riverBeachSize", 10f);
+
+
+            // Terrain
+            Scribe_Values.Look(ref terrainFert, "terrainFert", 1.0f);
+            Scribe_Values.Look(ref flagTerrain, "flagTerrain", false);
+
 
             // Features
             Scribe_Values.Look(ref selectedFeature, "selectedFeature", Features.None);

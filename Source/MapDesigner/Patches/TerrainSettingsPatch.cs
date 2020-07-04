@@ -13,71 +13,65 @@ using Verse.Noise;
 namespace MapDesigner.Patches
 {
 
-    //[HarmonyPatch(typeof(RimWorld.GenStep_Terrain))]
-    //[HarmonyPatch(nameof(RimWorld.GenStep_Terrain.Generate))]
-    //static class TerrainSettingsPatch
-    //{
-    //    static void Prefix(out List<TerrainThreshold> __state, Map map)
-    //    {
-    //        __state = map.Biome.terrainsByFertility;
-    //        List<TerrainThreshold> oldThreshes = map.Biome.terrainsByFertility;
-    //        List<TerrainThreshold> newThreshes = new List<TerrainThreshold>();
+    [HarmonyPatch(typeof(RimWorld.GenStep_Terrain))]
+    [HarmonyPatch(nameof(RimWorld.GenStep_Terrain.Generate))]
+    static class TerrainSettingsPatch
+    {
+        static void Prefix(out TerrainDefault __state, Map map)
+        {
+            __state = new TerrainDefault()
+            {
+                terrainsByFertility = map.Biome.terrainsByFertility,
+                terrainPatchMakers = map.Biome.terrainPatchMakers
+            };
+            if (!MapDesignerSettings.flagTerrain)
+            {
+                return;
+            }
+            Log.Message("running terrain patch");
+            
+            TerrainDefault newTerrains = HelperMethods.StretchTerrains(__state, map);
 
-    //        MapGenFloatGrid elevation = MapGenerator.Elevation;
-
-    //        float min = 999f;
-    //        float max = -999f;
-    //        foreach (IntVec3 current in map.AllCells)
-    //        {
-    //            max = Math.Max(max, elevation[current]);
-    //            min = Math.Min(min, elevation[current]);
-    //        }
-    //        float rangeSize = max - min;
-
-    //        List<TBF> listTbf = new List<TBF>();
-
-    //        oldThreshes.OrderBy(t => t.terrain.fertility);
-
-    //        foreach (TerrainThreshold t in oldThreshes)
-    //        {
-
-    //        }
+            map.Biome.terrainsByFertility = newTerrains.terrainsByFertility;
+        }
 
 
 
 
+        static void Postfix(TerrainDefault __state, Map map)
+        {
+            map.Biome.terrainsByFertility = __state.terrainsByFertility;
+            map.Biome.terrainPatchMakers = __state.terrainPatchMakers;
+        }
+
+
+
+        static List<TerrainThreshold> StretchTerrains(List<TerrainThreshold> input, float amt, float min, float max)
+        {
+            List<TerrainThreshold> output = input;
 
 
 
 
-    //        map.Biome.terrainsByFertility = newThreshes;
-
-    //    }
-
+            return output;
+        }
 
 
-
-    //    static void Postfix(List<TerrainThreshold> __state, Map map)
-    //    {
-    //        map.Biome.terrainsByFertility = __state;
-
-    //        Log.Message("First terrain " + map.Biome.terrainsByFertility.FirstOrDefault().terrain.defName);
-    //    }
+        //protected class TerrainDefaults
+        //{
+        //    public List<TerrainThreshold> terrainsByFertility = new List<TerrainThreshold>();
+        //    public List<TerrainPatchMaker> terrainPatchMakers = new List<TerrainPatchMaker>();
+        //}
 
 
+        //protected class TBF
+        //{
+        //    public TerrainThreshold thresh;
+        //    public int fertRank;
+        //    public float size;
 
-    //    private class TBF
-    //    {
-    //        TerrainThreshold thresh;
-    //        int fertRank;
-    //        float size;
-    //        //float size = thresh.max - thresh.min;
+        //}
 
-
-
-    //    }
-
-    //}
-
+    }
 
 }

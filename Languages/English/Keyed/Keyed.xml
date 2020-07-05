@@ -211,7 +211,7 @@
     <!-- Tabs -->
 
 	<ZMD_betaTab>Beta</ZMD_betaTab>
-	<ZMD_betaTabInfo>USE AT YOUR OWN RISK! These options are in beta. They may or may not work, and can be removed or changed at any time.\n\nPlease report any issues, or lack thereof.</ZMD_betaTabInfo>
+	<ZMD_betaTabInfo>USE AT YOUR OWN RISK! These options can be removed or changed at any time. They might not do anything, and if they do, it'll probably spam the error log.\n\nPlease report any lack of issues.</ZMD_betaTabInfo>
 	
 	
 	<ZMD_flagTerrainFert>Terrain fertility adjustment</ZMD_flagTerrainFert>

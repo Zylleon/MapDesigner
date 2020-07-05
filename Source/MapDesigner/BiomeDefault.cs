@@ -14,5 +14,7 @@ namespace MapDesigner
         public float plantDensity;
         public float wildPlantRegrowDays;
 
+        public TerrainDefault terrain;
+
     }
 }

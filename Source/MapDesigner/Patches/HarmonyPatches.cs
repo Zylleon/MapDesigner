@@ -28,6 +28,19 @@ namespace MapDesigner.Patches
                 HarmonyMethod postfix = new HarmonyMethod(typeof(MapDesigner).GetMethod("RiverBeachPostfix"));
                 harmony.Patch(targetmethod, null, postfix);
 
+                //if (GenTypes.GetTypeInAnyAssembly("MapReroll.MapPreviewGenerator") != null)
+                //{
+                //    Log.Message("Found map reroll");
+
+                //    targetmethod = AccessTools.Method(typeof(MapReroll.MapPreviewGenerator), "GeneratePreviewForSeed");
+                //    HarmonyMethod prefix = new HarmonyMethod(typeof(TerrainSettingsPatch).GetMethod("Prefix"));
+                //    postfix = new HarmonyMethod(typeof(TerrainSettingsPatch).GetMethod("Postfix"));
+                //    harmony.Patch(targetmethod, prefix, null);
+                //    Log.Message("Prefix patched");
+                //    harmony.Patch(targetmethod, null, postfix);
+                //    Log.Message("Postfix patched");
+                //}
+
                 HelperMethods.InitBiomeDefaults();
                 HelperMethods.ApplyBiomeSettings();
             }

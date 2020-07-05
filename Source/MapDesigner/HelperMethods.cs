@@ -32,6 +32,11 @@ namespace MapDesigner
                 biodef.animalDensity = biome.animalDensity;
                 biodef.plantDensity = biome.plantDensity;
                 biodef.wildPlantRegrowDays = biome.wildPlantRegrowDays;
+                biodef.terrain = new TerrainDefault()
+                {
+                    terrainsByFertility = biome.terrainsByFertility,
+                    terrainPatchMakers = biome.terrainPatchMakers
+                };
 
                 biomeDefaults.Add(biome.defName, biodef);
             }
@@ -127,8 +132,36 @@ namespace MapDesigner
                }
 
                 river.widthOnMap = widthOnMap * sizeRiver;
-
             }
+
+            // terrain
+            foreach (BiomeDef biome in DefDatabase<BiomeDef>.AllDefs)
+            {
+                if (!biome.terrainsByFertility.NullOrEmpty())
+                {
+                    TerrainDefault newTerrain;
+
+                    if (biome.defName.Contains("Island"))
+                    {
+                        newTerrain = StretchTerrains(biomeDefaults[biome.defName].terrain, -.20f, 17.0f);
+                    }
+                    else
+                    {
+                        newTerrain = StretchTerrains(biomeDefaults[biome.defName].terrain, -.20f, 1.20f);
+                    }
+                    biome.terrainsByFertility = newTerrain.terrainsByFertility;
+                    //biome.terrainPatchMakers = newTerrain.terrainPatchMakers;
+                    if (biome.defName.Contains("Arid"))
+                    {
+                        Log.Message("Arid Shrubland");
+                        foreach (TerrainThreshold t in newTerrain.terrainsByFertility)
+                        {
+                            Log.Message(String.Format("Terrain: {0} | min={1}, max={2}", t.terrain.defName, t.min, t.max));
+                        }
+                    }
+                }
+            }
+
         }
 
         public static float GetRiverDirection()
@@ -137,88 +170,106 @@ namespace MapDesigner
         }
     
 
-        public static TerrainDefault StretchTerrains(TerrainDefault input, Map map)
+        public static TerrainDefault StretchTerrains(TerrainDefault oldTerrain, float minMapFert, float maxMapFert)
         {
             MapDesignerSettings settings = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>();
 
-            List<TerrainThreshold> oldThreshes = map.Biome.terrainsByFertility;
-            List<TerrainThreshold> newThreshes = new List<TerrainThreshold>();
+            bool changeTbf = false;
+            bool changePatchMakers = false;
 
-            // Find the boundaries
-            MapGenFloatGrid fertility = MapGenerator.Fertility;
+            List<TerrainThreshold> oldTbf = oldTerrain.terrainsByFertility;
+            List<TerrainThreshold> newTbf = new List<TerrainThreshold>();
 
-            float minMapFert = 999f;
-            float maxMapFert = -999f;
-            foreach (IntVec3 current in map.AllCells)
-            {
-                maxMapFert = Math.Max(maxMapFert, fertility[current]);
-                minMapFert = Math.Min(minMapFert, fertility[current]);
-            }
-
+            List<TerrainPatchMaker> newPatchMakers = oldTerrain.terrainPatchMakers;
             float rangeSize = maxMapFert - minMapFert;
 
             List<TBF> listTbf = new List<TBF>();
 
-            oldThreshes = oldThreshes.OrderBy(t => t.terrain.fertility).ToList();
-
-            for (int i = 0; i < oldThreshes.Count(); i++)
+            for (int i = 0; i < oldTbf.Count(); i++)
             {
                 TBF item = new TBF()
                 {
                     fertRank = i,
-                    thresh = oldThreshes[i],
-                    size = Math.Min(oldThreshes[i].max, maxMapFert) - Math.Max(oldThreshes[i].min, minMapFert)
+                    thresh = oldTbf[i],
+                    size = Math.Min(oldTbf[i].max, maxMapFert) - Math.Max(oldTbf[i].min, minMapFert)
                 };
                 listTbf.Add(item);
             }
 
-
-            // the actual adjustments
-            listTbf.Where(t => !t.thresh.terrain.IsWater).First().size /= settings.terrainFert;
-            listTbf.Where(t => !t.thresh.terrain.IsWater).Last().size *= settings.terrainFert;
-
-            float rangeSizeNew = listTbf.Sum(t => t.size);
-            float ratio = rangeSize / rangeSizeNew;
-
-            // make new threshes
-            // it's still sorted, go in order
-            float curValue = 0f;
-            foreach (TBF tbf in listTbf)
+            if (listTbf.Where(t => !t.thresh.terrain.IsWater).Count() >= 2)
             {
-                TerrainThreshold thresh = new TerrainThreshold()
+                changeTbf = true;
+                // the actual adjustments
+                listTbf.Where(t => !t.thresh.terrain.IsWater).First().size /= settings.terrainFert;
+                listTbf.Where(t => !t.thresh.terrain.IsWater).Last().size *= settings.terrainFert;
+
+                float rangeSizeNew = listTbf.Sum(t => t.size);
+                float ratio = rangeSize / rangeSizeNew;
+
+                // make new threshes
+                listTbf = listTbf.OrderBy(t => t.thresh.min).ToList();
+
+                float curValue = 0f;
+                foreach (TBF tbf in listTbf)
                 {
-                    terrain = tbf.thresh.terrain,
-                    min = curValue,
-                    max = curValue + ratio * tbf.size
-                };
+                    TerrainThreshold thresh = new TerrainThreshold()
+                    {
+                        terrain = tbf.thresh.terrain,
+                        min = curValue,
+                        max = curValue + ratio * tbf.size
+                    };
+                    curValue = thresh.max;
+                    newTbf.Add(thresh);
+                }
 
-                curValue = thresh.max;
-                newThreshes.Add(thresh);
+                // reset to original active range
+                foreach (TerrainThreshold t in newTbf)
+                {
+                    t.min += minMapFert;
+                    t.max += minMapFert;
+                }
+
+                // stretch to cover full range
+                //newTbf = newTbf.OrderBy(t => t.min).ToList();
+                newTbf.Sort((x, y) => x.min.CompareTo(y.min));
+                newTbf[0].min = -999f;
+                newTbf.Last().max = 999f;
+
+                // adjust patchmaker min max
+                newTbf.Sort((x, y) => x.min.CompareTo(y.min));
+                oldTbf.Sort((x, y) => x.min.CompareTo(y.min));
+
+                SimpleCurve curve = new SimpleCurve();
+                for(int i = 0; i < oldTbf.Count(); i++)
+                {
+                    curve.Add(new CurvePoint(oldTbf[i].min, newTbf[i].min));
+                }
+                curve.Add(new CurvePoint(oldTbf.Last().max, newTbf.Last().max));
+
+                foreach(TerrainPatchMaker patchMaker in newPatchMakers)
+                {
+                    patchMaker.minFertility = curve.Evaluate(patchMaker.minFertility);
+                    patchMaker.maxFertility = curve.Evaluate(patchMaker.maxFertility);
+                }
+
             }
 
-            // reset to original range, hopefully
-            foreach (TerrainThreshold t in newThreshes)
+            // TerrainPatchMaker adjustments?
+
+
+
+
+
+
+
+
+            TerrainDefault newTerrain = new TerrainDefault()
             {
-                t.min += minMapFert;
-                t.max += minMapFert;
-            }
+                terrainsByFertility = newTbf,
+                terrainPatchMakers = newPatchMakers
+            };
 
-            // stretch to cover full range. ideally this doesn't matter, but it's safer
-            newThreshes = newThreshes.OrderBy(t => t.min).ToList();
-
-            newThreshes[0].min = -999f;
-            newThreshes.Last().max = 999f;
-
-
-            foreach (TerrainThreshold t in newThreshes)
-            {
-                Log.Message(String.Format("Terrain: {0} | min={1}, max={2}", t.terrain.defName, t.min, t.max));
-            }
-            //map.Biome.terrainsByFertility = newThreshes;
-
-            input.terrainsByFertility = newThreshes;
-
-            return input;
+            return newTerrain;
         }
 
 

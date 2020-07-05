@@ -59,7 +59,6 @@ namespace MapDesigner
         public float riverBeachSize = 10f;                // in tiles
 
         // Terrain
-        public static bool flagTerrain = false;
         public float terrainFert = 1f;
 
         // Features
@@ -138,7 +137,6 @@ namespace MapDesigner
 
             // Terrain
             Scribe_Values.Look(ref terrainFert, "terrainFert", 1.0f);
-            Scribe_Values.Look(ref flagTerrain, "flagTerrain", false);
 
 
             // Features

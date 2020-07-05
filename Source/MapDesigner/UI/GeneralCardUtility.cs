@@ -45,7 +45,6 @@ namespace MapDesigner.UI
         public static void ResetAllSettings()
         {
             settings.terrainFert = 1f;
-            MapDesignerSettings.flagTerrain = false;
 
             //settings.selectedFeature = MapDesignerSettings.Features.None;
             //MountainCardUtility.ResetMountainSettings();

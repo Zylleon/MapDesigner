@@ -22,14 +22,11 @@ namespace MapDesigner.UI
         {
             Listing_Standard listing = new Listing_Standard();
             listing.Begin(rect);
-            listing.Label("ZMD_generalTabInfo".Translate());
+            listing.Label("ZMD_betaTabInfo".Translate());
 
             listing.GapLine();
 
-            listing.CheckboxLabeled("ZMD_flagTerrainFert".Translate(), ref MapDesignerSettings.flagTerrain, "ZMD_flagTerrainFert".Translate());
-
-            settings.terrainFert = InterfaceUtility.LabeledSlider(listing, settings.terrainFert, 0.5f, 2f, "ZMD_terrainFertAmt".Translate() + settings.terrainFert);
-
+            settings.terrainFert = InterfaceUtility.LabeledSlider(listing, settings.terrainFert, 0.25f, 2f, "ZMD_terrainFertAmt".Translate() + settings.terrainFert);
 
             // reset
             listing.GapLine();
@@ -45,7 +42,6 @@ namespace MapDesigner.UI
         public static void ResetBetaSettings()
         {
             settings.terrainFert = 1f;
-            MapDesignerSettings.flagTerrain = false;
             
         }
     }

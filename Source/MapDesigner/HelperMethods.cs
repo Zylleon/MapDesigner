@@ -137,28 +137,30 @@ namespace MapDesigner
             // terrain
             foreach (BiomeDef biome in DefDatabase<BiomeDef>.AllDefs)
             {
+                Log.Message("---------------------------------------");
+
+                Log.Message(biome.defName);
+
                 if (!biome.terrainsByFertility.NullOrEmpty())
                 {
                     TerrainDefault newTerrain;
 
                     if (biome.defName.Contains("Island"))
                     {
-                        newTerrain = StretchTerrains(biomeDefaults[biome.defName].terrain, -.20f, 17.0f);
+                        newTerrain = TerrainUtility.StretchTerrainFertility(biomeDefaults[biome.defName].terrain, -.20f, 17.0f);
                     }
                     else
                     {
-                        newTerrain = StretchTerrains(biomeDefaults[biome.defName].terrain, -.20f, 1.20f);
+                        newTerrain = TerrainUtility.StretchTerrainFertility(biomeDefaults[biome.defName].terrain, -.20f, 1.20f);
                     }
                     biome.terrainsByFertility = newTerrain.terrainsByFertility;
-                    //biome.terrainPatchMakers = newTerrain.terrainPatchMakers;
-                    if (biome.defName.Contains("Arid"))
+                    biome.terrainPatchMakers = newTerrain.terrainPatchMakers;
+
+                    foreach (TerrainThreshold t in newTerrain.terrainsByFertility)
                     {
-                        Log.Message("Arid Shrubland");
-                        foreach (TerrainThreshold t in newTerrain.terrainsByFertility)
-                        {
-                            Log.Message(String.Format("Terrain: {0} | min={1}, max={2}", t.terrain.defName, t.min, t.max));
-                        }
+                        Log.Message(String.Format("Terrain: {0} | min={1}, max={2}", t.terrain.defName, t.min, t.max));
                     }
+
                 }
             }
 
@@ -169,108 +171,6 @@ namespace MapDesigner
             return 0f;
         }
     
-
-        public static TerrainDefault StretchTerrains(TerrainDefault oldTerrain, float minMapFert, float maxMapFert)
-        {
-            MapDesignerSettings settings = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>();
-
-            bool changeTbf = false;
-            bool changePatchMakers = false;
-
-            List<TerrainThreshold> oldTbf = oldTerrain.terrainsByFertility;
-            List<TerrainThreshold> newTbf = new List<TerrainThreshold>();
-
-            List<TerrainPatchMaker> newPatchMakers = oldTerrain.terrainPatchMakers;
-            float rangeSize = maxMapFert - minMapFert;
-
-            List<TBF> listTbf = new List<TBF>();
-
-            for (int i = 0; i < oldTbf.Count(); i++)
-            {
-                TBF item = new TBF()
-                {
-                    fertRank = i,
-                    thresh = oldTbf[i],
-                    size = Math.Min(oldTbf[i].max, maxMapFert) - Math.Max(oldTbf[i].min, minMapFert)
-                };
-                listTbf.Add(item);
-            }
-
-            if (listTbf.Where(t => !t.thresh.terrain.IsWater).Count() >= 2)
-            {
-                changeTbf = true;
-                // the actual adjustments
-                listTbf.Where(t => !t.thresh.terrain.IsWater).First().size /= settings.terrainFert;
-                listTbf.Where(t => !t.thresh.terrain.IsWater).Last().size *= settings.terrainFert;
-
-                float rangeSizeNew = listTbf.Sum(t => t.size);
-                float ratio = rangeSize / rangeSizeNew;
-
-                // make new threshes
-                listTbf = listTbf.OrderBy(t => t.thresh.min).ToList();
-
-                float curValue = 0f;
-                foreach (TBF tbf in listTbf)
-                {
-                    TerrainThreshold thresh = new TerrainThreshold()
-                    {
-                        terrain = tbf.thresh.terrain,
-                        min = curValue,
-                        max = curValue + ratio * tbf.size
-                    };
-                    curValue = thresh.max;
-                    newTbf.Add(thresh);
-                }
-
-                // reset to original active range
-                foreach (TerrainThreshold t in newTbf)
-                {
-                    t.min += minMapFert;
-                    t.max += minMapFert;
-                }
-
-                // stretch to cover full range
-                //newTbf = newTbf.OrderBy(t => t.min).ToList();
-                newTbf.Sort((x, y) => x.min.CompareTo(y.min));
-                newTbf[0].min = -999f;
-                newTbf.Last().max = 999f;
-
-                // adjust patchmaker min max
-                newTbf.Sort((x, y) => x.min.CompareTo(y.min));
-                oldTbf.Sort((x, y) => x.min.CompareTo(y.min));
-
-                SimpleCurve curve = new SimpleCurve();
-                for(int i = 0; i < oldTbf.Count(); i++)
-                {
-                    curve.Add(new CurvePoint(oldTbf[i].min, newTbf[i].min));
-                }
-                curve.Add(new CurvePoint(oldTbf.Last().max, newTbf.Last().max));
-
-                foreach(TerrainPatchMaker patchMaker in newPatchMakers)
-                {
-                    patchMaker.minFertility = curve.Evaluate(patchMaker.minFertility);
-                    patchMaker.maxFertility = curve.Evaluate(patchMaker.maxFertility);
-                }
-
-            }
-
-            // TerrainPatchMaker adjustments?
-
-
-
-
-
-
-
-
-            TerrainDefault newTerrain = new TerrainDefault()
-            {
-                terrainsByFertility = newTbf,
-                terrainPatchMakers = newPatchMakers
-            };
-
-            return newTerrain;
-        }
 
 
         public static float DistanceBetweenPoints(IntVec3 point1, IntVec3 point2)

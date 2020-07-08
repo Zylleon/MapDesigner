@@ -303,6 +303,7 @@
     <Compile Include="Patches\RiverBankPatch.cs" />
     <Compile Include="Patches\RockTypesPatch.cs" />
     <Compile Include="TerrainDefault.cs" />
+    <Compile Include="TerrainUtility.cs" />
     <Compile Include="UI\BetaCardUtility.cs" />
     <Compile Include="UI\GeneralCardUtility.cs" />
     <Compile Include="UI\MountainCardUtility.cs" />

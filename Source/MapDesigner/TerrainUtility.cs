@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 using Verse;
 
 namespace MapDesigner
@@ -17,27 +18,39 @@ namespace MapDesigner
         private static bool changePatchMakers = false;
         private static float minMapFert = -0.20f;
         private static float maxMapFert = 1.20f;
+        private static string biomeName;
 
-        public static TerrainDefault StretchTerrainFertility(TerrainDefault old, float min, float max)
+        public static TerrainDefault StretchTerrainFertility(TerrainDefault old, float min, float max, string biome)
         {
             oldTerrain = old;
             minMapFert = min;
             maxMapFert = max;
+            biomeName = biome;
 
-            newTerrain = new TerrainDefault()
+            newTerrain = new TerrainDefault();
+            newTerrain.terrainsByFertility = new List<TerrainThreshold>(oldTerrain.terrainsByFertility);
+
+            newTerrain.terrainPatchMakers = new List<TerrainPatchMaker>();
+            for (int i = 0; i < oldTerrain.terrainPatchMakers.Count(); i++)
             {
-                terrainsByFertility = oldTerrain.terrainsByFertility,
-                terrainPatchMakers = oldTerrain.terrainPatchMakers
-            };
+                TerrainPatchMaker p = new TerrainPatchMaker();
+                p.maxFertility = oldTerrain.terrainPatchMakers[i].maxFertility;
+                p.minFertility = oldTerrain.terrainPatchMakers[i].minFertility;
+                p.perlinFrequency = oldTerrain.terrainPatchMakers[i].perlinFrequency;
+                p.perlinLacunarity = oldTerrain.terrainPatchMakers[i].perlinLacunarity;
+                p.perlinOctaves = oldTerrain.terrainPatchMakers[i].perlinOctaves;
+                p.perlinPersistence = oldTerrain.terrainPatchMakers[i].perlinPersistence;
+                p.thresholds = new List<TerrainThreshold>(oldTerrain.terrainPatchMakers[i].thresholds);
+
+                newTerrain.terrainPatchMakers.Add(p);
+            }
+
 
             List<TerrainThreshold> oldTerrainsByFertility = oldTerrain.terrainsByFertility;
 
-            List<TerrainPatchMaker> newPatchMakers = oldTerrain.terrainPatchMakers;
-            
-            //float rangeSize = maxMapFert - minMapFert;
-
             List<TBF> listTbf = new List<TBF>();
 
+            // convert to TBFs
             for (int i = 0; i < oldTerrainsByFertility.Count(); i++)
             {
                 TBF item = new TBF()
@@ -49,22 +62,17 @@ namespace MapDesigner
                 listTbf.Add(item);
             }
 
+            // the actual adjustments
             if (listTbf.Where(t => !t.thresh.terrain.IsWater).Count() >= 2)
             {
-                // the actual adjustments
                 changeTbf = true;
                 FertChangeTbf(listTbf);
             }
 
-            // TerrainPatchMaker adjustments?
-
-            //List<TerrainDef> patchTerrains = newPatchMakers.SelectMany(t => t.thresholds.Select(tt => tt.terrain)).Distinct().ToList();
+            // TerrainPatchMaker adjustments
             List<TerrainDef> patchTerrains = new List<TerrainDef>();
 
-            // NOPE
-            //newTerrain.terrainPatchMakers = newPatchMakers;
-
-            foreach (TerrainPatchMaker p in newPatchMakers)
+            foreach (TerrainPatchMaker p in newTerrain.terrainPatchMakers)
             {
                 foreach (TerrainThreshold t in p.thresholds)
                 {
@@ -73,7 +81,7 @@ namespace MapDesigner
             }
             patchTerrains = patchTerrains.Where(p => !p.IsWater).Distinct().ToList();
 
-            // check that list has at least 2 elements !IsWater
+            // check that there are at least 2 nonwater terrains to compare
             if (patchTerrains.Count() >= 2)
             {
                 changePatchMakers = true;
@@ -81,8 +89,8 @@ namespace MapDesigner
             }
 
 
-            // if changeTbf and changePatchMakers are both false, make alterhate adjustments
-
+            // TODO: if changeTbf and changePatchMakers are both false, make alterhate adjustments
+            // Which biomes would this even affect?
 
             return newTerrain;
         }
@@ -137,7 +145,7 @@ namespace MapDesigner
             oldTbf.Sort((x, y) => x.min.CompareTo(y.min));
 
             SimpleCurve curve = new SimpleCurve();
-            for (int i = 0; i<oldTbf.Count(); i++)
+            for (int i = 0; i < oldTbf.Count(); i++)
             {
                 curve.Add(new CurvePoint(oldTbf[i].min, newTbf[i].min));
             }
@@ -163,19 +171,18 @@ namespace MapDesigner
             // find highest and lowest fert terrains overall
             patchTerrains.Sort((x, y) => x.fertility.CompareTo(y.fertility));
 
-            TerrainDef minFert = patchTerrains.First();
+            //TerrainDef minFert = patchTerrains.First();
             TerrainDef maxFert = patchTerrains.Last();
-            Log.Message(String.Format("Min: {0}.... Max: {1}", minFert.defName, maxFert.defName));
 
-            for(int index = 0; index < newTerrain.terrainPatchMakers.Count; index++)
+            List<TerrainPatchMaker> debugPatchmakers = new List<TerrainPatchMaker>(newTerrain.terrainPatchMakers);
+
+            for (int index = 0; index < newTerrain.terrainPatchMakers.Count; index++)
             {
-                Log.Message("Doing patchmaker # " + index);
                 TerrainPatchMaker p = newTerrain.terrainPatchMakers[index];
 
                 // find patchmakers that use those terrains
-                if(p.thresholds.Any(t => t.terrain == minFert || t.terrain == maxFert))
+                if (p.thresholds.Any(t => t.terrain == maxFert))                    
                 {
-                    // for each valid patchmaker:
                     // sort terrains by min
                     p.thresholds.Sort((x, y) => x.min.CompareTo(y.min));
 
@@ -183,7 +190,6 @@ namespace MapDesigner
                     List<TBF> listTbf = new List<TBF>();
                     float current = -999f;
 
-                    //while (i < p.thresholds.Count())
                     for (int i = 0; i < p.thresholds.Count; i++)
                     {
                         // if current == terrain min, add terrain to list
@@ -192,12 +198,12 @@ namespace MapDesigner
                         // increment index
                         TBF tbf = new TBF();
                         TBF placeholder = new TBF();
-                        if (current != p.thresholds[i].min)
+                        if (!Mathf.Approximately(current, p.thresholds[i].min))
                         {
                             //placeholder when needed
-                            Log.Message("Placeholder");
-                            placeholder.size = Math.Min(p.thresholds[i + 1].min, maxAllowable) - Math.Max(current, minAllowable);
-                            current = p.thresholds[i + 1].min;
+                            //Log.Message("Placeholder");
+                            placeholder.size = Math.Min(p.thresholds[i].min, maxAllowable) - Math.Max(current, minAllowable);
+                            current = p.thresholds[i].min;
                             listTbf.Add(placeholder);
                         }
                         
@@ -208,15 +214,17 @@ namespace MapDesigner
 
                         tbf.thresh = p.thresholds[i];
                         tbf.size = Math.Min(p.thresholds[i].max, maxAllowable) - Math.Max(p.thresholds[i].min, minAllowable);
-                        if (tbf.thresh.terrain == minFert)
-                        {
-                            tbf.size /= settings.terrainFert;
-                        }
-                        else if (tbf.thresh.terrain == maxFert)
+
+                        //if (tbf.thresh.terrain == minFert)
+                        //{
+                        //    tbf.size /= settings.terrainFert;
+                        //}
+                        //else if (tbf.thresh.terrain == maxFert)
+                        if (tbf.thresh.terrain == maxFert)
                         {
                             tbf.size *= settings.terrainFert;
                         }
-                        Log.Message(String.Format("Terrain: {0} | Size: {1}", tbf.thresh.terrain, tbf.size));
+                        //Log.Message(String.Format("Terrain: {0} | {1} - {2}", tbf.thresh.terrain, tbf.thresh.min, tbf.thresh.max));
 
                         listTbf.Add(tbf);
                         //i++;
@@ -228,14 +236,11 @@ namespace MapDesigner
                         listTbf.Add(new TBF() { size = maxAllowable - current });
                     }
 
-                    // shift list to size, probably -1 to 1
+                    // shift list to size
                     float rangeSize = maxAllowable - minAllowable;
                     float rangeSizeNew = listTbf.Sum(t => t.size);
                     float ratio = rangeSize / rangeSizeNew;
-                    Log.Message("listTbf count: " + listTbf.Count());
-                    Log.Message("RangeSize " + rangeSize);
-                    Log.Message("rangeSizeNew " + rangeSizeNew);
-                    Log.Message("Ratio: " + ratio);
+
                     // make new threshes
                     List<TerrainThreshold> newThreshes = new List<TerrainThreshold>();
                     float curValue = 0f;
@@ -254,7 +259,6 @@ namespace MapDesigner
                         }
                         curValue += ratio * tbf.size;
                     }
-                    Log.Message("Made new threshes - success");
 
                     foreach (TerrainThreshold t in newThreshes)
                     {
@@ -265,28 +269,20 @@ namespace MapDesigner
                     // stretch to cover full range
                     newThreshes.Sort((x, y) => x.min.CompareTo(y.min));
                     
-                    if(newThreshes[0].min == minAllowable)
+                    if(Mathf.Approximately(newThreshes[0].min, minAllowable))
                     {
                         newThreshes[0].min = -999f;
                     }
-                    if (newThreshes.Last().max == maxAllowable)
+                    if (Mathf.Approximately(newThreshes.Last().max, maxAllowable))
                     {
                         newThreshes.Last().max = 999f;
                     }
-                    //put it back in the original
-                    newTerrain.terrainPatchMakers[index].thresholds = newThreshes;
                 }
 
-                foreach(TerrainThreshold t in newTerrain.terrainPatchMakers[index].thresholds)
-                {
-                    Log.Message(String.Format("{0} : {1} - {2}", t.terrain.defName, t.min, t.max));
-                }
             }
      
 
         }
-
-
 
 
     }

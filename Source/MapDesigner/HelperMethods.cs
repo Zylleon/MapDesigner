@@ -34,11 +34,12 @@ namespace MapDesigner
                 biodef.wildPlantRegrowDays = biome.wildPlantRegrowDays;
                 biodef.terrain = new TerrainDefault()
                 {
-                    terrainsByFertility = biome.terrainsByFertility,
-                    terrainPatchMakers = biome.terrainPatchMakers
+                    terrainsByFertility = new List<TerrainThreshold>(biome.terrainsByFertility),
+                    terrainPatchMakers = new List<TerrainPatchMaker>(biome.terrainPatchMakers)
                 };
 
                 biomeDefaults.Add(biome.defName, biodef);
+
             }
 
             LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>().biomeDefaults = biomeDefaults;
@@ -137,29 +138,44 @@ namespace MapDesigner
             // terrain
             foreach (BiomeDef biome in DefDatabase<BiomeDef>.AllDefs)
             {
-                Log.Message("---------------------------------------");
-
-                Log.Message(biome.defName);
-
                 if (!biome.terrainsByFertility.NullOrEmpty())
                 {
                     TerrainDefault newTerrain;
-
-                    if (biome.defName.Contains("Island"))
+                    if (biome.defName.Contains("BiomesIsland"))
                     {
-                        newTerrain = TerrainUtility.StretchTerrainFertility(biomeDefaults[biome.defName].terrain, -.20f, 17.0f);
+
+                        newTerrain = TerrainUtility.StretchTerrainFertility(biomeDefaults[biome.defName].terrain, -.20f, 17.0f, biome.defName);
+
+                        // DEBUG LOGGING for atolls
+                        if (biome.defName.Contains("Atoll"))
+                        {
+                            Log.Message(biome.defName);
+                            TerrainDefault dictEntry = newTerrain;
+                            //TerrainDefault dictEntry = newTerrain;
+
+                            foreach (TerrainThreshold t in dictEntry.terrainsByFertility)
+                            {
+                                Log.Message(String.Format("- {0} .... {1} | {2}", t.terrain.defName, t.min, t.max));
+                            }
+                            for (int i = 0; i < dictEntry.terrainPatchMakers.Count(); i++)
+                            {
+                                TerrainPatchMaker p = dictEntry.terrainPatchMakers[i];
+                                Log.Message(String.Format("Patchmaker #{0} | min {1} | max {2}", i, p.minFertility, p.maxFertility));
+                                foreach (TerrainThreshold t in p.thresholds)
+                                {
+                                    Log.Message(String.Format("--- {0} | {1} | {2}", t.terrain.defName, t.min, t.max));
+                                }
+                            }
+                        }
+                        //newTerrain = biomeDefaults[biome.defName].terrain;
                     }
+
                     else
                     {
-                        newTerrain = TerrainUtility.StretchTerrainFertility(biomeDefaults[biome.defName].terrain, -.20f, 1.20f);
+                        newTerrain = TerrainUtility.StretchTerrainFertility(biomeDefaults[biome.defName].terrain, -.20f, 1.20f, biome.defName);
                     }
                     biome.terrainsByFertility = newTerrain.terrainsByFertility;
                     biome.terrainPatchMakers = newTerrain.terrainPatchMakers;
-
-                    foreach (TerrainThreshold t in newTerrain.terrainsByFertility)
-                    {
-                        Log.Message(String.Format("Terrain: {0} | min={1}, max={2}", t.terrain.defName, t.min, t.max));
-                    }
 
                 }
             }

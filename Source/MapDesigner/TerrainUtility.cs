@@ -254,10 +254,13 @@ namespace MapDesigner
                                 min = curValue,
                                 max = curValue + ratio * tbf.size
                             };
-                            //curValue = thresh.max;
                             newThreshes.Add(thresh);
+                            curValue = thresh.max;
                         }
-                        curValue += ratio * tbf.size;
+                        else
+                        {
+                            curValue += ratio * tbf.size;
+                        }
                     }
 
                     foreach (TerrainThreshold t in newThreshes)

@@ -218,9 +218,11 @@
 	
 	<ZMD_terrainWaterAmt>Wetness: {0} %: </ZMD_terrainWaterAmt>
 	
-	<ZMD_terrainWaterTooltip>Size and number of lakes etc</ZMD_terrainWaterTooltip>
+	<ZMD_terrainWaterTooltip>Size and number of lakes etc. Does not affect rivers, coastlines, or other features.</ZMD_terrainWaterTooltip>
 	
 	<ZMD_flagTerrainWater>All non-buildable terrain counts as water</ZMD_flagTerrainWater>
 	
 	<ZMD_flagTerrainWaterTooltip>All terrains without heavy affordance count as water. Includes mud, marsh, soft sand</ZMD_flagTerrainWaterTooltip>
+	
+	
 </LanguageData>

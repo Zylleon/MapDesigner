@@ -14,11 +14,13 @@ namespace MapDesigner
 
         private static TerrainDefault oldTerrain;
         private static TerrainDefault newTerrain;
-        private static bool changeTbf = false;
-        private static bool changePatchMakers = false;
+        //private static bool changeTbf = false;
+        //private static bool changePatchMakers = false;
+        private static float tbfFert = -1f;
+        private static float patchFert = -1f;
         private static float minMapFert = -0.20f;
         private static float maxMapFert = 1.20f;
-        //private static string biomeName;
+
 
         public static TerrainDefault StretchTerrainFertility(TerrainDefault old, float min, float max)
         {
@@ -61,9 +63,8 @@ namespace MapDesigner
             }
 
             // the actual adjustments
-            if (listTbf.Where(t => !t.thresh.terrain.IsWater).Count() >= 2)
+            if (listTbf.Count() >= 1)
             {
-                changeTbf = true;
                 FertChangeTbf(listTbf);
             }
 
@@ -77,22 +78,15 @@ namespace MapDesigner
                     patchTerrains.Add(t.terrain);
                 }
             }
-            patchTerrains = patchTerrains.Where(p => !p.IsWater).Distinct().ToList();
 
-            // check that there are at least 2 nonwater terrains to compare
-            if (patchTerrains.Count() >= 2)
+            // check that there are terrains
+            if (patchTerrains.Count() >= 1)
             {
-                changePatchMakers = true;
                 FertChangePatchMakers(patchTerrains);
             }
-
-
-            // TODO: if changeTbf and changePatchMakers are both false, make alterhate adjustments
-            // Which biomes would this even affect?
-
+            
             return newTerrain;
         }
-
 
 
         private static void FertChangeTbf(List<TBF> listTbf)
@@ -110,6 +104,10 @@ namespace MapDesigner
             for (int i = 0; i < listTbf.Count(); i++)
             {
                 if (listTbf[i].thresh.terrain.IsWater)
+                {
+                    listTbf[i].size *= settings.terrainWater;
+                }
+                else if (MapDesignerSettings.flagTerrainWater && !listTbf[i].thresh.terrain.affordances.Contains(TerrainAffordanceDefOf.Heavy))
                 {
                     listTbf[i].size *= settings.terrainWater;
                 }
@@ -140,17 +138,18 @@ namespace MapDesigner
         }
 
 
-
         private static void FertChangePatchMakers(List<TerrainDef> patchTerrains)
         {
             MapDesignerSettings settings = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>();
-            float minAllowable = -2f;
-            float maxAllowable = 2f;
+            //float minAllowable = -2f;
+            //float maxAllowable = 2f;
 
-            // find highest and lowest fert terrains overall
+            float minAllowable = -0.5f;
+            float maxAllowable = 1.5f;
+
+            // find highest fert terrain overall
             patchTerrains.Sort((x, y) => x.fertility.CompareTo(y.fertility));
 
-            //TerrainDef minFert = patchTerrains.First();
             TerrainDef maxFert = patchTerrains.Last();
 
 
@@ -196,7 +195,10 @@ namespace MapDesigner
                     {
                         tbf.size *= settings.terrainWater;
                     }
-
+                    else if (MapDesignerSettings.flagTerrainWater && !tbf.thresh.terrain.affordances.Contains(TerrainAffordanceDefOf.Heavy))
+                    {
+                        tbf.size *= settings.terrainWater;
+                    }
                     listTbf.Add(tbf);
                 }
 
@@ -211,7 +213,6 @@ namespace MapDesigner
 
 
         }
-
 
 
         private static List<TerrainThreshold> SquishTerrain(List<TBF> listTbf, float min, float max)
@@ -267,7 +268,6 @@ namespace MapDesigner
 
             return newTbf;
         }
-
 
     }
 }

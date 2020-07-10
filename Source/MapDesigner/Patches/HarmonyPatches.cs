@@ -21,7 +21,7 @@ namespace MapDesigner.Patches
             static MapDesigner()
             {
                 Harmony harmony = new Harmony("zylle.MapDesigner");
-
+                Log.Message("Initializing Map Designer");
                 harmony.PatchAll();
 
                 MethodInfo targetmethod = AccessTools.Method(typeof(RimWorld.GenStep_Terrain), "TerrainFrom");

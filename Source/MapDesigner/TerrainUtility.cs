@@ -174,7 +174,7 @@ namespace MapDesigner
             //TerrainDef minFert = patchTerrains.First();
             TerrainDef maxFert = patchTerrains.Last();
 
-            List<TerrainPatchMaker> debugPatchmakers = new List<TerrainPatchMaker>(newTerrain.terrainPatchMakers);
+
 
             for (int index = 0; index < newTerrain.terrainPatchMakers.Count; index++)
             {
@@ -195,42 +195,31 @@ namespace MapDesigner
                         // if current == terrain min, add terrain to list
                         // set current = terrain max
                         // if terrain is the minFert or maxFert, change size appropriately
-                        // increment index
                         TBF tbf = new TBF();
                         TBF placeholder = new TBF();
                         if (!Mathf.Approximately(current, p.thresholds[i].min))
                         {
                             //placeholder when needed
-                            //Log.Message("Placeholder");
                             placeholder.size = Math.Min(p.thresholds[i].min, maxAllowable) - Math.Max(current, minAllowable);
                             current = p.thresholds[i].min;
                             listTbf.Add(placeholder);
                         }
                         
-
                         // real thing
-                        
                         current = p.thresholds[i].max;
 
                         tbf.thresh = p.thresholds[i];
                         tbf.size = Math.Min(p.thresholds[i].max, maxAllowable) - Math.Max(p.thresholds[i].min, minAllowable);
 
-                        //if (tbf.thresh.terrain == minFert)
-                        //{
-                        //    tbf.size /= settings.terrainFert;
-                        //}
-                        //else if (tbf.thresh.terrain == maxFert)
                         if (tbf.thresh.terrain == maxFert)
                         {
                             tbf.size *= settings.terrainFert;
                         }
-                        //Log.Message(String.Format("Terrain: {0} | {1} - {2}", tbf.thresh.terrain, tbf.thresh.min, tbf.thresh.max));
-
+                        
                         listTbf.Add(tbf);
-                        //i++;
                     }
 
-                    // add extra blank at end if needed
+                    // add extra placeholder at end if needed
                     if(current < maxAllowable)
                     {
                         listTbf.Add(new TBF() { size = maxAllowable - current });
@@ -280,6 +269,12 @@ namespace MapDesigner
                     {
                         newThreshes.Last().max = 999f;
                     }
+
+                    //output
+                    newTerrain.terrainPatchMakers[index].thresholds = newThreshes;
+
+
+
                 }
 
             }

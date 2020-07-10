@@ -145,29 +145,6 @@ namespace MapDesigner
                     {
 
                         newTerrain = TerrainUtility.StretchTerrainFertility(biomeDefaults[biome.defName].terrain, -.20f, 17.0f, biome.defName);
-
-                        // DEBUG LOGGING for atolls
-                        if (biome.defName.Contains("Atoll"))
-                        {
-                            Log.Message(biome.defName);
-                            TerrainDefault dictEntry = newTerrain;
-                            //TerrainDefault dictEntry = newTerrain;
-
-                            foreach (TerrainThreshold t in dictEntry.terrainsByFertility)
-                            {
-                                Log.Message(String.Format("- {0} .... {1} | {2}", t.terrain.defName, t.min, t.max));
-                            }
-                            for (int i = 0; i < dictEntry.terrainPatchMakers.Count(); i++)
-                            {
-                                TerrainPatchMaker p = dictEntry.terrainPatchMakers[i];
-                                Log.Message(String.Format("Patchmaker #{0} | min {1} | max {2}", i, p.minFertility, p.maxFertility));
-                                foreach (TerrainThreshold t in p.thresholds)
-                                {
-                                    Log.Message(String.Format("--- {0} | {1} | {2}", t.terrain.defName, t.min, t.max));
-                                }
-                            }
-                        }
-                        //newTerrain = biomeDefaults[biome.defName].terrain;
                     }
 
                     else
@@ -177,6 +154,25 @@ namespace MapDesigner
                     biome.terrainsByFertility = newTerrain.terrainsByFertility;
                     biome.terrainPatchMakers = newTerrain.terrainPatchMakers;
 
+                    // DEBUG LOGGING for atolls
+                    //if (biome.defName.Contains("Atoll"))
+                    //{
+                    //    Log.Message(biome.defName);
+                    //    TerrainDefault dictEntry = newTerrain;
+                    //    foreach (TerrainThreshold t in dictEntry.terrainsByFertility)
+                    //    {
+                    //        Log.Message(String.Format("- {0} .... {1} | {2}", t.terrain.defName, t.min, t.max));
+                    //    }
+                    //    for (int i = 0; i < dictEntry.terrainPatchMakers.Count(); i++)
+                    //    {
+                    //        TerrainPatchMaker p = dictEntry.terrainPatchMakers[i];
+                    //        Log.Message(String.Format("Patchmaker #{0} | min {1} | max {2}", i, p.minFertility, p.maxFertility));
+                    //        foreach (TerrainThreshold t in p.thresholds)
+                    //        {
+                    //            Log.Message(String.Format("--- {0} | {1} | {2}", t.terrain.defName, t.min, t.max));
+                    //        }
+                    //    }
+                    //}
                 }
             }
 

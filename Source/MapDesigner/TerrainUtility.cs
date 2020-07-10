@@ -107,36 +107,17 @@ namespace MapDesigner
             listTbf.Where(t => !t.thresh.terrain.IsWater).First().size /= settings.terrainFert;
             listTbf.Where(t => !t.thresh.terrain.IsWater).Last().size *= settings.terrainFert;
 
-            float rangeSizeNew = listTbf.Sum(t => t.size);
-            float ratio = rangeSize / rangeSizeNew;
+            for (int i = 0; i < listTbf.Count(); i++)
+            {
+                if (listTbf[i].thresh.terrain.IsWater)
+                {
+                    listTbf[i].size *= settings.terrainWater;
+                }
+            }
 
-            // make new threshes
             listTbf = listTbf.OrderBy(t => t.thresh.min).ToList();
 
-            float curValue = 0f;
-            foreach (TBF tbf in listTbf)
-            {
-                TerrainThreshold thresh = new TerrainThreshold()
-                {
-                    terrain = tbf.thresh.terrain,
-                    min = curValue,
-                    max = curValue + ratio * tbf.size
-                };
-            curValue = thresh.max;
-                newTbf.Add(thresh);
-            }
-
-            // reset to original active range
-            foreach (TerrainThreshold t in newTbf)
-            {
-                t.min += minMapFert;
-                t.max += minMapFert;
-            }
-
-            // stretch to cover full range
-            newTbf.Sort((x, y) => x.min.CompareTo(y.min));
-            newTbf[0].min = -999f;
-            newTbf.Last().max = 999f;
+            newTbf = SquishTerrain(listTbf, minMapFert, maxMapFert);
 
             // adjust patchmaker min max
             newTbf.Sort((x, y) => x.min.CompareTo(y.min));
@@ -173,111 +154,118 @@ namespace MapDesigner
             TerrainDef maxFert = patchTerrains.Last();
 
 
-
             for (int index = 0; index < newTerrain.terrainPatchMakers.Count; index++)
             {
                 TerrainPatchMaker p = newTerrain.terrainPatchMakers[index];
 
-                // find patchmakers that use those terrains
-                if (p.thresholds.Any(t => t.terrain == maxFert))                    
+
+                // sort terrains by min
+                p.thresholds.Sort((x, y) => x.min.CompareTo(y.min));
+
+                // Make new list:
+                List<TBF> listTbf = new List<TBF>();
+                float current = -999f;
+
+                for (int i = 0; i < p.thresholds.Count; i++)
                 {
-                    // sort terrains by min
-                    p.thresholds.Sort((x, y) => x.min.CompareTo(y.min));
-
-                    // Make new list:
-                    List<TBF> listTbf = new List<TBF>();
-                    float current = -999f;
-
-                    for (int i = 0; i < p.thresholds.Count; i++)
+                    // if current == terrain min, add terrain to list
+                    // set current = terrain max
+                    // if terrain is the minFert or maxFert, change size appropriately
+                    TBF tbf = new TBF();
+                    TBF placeholder = new TBF();
+                    if (!Mathf.Approximately(current, p.thresholds[i].min))
                     {
-                        // if current == terrain min, add terrain to list
-                        // set current = terrain max
-                        // if terrain is the minFert or maxFert, change size appropriately
-                        TBF tbf = new TBF();
-                        TBF placeholder = new TBF();
-                        if (!Mathf.Approximately(current, p.thresholds[i].min))
-                        {
-                            //placeholder when needed
-                            placeholder.size = Math.Min(p.thresholds[i].min, maxAllowable) - Math.Max(current, minAllowable);
-                            current = p.thresholds[i].min;
-                            listTbf.Add(placeholder);
-                        }
+                        //placeholder when needed
+                        placeholder.size = Math.Min(p.thresholds[i].min, maxAllowable) - Math.Max(current, minAllowable);
+                        current = p.thresholds[i].min;
+                        listTbf.Add(placeholder);
+                    }
                         
-                        // real thing
-                        current = p.thresholds[i].max;
+                    // real thing
+                    current = p.thresholds[i].max;
 
-                        tbf.thresh = p.thresholds[i];
-                        tbf.size = Math.Min(p.thresholds[i].max, maxAllowable) - Math.Max(p.thresholds[i].min, minAllowable);
+                    tbf.thresh = p.thresholds[i];
+                    tbf.size = Math.Min(p.thresholds[i].max, maxAllowable) - Math.Max(p.thresholds[i].min, minAllowable);
 
-                        if (tbf.thresh.terrain == maxFert)
-                        {
-                            tbf.size *= settings.terrainFert;
-                        }
-                        
-                        listTbf.Add(tbf);
-                    }
-
-                    // add extra placeholder at end if needed
-                    if(current < maxAllowable)
+                    if (tbf.thresh.terrain == maxFert)
                     {
-                        listTbf.Add(new TBF() { size = maxAllowable - current });
+                        tbf.size *= settings.terrainFert;
                     }
 
-                    // shift list to size
-                    float rangeSize = maxAllowable - minAllowable;
-                    float rangeSizeNew = listTbf.Sum(t => t.size);
-                    float ratio = rangeSize / rangeSizeNew;
-
-                    // make new threshes
-                    List<TerrainThreshold> newThreshes = new List<TerrainThreshold>();
-                    float curValue = 0f;
-                    foreach (TBF tbf in listTbf)
+                    if (tbf.thresh.terrain.IsWater)
                     {
-                        if(tbf.thresh != null)
-                        {
-                            TerrainThreshold thresh = new TerrainThreshold()
-                            {
-                                terrain = tbf.thresh.terrain,
-                                min = curValue,
-                                max = curValue + ratio * tbf.size
-                            };
-                            newThreshes.Add(thresh);
-                            curValue = thresh.max;
-                        }
-                        else
-                        {
-                            curValue += ratio * tbf.size;
-                        }
+                        tbf.size *= settings.terrainWater;
                     }
 
-                    foreach (TerrainThreshold t in newThreshes)
-                    {
-                        t.min += minAllowable;
-                        t.max += minAllowable;
-                    }
+                    listTbf.Add(tbf);
+                }
 
-                    // stretch to cover full range
-                    newThreshes.Sort((x, y) => x.min.CompareTo(y.min));
-                    
-                    if(Mathf.Approximately(newThreshes[0].min, minAllowable))
-                    {
-                        newThreshes[0].min = -999f;
-                    }
-                    if (Mathf.Approximately(newThreshes.Last().max, maxAllowable))
-                    {
-                        newThreshes.Last().max = 999f;
-                    }
-
-                    //output
-                    newTerrain.terrainPatchMakers[index].thresholds = newThreshes;
-
-
+                // add extra placeholder at end if needed
+                if(current < maxAllowable)
+                {
+                    listTbf.Add(new TBF() { size = maxAllowable - current });
+                }
+                newTerrain.terrainPatchMakers[index].thresholds = SquishTerrain(listTbf, minAllowable, maxAllowable);
 
                 }
 
-            }
-     
 
+        }
+
+
+
+        private static List<TerrainThreshold> SquishTerrain(List<TBF> listTbf, float min, float max)
+        {
+            float rangeSize = max - min;
+
+            float rangeSizeNew = listTbf.Sum(t => t.size);
+            float ratio = rangeSize / rangeSizeNew;
+
+            List<TerrainThreshold> newTbf = new List<TerrainThreshold>();
+
+            // make new threshes
+            // assumes that list Tbf is pre-sorted by t => t.thresh.min
+            // can't sort here because of blank tbfs (no thresh) from patchmaker shift
+            float curValue = 0f;
+
+            foreach (TBF tbf in listTbf)
+            {
+                if (tbf.thresh != null)
+                {
+                    TerrainThreshold thresh = new TerrainThreshold()
+                    {
+                        terrain = tbf.thresh.terrain,
+                        min = curValue,
+                        max = curValue + ratio * tbf.size
+                    };
+                    newTbf.Add(thresh);
+                    curValue = thresh.max;
+                }
+                else
+                {
+                    curValue += ratio * tbf.size;
+                }
+            }
+
+            // reset to original active range
+            foreach (TerrainThreshold t in newTbf)
+            {
+                t.min += min;
+                t.max += min;
+            }
+
+            // stretch to cover full range
+            newTbf.Sort((x, y) => x.min.CompareTo(y.min));
+            if(Mathf.Approximately(newTbf[0].min, min))
+            {
+                newTbf[0].min = -999f;
+            }
+            if (Mathf.Approximately(newTbf.Last().max, max))
+            {
+                newTbf.Last().max = 999f;
+            }
+
+            return newTbf;
         }
 
 

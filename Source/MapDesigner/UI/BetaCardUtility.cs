@@ -26,7 +26,14 @@ namespace MapDesigner.UI
 
             listing.GapLine();
 
-            settings.terrainFert = InterfaceUtility.LabeledSlider(listing, settings.terrainFert, 0.25f, 2f, "ZMD_terrainFertAmt".Translate() + settings.terrainFert);
+            //settings.terrainWater = InterfaceUtility.LabeledSlider(listing, settings.terrainWater, 0.25f, 2f, "ZMD_terrainWaterAmt".Translate() + settings.terrainWater);
+            settings.terrainFert = InterfaceUtility.LabeledSlider(listing, settings.terrainFert, 0.25f, 2f, String.Format("ZMD_terrainFertAmt".Translate(), Math.Round(100 * settings.terrainFert)));
+
+            settings.terrainWater = InterfaceUtility.LabeledSlider(listing, settings.terrainWater, 0.25f, 2f, String.Format("ZMD_terrainWaterAmt".Translate(), Math.Round(100 * settings.terrainWater)), null, null, "ZMD_terrainWaterTooltip".Translate());
+
+            //listing.CheckboxLabeled("ZMD_flagTerrainWater".Translate(), ref MapDesignerSettings.flagCaves, "ZMD_flagTerrainWater".Translate());
+
+
 
             // reset
             listing.GapLine();
@@ -42,7 +49,7 @@ namespace MapDesigner.UI
         public static void ResetBetaSettings()
         {
             settings.terrainFert = 1f;
-            
+            settings.terrainWater = 1f;
         }
     }
 

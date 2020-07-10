@@ -60,6 +60,8 @@ namespace MapDesigner
 
         // Terrain
         public float terrainFert = 1f;
+        public float terrainWater = 1f;
+        public static bool flagTerrainWater = false;
 
         // Features
         public enum Features : byte
@@ -137,6 +139,8 @@ namespace MapDesigner
 
             // Terrain
             Scribe_Values.Look(ref terrainFert, "terrainFert", 1.0f);
+            Scribe_Values.Look(ref terrainWater, "terrainWater", 1.0f);
+            Scribe_Values.Look(ref flagTerrainWater, "flagTerrainWater", false);
 
 
             // Features

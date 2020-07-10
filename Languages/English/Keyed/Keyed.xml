@@ -214,13 +214,13 @@
 	<ZMD_betaTabInfo>USE AT YOUR OWN RISK! These options are for development. They might be mislabeled, might do nothing, and will probably spam the error log.\n\nPlease report any lack of issues.</ZMD_betaTabInfo>
 	
 	
-	<ZMD_flagTerrainFert>Terrain fertility adjustment</ZMD_flagTerrainFert>
+	<ZMD_terrainFertAmt>Fertility: {0} %: </ZMD_terrainFertAmt>
 	
-	<ZMD_terrainFertAmt>Fertility amount. 1 = vanilla: </ZMD_terrainFertAmt>
+	<ZMD_terrainWaterAmt>Wetness: {0} %: </ZMD_terrainWaterAmt>
 	
+	<ZMD_terrainWaterTooltip>Size and number of lakes etc</ZMD_terrainWaterTooltip>
 	
+	<ZMD_flagTerrainWater>All non-buildable terrain counts as water</ZMD_flagTerrainWater>
 	
-	
-	
-	
+	<ZMD_flagTerrainWaterTooltip>All terrains without heavy affordance count as water. Includes mud, marsh, soft sand</ZMD_flagTerrainWaterTooltip>
 </LanguageData>

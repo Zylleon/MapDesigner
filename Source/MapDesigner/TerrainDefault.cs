@@ -17,7 +17,6 @@ namespace MapDesigner
     public class TBF
     {
         public TerrainThreshold thresh;
-        public int fertRank;
         public float size;
 
     }

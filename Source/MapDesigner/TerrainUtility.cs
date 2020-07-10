@@ -18,14 +18,13 @@ namespace MapDesigner
         private static bool changePatchMakers = false;
         private static float minMapFert = -0.20f;
         private static float maxMapFert = 1.20f;
-        private static string biomeName;
+        //private static string biomeName;
 
-        public static TerrainDefault StretchTerrainFertility(TerrainDefault old, float min, float max, string biome)
+        public static TerrainDefault StretchTerrainFertility(TerrainDefault old, float min, float max)
         {
             oldTerrain = old;
             minMapFert = min;
             maxMapFert = max;
-            biomeName = biome;
 
             newTerrain = new TerrainDefault();
             newTerrain.terrainsByFertility = new List<TerrainThreshold>(oldTerrain.terrainsByFertility);
@@ -55,7 +54,6 @@ namespace MapDesigner
             {
                 TBF item = new TBF()
                 {
-                    fertRank = i,
                     thresh = oldTerrainsByFertility[i],
                     size = Math.Min(oldTerrainsByFertility[i].max, maxMapFert) - Math.Max(oldTerrainsByFertility[i].min, minMapFert)
                 };

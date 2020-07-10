@@ -144,12 +144,12 @@ namespace MapDesigner
                     if (biome.defName.Contains("BiomesIsland"))
                     {
 
-                        newTerrain = TerrainUtility.StretchTerrainFertility(biomeDefaults[biome.defName].terrain, -.20f, 17.0f, biome.defName);
+                        newTerrain = TerrainUtility.StretchTerrainFertility(biomeDefaults[biome.defName].terrain, -.20f, 17.0f);
                     }
 
                     else
                     {
-                        newTerrain = TerrainUtility.StretchTerrainFertility(biomeDefaults[biome.defName].terrain, -.20f, 1.20f, biome.defName);
+                        newTerrain = TerrainUtility.StretchTerrainFertility(biomeDefaults[biome.defName].terrain, -.20f, 1.20f);
                     }
                     biome.terrainsByFertility = newTerrain.terrainsByFertility;
                     biome.terrainPatchMakers = newTerrain.terrainPatchMakers;

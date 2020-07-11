@@ -61,11 +61,13 @@ namespace MapDesigner
 
         public static void ApplyBiomeSettings()
         {
-            // densities
-            Dictionary<string, BiomeDefault> biomeDefaults = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>().biomeDefaults;
+            MapDesignerSettings settings = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>();
 
-            float densityPlant = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>().densityPlant;
-            float densityAnimal = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>().densityAnimal;
+            // densities
+            Dictionary<string, BiomeDefault> biomeDefaults = settings.biomeDefaults;
+
+            float densityPlant = settings.densityPlant;
+            float densityAnimal = settings.densityAnimal;
 
             foreach (BiomeDef biome in DefDatabase<BiomeDef>.AllDefs)
             {
@@ -81,8 +83,8 @@ namespace MapDesigner
             }
 
             // ruins
-            Dictionary<string, FloatRange> densityDefaults = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>().densityDefaults;
-            float densityRuins = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>().densityRuins;
+            Dictionary<string, FloatRange> densityDefaults = settings.densityDefaults;
+            float densityRuins = settings.densityRuins;
             if (densityRuins > 1)
             {
                 densityRuins = (float)Math.Pow(densityRuins, 3);
@@ -91,7 +93,7 @@ namespace MapDesigner
             (DefDatabase<GenStepDef>.GetNamed("ScatterRuinsSimple").genStep as GenStep_Scatterer).countPer10kCellsRange.max = densityDefaults["ScatterRuinsSimple"].max * densityRuins;
 
             // ancient dangers
-            float densityDanger = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>().densityDanger;
+            float densityDanger = settings.densityDanger;
             if (densityDanger > 1)
             {
                 densityDanger = (float)Math.Pow(densityDanger, 4);
@@ -101,7 +103,7 @@ namespace MapDesigner
 
 
             // geysers
-            float densityGeyser = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>().densityGeyser;
+            float densityGeyser = settings.densityGeyser;
             if (densityGeyser > 1)
             {
                 densityGeyser = (float)Math.Pow(densityGeyser, 2);
@@ -112,7 +114,6 @@ namespace MapDesigner
 
 
             // rivers
-            float sizeRiver = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>().sizeRiver;
             float widthOnMap = 6;
             foreach (RiverDef river in DefDatabase<RiverDef>.AllDefs)
             {
@@ -132,48 +133,57 @@ namespace MapDesigner
                         break;
                 }
 
-                river.widthOnMap = widthOnMap * sizeRiver;
+                river.widthOnMap = widthOnMap * settings.sizeRiver;
             }
 
             // terrain
-
-            foreach (BiomeDef biome in DefDatabase<BiomeDef>.AllDefs)
+            if (Math.Abs(settings.terrainFert - 1f) > 0.1 || Math.Abs(settings.terrainWater - 1f) > 0.1)
             {
-                if (!biome.terrainsByFertility.NullOrEmpty())
+                Log.Message(String.Format("Map Designer Terrain settings: fertility: {0} | Water {1}", Math.Round(100 * settings.terrainFert), Math.Round(100 * settings.terrainWater)));
+                foreach (BiomeDef biome in DefDatabase<BiomeDef>.AllDefs)
                 {
-                    TerrainDefault newTerrain;
-                    if (biome.defName.Contains("BiomesIsland"))
+                    if (!biome.terrainsByFertility.NullOrEmpty())
                     {
-                        newTerrain = TerrainUtility.StretchTerrainFertility(biomeDefaults[biome.defName].terrain, -.20f, 17.0f);
-                    }
-                    else
-                    {
-                        newTerrain = TerrainUtility.StretchTerrainFertility(biomeDefaults[biome.defName].terrain, -.20f, 1.20f);
-                    }
-                    biome.terrainsByFertility = newTerrain.terrainsByFertility;
-                    biome.terrainPatchMakers = newTerrain.terrainPatchMakers;
+                        try
+                        {
+                            TerrainDefault newTerrain;
+                            if (biome.defName.Contains("BiomesIsland"))
+                            {
+                                newTerrain = TerrainUtility.StretchTerrainFertility(biomeDefaults[biome.defName].terrain, -.20f, 17.0f);
+                            }
+                            else
+                            {
+                                newTerrain = TerrainUtility.StretchTerrainFertility(biomeDefaults[biome.defName].terrain, -.20f, 1.20f);
+                            }
+                            biome.terrainsByFertility = newTerrain.terrainsByFertility;
+                            biome.terrainPatchMakers = newTerrain.terrainPatchMakers;
+                        }
 
-                    //DEBUG LOGGING
-                    //if (biome.defName.Contains("AB_OcularForest"))
-                    //{
-                    //    Log.Message(biome.defName);
-                    //    TerrainDefault dictEntry = newTerrain;
-                    //    foreach (TerrainThreshold t in dictEntry.terrainsByFertility)
-                    //    {
-                    //        Log.Message(String.Format("- {0} .... {1} | {2}", t.terrain.defName, Math.Round(t.min, 2), Math.Round(t.max,2)));
-                    //    }
-                    //    for (int i = 0; i < dictEntry.terrainPatchMakers.Count(); i++)
-                    //    {
-                    //        TerrainPatchMaker p = dictEntry.terrainPatchMakers[i];
-                    //        Log.Message(String.Format("Patchmaker #{0} | min {1} | max {2}", i, p.minFertility, p.maxFertility));
-                    //        foreach (TerrainThreshold t in p.thresholds)
-                    //        {
-                    //            Log.Message(String.Format("--- {0} | {1} | {2}", t.terrain.defName, Math.Round(t.min, 2), Math.Round(t.max, 2)));
-                    //        }
-                    //    }
-                    //}
+                        catch (Exception e)
+                        {
+                            Log.Message("ERROR applying terrain settings to " + biome.defName);
+                            Log.Message(e.Message);
+
+                            TerrainDefault dictEntry = settings.biomeDefaults[biome.defName].terrain;
+                            Log.Message("Terrains by fertility");
+                            foreach (TerrainThreshold t in dictEntry.terrainsByFertility)
+                            {
+                                Log.Message(String.Format("- {0} .... {1} | {2}", t.terrain.defName, Math.Round(t.min, 2), Math.Round(t.max, 2)));
+                            }
+                            for (int i = 0; i < dictEntry.terrainPatchMakers.Count(); i++)
+                            {
+                                TerrainPatchMaker p = dictEntry.terrainPatchMakers[i];
+                                Log.Message(String.Format("Patchmaker #{0} | min {1} | max {2}", i, p.minFertility, p.maxFertility));
+                                foreach (TerrainThreshold t in p.thresholds)
+                                {
+                                    Log.Message(String.Format("--- {0} | {1} | {2}", t.terrain.defName, Math.Round(t.min, 2), Math.Round(t.max, 2)));
+                                }
+                            }
+                        }
+                    }
                 }
             }
+
         }
 
         public static float GetRiverDirection()

@@ -162,7 +162,6 @@ namespace MapDesigner
             // find highest fert terrain overall
             patchTerrains.Sort((x, y) => x.fertility.CompareTo(y.fertility));
 
-            //TerrainDef maxFert = patchTerrains.Last();
             float maxFert = patchTerrains.Max(t => t.fertility);
 
             for (int index = 0; index < newTerrain.terrainPatchMakers.Count; index++)

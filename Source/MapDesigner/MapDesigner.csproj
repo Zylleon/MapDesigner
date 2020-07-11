@@ -300,7 +300,6 @@
     <Compile Include="Patches\HarmonyPatches.cs" />
     <Compile Include="Patches\MountainSettingsPatch.cs" />
     <Compile Include="Patches\OreDensityPatch.cs" />
-    <Compile Include="Patches\RiverBankPatch - Copy.cs" />
     <Compile Include="Patches\RiverBankPatch.cs" />
     <Compile Include="Patches\RockTypesPatch.cs" />
     <Compile Include="TerrainDefault.cs" />

@@ -42,16 +42,6 @@ namespace MapDesigner.UI
 
             listingStandard.CheckboxLabeled("ZMD_flagBiomeRocks".Translate(), ref MapDesignerSettings.flagBiomeRocks, "ZMD_flagBiomeRocksTooltip".Translate());
 
-            //// River
-            //listingStandard.GapLine();
-
-            //settings.sizeRiver = InterfaceUtility.LabeledSlider(listingStandard, settings.sizeRiver, 0.1f, 3f, InterfaceUtility.FormatLabel("ZMD_sizeRiver", "ZMD_size" + GetDensityLabel(settings.sizeRiver)), "ZMD_size1".Translate(), "ZMD_size6".Translate());
-            //listingStandard.Gap(listingStandard.verticalSpacing);
-
-            //listingStandard.CheckboxLabeled("ZMD_flagRiverBeach".Translate(), ref MapDesignerSettings.flagRiverBeach, "ZMD_flagRiverBeach".Translate());
-
-            //listingStandard.Label("Line height " + listingStandard.verticalSpacing);
-            // reset
             listingStandard.GapLine();
 
             if (listingStandard.ButtonText("ZMD_resetThings".Translate()))
@@ -71,9 +61,6 @@ namespace MapDesigner.UI
             settings.densityGeyser = 1.0f;
             settings.densityOre = 1.0f;
             settings.animaCount = 1.0f;
-
-            //settings.sizeRiver = 1.0f;
-            //MapDesignerSettings.flagRiverBeach = false;
 
             settings.rockTypeRange = new IntRange(2, 3);
             MapDesignerSettings.flagBiomeRocks = false;

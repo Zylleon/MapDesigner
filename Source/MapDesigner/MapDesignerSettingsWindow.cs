@@ -124,7 +124,6 @@ namespace MapDesigner
                     break;
                 default:
                     //tab = MapDesigner_Mod.InfoCardTab.Mountains;
-                    //tab = MapDesigner_Mod.InfoCardTab.General;
                     UI.GeneralCardUtility.DrawGeneralCard(cardRect);
                     break;
 

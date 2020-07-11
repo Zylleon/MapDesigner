@@ -144,7 +144,7 @@ namespace MapDesigner
             //float minAllowable = -2f;
             //float maxAllowable = 2f;
 
-            float minAllowable = -0.5f;
+            float minAllowable = -1.5f;
             float maxAllowable = 1.5f;
 
             // find highest fert terrain overall
@@ -152,11 +152,9 @@ namespace MapDesigner
 
             TerrainDef maxFert = patchTerrains.Last();
 
-
             for (int index = 0; index < newTerrain.terrainPatchMakers.Count; index++)
             {
                 TerrainPatchMaker p = newTerrain.terrainPatchMakers[index];
-
 
                 // sort terrains by min
                 p.thresholds.Sort((x, y) => x.min.CompareTo(y.min));

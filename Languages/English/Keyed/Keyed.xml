@@ -13,6 +13,8 @@
 	<ZMD_resetThings>Reset Things to default</ZMD_resetThings>
 	<ZMD_resetRivers>Reset Rivers to default</ZMD_resetRivers>
 	<ZMD_Angle>Angle</ZMD_Angle>
+	<ZMD_randomize>Randomize</ZMD_randomize>
+	
     <!-- Tabs -->
 
 	<ZMD_generalTab>General</ZMD_generalTab>
@@ -217,12 +219,9 @@
 	<ZMD_terrainFertAmt>Fertility: {0} %: </ZMD_terrainFertAmt>
 	
 	<ZMD_terrainWaterAmt>Wetness: {0} %: </ZMD_terrainWaterAmt>
-	
 	<ZMD_terrainWaterTooltip>Size and number of lakes etc. Does not affect rivers, coastlines, or other features.</ZMD_terrainWaterTooltip>
 	
 	<ZMD_flagTerrainWater>All non-buildable terrain counts as water</ZMD_flagTerrainWater>
-	
 	<ZMD_flagTerrainWaterTooltip>All terrains without heavy affordance count as water. Includes mud, marsh, soft sand</ZMD_flagTerrainWaterTooltip>
-	
 	
 </LanguageData>

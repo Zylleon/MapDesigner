@@ -14,8 +14,6 @@ namespace MapDesigner
 
         private static TerrainDefault oldTerrain;
         private static TerrainDefault newTerrain;
-        //private static bool changeTbf = false;
-        //private static bool changePatchMakers = false;
         private static float tbfFert = -1f;
         private static float patchFert = -1f;
         private static float minMapFert = -0.20f;
@@ -98,11 +96,28 @@ namespace MapDesigner
 
             // the actual adjustments
             listTbf.Sort((x, y) => x.thresh.terrain.fertility.CompareTo(y.thresh.terrain.fertility));
-            listTbf.Where(t => !t.thresh.terrain.IsWater).First().size /= settings.terrainFert;
-            listTbf.Where(t => !t.thresh.terrain.IsWater).Last().size *= settings.terrainFert;
-
+            float minFert = -1;
+            float maxFert = -1;
+            if (listTbf.Any(t => !t.thresh.terrain.IsWater))
+            {
+                if (listTbf.Where(t => !t.thresh.terrain.IsWater).Max(t => t.thresh.terrain.fertility) != listTbf.Where(t => !t.thresh.terrain.IsWater).Min(t => t.thresh.terrain.fertility))
+                {
+                    minFert = listTbf.Where(t => !t.thresh.terrain.IsWater).Min(t => t.thresh.terrain.fertility);
+                    maxFert = listTbf.Where(t => !t.thresh.terrain.IsWater).Max(t => t.thresh.terrain.fertility);
+                }
+            }
             for (int i = 0; i < listTbf.Count(); i++)
             {
+                //fert
+                if(listTbf[i].thresh.terrain.fertility == maxFert)
+                {
+                    listTbf[i].size *= settings.terrainFert;
+                }
+                else if (listTbf[i].thresh.terrain.fertility == minFert)
+                {
+                    listTbf[i].size /= settings.terrainFert;
+                }
+                //water
                 if (listTbf[i].thresh.terrain.IsWater)
                 {
                     listTbf[i].size *= settings.terrainWater;
@@ -141,16 +156,14 @@ namespace MapDesigner
         private static void FertChangePatchMakers(List<TerrainDef> patchTerrains)
         {
             MapDesignerSettings settings = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>();
-            //float minAllowable = -2f;
-            //float maxAllowable = 2f;
-
             float minAllowable = -1.5f;
             float maxAllowable = 1.5f;
 
             // find highest fert terrain overall
             patchTerrains.Sort((x, y) => x.fertility.CompareTo(y.fertility));
 
-            TerrainDef maxFert = patchTerrains.Last();
+            //TerrainDef maxFert = patchTerrains.Last();
+            float maxFert = patchTerrains.Max(t => t.fertility);
 
             for (int index = 0; index < newTerrain.terrainPatchMakers.Count; index++)
             {
@@ -184,7 +197,7 @@ namespace MapDesigner
                     tbf.thresh = p.thresholds[i];
                     tbf.size = Math.Min(p.thresholds[i].max, maxAllowable) - Math.Max(p.thresholds[i].min, minAllowable);
 
-                    if (tbf.thresh.terrain == maxFert)
+                    if (tbf.thresh.terrain.fertility == maxFert)
                     {
                         tbf.size *= settings.terrainFert;
                     }

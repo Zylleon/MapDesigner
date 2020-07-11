@@ -28,8 +28,13 @@ namespace MapDesigner.Patches
                 HarmonyMethod postfix = new HarmonyMethod(typeof(MapDesigner).GetMethod("RiverBeachPostfix"));
                 harmony.Patch(targetmethod, null, postfix);
 
+                Log.Message("Part 1");
                 HelperMethods.InitBiomeDefaults();
+                Log.Message("Part 2");
+
                 HelperMethods.ApplyBiomeSettings();
+                Log.Message("Part 2 complete");
+
             }
 
 

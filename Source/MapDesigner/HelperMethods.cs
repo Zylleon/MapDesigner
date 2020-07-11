@@ -116,8 +116,8 @@ namespace MapDesigner
             float widthOnMap = 6;
             foreach (RiverDef river in DefDatabase<RiverDef>.AllDefs)
             {
-               switch(river.defName)
-               {
+                switch (river.defName)
+                {
                     case "HugeRiver":
                         widthOnMap = 30f;
                         break;
@@ -130,56 +130,50 @@ namespace MapDesigner
                     case "Creek":
                         widthOnMap = 4f;
                         break;
-               }
+                }
 
                 river.widthOnMap = widthOnMap * sizeRiver;
             }
 
             // terrain
-            //if (false)
-            //{
-                foreach (BiomeDef biome in DefDatabase<BiomeDef>.AllDefs)
+
+            foreach (BiomeDef biome in DefDatabase<BiomeDef>.AllDefs)
+            {
+                if (!biome.terrainsByFertility.NullOrEmpty())
                 {
-                    if (!biome.terrainsByFertility.NullOrEmpty())
+                    TerrainDefault newTerrain;
+                    if (biome.defName.Contains("BiomesIsland"))
                     {
-                        TerrainDefault newTerrain;
-                        if (biome.defName.Contains("BiomesIsland"))
-                        {
-
-                            newTerrain = TerrainUtility.StretchTerrainFertility(biomeDefaults[biome.defName].terrain, -.20f, 17.0f);
-                        }
-
-                        else
-                        {
-                            newTerrain = TerrainUtility.StretchTerrainFertility(biomeDefaults[biome.defName].terrain, -.20f, 1.20f);
-                        }
-                        biome.terrainsByFertility = newTerrain.terrainsByFertility;
-                        biome.terrainPatchMakers = newTerrain.terrainPatchMakers;
-
-                        //DEBUG LOGGING
-                        //if (biome.defName.Contains("AB_OcularForest"))
-                        //{
-                        //    Log.Message(biome.defName);
-                        //    TerrainDefault dictEntry = newTerrain;
-                        //    foreach (TerrainThreshold t in dictEntry.terrainsByFertility)
-                        //    {
-                        //        Log.Message(String.Format("- {0} .... {1} | {2}", t.terrain.defName, Math.Round(t.min, 2), Math.Round(t.max,2)));
-                        //    }
-                        //    for (int i = 0; i < dictEntry.terrainPatchMakers.Count(); i++)
-                        //    {
-                        //        TerrainPatchMaker p = dictEntry.terrainPatchMakers[i];
-                        //        Log.Message(String.Format("Patchmaker #{0} | min {1} | max {2}", i, p.minFertility, p.maxFertility));
-                        //        foreach (TerrainThreshold t in p.thresholds)
-                        //        {
-                        //            Log.Message(String.Format("--- {0} | {1} | {2}", t.terrain.defName, Math.Round(t.min, 2), Math.Round(t.max, 2)));
-                        //        }
-                        //    }
-                        //}
-
-
+                        newTerrain = TerrainUtility.StretchTerrainFertility(biomeDefaults[biome.defName].terrain, -.20f, 17.0f);
                     }
+                    else
+                    {
+                        newTerrain = TerrainUtility.StretchTerrainFertility(biomeDefaults[biome.defName].terrain, -.20f, 1.20f);
+                    }
+                    biome.terrainsByFertility = newTerrain.terrainsByFertility;
+                    biome.terrainPatchMakers = newTerrain.terrainPatchMakers;
+
+                    //DEBUG LOGGING
+                    //if (biome.defName.Contains("AB_OcularForest"))
+                    //{
+                    //    Log.Message(biome.defName);
+                    //    TerrainDefault dictEntry = newTerrain;
+                    //    foreach (TerrainThreshold t in dictEntry.terrainsByFertility)
+                    //    {
+                    //        Log.Message(String.Format("- {0} .... {1} | {2}", t.terrain.defName, Math.Round(t.min, 2), Math.Round(t.max,2)));
+                    //    }
+                    //    for (int i = 0; i < dictEntry.terrainPatchMakers.Count(); i++)
+                    //    {
+                    //        TerrainPatchMaker p = dictEntry.terrainPatchMakers[i];
+                    //        Log.Message(String.Format("Patchmaker #{0} | min {1} | max {2}", i, p.minFertility, p.maxFertility));
+                    //        foreach (TerrainThreshold t in p.thresholds)
+                    //        {
+                    //            Log.Message(String.Format("--- {0} | {1} | {2}", t.terrain.defName, Math.Round(t.min, 2), Math.Round(t.max, 2)));
+                    //        }
+                    //    }
+                    //}
                 }
-            //}
+            }
         }
 
         public static float GetRiverDirection()

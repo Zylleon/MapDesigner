@@ -41,11 +41,18 @@ namespace MapDesigner.Patches
             /// <param name="elevation"></param>
             /// <param name="fertility"></param>
             /// <param name="river"></param>
-            /// <param name="preferSolid"></param>
             /// <param name="__result"></param>
-            public static void RiverBeachPostfix(IntVec3 c, Map map, float elevation, float fertility, RiverMaker river, bool preferSolid, ref TerrainDef __result)
+            public static void RiverBeachPostfix(IntVec3 c, Map map, RiverMaker river, ref TerrainDef __result)
             {
                 if (!MapDesignerSettings.flagRiverBeach)
+                {
+                    return;
+                }
+                if(Find.World.CoastDirectionAt(map.Tile) == Rot4.Invalid)
+                {
+                    return;
+                }
+                if(river == null)
                 {
                     return;
                 }

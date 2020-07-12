@@ -39,9 +39,7 @@ namespace MapDesigner
                     terrainsByFertility = new List<TerrainThreshold>(biome.terrainsByFertility),
                     terrainPatchMakers = new List<TerrainPatchMaker>(biome.terrainPatchMakers)
                 };
-
                 biomeDefaults.Add(biome.defName, biodef);
-
             }
 
             settings.biomeDefaults = biomeDefaults;
@@ -79,6 +77,7 @@ namespace MapDesigner
 
         public static void ApplyBiomeSettings()
         {
+            Log.Message("[Map Designer] Updating settings");
             MapDesignerSettings settings = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>();
 
             // densities
@@ -86,78 +85,108 @@ namespace MapDesigner
 
             float densityPlant = settings.densityPlant;
             float densityAnimal = settings.densityAnimal;
-
             foreach (BiomeDef biome in DefDatabase<BiomeDef>.AllDefs)
             {
-                biome.animalDensity = biomeDefaults[biome.defName].animalDensity * densityAnimal;
-
-                biome.plantDensity = biomeDefaults[biome.defName].plantDensity * densityPlant;
-
-                if (biome.plantDensity > 1f)
+                try
                 {
-                    biome.wildPlantRegrowDays = biomeDefaults[biome.defName].wildPlantRegrowDays / biome.plantDensity;
-                    biome.plantDensity = 1f;
+                    biome.animalDensity = biomeDefaults[biome.defName].animalDensity * densityAnimal;
+                    biome.plantDensity = biomeDefaults[biome.defName].plantDensity * densityPlant;
+
+                    if (biome.plantDensity > 1f)
+                    {
+                        biome.wildPlantRegrowDays = biomeDefaults[biome.defName].wildPlantRegrowDays / biome.plantDensity;
+                        biome.plantDensity = 1f;
+                    }
+                }
+                catch
+                {
+                    Log.Message("[Map Designer] ERROR applying plant and animal settings to " + biome.defName);
                 }
             }
 
-            // ruins
             Dictionary<string, FloatRange> densityDefaults = settings.densityDefaults;
-            float densityRuins = settings.densityRuins;
-            if (densityRuins > 1)
+
+            // ruins
+            try
             {
-                densityRuins = (float)Math.Pow(densityRuins, 3);
+                float densityRuins = settings.densityRuins;
+                if (densityRuins > 1)
+                {
+                    densityRuins = (float)Math.Pow(densityRuins, 3);
+                }
+                (DefDatabase<GenStepDef>.GetNamed("ScatterRuinsSimple").genStep as GenStep_Scatterer).countPer10kCellsRange.min = densityDefaults["ScatterRuinsSimple"].min * densityRuins;
+                (DefDatabase<GenStepDef>.GetNamed("ScatterRuinsSimple").genStep as GenStep_Scatterer).countPer10kCellsRange.max = densityDefaults["ScatterRuinsSimple"].max * densityRuins;
             }
-            (DefDatabase<GenStepDef>.GetNamed("ScatterRuinsSimple").genStep as GenStep_Scatterer).countPer10kCellsRange.min = densityDefaults["ScatterRuinsSimple"].min * densityRuins;
-            (DefDatabase<GenStepDef>.GetNamed("ScatterRuinsSimple").genStep as GenStep_Scatterer).countPer10kCellsRange.max = densityDefaults["ScatterRuinsSimple"].max * densityRuins;
+            catch
+            {
+                Log.Message("[Map Designer] ERROR with settings: ruins");
+            }
 
             // ancient dangers
-            float densityDanger = settings.densityDanger;
-            if (densityDanger > 1)
+            try
             {
-                densityDanger = (float)Math.Pow(densityDanger, 4);
+                float densityDanger = settings.densityDanger;
+                if (densityDanger > 1)
+                {
+                    densityDanger = (float)Math.Pow(densityDanger, 4);
+                }
+                (DefDatabase<GenStepDef>.GetNamed("ScatterShrines").genStep as GenStep_Scatterer).countPer10kCellsRange.min = densityDefaults["ScatterShrines"].min * densityDanger;
+                (DefDatabase<GenStepDef>.GetNamed("ScatterShrines").genStep as GenStep_Scatterer).countPer10kCellsRange.max = densityDefaults["ScatterShrines"].max * densityDanger;
             }
-            (DefDatabase<GenStepDef>.GetNamed("ScatterShrines").genStep as GenStep_Scatterer).countPer10kCellsRange.min = densityDefaults["ScatterShrines"].min * densityDanger;
-            (DefDatabase<GenStepDef>.GetNamed("ScatterShrines").genStep as GenStep_Scatterer).countPer10kCellsRange.max = densityDefaults["ScatterShrines"].max * densityDanger;
-
+            catch
+            {
+                Log.Message("[Map Designer] ERROR with settings: ancient dangers");
+            }
 
             // geysers
-            float densityGeyser = settings.densityGeyser;
-            if (densityGeyser > 1)
+            try
             {
-                densityGeyser = (float)Math.Pow(densityGeyser, 2);
+                float densityGeyser = settings.densityGeyser;
+                if (densityGeyser > 1)
+                {
+                    densityGeyser = (float)Math.Pow(densityGeyser, 2);
+                }
+                (DefDatabase<GenStepDef>.GetNamed("SteamGeysers").genStep as GenStep_Scatterer).countPer10kCellsRange.min = densityDefaults["SteamGeysers"].min * densityGeyser;
+                (DefDatabase<GenStepDef>.GetNamed("SteamGeysers").genStep as GenStep_Scatterer).countPer10kCellsRange.max = densityDefaults["SteamGeysers"].max * densityGeyser;
             }
-
-            (DefDatabase<GenStepDef>.GetNamed("SteamGeysers").genStep as GenStep_Scatterer).countPer10kCellsRange.min = densityDefaults["SteamGeysers"].min * densityGeyser;
-            (DefDatabase<GenStepDef>.GetNamed("SteamGeysers").genStep as GenStep_Scatterer).countPer10kCellsRange.max = densityDefaults["SteamGeysers"].max * densityGeyser;
-
+            catch
+            {
+                Log.Message("[Map Designer] ERROR with settings: geysers");
+            }
 
             // rivers
             float widthOnMap = 6;
             foreach (RiverDef river in DefDatabase<RiverDef>.AllDefs)
             {
-                switch (river.defName)
+                try
                 {
-                    case "HugeRiver":
-                        widthOnMap = 30f;
-                        break;
-                    case "LargeRiver":
-                        widthOnMap = 14f;
-                        break;
-                    case "River":
-                        widthOnMap = 6f;
-                        break;
-                    case "Creek":
-                        widthOnMap = 4f;
-                        break;
+                    switch (river.defName)
+                    {
+                        case "HugeRiver":
+                            widthOnMap = 30f;
+                            break;
+                        case "LargeRiver":
+                            widthOnMap = 14f;
+                            break;
+                        case "River":
+                            widthOnMap = 6f;
+                            break;
+                        case "Creek":
+                            widthOnMap = 4f;
+                            break;
+                    }
+                    river.widthOnMap = widthOnMap * settings.sizeRiver;
                 }
-
-                river.widthOnMap = widthOnMap * settings.sizeRiver;
+                catch
+                {
+                    Log.Message("[Map Designer] ERROR with settings: river width : " + river.defName);
+                }
             }
 
             // terrain
-            if (Math.Abs(settings.terrainFert - 1f) > 0.1 || Math.Abs(settings.terrainWater - 1f) > 0.1)
+            if (Math.Abs(settings.terrainFert - 1f) > 0.05 || Math.Abs(settings.terrainWater - 1f) > 0.05)
             {
-                Log.Message(String.Format("Map Designer Terrain settings: fertility: {0} | Water {1}", Math.Round(100 * settings.terrainFert), Math.Round(100 * settings.terrainWater)));
+                Log.Message(String.Format("[Map Designer] Terrain settings: fertility: {0} | Water {1}", Math.Round(100 * settings.terrainFert), Math.Round(100 * settings.terrainWater)));
                 foreach (BiomeDef biome in DefDatabase<BiomeDef>.AllDefs)
                 {
                     if (!biome.terrainsByFertility.NullOrEmpty())
@@ -179,15 +208,16 @@ namespace MapDesigner
 
                         catch (Exception e)
                         {
-                            Log.Message("ERROR applying terrain settings to " + biome.defName);
+                            Log.Message("[Map Designer] ERROR with settings: terrain : " + biome.defName);
                             Log.Message(e.Message);
 
                             TerrainDefault dictEntry = settings.biomeDefaults[biome.defName].terrain;
-                            Log.Message("Terrains by fertility");
+                            Log.Message("--terrainsByFertility");
                             foreach (TerrainThreshold t in dictEntry.terrainsByFertility)
                             {
                                 Log.Message(String.Format("- {0} .... {1} | {2}", t.terrain.defName, Math.Round(t.min, 2), Math.Round(t.max, 2)));
                             }
+                            Log.Message("--terrainPatchMakers");
                             for (int i = 0; i < dictEntry.terrainPatchMakers.Count(); i++)
                             {
                                 TerrainPatchMaker p = dictEntry.terrainPatchMakers[i];
@@ -201,9 +231,15 @@ namespace MapDesigner
                     }
                 }
             }
-
-
-            
+            else
+            {
+                Log.Message("[Map Designer] Terrain settings: Default");
+                foreach (BiomeDef biome in DefDatabase<BiomeDef>.AllDefs)
+                {
+                    biome.terrainsByFertility = biomeDefaults[biome.defName].terrain.terrainsByFertility;
+                    biome.terrainPatchMakers = biomeDefaults[biome.defName].terrain.terrainPatchMakers;
+                }
+            }
 
 
         }

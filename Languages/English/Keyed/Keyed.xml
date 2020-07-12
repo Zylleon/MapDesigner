@@ -147,13 +147,10 @@
 	<ZMD_densityOre>Ore amount</ZMD_densityOre>
 	<ZMD_animaCount>Anima trees</ZMD_animaCount>
 
-	<ZMD_flagOneRock>One rock type per map</ZMD_flagOneRock>
-	<ZMD_flagOneRockTooltip>One rock type per map</ZMD_flagOneRockTooltip>
-
 	<ZMD_rockTypeRange>Number of rock types per map</ZMD_rockTypeRange>
 	<ZMD_flagBiomeRocks>Allow modded biomes with special rocks, like Atolls or the Ocular Forest, to have more rock types.</ZMD_flagBiomeRocks>
 	<ZMD_flagBiomeRocksTooltip> This can drastically change game balance in some modded biomes.</ZMD_flagBiomeRocksTooltip>
-	
+	<ZMD_allRockTypes>Allow all rock types</ZMD_allRockTypes>
 <!-- ===================================	Rivers	================================= -->
 	
 	<ZMD_riverTab>Rivers</ZMD_riverTab>

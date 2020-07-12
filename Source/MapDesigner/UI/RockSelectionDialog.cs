@@ -32,19 +32,21 @@ namespace MapDesigner.UI
                                    where d.category == ThingCategory.Building && d.building.isNaturalRock && !d.building.isResourceRock && !d.IsSmoothed
                                    select d).ToList<ThingDef>();
 
-            //Rect viewRect = new Rect(0f, 0f, inRect.width - 18f, 100 + 24 * list.Count());
-            //Rect viewRect = new Rect(0f, 0f, inRect.width - 38f, 100 + 24 * list.Count());
+            Listing_Standard outerListing = new Listing_Standard();
+            outerListing.Begin(inRect);
 
-            //Rect viewRect = inRect.ContractedBy(4f);
-            Rect viewRect = inRect.ContractedBy(4f);
+            if (outerListing.ButtonText("ZMD_allRockTypes".Translate()))
+            {
+                AllowAllRocks(settings, list);
+            }
 
-            viewRect.width = 200f;
-            viewRect.height = 24 * list.Count();
+            Rect windowRect = outerListing.GetRect(inRect.height - outerListing.CurHeight).ContractedBy(4f);
 
-            Widgets.BeginScrollView(inRect, ref scrollPosition, viewRect, true);
+            Rect viewRect = new Rect(0f, 0f, 200f, 50f + 24 * list.Count());
+
+            Widgets.BeginScrollView(windowRect, ref scrollPosition, viewRect, true);
 
             Listing_Standard listing = new Listing_Standard();
-            //listing.ColumnWidth = 200f;
             listing.Begin(viewRect);
 
             foreach(ThingDef rock in list)
@@ -60,5 +62,17 @@ namespace MapDesigner.UI
 
         }
 
+
+        public void AllowAllRocks(MapDesignerSettings settings, List<ThingDef> list)
+        {
+            Dictionary<string, bool> newRocks = new Dictionary<string, bool>();
+
+            foreach (ThingDef rock in list)
+            {
+                newRocks.Add(rock.defName, true);
+            }
+
+            settings.allowedRocks = newRocks;
+        }
     }
 }

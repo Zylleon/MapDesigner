@@ -24,6 +24,8 @@ namespace MapDesigner
 
         public static void InitBiomeDefaults()
         {
+            MapDesignerSettings settings = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>();
+
             Dictionary<string, BiomeDefault>  biomeDefaults = new Dictionary<string, BiomeDefault>();
 
             foreach (BiomeDef biome in DefDatabase<BiomeDef>.AllDefs)
@@ -42,7 +44,7 @@ namespace MapDesigner
 
             }
 
-            LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>().biomeDefaults = biomeDefaults;
+            settings.biomeDefaults = biomeDefaults;
 
             Dictionary<string, FloatRange> densityDefaults = new Dictionary<string, FloatRange>();
 
@@ -55,7 +57,23 @@ namespace MapDesigner
             step = DefDatabase<GenStepDef>.GetNamed("SteamGeysers");
             densityDefaults.Add(step.defName, (step.genStep as GenStep_Scatterer).countPer10kCellsRange);
 
-            LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>().densityDefaults = densityDefaults;
+            settings.densityDefaults = densityDefaults;
+
+            // Rocks
+            if(settings.allowedRocks.EnumerableNullOrEmpty())
+            {
+                settings.allowedRocks = new Dictionary<string, bool>();
+            }
+            List<ThingDef> list = (from d in DefDatabase<ThingDef>.AllDefs
+                                   where d.category == ThingCategory.Building && d.building.isNaturalRock && !d.building.isResourceRock && !d.IsSmoothed
+                                   select d).ToList<ThingDef>();
+            foreach (ThingDef rock in list)
+            {
+                if (!settings.allowedRocks.ContainsKey(rock.defName))
+                {
+                    settings.allowedRocks.Add(rock.defName, true);
+                }
+            }
         }
 
 
@@ -183,6 +201,10 @@ namespace MapDesigner
                     }
                 }
             }
+
+
+            
+
 
         }
 

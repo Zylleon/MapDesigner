@@ -44,6 +44,13 @@ namespace MapDesigner.UI
 
             listingStandard.GapLine();
 
+            if (listingStandard.ButtonText("ZMD_chooseRockTypes".Translate()))
+            {
+                Find.WindowStack.Add(new RockSelectionDialog());
+            }
+
+
+            // Reset
             if (listingStandard.ButtonText("ZMD_resetThings".Translate()))
             {
                 ResetThingsSettings();

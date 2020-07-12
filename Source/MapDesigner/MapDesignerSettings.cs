@@ -22,9 +22,6 @@ namespace MapDesigner
         public float hillSmoothness = 2.0f;
         public static bool flagCaves = true;
 
-        public IntRange rockTypeRange = new IntRange(2, 3);
-        public static bool flagBiomeRocks = false;
-
         public static bool flagHillClumping = false;
 
         public static bool flagHillRadial = false;
@@ -50,6 +47,10 @@ namespace MapDesigner
         public float densityOre = 1.0f;
         public float animaCount = 1.0f;
 
+        // Rocks
+        public IntRange rockTypeRange = new IntRange(2, 3);
+        public static bool flagBiomeRocks = false;
+        public Dictionary<string, bool> allowedRocks = new Dictionary<string, bool>();
 
 
         // Rivers
@@ -127,8 +128,10 @@ namespace MapDesigner
             Scribe_Values.Look(ref densityOre, "densityOre", 1.0f);
             Scribe_Values.Look(ref animaCount, "animaCount", 1.0f);
 
+            // Rocks
             Scribe_Values.Look(ref rockTypeRange, "rockTypeRange", new IntRange(2, 3));
             Scribe_Values.Look(ref flagBiomeRocks, "flagBiomeRocks", false);
+            Scribe_Collections.Look(ref allowedRocks, "allowedRocks", LookMode.Value, LookMode.Value);
 
             // Rivers
             Scribe_Values.Look(ref sizeRiver, "sizeRiver", 1.0f);

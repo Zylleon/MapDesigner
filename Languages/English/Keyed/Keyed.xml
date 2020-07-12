@@ -29,6 +29,9 @@
 	
 	<ZMD_rocksTab>Rocks</ZMD_rocksTab>
 	<ZMD_rocksTabInfo>OPTIONS FOR ROOOOOCKS</ZMD_rocksTabInfo>
+	<ZMD_chooseRockTypes>Choose rock types</ZMD_chooseRockTypes>
+	
+	
 	
   <!-- Levels -->
     <ZMD_size0>None</ZMD_size0>
@@ -213,7 +216,7 @@
     <!-- Tabs -->
 
 	<ZMD_betaTab>Beta</ZMD_betaTab>
-	<ZMD_betaTabInfo>USE AT YOUR OWN RISK! These options are for development. They might be mislabeled, might do nothing, and will probably spam the error log.\n\nPlease report any lack of issues.</ZMD_betaTabInfo>
+	<ZMD_betaTabInfo>WARNING! These options are for development. They might be mislabeled, might do nothing, and will probably spam the error log.\n\n If there are issues, please report with the error log. If these work, please report that also.</ZMD_betaTabInfo>
 	
 	
 	<ZMD_terrainFertAmt>Fertility: {0} %: </ZMD_terrainFertAmt>

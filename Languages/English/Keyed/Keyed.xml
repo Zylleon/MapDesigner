@@ -12,6 +12,7 @@
 	<ZMD_resetMountain>Reset mountains to default</ZMD_resetMountain>
 	<ZMD_resetThings>Reset Things to default</ZMD_resetThings>
 	<ZMD_resetRivers>Reset Rivers to default</ZMD_resetRivers>
+	<ZMD_resetTerrain>Reset Terrain</ZMD_resetTerrain>
 	<ZMD_Angle>Angle</ZMD_Angle>
 	<ZMD_randomize>Randomize</ZMD_randomize>
 	
@@ -24,13 +25,7 @@
 	<ZMD_flagPopupDesc>You can access these settings any time from Menu -> Options -> Mod Settings -> Map Designer</ZMD_flagPopupDesc>
 	
 	<ZMD_mapInfo>Customize before landing</ZMD_mapInfo>
-	
-	
-	
-	<ZMD_rocksTab>Rocks</ZMD_rocksTab>
-	<ZMD_rocksTabInfo>OPTIONS FOR ROOOOOCKS</ZMD_rocksTabInfo>
-	<ZMD_chooseRockTypes>Choose rock types</ZMD_chooseRockTypes>
-	
+
 	
 	
   <!-- Levels -->
@@ -145,12 +140,11 @@
 	<ZMD_densityDangerTooltip>NOTE: Ancient dangers will not spawn on completely flat maps</ZMD_densityDangerTooltip>
 	<ZMD_densityGeyser>Steam geysers</ZMD_densityGeyser>
 	<ZMD_densityOre>Ore amount</ZMD_densityOre>
-	<ZMD_animaCount>Anima trees</ZMD_animaCount>
+	<ZMD_animaCount>Anima trees: </ZMD_animaCount>
 
-	<ZMD_rockTypeRange>Number of rock types per map</ZMD_rockTypeRange>
-	<ZMD_flagBiomeRocks>Allow modded biomes with special rocks, like Atolls or the Ocular Forest, to have more rock types.</ZMD_flagBiomeRocks>
-	<ZMD_flagBiomeRocksTooltip> This can drastically change game balance in some modded biomes.</ZMD_flagBiomeRocksTooltip>
-	<ZMD_allRockTypes>Allow all rock types</ZMD_allRockTypes>
+
+	
+	
 <!-- ===================================	Rivers	================================= -->
 	
 	<ZMD_riverTab>Rivers</ZMD_riverTab>
@@ -160,6 +154,8 @@
 	<ZMD_flagRiverBeach>River banks</ZMD_flagRiverBeach>
 	<ZMD_riverBeachSize>River bank size</ZMD_riverBeachSize>
 	
+	<ZMD_flagRiverDir>Pick river direction</ZMD_flagRiverDir>
+
 	
 <!-- ===================================	Features	================================= -->
     <!-- Tabs -->
@@ -207,7 +203,29 @@
   <ZMD_lakeRoundness4>Shapeless</ZMD_lakeRoundness4>
 
 
+<!-- ===================================	Terrain	================================= -->
 
+    <!-- Tabs -->
+
+	<ZMD_terrainTab>Terrain</ZMD_terrainTab>
+	<ZMD_terrainTabInfo>Terrain</ZMD_terrainTabInfo>
+	
+	<ZMD_rockTypeRange>Number of rock types per map</ZMD_rockTypeRange>
+	<ZMD_flagBiomeRocks>Allow modded biomes with special rocks, like Atolls or the Ocular Forest, to have more rock types.</ZMD_flagBiomeRocks>
+	<ZMD_flagBiomeRocksTooltip> This can drastically change game balance in some modded biomes.</ZMD_flagBiomeRocksTooltip>
+	
+	<ZMD_allRockTypes>Allow all rock types</ZMD_allRockTypes>
+	<ZMD_chooseRockTypes>Choose rock types</ZMD_chooseRockTypes>
+	
+	<ZMD_terrainFertAmt>Fertility: {0} %: </ZMD_terrainFertAmt>
+	
+	<ZMD_terrainWaterAmt>Wetness: {0} %: </ZMD_terrainWaterAmt>
+	<ZMD_terrainWaterTooltip>Size and number of lakes etc. Does not affect rivers, coastlines, or other features.</ZMD_terrainWaterTooltip>
+	
+	<ZMD_flagTerrainWater>All non-buildable terrain counts as water</ZMD_flagTerrainWater>
+	<ZMD_flagTerrainWaterTooltip>All terrains without heavy affordance count as water. Includes mud, marsh, soft sand</ZMD_flagTerrainWaterTooltip>
+	
+	
 	
 <!-- ===================================	Beta	================================= -->
     <!-- Tabs -->

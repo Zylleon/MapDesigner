@@ -15,6 +15,7 @@ namespace MapDesigner
         {
             General,
             Mountains,
+            Terrain,
             Things,
             Rivers,
             Feature,
@@ -52,17 +53,23 @@ namespace MapDesigner
 
             List<TabRecord> list = new List<TabRecord>();
 
-            TabRecord generalTab = new TabRecord("ZMD_generalTab".Translate(), delegate
-            {
-                this.tab = MapDesigner_Mod.InfoCardTab.General;
-            }, this.tab == MapDesigner_Mod.InfoCardTab.General);
-            list.Add(generalTab);
+            //TabRecord generalTab = new TabRecord("ZMD_generalTab".Translate(), delegate
+            //{
+            //    this.tab = MapDesigner_Mod.InfoCardTab.General;
+            //}, this.tab == MapDesigner_Mod.InfoCardTab.General);
+            //list.Add(generalTab);
 
             TabRecord mountainTab = new TabRecord("ZMD_mountainTab".Translate(), delegate
             {
                 this.tab = MapDesigner_Mod.InfoCardTab.Mountains;
             }, this.tab == MapDesigner_Mod.InfoCardTab.Mountains);
             list.Add(mountainTab);
+
+            TabRecord terrainTab = new TabRecord("ZMD_terrainTab".Translate(), delegate
+            {
+                this.tab = MapDesigner_Mod.InfoCardTab.Terrain;
+            }, this.tab == MapDesigner_Mod.InfoCardTab.Terrain);
+            list.Add(terrainTab);
 
             TabRecord ThingsTab = new TabRecord("ZMD_thingsTab".Translate(), delegate
             {
@@ -82,14 +89,14 @@ namespace MapDesigner
             }, this.tab == MapDesigner_Mod.InfoCardTab.Feature);
             list.Add(featureTab);
 
-            if(Prefs.DevMode)
-            {
-                TabRecord betaTab = new TabRecord("ZMD_betaTab".Translate(), delegate
-                {
-                    this.tab = MapDesigner_Mod.InfoCardTab.Beta;
-                }, this.tab == MapDesigner_Mod.InfoCardTab.Beta);
-                list.Add(betaTab);
-            }
+            //if(Prefs.DevMode)
+            //{
+            //    TabRecord betaTab = new TabRecord("ZMD_betaTab".Translate(), delegate
+            //    {
+            //        this.tab = MapDesigner_Mod.InfoCardTab.Beta;
+            //    }, this.tab == MapDesigner_Mod.InfoCardTab.Beta);
+            //    list.Add(betaTab);
+            //}
 
             TabDrawer.DrawTabs(rect3, list, 150f);
             this.FillCard(rect3.ContractedBy(18f));
@@ -107,24 +114,24 @@ namespace MapDesigner
                 case MapDesigner_Mod.InfoCardTab.Mountains:
                     UI.MountainCardUtility.DrawMountainCard(cardRect);
                     break;
+                case MapDesigner_Mod.InfoCardTab.Terrain:
+                    UI.TerrainCardUtility.DrawTerrainCard(cardRect);
+                    break;
                 case MapDesigner_Mod.InfoCardTab.Things:
                     UI.ThingsCardUtility.DrawThingsCard(cardRect);
                     break;
-                //case MapDesigner_Mod.InfoCardTab.Rocks:
-                //    UI.RocksCardUtility.DrawRocksCard(cardRect);
-                //    break;
                 case MapDesigner_Mod.InfoCardTab.Rivers:
                     UI.RiversCardUtility.DrawRiversCard(cardRect);
                     break;
                 case MapDesigner_Mod.InfoCardTab.Feature:
                     UI.FeatureCardUtility.DrawFeaturesCard(cardRect);
                     break;
-                case MapDesigner_Mod.InfoCardTab.Beta:
-                    UI.BetaCardUtility.DrawBetaCard(cardRect);
-                    break;
+                //case MapDesigner_Mod.InfoCardTab.Beta:
+                //    UI.TerrainCardUtility.DrawBetaCard(cardRect);
+                //    break;
                 default:
-                    //tab = MapDesigner_Mod.InfoCardTab.Mountains;
-                    UI.GeneralCardUtility.DrawGeneralCard(cardRect);
+                    tab = MapDesigner_Mod.InfoCardTab.Mountains;
+                    //UI.GeneralCardUtility.DrawGeneralCard(cardRect);
                     break;
 
 

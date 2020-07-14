@@ -18,8 +18,10 @@ namespace MapDesigner.Patches
         {
             Rand.PushState();
             Rand.Seed = tile;
+            //IntRange rockTypeRange = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>().rockTypeRange;
 
-            IntRange rockTypeRange = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>().rockTypeRange;
+            MapDesignerSettings settings = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>();
+            IntRange rockTypeRange = settings.rockTypeRange;
 
             int num = Rand.RangeInclusive(rockTypeRange.min, rockTypeRange.max);
 
@@ -27,22 +29,24 @@ namespace MapDesigner.Patches
             if (__result.Count() == 1 && !MapDesignerSettings.flagBiomeRocks)
             {
                 Rand.PopState();
-
                 return;
             }
+
+            List<ThingDef> rocks = __result.ToList();
+
+            List<ThingDef> list = (from d in DefDatabase<ThingDef>.AllDefs
+                                   where d.category == ThingCategory.Building && d.building.isNaturalRock && !d.building.isResourceRock && !d.IsSmoothed && !rocks.Contains(d)
+                                   select d).ToList<ThingDef>();
+
 
             // shorten if the list is already long enough
             if (__result.Count() >= num)
             {
                 __result = __result.Take(num);
-                //Log.Message("New rocks: " + __result.Count());
             }
             else
             {
-                List<ThingDef> rocks = __result.ToList();
-                List<ThingDef> list = (from d in DefDatabase<ThingDef>.AllDefs
-                                       where d.category == ThingCategory.Building && d.building.isNaturalRock && !d.building.isResourceRock && !d.IsSmoothed && !rocks.Contains(d)
-                                       select d).ToList<ThingDef>();
+                
                 while (rocks.Count() < num && list.Count() > 0)
                 {
                     ThingDef item = list.RandomElement<ThingDef>();

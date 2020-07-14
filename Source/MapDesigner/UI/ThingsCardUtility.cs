@@ -33,22 +33,10 @@ namespace MapDesigner.UI
 
             if (ModsConfig.RoyaltyActive)
             {
-                settings.animaCount = InterfaceUtility.LabeledSlider(listingStandard, settings.animaCount, 1f, 15f, "ZMD_animaCount".Translate(), "1", "15");
+                settings.animaCount = (float)Math.Round(InterfaceUtility.LabeledSlider(listingStandard, settings.animaCount, 0f, 15f, "ZMD_animaCount".Translate() + settings.animaCount));
             }
 
-            // Rocks
-            listingStandard.GapLine();
-            InterfaceUtility.LabeledIntRange(listingStandard, ref settings.rockTypeRange, 1, 5, "ZMD_rockTypeRange".Translate());
-
-            listingStandard.CheckboxLabeled("ZMD_flagBiomeRocks".Translate(), ref MapDesignerSettings.flagBiomeRocks, "ZMD_flagBiomeRocksTooltip".Translate());
-
-            listingStandard.GapLine();
-
-            if (listingStandard.ButtonText("ZMD_chooseRockTypes".Translate()))
-            {
-                Find.WindowStack.Add(new RockSelectionDialog());
-            }
-
+         
 
             // Reset
             if (listingStandard.ButtonText("ZMD_resetThings".Translate()))
@@ -68,9 +56,6 @@ namespace MapDesigner.UI
             settings.densityGeyser = 1.0f;
             settings.densityOre = 1.0f;
             settings.animaCount = 1.0f;
-
-            settings.rockTypeRange = new IntRange(2, 3);
-            MapDesignerSettings.flagBiomeRocks = false;
         }
 
 

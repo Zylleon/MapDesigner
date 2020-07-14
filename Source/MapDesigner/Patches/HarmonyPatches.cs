@@ -31,6 +31,8 @@ namespace MapDesigner.Patches
                 HelperMethods.InitBiomeDefaults();
                 HelperMethods.ApplyBiomeSettings();
 
+
+
             }
 
 

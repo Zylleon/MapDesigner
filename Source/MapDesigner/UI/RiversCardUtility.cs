@@ -66,6 +66,15 @@ namespace MapDesigner.UI
                 riverBeachListing.End();
             }
 
+
+            // river direction
+
+            listing.CheckboxLabeled("ZMD_flagRiverDir".Translate(), ref MapDesignerSettings.flagRiverDir, "ZMD_flagRiverDir".Translate());
+            if (MapDesignerSettings.flagRiverDir)
+            {
+                settings.riverDir = InterfaceUtility.AnglePicker(listing, settings.riverDir, "ZMD_Angle".Translate(), 2, true);
+            }
+
             // reset
             listing.GapLine();
             if (listing.ButtonText("ZMD_resetRivers".Translate()))
@@ -83,6 +92,8 @@ namespace MapDesigner.UI
             MapDesignerSettings.flagRiverBeach = false;
             settings.riverShore = "SoilRich";
             settings.riverBeachSize = 10f;
+            MapDesignerSettings.flagRiverDir = false;
+            settings.riverDir = 180f;
         }
 
     }

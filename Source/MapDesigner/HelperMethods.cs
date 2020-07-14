@@ -244,9 +244,14 @@ namespace MapDesigner
 
         }
 
-        public static float GetRiverDirection()
+        public static float GetRiverDirection(float angle)
         {
-            return 0f;
+            if (MapDesignerSettings.flagRiverDir)
+            {
+                angle =  LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>().riverDir;
+
+            }
+            return angle;
         }
     
 

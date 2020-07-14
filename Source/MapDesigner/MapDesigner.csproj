@@ -299,12 +299,13 @@
     <Compile Include="Patches\CaveSettingsPatch.cs" />
     <Compile Include="Patches\HarmonyPatches.cs" />
     <Compile Include="Patches\MountainSettingsPatch.cs" />
+    <Compile Include="Patches\RiverDirectionPatch.cs" />
     <Compile Include="Patches\OreDensityPatch.cs" />
     <Compile Include="Patches\RiverBankPatch.cs" />
     <Compile Include="Patches\RockTypesPatch.cs" />
     <Compile Include="TerrainDefault.cs" />
     <Compile Include="TerrainUtility.cs" />
-    <Compile Include="UI\BetaCardUtility.cs" />
+    <Compile Include="UI\TerrainCardUtility.cs" />
     <Compile Include="UI\GeneralCardUtility.cs" />
     <Compile Include="UI\MountainCardUtility.cs" />
     <Compile Include="UI\FeatureCardUtility.cs" />

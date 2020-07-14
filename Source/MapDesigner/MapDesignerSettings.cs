@@ -58,6 +58,8 @@ namespace MapDesigner
         public static bool flagRiverBeach = false;
         public string riverShore = "SoilRich";
         public float riverBeachSize = 10f;                // in tiles
+        public static bool flagRiverDir = false;
+        public float riverDir = 180f;
 
         // Terrain
         public float terrainFert = 1f;
@@ -138,7 +140,8 @@ namespace MapDesigner
             Scribe_Values.Look(ref flagRiverBeach, "flagFertileRivers", false);
             Scribe_Values.Look(ref riverShore, "riverShore", "SoilRich");
             Scribe_Values.Look(ref riverBeachSize, "riverBeachSize", 10f);
-
+            Scribe_Values.Look(ref flagRiverDir, "flagRiverDir", false);
+            Scribe_Values.Look(ref riverDir, "riverDir", 180f);
 
             // Terrain
             Scribe_Values.Look(ref terrainFert, "terrainFert", 1.0f);

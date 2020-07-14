@@ -26,10 +26,6 @@ namespace MapDesigner.UI
 
             listing.GapLine();
 
-            //listing.CheckboxLabeled("Enable terrain", ref MapDesignerSettings.flagTerrain, "Enable terrain");
-
-            //settings.terrainFert = InterfaceUtility.LabeledSlider(listing, settings.terrainFert, 0.25f, 3f, "Terrain: " + settings.terrainFert);
-
             // randomize
             if (listing.ButtonText("ZMD_randomize".Translate()))
             {
@@ -49,13 +45,11 @@ namespace MapDesigner.UI
 
         public static void ResetAllSettings()
         {
-            settings.terrainFert = 1f;
-
-            //settings.selectedFeature = MapDesignerSettings.Features.None;
-            //MountainCardUtility.ResetMountainSettings();
-            //RiversCardUtility.ResetRiversSettings();
-            //RocksCardUtility.ResetRocksSettings();
-            //ThingsCardUtility.ResetThingsSettings();
+            MountainCardUtility.ResetMountainSettings();
+            TerrainCardUtility.ResetTerrainSettings();
+            ThingsCardUtility.ResetThingsSettings();
+            RiversCardUtility.ResetRiversSettings();
+            settings.selectedFeature = MapDesignerSettings.Features.None;
         }
 
 

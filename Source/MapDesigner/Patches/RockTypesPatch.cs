@@ -18,8 +18,6 @@ namespace MapDesigner.Patches
         {
             Rand.PushState();
             Rand.Seed = tile;
-            //IntRange rockTypeRange = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>().rockTypeRange;
-
             MapDesignerSettings settings = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>();
             IntRange rockTypeRange = settings.rockTypeRange;
 
@@ -32,28 +30,37 @@ namespace MapDesigner.Patches
                 return;
             }
 
-            List<ThingDef> rocks = __result.ToList();
+            List<ThingDef> tileRocks = __result.ToList();
 
             List<ThingDef> list = (from d in DefDatabase<ThingDef>.AllDefs
-                                   where d.category == ThingCategory.Building && d.building.isNaturalRock && !d.building.isResourceRock && !d.IsSmoothed && !rocks.Contains(d)
+                                   where d.category == ThingCategory.Building && d.building.isNaturalRock && !d.building.isResourceRock && !d.IsSmoothed 
                                    select d).ToList<ThingDef>();
 
+            List<ThingDef> allowedRocks = list.Where(t => settings.allowedRocks[t.defName]).ToList();
+
+            // if nothing is selected, all rock types are allowed
+            if(allowedRocks.Count == 0)
+            {
+                allowedRocks = list;
+            }
+
+            tileRocks.RemoveAll(t => !allowedRocks.Contains(t));
+            allowedRocks.RemoveAll(t => tileRocks.Contains(t));
 
             // shorten if the list is already long enough
-            if (__result.Count() >= num)
+            if (tileRocks.Count() >= num)
             {
-                __result = __result.Take(num);
+                __result = tileRocks.Take(num);
             }
             else
             {
-                
-                while (rocks.Count() < num && list.Count() > 0)
+                while (tileRocks.Count() < num && allowedRocks.Count() > 0)
                 {
-                    ThingDef item = list.RandomElement<ThingDef>();
-                    list.Remove(item);
-                    rocks.Add(item);
+                    ThingDef item = allowedRocks.RandomElement<ThingDef>();
+                    allowedRocks.Remove(item);
+                    tileRocks.Add(item);
                 }
-                __result = rocks.ToList();
+                __result = tileRocks.ToList();
             }
 
             Rand.PopState();

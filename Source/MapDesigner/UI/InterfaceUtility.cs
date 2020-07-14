@@ -39,6 +39,24 @@ namespace MapDesigner.UI
         }
 
 
+        public static bool SizedTextButton(Listing_Standard listing, string label, float width = -1f, bool centered = false)
+        {
+            Rect rect = new Rect(listing.GetRect(30f));
+            if(width == -1f)
+            {
+                width = Text.CalcSize(label).x + 50f;
+            }
+            rect.width = width;
+            if(centered)
+            {
+                rect.x += 0.5f * (listing.ColumnWidth -rect.width);
+            }
+            bool result = Widgets.ButtonText(rect, label, true, false, true);
+            listing.Gap(listing.verticalSpacing);
+            return result;
+        }
+
+
         public static float LabeledSlider(Listing_Standard listing, float val, float min, float max, string label, string leftLabel = null, string rightLabel = null, string tooltip = null)
         {
             Rect rect = new Rect(listing.GetRect(44f));

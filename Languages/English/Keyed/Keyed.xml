@@ -208,18 +208,18 @@
     <!-- Tabs -->
 
 	<ZMD_terrainTab>Terrain</ZMD_terrainTab>
-	<ZMD_terrainTabInfo>Terrain</ZMD_terrainTabInfo>
+	<ZMD_terrainTabInfo>Fertility, water levels, and rock types.\n\nTurning up water levels will increase size and number of marshes and lakes, but will NOT add new lakes to biomes that don't otherwise have them.</ZMD_terrainTabInfo>
 	
-	<ZMD_rockTypeRange>Number of rock types per map</ZMD_rockTypeRange>
-	<ZMD_flagBiomeRocks>Allow modded biomes with special rocks, like Atolls or the Ocular Forest, to have more rock types.</ZMD_flagBiomeRocks>
-	<ZMD_flagBiomeRocksTooltip> This can drastically change game balance in some modded biomes.</ZMD_flagBiomeRocksTooltip>
+	<ZMD_rockTypeRange>Rock types per map</ZMD_rockTypeRange>
+	<ZMD_flagBiomeRocks>Allow modded biomes with special rocks, like Atolls or the Ocular Forest, to have other rock types.</ZMD_flagBiomeRocks>
+	<ZMD_flagBiomeRocksTooltip>This can drastically change game balance in some modded biomes. Removing special rocks might remove needed resources.</ZMD_flagBiomeRocksTooltip>
 	
 	<ZMD_allRockTypes>Allow all rock types</ZMD_allRockTypes>
-	<ZMD_chooseRockTypes>Choose rock types</ZMD_chooseRockTypes>
+	<ZMD_chooseRockTypes>Choose rock types ...</ZMD_chooseRockTypes>
 	
 	<ZMD_terrainFertAmt>Fertility: {0} %: </ZMD_terrainFertAmt>
 	
-	<ZMD_terrainWaterAmt>Wetness: {0} %: </ZMD_terrainWaterAmt>
+	<ZMD_terrainWaterAmt>Water level: {0} %: </ZMD_terrainWaterAmt>
 	<ZMD_terrainWaterTooltip>Size and number of lakes etc. Does not affect rivers, coastlines, or other features.</ZMD_terrainWaterTooltip>
 	
 	<ZMD_flagTerrainWater>All non-buildable terrain counts as water</ZMD_flagTerrainWater>
@@ -232,14 +232,5 @@
 
 	<ZMD_betaTab>Beta</ZMD_betaTab>
 	<ZMD_betaTabInfo>WARNING! These options are for development. They might be mislabeled, might do nothing, and will probably spam the error log.\n\n If there are issues, please report with the error log. If these work, please report that also.</ZMD_betaTabInfo>
-	
-	
-	<ZMD_terrainFertAmt>Fertility: {0} %: </ZMD_terrainFertAmt>
-	
-	<ZMD_terrainWaterAmt>Wetness: {0} %: </ZMD_terrainWaterAmt>
-	<ZMD_terrainWaterTooltip>Size and number of lakes etc. Does not affect rivers, coastlines, or other features.</ZMD_terrainWaterTooltip>
-	
-	<ZMD_flagTerrainWater>All non-buildable terrain counts as water</ZMD_flagTerrainWater>
-	<ZMD_flagTerrainWaterTooltip>All terrains without heavy affordance count as water. Includes mud, marsh, soft sand</ZMD_flagTerrainWaterTooltip>
-	
+
 </LanguageData>

@@ -240,8 +240,6 @@ namespace MapDesigner
                     biome.terrainPatchMakers = biomeDefaults[biome.defName].terrain.terrainPatchMakers;
                 }
             }
-
-
         }
 
         public static float GetRiverDirection(float angle)
@@ -249,11 +247,9 @@ namespace MapDesigner
             if (MapDesignerSettings.flagRiverDir)
             {
                 angle =  LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>().riverDir;
-
             }
             return angle;
         }
-    
 
 
         public static float DistanceBetweenPoints(IntVec3 point1, IntVec3 point2)

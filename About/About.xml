@@ -17,15 +17,17 @@
 	<incompatibleWith>
 	<li>configurablemaps.kv.rw</li>
 	</incompatibleWith>
-  <description>
-  
-More options for customizing maps! Use from mod settings under Options > Mod Settings > Map Designer.
+  <description>More options for customizing maps! Use from mod settings under Options > Mod Settings > Map Designer.
 
 Mountains:
 	- make flat or solid maps
 	- hill size, shape, and positioning
 	- hill shape
 	- disable caves
+
+Terrain:
+	- fertility
+	- water
 	- stone types per map
 
 Things - increase or decrease amount of:

@@ -22,14 +22,13 @@ namespace MapDesigner.UI
         {
             Listing_Standard listing = new Listing_Standard();
             listing.Begin(rect);
-            listing.Label("ZMD_betaTabInfo".Translate());
+            listing.Label("ZMD_terrainTabInfo".Translate());
 
             listing.GapLine();
 
-            //settings.terrainWater = InterfaceUtility.LabeledSlider(listing, settings.terrainWater, 0.25f, 2f, "ZMD_terrainWaterAmt".Translate() + settings.terrainWater);
-            settings.terrainFert = InterfaceUtility.LabeledSlider(listing, settings.terrainFert, 0.25f, 2f, String.Format("ZMD_terrainFertAmt".Translate(), Math.Round(100 * settings.terrainFert)));
+            settings.terrainFert = InterfaceUtility.LabeledSlider(listing, settings.terrainFert, 0.30f, 2f, String.Format("ZMD_terrainFertAmt".Translate(), Math.Round(100 * settings.terrainFert)));
 
-            settings.terrainWater = InterfaceUtility.LabeledSlider(listing, settings.terrainWater, 0.25f, 2f, String.Format("ZMD_terrainWaterAmt".Translate(), Math.Round(100 * settings.terrainWater)), null, null, "ZMD_terrainWaterTooltip".Translate());
+            settings.terrainWater = InterfaceUtility.LabeledSlider(listing, settings.terrainWater, 0.30f, 2f, String.Format("ZMD_terrainWaterAmt".Translate(), Math.Round(100 * settings.terrainWater)), null, null, "ZMD_terrainWaterTooltip".Translate());
             listing.CheckboxLabeled("ZMD_flagTerrainWater".Translate(), ref MapDesignerSettings.flagCaves, "ZMD_flagTerrainWater".Translate());
 
             // Rocks
@@ -38,7 +37,7 @@ namespace MapDesigner.UI
 
             listing.CheckboxLabeled("ZMD_flagBiomeRocks".Translate(), ref MapDesignerSettings.flagBiomeRocks, "ZMD_flagBiomeRocksTooltip".Translate());
 
-            if (listing.ButtonText("ZMD_chooseRockTypes".Translate()))
+            if (InterfaceUtility.SizedTextButton(listing, "ZMD_chooseRockTypes".Translate()))
             {
                 Find.WindowStack.Add(new RockSelectionDialog());
             }

@@ -12,7 +12,6 @@ namespace MapDesigner.UI
 
     public static class MountainCardUtility
     {
-        //public MapDesignerSettings settings = MapDesigner_Mod.GetSettings<MapDesignerSettings>();
         public static MapDesignerSettings settings = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>();
         private static float viewHeight;
         private static Vector2 scrollPosition = Vector2.zero;
@@ -48,27 +47,18 @@ namespace MapDesigner.UI
             settings.hillSize = InterfaceUtility.LabeledSlider(listingStandard, settings.hillSize, 0.1f, 0.010f, hillSizeLabel, "ZMD_hillSize4".Translate(), "ZMD_hillSize0".Translate());
             settings.hillSmoothness = InterfaceUtility.LabeledSlider(listingStandard, settings.hillSmoothness, 0f, 5f, hillSmoothnessLabel, "ZMD_hillSmoothness0".Translate(), "ZMD_hillSmoothness4".Translate());
 
-
             // general mountain related
             listingStandard.CheckboxLabeled("ZMD_flagCaves".Translate(), ref MapDesignerSettings.flagCaves, "ZMD_flagCavesTooltip".Translate());
 
             // hill distribution
             listingStandard.GapLine();
 
-            //GameFont font = Text.Font;
-            //Text.Font = GameFont.Medium;
-            //listingStandard.Label("ZMD_hillArrangement".Translate());
-            //Text.Font = font;
             listingStandard.Label("ZMD_hillArrangementDesc".Translate());
             listingStandard.Gap();
-
-            //listingStandard.GapLine();
 
             if (settings.hillSize > 0.022f)
             {
                 listingStandard.CheckboxLabeled("ZMD_flagHillClumping".Translate(), ref MapDesignerSettings.flagHillClumping, "ZMD_flagHillClumpingTooltip".Translate());
-                listingStandard.Gap();
-
             }
 
             listingStandard.CheckboxLabeled("ZMD_flagHillRadial".Translate(), ref MapDesignerSettings.flagHillRadial, "ZMD_flagHillRadialTooltip".Translate());
@@ -85,10 +75,8 @@ namespace MapDesigner.UI
                 settings.hillRadialSize = InterfaceUtility.LabeledSlider(hillRadialListing, settings.hillRadialSize, 0.2f, 1.1f, hillRadialSizeLabel, "ZMD_center".Translate(), "ZMD_edges".Translate(), "ZMD_hillRadialSizeTooltip".Translate());
 
                 hillRadialListing.End();
-
+                listingStandard.Gap();
             }
-            listingStandard.Gap();
-            //listingStandard.GapLine();
 
             listingStandard.CheckboxLabeled("ZMD_flagHillSplit".Translate(), ref MapDesignerSettings.flagHillSplit, "ZMD_flagHillSplit".Translate());
             if (MapDesignerSettings.flagHillSplit)
@@ -104,10 +92,8 @@ namespace MapDesigner.UI
                 settings.hillSplitDir = InterfaceUtility.AnglePicker(hillSplitListing, settings.hillSplitDir, "ZMD_Angle".Translate());
 
                 hillSplitListing.End();
-
+                listingStandard.Gap();
             }
-            listingStandard.Gap();
-            //listingStandard.GapLine();
 
             listingStandard.CheckboxLabeled("ZMD_flagHillSide".Translate(), ref MapDesignerSettings.flagHillSide, "ZMD_flagHillSide".Translate());
             if(MapDesignerSettings.flagHillSide)
@@ -127,6 +113,7 @@ namespace MapDesigner.UI
 
             // reset
             listingStandard.GapLine();
+            //if (InterfaceUtility.SizedTextButton(listingStandard, "ZMD_resetMountain".Translate(), -1, true))
             if (listingStandard.ButtonText("ZMD_resetMountain".Translate()))
             {
                 ResetMountainSettings();
@@ -136,7 +123,6 @@ namespace MapDesigner.UI
 
             viewHeight = listingStandard.CurHeight;
             Widgets.EndScrollView();
-
 
         }
 

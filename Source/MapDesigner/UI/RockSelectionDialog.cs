@@ -22,6 +22,7 @@ namespace MapDesigner.UI
             this.closeOnAccept = false;
             this.optionalTitle = "ZMD_chooseRockTypes".Translate();
             this.doCloseX = true;
+            this.doCloseButton = true;
         }
 
 

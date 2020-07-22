@@ -277,5 +277,25 @@ namespace MapDesigner
             return circle;
         }
 
+
+        public static string GetDisplayPercent(float input, float power = 1)
+        {
+            if (input > 1)
+            {
+                input = (float)Math.Pow(input, power);
+            }
+
+            string output = "";
+            if (input < 5)
+            {
+                output = String.Format("{0:0.0}", input);
+            }
+            else
+            {
+                output = String.Format("{0:0}", input);
+            }
+            return output;
+
+        }
     }
 }

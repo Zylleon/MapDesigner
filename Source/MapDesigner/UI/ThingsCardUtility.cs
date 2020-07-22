@@ -19,17 +19,17 @@ namespace MapDesigner.UI
             listingStandard.Begin(rect);
 
             // stuff density
-            settings.densityPlant = InterfaceUtility.LabeledSlider(listingStandard, settings.densityPlant, 0f, 2.5f, InterfaceUtility.FormatLabel("ZMD_densityPlant", "ZMD_density" + GetDensityLabel(settings.densityPlant)), "ZMD_density0".Translate(), "ZMD_density6".Translate());
+            settings.densityPlant = InterfaceUtility.LabeledSlider(listingStandard, settings.densityPlant, 0f, 2.5f, String.Format("ZMD_densityPlant".Translate(), HelperMethods.GetDisplayPercent(settings.densityPlant)), "ZMD_density0".Translate(), "ZMD_density6".Translate());
 
-            settings.densityAnimal = InterfaceUtility.LabeledSlider(listingStandard, settings.densityAnimal, 0f, 2.5f, InterfaceUtility.FormatLabel("ZMD_densityAnimal", "ZMD_density" + GetDensityLabel(settings.densityAnimal)), "ZMD_density0".Translate(), "ZMD_density6".Translate());
+            settings.densityAnimal = InterfaceUtility.LabeledSlider(listingStandard, settings.densityAnimal, 0f, 2.5f, String.Format("ZMD_densityAnimal".Translate(), HelperMethods.GetDisplayPercent(settings.densityAnimal)), "ZMD_density0".Translate(), "ZMD_density6".Translate());
 
-            settings.densityRuins = InterfaceUtility.LabeledSlider(listingStandard, settings.densityRuins, 0f, 2.5f, InterfaceUtility.FormatLabel("ZMD_densityRuins", "ZMD_density" + GetDensityLabel(settings.densityRuins)), "ZMD_density0".Translate(), "ZMD_density6".Translate());
+            settings.densityRuins = InterfaceUtility.LabeledSlider(listingStandard, settings.densityRuins, 0f, 2.5f, String.Format("ZMD_densityRuins".Translate(), HelperMethods.GetDisplayPercent(settings.densityRuins, 3)), "ZMD_density0".Translate(), "ZMD_density6".Translate());
 
-            settings.densityDanger = InterfaceUtility.LabeledSlider(listingStandard, settings.densityDanger, 0f, 2.5f, InterfaceUtility.FormatLabel("ZMD_densityDanger", "ZMD_density" + GetDensityLabel(settings.densityDanger)), "ZMD_density0".Translate(), "ZMD_density6".Translate());
+            settings.densityDanger = InterfaceUtility.LabeledSlider(listingStandard, settings.densityDanger, 0f, 2.5f, String.Format("ZMD_densityDanger".Translate(), HelperMethods.GetDisplayPercent(settings.densityDanger, 4)), "ZMD_density0".Translate(), "ZMD_density6".Translate());
 
-            settings.densityGeyser = InterfaceUtility.LabeledSlider(listingStandard, settings.densityGeyser, 0f, 2.5f, InterfaceUtility.FormatLabel("ZMD_densityGeyser", "ZMD_density" + GetDensityLabel(settings.densityGeyser)), "ZMD_density0".Translate(), "ZMD_density6".Translate());
+            settings.densityGeyser = InterfaceUtility.LabeledSlider(listingStandard, settings.densityGeyser, 0f, 2.5f, String.Format("ZMD_densityGeyser".Translate(), HelperMethods.GetDisplayPercent(settings.densityGeyser, 2)), "ZMD_density0".Translate(), "ZMD_density6".Translate());
 
-            settings.densityOre = InterfaceUtility.LabeledSlider(listingStandard, settings.densityOre, 0f, 2.5f, InterfaceUtility.FormatLabel("ZMD_densityOre", "ZMD_density" + GetDensityLabel(settings.densityOre)), "ZMD_density0".Translate(), "ZMD_density6".Translate());
+            settings.densityOre = InterfaceUtility.LabeledSlider(listingStandard, settings.densityOre, 0f, 2.5f, String.Format("ZMD_densityOre".Translate(), HelperMethods.GetDisplayPercent(settings.densityOre, 2)), "ZMD_density0".Translate(), "ZMD_density6".Translate());
 
             if (ModsConfig.RoyaltyActive)
             {

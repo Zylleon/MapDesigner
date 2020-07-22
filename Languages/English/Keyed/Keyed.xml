@@ -37,14 +37,7 @@
 	<ZMD_size5>Huge</ZMD_size5>
 	<ZMD_size6>Enormous</ZMD_size6>
 
-	<ZMD_density0>None</ZMD_density0>
-	<ZMD_density1>Very few</ZMD_density1>
-	<ZMD_density2>Less than average</ZMD_density2>
-	<ZMD_density3>Average amount</ZMD_density3>
-	<ZMD_density4>More than average</ZMD_density4>
-	<ZMD_density5>A lot more</ZMD_density5>
-	<ZMD_density6>Max amount</ZMD_density6>
-	
+
 	
 <!-- ===================================	Mountains	================================= -->
 
@@ -54,6 +47,7 @@
   <!-- Hills -->
 	<ZMD_hillAmountLabel>Hill amount</ZMD_hillAmountLabel>
 	<ZMD_hillAmountTooltip>How mountainous your map will be</ZMD_hillAmountTooltip>
+	
 	<ZMD_hillAmount0>Very flat</ZMD_hillAmount0>
 	<ZMD_hillAmount1>Low</ZMD_hillAmount1>
 	<ZMD_hillAmount2>Vanilla</ZMD_hillAmount2>
@@ -63,11 +57,11 @@
 
 	<ZMD_hillSizeLabel>Hill size</ZMD_hillSizeLabel>
 	<ZMD_hillSizeTooltip>Size of individual hills. Big hills for maps with 1-2 big mountains, small hills for jagged landscapes with lots of corners.</ZMD_hillSizeTooltip>
-	<ZMD_hillSize0>Huge</ZMD_hillSize0>
+	<ZMD_hillSize0>Huge. 1 or 2 large hills.</ZMD_hillSize0>
 	<ZMD_hillSize1>Vanilla</ZMD_hillSize1>
 	<ZMD_hillSize2>Small</ZMD_hillSize2>
-	<ZMD_hillSize3>Tiny</ZMD_hillSize3>
-	<ZMD_hillSize4>Very tiny</ZMD_hillSize4>
+	<ZMD_hillSize3>Tiny. Underground bases may not be possible</ZMD_hillSize3>
+	<ZMD_hillSize4>Very tiny. Each hill may only be a few tiles.</ZMD_hillSize4>
 
 	<ZMD_hillSmoothnessLabel>Hill smoothness</ZMD_hillSmoothnessLabel>
 	<ZMD_hillSmoothness0>Very smooth</ZMD_hillSmoothness0>
@@ -131,18 +125,25 @@
 
 	<ZMD_thingsTab>Things</ZMD_thingsTab>
 	<ZMD_thingsTabInfo>Ore density, etc</ZMD_thingsTabInfo>
+	
   <!-- Densities -->
-  
-	<ZMD_densityPlant>Plants</ZMD_densityPlant>
-	<ZMD_densityAnimal>Animals</ZMD_densityAnimal>
-	<ZMD_densityRuins>Ruins</ZMD_densityRuins>
-	<ZMD_densityDanger>Ancient dangers</ZMD_densityDanger>
+	<ZMD_densityPlant>Plants: {0} x</ZMD_densityPlant>
+	<ZMD_densityAnimal>Animals: {0} x</ZMD_densityAnimal>
+	<ZMD_densityRuins>Ruins: {0} x</ZMD_densityRuins>
+	<ZMD_densityDanger>Ancient dangers: {0} x</ZMD_densityDanger>
 	<ZMD_densityDangerTooltip>NOTE: Ancient dangers will not spawn on completely flat maps</ZMD_densityDangerTooltip>
-	<ZMD_densityGeyser>Steam geysers</ZMD_densityGeyser>
-	<ZMD_densityOre>Ore amount</ZMD_densityOre>
+	<ZMD_densityGeyser>Steam geysers: {0} x</ZMD_densityGeyser>
+	<ZMD_densityOre>Ore amount: {0}x</ZMD_densityOre>
 	<ZMD_animaCount>Anima trees: </ZMD_animaCount>
 
-
+	<ZMD_density0>None</ZMD_density0>
+	<ZMD_density1>Very few</ZMD_density1>
+	<ZMD_density2>Less than average</ZMD_density2>
+	<ZMD_density3>Average amount</ZMD_density3>
+	<ZMD_density4>More than average</ZMD_density4>
+	<ZMD_density5>A lot more</ZMD_density5>
+	<ZMD_density6>Max amount</ZMD_density6>
+	
 	
 	
 <!-- ===================================	Rivers	================================= -->

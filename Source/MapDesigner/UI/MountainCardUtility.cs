@@ -41,10 +41,11 @@ namespace MapDesigner.UI
             listingStandard.Begin(viewRect);
 
             // mountains
-            settings.hillAmount = InterfaceUtility.LabeledSlider(listingStandard, settings.hillAmount, 0f, 2.5f, hillAmountLabel, "ZMD_hillAmount0".Translate(), "ZMD_hillAmount5".Translate());
+            settings.hillAmount = InterfaceUtility.LabeledSlider(listingStandard, settings.hillAmount, 0.70f, 1.4f, hillAmountLabel, "ZMD_hillAmount0".Translate(), "ZMD_hillAmount5".Translate());
 
             // It's reversed because that's more intuitive for the user. Smaller numbers = bigger hills
-            settings.hillSize = InterfaceUtility.LabeledSlider(listingStandard, settings.hillSize, 0.1f, 0.010f, hillSizeLabel, "ZMD_hillSize4".Translate(), "ZMD_hillSize0".Translate());
+            //settings.hillSize = InterfaceUtility.LabeledSlider(listingStandard, settings.hillSize, 0.1f, 0.010f, hillSizeLabel, "ZMD_hillSize4".Translate(), "ZMD_hillSize0".Translate());
+            settings.hillSize = InterfaceUtility.LabeledSlider(listingStandard, settings.hillSize, 0.1f, 0.010f, hillSizeLabel, "ZMD_size1".Translate(), "ZMD_size5".Translate());
             settings.hillSmoothness = InterfaceUtility.LabeledSlider(listingStandard, settings.hillSmoothness, 0f, 5f, hillSmoothnessLabel, "ZMD_hillSmoothness0".Translate(), "ZMD_hillSmoothness4".Translate());
 
             // general mountain related
@@ -215,23 +216,23 @@ namespace MapDesigner.UI
             get
             {
                 int label = 0;
-                if (settings.hillAmount > 0.5f)
+                if (settings.hillAmount > 0.85f)
                 {
                     label++;
                 }
-                if (settings.hillAmount > 0.8f)
+                if (settings.hillAmount > 0.95f)
                 {
                     label++;
                 }
-                if (settings.hillAmount > 1.2f)
+                if (settings.hillAmount > 1.05f)
                 {
                     label++;
                 }
-                if (settings.hillAmount > 1.5f)
+                if (settings.hillAmount > 1.15f)
                 {
                     label++;
                 }
-                if (settings.hillAmount > 1.75f)
+                if (settings.hillAmount > 1.30f)
                 {
                     label++;
                 }

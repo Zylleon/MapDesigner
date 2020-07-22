@@ -135,7 +135,12 @@ namespace MapDesigner.Patches
             float hillAmount = settings.hillAmount;
             foreach (IntVec3 current in map.AllCells)
             {
-                elevation[current] *= hillAmount;
+                //elevation[current] *= hillAmount;
+                //elevation[current] = 0.61f + (elevation[current] - .61f) * settings.hillAmount;
+                //elevation[current] = 0.55f + (elevation[current] - .55f) * settings.hillAmount;
+                //elevation[current] = 0.50f + (elevation[current] - .50f) * settings.hillAmount;
+                elevation[current] += settings.hillAmount - 1f;
+
             }
 
 

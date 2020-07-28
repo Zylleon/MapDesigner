@@ -57,7 +57,7 @@ namespace MapDesigner.UI
         }
 
 
-        public static float LabeledSlider(Listing_Standard listing, float val, float min, float max, string label, string leftLabel = null, string rightLabel = null, string tooltip = null)
+        public static float LabeledSlider(Listing_Standard listing, float val, float min, float max, string label, string leftLabel = null, string rightLabel = null, string middleLabel = null, string tooltip = null)
         {
             Rect rect = new Rect(listing.GetRect(44f));
 
@@ -89,7 +89,11 @@ namespace MapDesigner.UI
                 Text.Anchor = TextAnchor.UpperRight;
                 Widgets.Label(rightSide, rightLabel);
             }
-
+            if (!middleLabel.NullOrEmpty())
+            {
+                Text.Anchor = TextAnchor.UpperCenter;
+                Widgets.Label(rightSide, middleLabel);
+            }
             Text.Anchor = anchor;
             Text.Font = font;
 

@@ -72,8 +72,10 @@ namespace MapDesigner.UI
                 Listing_Standard hillRadialListing = new Listing_Standard();
                 hillRadialListing.Begin(hillRadialRect);
 
-                settings.hillRadialAmt = InterfaceUtility.LabeledSlider(hillRadialListing, settings.hillRadialAmt, -3.0f, 3.0f, GetHillRadialAmtLabel(settings.hillRadialAmt), "ZMD_center".Translate(), "ZMD_edges".Translate(), "ZMD_hillRadialAmtTooltip".Translate());
-                settings.hillRadialSize = InterfaceUtility.LabeledSlider(hillRadialListing, settings.hillRadialSize, 0.2f, 1.1f, hillRadialSizeLabel, "ZMD_center".Translate(), "ZMD_edges".Translate(), "ZMD_hillRadialSizeTooltip".Translate());
+                //settings.hillRadialAmt = InterfaceUtility.LabeledSlider(hillRadialListing, settings.hillRadialAmt, -3.0f, 3.0f, GetHillRadialAmtLabel(settings.hillRadialAmt), "ZMD_center".Translate(), "ZMD_edges".Translate(), "ZMD_hillRadialAmtTooltip".Translate());
+                settings.hillRadialAmt = InterfaceUtility.LabeledSlider(hillRadialListing, settings.hillRadialAmt, -2.0f, 2.0f, GetHillRadialAmtLabel(settings.hillRadialAmt), "ZMD_center".Translate(), "ZMD_edges".Translate(), null, "ZMD_hillRadialAmtTooltip".Translate());
+
+                settings.hillRadialSize = InterfaceUtility.LabeledSlider(hillRadialListing, settings.hillRadialSize, 0.2f, 1.1f, hillRadialSizeLabel, "ZMD_center".Translate(), "ZMD_edges".Translate(), null, "ZMD_hillRadialSizeTooltip".Translate());
 
                 hillRadialListing.End();
                 listingStandard.Gap();
@@ -88,8 +90,8 @@ namespace MapDesigner.UI
                 Listing_Standard hillSplitListing = new Listing_Standard();
                 hillSplitListing.Begin(hillSplitRect);
 
-                settings.hillSplitAmt = InterfaceUtility.LabeledSlider(hillSplitListing, settings.hillSplitAmt, -3.0f, 3.0f, "ZMD_skew".Translate(), "ZMD_center".Translate(), "ZMD_edges".Translate(), "ZMD_hillRadialAmtTooltip".Translate());
-                settings.hillSplitSize = InterfaceUtility.LabeledSlider(hillSplitListing, settings.hillSplitSize, 0.05f, 1.1f, "ZMD_size".Translate(), "ZMD_center".Translate(), "ZMD_edges".Translate(), "ZMD_hillRadialSizeTooltip".Translate());
+                settings.hillSplitAmt = InterfaceUtility.LabeledSlider(hillSplitListing, settings.hillSplitAmt, -3.0f, 3.0f, "ZMD_skew".Translate(), "ZMD_center".Translate(), "ZMD_edges".Translate(), null, "ZMD_hillRadialAmtTooltip".Translate());
+                settings.hillSplitSize = InterfaceUtility.LabeledSlider(hillSplitListing, settings.hillSplitSize, 0.05f, 1.1f, "ZMD_size".Translate(), "ZMD_narrow".Translate(), "ZMD_wide".Translate(), null, "ZMD_hillRadialSizeTooltip".Translate());
                 settings.hillSplitDir = InterfaceUtility.AnglePicker(hillSplitListing, settings.hillSplitDir, "ZMD_Angle".Translate());
 
                 hillSplitListing.End();

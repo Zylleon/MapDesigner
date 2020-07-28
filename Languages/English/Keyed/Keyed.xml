@@ -37,7 +37,8 @@
 	<ZMD_size5>Huge</ZMD_size5>
 	<ZMD_size6>Enormous</ZMD_size6>
 
-
+	<ZMD_narrow>Narrow</ZMD_narrow>
+	<ZMD_wide>Wide</ZMD_wide>
 	
 <!-- ===================================	Mountains	================================= -->
 
@@ -45,7 +46,7 @@
 	<ZMD_mountainTab>Mountains</ZMD_mountainTab>
 	<ZMD_mountainTabInfo>Settings relating to hills</ZMD_mountainTabInfo>
   <!-- Hills -->
-	<ZMD_hillAmountLabel>Hill amount</ZMD_hillAmountLabel>
+	<ZMD_hillAmountLabel>Amount</ZMD_hillAmountLabel>
 	<ZMD_hillAmountTooltip>How mountainous your map will be</ZMD_hillAmountTooltip>
 	
 	<ZMD_hillAmount0>Very flat</ZMD_hillAmount0>
@@ -55,7 +56,7 @@
 	<ZMD_hillAmount4>Very high</ZMD_hillAmount4>
 	<ZMD_hillAmount5>Almost solid</ZMD_hillAmount5>
 
-	<ZMD_hillSizeLabel>Hill size</ZMD_hillSizeLabel>
+	<ZMD_hillSizeLabel>Size</ZMD_hillSizeLabel>
 	<ZMD_hillSizeTooltip>Size of individual hills. Big hills for maps with 1-2 big mountains, small hills for jagged landscapes with lots of corners.</ZMD_hillSizeTooltip>
 	<ZMD_hillSize0>Huge. 1 or 2 large hills.</ZMD_hillSize0>
 	<ZMD_hillSize1>Vanilla</ZMD_hillSize1>
@@ -63,7 +64,7 @@
 	<ZMD_hillSize3>Tiny. Underground bases may not be possible</ZMD_hillSize3>
 	<ZMD_hillSize4>Very tiny. Each hill may only be a few tiles.</ZMD_hillSize4>
 
-	<ZMD_hillSmoothnessLabel>Hill smoothness</ZMD_hillSmoothnessLabel>
+	<ZMD_hillSmoothnessLabel>Smoothness</ZMD_hillSmoothnessLabel>
 	<ZMD_hillSmoothness0>Very smooth</ZMD_hillSmoothness0>
 	<ZMD_hillSmoothness1>Smooth</ZMD_hillSmoothness1>
 	<ZMD_hillSmoothness2>Vanilla</ZMD_hillSmoothness2>
@@ -127,13 +128,13 @@
 	<ZMD_thingsTabInfo>Ore density, etc</ZMD_thingsTabInfo>
 	
   <!-- Densities -->
-	<ZMD_densityPlant>Plants: {0} x</ZMD_densityPlant>
-	<ZMD_densityAnimal>Animals: {0} x</ZMD_densityAnimal>
-	<ZMD_densityRuins>Ruins: {0} x</ZMD_densityRuins>
-	<ZMD_densityDanger>Ancient dangers: {0} x</ZMD_densityDanger>
+	<ZMD_densityPlant>Plants</ZMD_densityPlant>
+	<ZMD_densityAnimal>Animals</ZMD_densityAnimal>
+	<ZMD_densityRuins>Ruins</ZMD_densityRuins>
+	<ZMD_densityDanger>Ancient dangers</ZMD_densityDanger>
 	<ZMD_densityDangerTooltip>NOTE: Ancient dangers will not spawn on completely flat maps</ZMD_densityDangerTooltip>
-	<ZMD_densityGeyser>Steam geysers: {0} x</ZMD_densityGeyser>
-	<ZMD_densityOre>Ore amount: {0}x</ZMD_densityOre>
+	<ZMD_densityGeyser>Steam geysers</ZMD_densityGeyser>
+	<ZMD_densityOre>Ore</ZMD_densityOre>
 	<ZMD_animaCount>Anima trees: </ZMD_animaCount>
 
 	<ZMD_density0>None</ZMD_density0>

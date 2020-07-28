@@ -278,7 +278,7 @@ namespace MapDesigner
         }
 
 
-        public static string GetDisplayPercent(float input, float power = 1)
+        public static string GetDisplayValue(float input, float power = 1)
         {
             if (input > 1)
             {
@@ -286,7 +286,7 @@ namespace MapDesigner
             }
 
             string output = "";
-            if (input < 5)
+            if (input < 2)
             {
                 output = String.Format("{0:0.0}", input);
             }

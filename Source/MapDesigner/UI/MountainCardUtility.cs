@@ -75,7 +75,10 @@ namespace MapDesigner.UI
                 //settings.hillRadialAmt = InterfaceUtility.LabeledSlider(hillRadialListing, settings.hillRadialAmt, -3.0f, 3.0f, GetHillRadialAmtLabel(settings.hillRadialAmt), "ZMD_center".Translate(), "ZMD_edges".Translate(), "ZMD_hillRadialAmtTooltip".Translate());
                 settings.hillRadialAmt = InterfaceUtility.LabeledSlider(hillRadialListing, settings.hillRadialAmt, -2.0f, 2.0f, GetHillRadialAmtLabel(settings.hillRadialAmt), "ZMD_center".Translate(), "ZMD_edges".Translate(), null, "ZMD_hillRadialAmtTooltip".Translate());
 
-                settings.hillRadialSize = InterfaceUtility.LabeledSlider(hillRadialListing, settings.hillRadialSize, 0.2f, 1.1f, hillRadialSizeLabel, "ZMD_center".Translate(), "ZMD_edges".Translate(), null, "ZMD_hillRadialSizeTooltip".Translate());
+                //settings.hillRadialSize = InterfaceUtility.LabeledSlider(hillRadialListing, settings.hillRadialSize, 0.2f, 1.1f, hillRadialSizeLabel, "ZMD_center".Translate(), "ZMD_edges".Translate(), null, "ZMD_hillRadialSizeTooltip".Translate());
+                settings.hillRadialSize = InterfaceUtility.LabeledSlider(hillRadialListing, settings.hillRadialSize, 0.2f, 1.1f, hillRadialSizeLabel, null, null, String.Format("{0} % of map width", 100 * Math.Round(settings.hillRadialSize, 1)), "ZMD_hillRadialSizeTooltip".Translate());
+
+                
 
                 hillRadialListing.End();
                 listingStandard.Gap();
@@ -89,9 +92,10 @@ namespace MapDesigner.UI
                 hillSplitRect.xMax -= 20f;
                 Listing_Standard hillSplitListing = new Listing_Standard();
                 hillSplitListing.Begin(hillSplitRect);
+                settings.hillSplitAmt = InterfaceUtility.LabeledSlider(hillSplitListing, settings.hillSplitAmt, -2.0f, 2.0f, GetHillRadialAmtLabel(settings.hillSplitAmt), "ZMD_center".Translate(), "ZMD_edges".Translate(), null, "ZMD_hillSplitAmtTooltip".Translate());
 
-                settings.hillSplitAmt = InterfaceUtility.LabeledSlider(hillSplitListing, settings.hillSplitAmt, -3.0f, 3.0f, "ZMD_skew".Translate(), "ZMD_center".Translate(), "ZMD_edges".Translate(), null, "ZMD_hillRadialAmtTooltip".Translate());
-                settings.hillSplitSize = InterfaceUtility.LabeledSlider(hillSplitListing, settings.hillSplitSize, 0.05f, 1.1f, "ZMD_size".Translate(), "ZMD_narrow".Translate(), "ZMD_wide".Translate(), null, "ZMD_hillRadialSizeTooltip".Translate());
+                settings.hillSplitSize = InterfaceUtility.LabeledSlider(hillSplitListing, settings.hillSplitSize, 0.05f, 1.1f, "ZMD_size".Translate(), null, null, String.Format("{0} % of map width", 100 * Math.Round(settings.hillSplitSize, 1)), "ZMD_hillRadialSizeTooltip".Translate());
+
                 settings.hillSplitDir = InterfaceUtility.AnglePicker(hillSplitListing, settings.hillSplitDir, "ZMD_Angle".Translate());
 
                 hillSplitListing.End();
@@ -107,7 +111,8 @@ namespace MapDesigner.UI
                 Listing_Standard hillSideListing = new Listing_Standard();
                 hillSideListing.Begin(hillSideRect);
 
-                settings.hillSideAmt = InterfaceUtility.LabeledSlider(hillSideListing, settings.hillSideAmt, 0.2f, 3.0f, "ZMD_skew".Translate());
+                settings.hillSplitAmt = InterfaceUtility.LabeledSlider(hillSideListing, settings.hillSplitAmt, 0.2f, 3.0f, GetHillSideAmtLabel(settings.hillSplitAmt));
+
                 settings.hillSideDir = InterfaceUtility.AnglePicker(hillSideListing, settings.hillSideDir, "ZMD_Angle".Translate(), 3, true);
 
                 hillSideListing.End();
@@ -158,7 +163,7 @@ namespace MapDesigner.UI
         private static string GetHillRadialAmtLabel(float val)
         {
                 int label = 0;
-                if (val > -2.0f)    //1
+                if (val > -1.7f)    //1
                 {
                     label++;
                 }
@@ -166,11 +171,11 @@ namespace MapDesigner.UI
                 {
                     label++;
                 }
-                if (val > -0.4f)    //no cluster = 3
+                if (val > -0.3f)    //no cluster = 3
                 {
                     label++;
                 }
-                if (val > 0.4f)     //4
+                if (val > 0.3f)     //4
                 {
                     label++;
                 }
@@ -178,11 +183,31 @@ namespace MapDesigner.UI
                 {
                     label++;
                 }
-                if (val > 2.0f)     //6
+                if (val > 1.7f)     //6
                 {
                     label++;
                 }
                 return InterfaceUtility.FormatLabel("ZMD_hillRadialAmtLabel", "ZMD_hillRadialAmt" + label);
+        }
+
+
+        private static string GetHillSideAmtLabel(float val)
+        {
+            int label = 0;
+            if (val > 0.4f)    //1
+            {
+                label++;
+            }
+            if (val > 1.2f)    //2
+            {
+                label++;
+            }
+            if (val > 2.0f)    //no cluster = 3
+            {
+                label++;
+            }
+           
+            return InterfaceUtility.FormatLabel("ZMD_hillRadialAmtLabel", "ZMD_hillSideAmt" + label);
         }
 
 

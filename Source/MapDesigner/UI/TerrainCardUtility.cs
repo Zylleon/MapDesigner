@@ -59,6 +59,16 @@ namespace MapDesigner.UI
             settings.terrainWater = 1f;
             settings.rockTypeRange = new IntRange(2, 3);
             MapDesignerSettings.flagBiomeRocks = false;
+
+            List<ThingDef> list = (from d in DefDatabase<ThingDef>.AllDefs
+                                   where d.category == ThingCategory.Building && d.building.isNaturalRock && !d.building.isResourceRock && !d.IsSmoothed
+                                   select d).ToList<ThingDef>();
+            Dictionary<string, bool> newRocks = new Dictionary<string, bool>();
+            foreach (ThingDef rock in list)
+            {
+                newRocks.Add(rock.defName, true);
+            }
+            settings.allowedRocks = newRocks;
         }
     }
 

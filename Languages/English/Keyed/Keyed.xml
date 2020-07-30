@@ -113,6 +113,11 @@
 	
 	<ZMD_flagHillSide>To one side</ZMD_flagHillSide>
 	
+	<ZMD_hillSideAmt0>Almost even</ZMD_hillSideAmt0>
+	<ZMD_hillSideAmt1>Slight shift to one side</ZMD_hillSideAmt1>
+	<ZMD_hillSideAmt2>Moderate shift to one side</ZMD_hillSideAmt2>
+	<ZMD_hillSideAmt3>Strong shift to one side</ZMD_hillSideAmt3>
+
 	
   <!-- Misc settings -->
   

@@ -11,7 +11,7 @@ using UnityEngine;
 
 namespace MapDesigner.UI
 {
-    public class TerrainCardUtility
+    public class TerrainCard
     {
         public static MapDesignerSettings settings = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>();
 

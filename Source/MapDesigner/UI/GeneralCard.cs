@@ -11,7 +11,7 @@ using UnityEngine;
 
 namespace MapDesigner.UI
 {
-    public class GeneralCardUtility
+    public class GeneralCard
     {
         public static MapDesignerSettings settings = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>();
 
@@ -45,10 +45,10 @@ namespace MapDesigner.UI
 
         public static void ResetAllSettings()
         {
-            MountainCardUtility.ResetMountainSettings();
-            TerrainCardUtility.ResetTerrainSettings();
-            ThingsCardUtility.ResetThingsSettings();
-            RiversCardUtility.ResetRiversSettings();
+            MountainCard.ResetMountainSettings();
+            TerrainCard.ResetTerrainSettings();
+            ThingsCard.ResetThingsSettings();
+            RiversCard.ResetRiversSettings();
             settings.selectedFeature = MapDesignerSettings.Features.None;
         }
 

@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace MapDesigner.UI
 {
-    public static class RiversCardUtility
+    public static class RiversCard
     {
         public static MapDesignerSettings settings = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>();
 
@@ -23,7 +23,7 @@ namespace MapDesigner.UI
             listing.Begin(rect);
             listing.GapLine();
 
-            settings.sizeRiver = InterfaceUtility.LabeledSlider(listing, settings.sizeRiver, 0.1f, 3f, InterfaceUtility.FormatLabel("ZMD_sizeRiver", "ZMD_size" + ThingsCardUtility.GetDensityLabel(settings.sizeRiver)), "ZMD_size1".Translate(), "ZMD_size6".Translate());
+            settings.sizeRiver = InterfaceUtility.LabeledSlider(listing, settings.sizeRiver, 0.1f, 3f, InterfaceUtility.FormatLabel("ZMD_sizeRiver", "ZMD_size" + ThingsCard.GetDensityLabel(settings.sizeRiver)), "ZMD_size1".Translate(), "ZMD_size6".Translate());
             listing.Gap(listing.verticalSpacing);
 
             // river beaches

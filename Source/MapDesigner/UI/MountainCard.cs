@@ -10,7 +10,7 @@ using RimWorld;
 namespace MapDesigner.UI
 {
 
-    public static class MountainCardUtility
+    public static class MountainCard
     {
         public static MapDesignerSettings settings = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>();
         private static float viewHeight;

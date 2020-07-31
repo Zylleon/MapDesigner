@@ -112,19 +112,19 @@ namespace MapDesigner
             switch(tab)
             {
                 case MapDesigner_Mod.InfoCardTab.Mountains:
-                    UI.MountainCardUtility.DrawMountainCard(cardRect);
+                    UI.MountainCard.DrawMountainCard(cardRect);
                     break;
                 case MapDesigner_Mod.InfoCardTab.Terrain:
-                    UI.TerrainCardUtility.DrawTerrainCard(cardRect);
+                    UI.TerrainCard.DrawTerrainCard(cardRect);
                     break;
                 case MapDesigner_Mod.InfoCardTab.Things:
-                    UI.ThingsCardUtility.DrawThingsCard(cardRect);
+                    UI.ThingsCard.DrawThingsCard(cardRect);
                     break;
                 case MapDesigner_Mod.InfoCardTab.Rivers:
-                    UI.RiversCardUtility.DrawRiversCard(cardRect);
+                    UI.RiversCard.DrawRiversCard(cardRect);
                     break;
                 case MapDesigner_Mod.InfoCardTab.Feature:
-                    UI.FeatureCardUtility.DrawFeaturesCard(cardRect);
+                    UI.FeatureCard.DrawFeaturesCard(cardRect);
                     break;
                 //case MapDesigner_Mod.InfoCardTab.Beta:
                 //    UI.TerrainCardUtility.DrawBetaCard(cardRect);

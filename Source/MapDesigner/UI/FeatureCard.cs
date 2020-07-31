@@ -9,7 +9,7 @@ using RimWorld;
 
 namespace MapDesigner.UI
 {
-    public static class FeatureCardUtility
+    public static class FeatureCard
     {
         public static MapDesignerSettings settings = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>();
 

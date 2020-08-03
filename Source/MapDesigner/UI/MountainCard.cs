@@ -93,7 +93,7 @@ namespace MapDesigner.UI
                 hillSplitRect.xMax -= 20f;
                 Listing_Standard hillSplitListing = new Listing_Standard();
                 hillSplitListing.Begin(hillSplitRect);
-                settings.hillSplitAmt = InterfaceUtility.LabeledSlider(hillSplitListing, settings.hillSplitAmt, -2.0f, 2.0f, GetHillRadialAmtLabel(settings.hillSplitAmt), "ZMD_center".Translate(), "ZMD_edges".Translate(), null, "ZMD_hillSplitAmtTooltip".Translate());
+                settings.hillSplitAmt = InterfaceUtility.LabeledSlider(hillSplitListing, settings.hillSplitAmt, -2.0f, 2.0f, GetHillRadialAmtLabel(settings.hillSplitAmt), "ZMD_center".Translate(), "ZMD_edges".Translate(), null, "ZMD_hillRadialAmtTooltip".Translate());
 
                 settings.hillSplitSize = InterfaceUtility.LabeledSlider(hillSplitListing, settings.hillSplitSize, 0.05f, 1.1f, "ZMD_size".Translate(), null, null, String.Format("{0} % of map width", 100 * Math.Round(settings.hillSplitSize, 1)), "ZMD_hillRadialSizeTooltip".Translate());
 
@@ -112,7 +112,7 @@ namespace MapDesigner.UI
                 Listing_Standard hillSideListing = new Listing_Standard();
                 hillSideListing.Begin(hillSideRect);
 
-                settings.hillSplitAmt = InterfaceUtility.LabeledSlider(hillSideListing, settings.hillSplitAmt, 0.2f, 3.0f, GetHillSideAmtLabel(settings.hillSplitAmt));
+                settings.hillSideAmt = InterfaceUtility.LabeledSlider(hillSideListing, settings.hillSideAmt, 0.2f, 3.0f, GetHillSideAmtLabel(settings.hillSideAmt));
 
                 settings.hillSideDir = InterfaceUtility.AnglePicker(hillSideListing, settings.hillSideDir, "ZMD_Angle".Translate(), 3, true);
 

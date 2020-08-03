@@ -49,6 +49,7 @@ namespace MapDesigner.UI
             settings.hillSmoothness = InterfaceUtility.LabeledSlider(listingStandard, settings.hillSmoothness, 0f, 5f, hillSmoothnessLabel, "ZMD_hillSmoothness0".Translate(), "ZMD_hillSmoothness4".Translate());
 
             // general mountain related
+            listingStandard.CheckboxLabeled("ZMD_flagMtnExit".Translate(), ref MapDesignerSettings.flagMtnExit, "ZMD_flagMtnExitTooltip".Translate());
             listingStandard.CheckboxLabeled("ZMD_flagCaves".Translate(), ref MapDesignerSettings.flagCaves, "ZMD_flagCavesTooltip".Translate());
 
             // hill distribution
@@ -140,6 +141,7 @@ namespace MapDesigner.UI
             settings.hillAmount = 1.0f;
             settings.hillSize = 0.021f;
             settings.hillSmoothness = 2.0f;
+            MapDesignerSettings.flagMtnExit = true;
             MapDesignerSettings.flagCaves = true;
 
             MapDesignerSettings.flagHillClumping = false;

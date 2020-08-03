@@ -163,6 +163,38 @@ namespace MapDesigner.Patches
                 }
             }
 
+
+            // exit path
+            if (MapDesignerSettings.flagMtnExit)
+            {
+                ModuleBase exitPath = new AxisAsValueX();
+                ModuleBase crossways = new AxisAsValueZ();
+                double exitDir = Rand.Range(0, 360);
+                
+                exitPath = new Rotate(0.0, exitDir, 0.0, exitPath);
+                crossways = new Rotate(0.0, exitDir, 0.0, crossways);
+
+                exitPath = new Translate((double)(-(double)map.Center.x), 0.0, (double)(-(double)map.Center.z), exitPath);
+                crossways = new Translate((double)(-(double)map.Center.x), 0.0, (double)(-(double)map.Center.z), crossways);
+                exitPath = new Abs(exitPath);
+
+                //ModuleBase noise = new Perlin(0.021, 2.0, 0.5, 3, Rand.Range(0, 2147483647), QualityMode.Medium);
+                ModuleBase noise = new Perlin(0.021, 3.5, 0.5, 3, Rand.Range(0, 2147483647), QualityMode.Medium);
+
+                //ModuleBase noise = new Perlin(0.015, 0.5, 0.5, 3, Rand.Range(0, 2147483647), QualityMode.Medium);
+                noise = new Multiply(noise, new Const(15.0));
+                exitPath = new Displace(exitPath, noise, new Const(0.0), noise);
+
+                foreach (IntVec3 current in map.AllCells)
+                {
+                    if (crossways.GetValue(current) > 0f)
+                    {
+                        elevation[current] *= Math.Min(1, 0.1f * exitPath.GetValue(current) - 0.5f);
+                        //elevation[current] -= Math.Max(0, 5 - 0.5f * exitPath.GetValue(current));
+                    }
+                }
+
+            }
         }
 
     }

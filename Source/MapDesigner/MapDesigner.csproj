@@ -303,7 +303,7 @@
     <Compile Include="Patches\OreDensityPatch.cs" />
     <Compile Include="Patches\RiverBankPatch.cs" />
     <Compile Include="Patches\RockTypesPatch.cs" />
-    <Compile Include="Patches\TerrainPatchesPatch.cs" />
+    <Compile Include="Patches\Test_RiverOverridePatch.cs" />
     <Compile Include="TerrainDefault.cs" />
     <Compile Include="TerrainUtility.cs" />
     <Compile Include="UI\TerrainCard.cs" />
@@ -321,6 +321,8 @@
     <Compile Include="UI\ThingsCard.cs" />
     <Compile Include="ZMD_GenStep_Feature.cs" />
     <Compile Include="ZMD_GenStep_Lake.cs" />
+    <Compile Include="ZMD_GenStep_Terrain.cs" />
+    <Compile Include="ZMD_RiverMaker.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

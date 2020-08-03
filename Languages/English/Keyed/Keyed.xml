@@ -71,7 +71,7 @@
 	<ZMD_hillSmoothness3>Rough</ZMD_hillSmoothness3>
 	<ZMD_hillSmoothness4>Very rough</ZMD_hillSmoothness4>
 
-
+	
 
 <!-- Mountain distribution -->
 	<ZMD_hillArrangement>Arrange hills</ZMD_hillArrangement>
@@ -124,7 +124,8 @@
 	<ZMD_flagCaves>Allow caves</ZMD_flagCaves>
 	<ZMD_flagCavesTooltip>Unchecking this prevents caves from ever spawning, even on tiles with mountains or large hills.</ZMD_flagCavesTooltip>
 	
-
+	<ZMD_flagMtnExit>Ensure exit</ZMD_flagMtnExit>
+	<ZMD_flagMtnExitTooltip>For very mountainous maps. Guarantees a clear path to the center of the map.</ZMD_flagMtnExitTooltip>
 	
 <!-- ===================================	Things	================================= -->
     <!-- Tabs -->

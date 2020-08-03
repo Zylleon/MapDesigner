@@ -33,7 +33,12 @@ namespace MapDesigner.UI
 
             // Rocks
             listing.GapLine();
-            InterfaceUtility.LabeledIntRange(listing, ref settings.rockTypeRange, 1, 5, "ZMD_rockTypeRange".Translate());
+
+            List<ThingDef> rockList = HelperMethods.GetRockList();
+            int maxRocks = Math.Min(15, rockList.Count);
+
+            //InterfaceUtility.LabeledIntRange(listing, ref settings.rockTypeRange, 1, 5, "ZMD_rockTypeRange".Translate());
+            InterfaceUtility.LabeledIntRange(listing, ref settings.rockTypeRange, 1, maxRocks, "ZMD_rockTypeRange".Translate());
 
             listing.CheckboxLabeled("ZMD_flagBiomeRocks".Translate(), ref MapDesignerSettings.flagBiomeRocks, "ZMD_flagBiomeRocksTooltip".Translate());
 
@@ -60,9 +65,7 @@ namespace MapDesigner.UI
             settings.rockTypeRange = new IntRange(2, 3);
             MapDesignerSettings.flagBiomeRocks = false;
 
-            List<ThingDef> list = (from d in DefDatabase<ThingDef>.AllDefs
-                                   where d.category == ThingCategory.Building && d.building.isNaturalRock && !d.building.isResourceRock && !d.IsSmoothed
-                                   select d).ToList<ThingDef>();
+            List<ThingDef> list = HelperMethods.GetRockList();
             Dictionary<string, bool> newRocks = new Dictionary<string, bool>();
             foreach (ThingDef rock in list)
             {

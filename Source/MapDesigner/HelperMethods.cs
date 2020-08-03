@@ -62,9 +62,7 @@ namespace MapDesigner
             {
                 settings.allowedRocks = new Dictionary<string, bool>();
             }
-            List<ThingDef> list = (from d in DefDatabase<ThingDef>.AllDefs
-                                   where d.category == ThingCategory.Building && d.building.isNaturalRock && !d.building.isResourceRock && !d.IsSmoothed
-                                   select d).ToList<ThingDef>();
+            List<ThingDef> list = GetRockList();
             foreach (ThingDef rock in list)
             {
                 if (!settings.allowedRocks.ContainsKey(rock.defName))
@@ -72,6 +70,9 @@ namespace MapDesigner
                     settings.allowedRocks.Add(rock.defName, true);
                 }
             }
+
+            settings.rockTypeRange.max = Math.Min(list.Count, 5);
+            settings.rockTypeRange.min = Math.Min(list.Count, 5);
         }
 
 
@@ -297,5 +298,15 @@ namespace MapDesigner
             return output;
 
         }
+
+
+        public static List<ThingDef> GetRockList()
+        {
+            List<ThingDef> rockList = (from d in DefDatabase<ThingDef>.AllDefs
+                                       where d.category == ThingCategory.Building && d.building.isNaturalRock && !d.building.isResourceRock && !d.IsSmoothed
+                                       select d).ToList<ThingDef>();
+            return rockList;
+        }
+
     }
 }

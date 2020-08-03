@@ -135,12 +135,7 @@ namespace MapDesigner.Patches
             float hillAmount = settings.hillAmount;
             foreach (IntVec3 current in map.AllCells)
             {
-                //elevation[current] *= hillAmount;
-                //elevation[current] = 0.61f + (elevation[current] - .61f) * settings.hillAmount;
-                //elevation[current] = 0.55f + (elevation[current] - .55f) * settings.hillAmount;
-                //elevation[current] = 0.50f + (elevation[current] - .50f) * settings.hillAmount;
                 elevation[current] += settings.hillAmount - 1f;
-
             }
 
 
@@ -171,9 +166,11 @@ namespace MapDesigner.Patches
                 ModuleBase crossways = new AxisAsValueZ();
                 double exitDir = Rand.Range(0, 360);
 
-                ModuleBase noise = new Perlin(0.021, 3.5, 0.5, 3, Rand.Range(0, 2147483647), QualityMode.Medium);
+                //ModuleBase noise = new Perlin(0.021, 3.5, 0.5, 3, Rand.Range(0, 2147483647), QualityMode.Medium);
+                //ModuleBase noise = new Perlin(Rand.Range(0.015f, 0.035f), 2.0, 0.5, 3, Rand.Range(0, 2147483647), QualityMode.Medium);
+                ModuleBase noise = new Perlin(Rand.Range(0.015f, 0.03f), Math.Min(3.5, settings.hillSmoothness), 0.5, 3, Rand.Range(0, 2147483647), QualityMode.Medium);
 
-                noise = new Multiply(noise, new Const(15.0));
+                noise = new Multiply(noise, new Const(25.0));
                 exitPath = new Displace(exitPath, noise, new Const(0.0), new Const(0.0));
 
                 exitPath = new Rotate(0.0, exitDir, 0.0, exitPath);
@@ -192,6 +189,8 @@ namespace MapDesigner.Patches
                 }
 
             }
+
+
         }
 
     }

@@ -105,7 +105,7 @@ namespace MapDesigner.UI
 
             settings.lakeSize = InterfaceUtility.LabeledSlider(listing, settings.lakeSize, 0.04f, 1.0f, String.Format("ZMD_lakeSize".Translate(), Math.Round(100 * settings.lakeSize)));
 
-            settings.lakeRoundness = InterfaceUtility.LabeledSlider(listing, settings.lakeRoundness, 0f, 3.5f, lakeRoundnessLabel, "ZMD_lakeRoundness0".Translate(), "ZMD_lakeRoundness4".Translate());
+            settings.lakeRoundness = InterfaceUtility.LabeledSlider(listing, settings.lakeRoundness, 0f, 6f, lakeRoundnessLabel, "ZMD_lakeRoundness0".Translate(), "ZMD_lakeRoundness4".Translate());
 
             settings.lakeBeachSize = InterfaceUtility.LabeledSlider(listing, settings.lakeBeachSize, 0f, 35f, "ZMD_lakeBeachSize".Translate(), "ZMD_size0".Translate(), "ZMD_size6".Translate());
 
@@ -160,19 +160,36 @@ namespace MapDesigner.UI
             get
             {
                 int label = 0;
-                if (settings.lakeRoundness > 0.3f)
-                {
-                    label++;
-                }
+                //if (settings.lakeRoundness > 0.3f)
+                //{
+                //    label++;
+                //}
+                //if (settings.lakeRoundness > 0.75f)
+                //{
+                //    label++;
+                //}
+                //if (settings.lakeRoundness > 2f)
+                //{
+                //    label++;
+                //}
+                //if (settings.lakeRoundness > 2.75f)
+                //{
+                //    label++;
+                //}
+
                 if (settings.lakeRoundness > 0.75f)
                 {
                     label++;
                 }
-                if (settings.lakeRoundness > 2f)
+                if (settings.lakeRoundness > 1.75f)
                 {
                     label++;
                 }
-                if (settings.lakeRoundness > 2.75f)
+                if (settings.lakeRoundness > 3f)
+                {
+                    label++;
+                }
+                if (settings.lakeRoundness > 4.25f)
                 {
                     label++;
                 }

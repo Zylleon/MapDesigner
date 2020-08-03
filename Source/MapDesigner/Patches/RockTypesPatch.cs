@@ -32,9 +32,11 @@ namespace MapDesigner.Patches
 
             List<ThingDef> tileRocks = __result.ToList();
 
-            List<ThingDef> list = (from d in DefDatabase<ThingDef>.AllDefs
-                                   where d.category == ThingCategory.Building && d.building.isNaturalRock && !d.building.isResourceRock && !d.IsSmoothed 
-                                   select d).ToList<ThingDef>();
+            //List<ThingDef> list = (from d in DefDatabase<ThingDef>.AllDefs
+            //                       where d.category == ThingCategory.Building && d.building.isNaturalRock && !d.building.isResourceRock && !d.IsSmoothed 
+            //                       select d).ToList<ThingDef>();
+
+            List<ThingDef> list = HelperMethods.GetRockList();
 
             List<ThingDef> allowedRocks = list.Where(t => settings.allowedRocks[t.defName]).ToList();
 

@@ -141,7 +141,7 @@ namespace MapDesigner.UI
             settings.hillAmount = 1.0f;
             settings.hillSize = 0.021f;
             settings.hillSmoothness = 2.0f;
-            MapDesignerSettings.flagMtnExit = true;
+            MapDesignerSettings.flagMtnExit = false;
             MapDesignerSettings.flagCaves = true;
 
             MapDesignerSettings.flagHillClumping = false;

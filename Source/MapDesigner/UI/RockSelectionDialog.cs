@@ -29,9 +29,7 @@ namespace MapDesigner.UI
         public override void DoWindowContents(Rect inRect)
         {
             MapDesignerSettings settings = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>();
-            List<ThingDef> list = (from d in DefDatabase<ThingDef>.AllDefs
-                                   where d.category == ThingCategory.Building && d.building.isNaturalRock && !d.building.isResourceRock && !d.IsSmoothed
-                                   select d).ToList<ThingDef>();
+            List<ThingDef> list = HelperMethods.GetRockList();
 
             Listing_Standard outerListing = new Listing_Standard();
             outerListing.Begin(inRect);
@@ -75,5 +73,8 @@ namespace MapDesigner.UI
 
             settings.allowedRocks = newRocks;
         }
+
+        
+
     }
 }

@@ -71,8 +71,8 @@ namespace MapDesigner
                 }
             }
 
-            settings.rockTypeRange.max = Math.Min(list.Count, 5);
-            settings.rockTypeRange.min = Math.Min(list.Count, 5);
+            settings.rockTypeRange.max = Math.Min(list.Count, settings.rockTypeRange.max);
+            settings.rockTypeRange.min = Math.Min(list.Count, settings.rockTypeRange.min);
         }
 
 

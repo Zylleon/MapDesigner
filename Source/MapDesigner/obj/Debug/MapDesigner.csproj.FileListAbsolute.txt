@@ -1,6 +1,0 @@
-C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\Z_MapDesigner\Source\MapDesigner\bin\Debug\MapDesigner.dll
-C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\Z_MapDesigner\Source\MapDesigner\bin\Debug\MapDesigner.pdb
-C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\Z_MapDesigner\Source\MapDesigner\obj\Debug\MapDesigner.csprojAssemblyReference.cache
-C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\Z_MapDesigner\Source\MapDesigner\obj\Debug\MapDesigner.csproj.CoreCompileInputs.cache
-C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\Z_MapDesigner\Source\MapDesigner\obj\Debug\MapDesigner.dll
-C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\Z_MapDesigner\Assemblies\MapDesigner.dll

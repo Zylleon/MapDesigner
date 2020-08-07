@@ -53,11 +53,11 @@ namespace MapDesigner
 
             List<TabRecord> list = new List<TabRecord>();
 
-            //TabRecord generalTab = new TabRecord("ZMD_generalTab".Translate(), delegate
-            //{
-            //    this.tab = MapDesigner_Mod.InfoCardTab.General;
-            //}, this.tab == MapDesigner_Mod.InfoCardTab.General);
-            //list.Add(generalTab);
+            TabRecord generalTab = new TabRecord("ZMD_generalTab".Translate(), delegate
+            {
+                this.tab = MapDesigner_Mod.InfoCardTab.General;
+            }, this.tab == MapDesigner_Mod.InfoCardTab.General);
+            list.Add(generalTab);
 
             TabRecord mountainTab = new TabRecord("ZMD_mountainTab".Translate(), delegate
             {
@@ -111,6 +111,9 @@ namespace MapDesigner
             cardRect.height -= 20f;
             switch(tab)
             {
+                case MapDesigner_Mod.InfoCardTab.General:
+                    UI.GeneralCard.DrawGeneralCard(cardRect);
+                    break;
                 case MapDesigner_Mod.InfoCardTab.Mountains:
                     UI.MountainCard.DrawMountainCard(cardRect);
                     break;
@@ -130,7 +133,7 @@ namespace MapDesigner
                 //    UI.TerrainCardUtility.DrawBetaCard(cardRect);
                 //    break;
                 default:
-                    tab = MapDesigner_Mod.InfoCardTab.Mountains;
+                    tab = MapDesigner_Mod.InfoCardTab.General;
                     //UI.GeneralCardUtility.DrawGeneralCard(cardRect);
                     break;
 

@@ -30,9 +30,6 @@ namespace MapDesigner.Patches
 
                 HelperMethods.InitBiomeDefaults();
                 HelperMethods.ApplyBiomeSettings();
-
-
-
             }
 
 
@@ -65,6 +62,7 @@ namespace MapDesigner.Patches
                     __result = river.TerrainAt(c, true);
                 }
             }
+
         }
     }
 }

@@ -19,14 +19,29 @@
     <!-- Tabs -->
 
 	<ZMD_generalTab>General</ZMD_generalTab>
-	<ZMD_generalTabInfo>Get started with the most popular settings! More detailed options are available on the other tabs.</ZMD_generalTabInfo>
+	<ZMD_generalTabInfo>Get started with a preset, or explore detailed options are available on the other tabs.\n\nAll settings are relative to your base map. A "barrens" wetland will have more plant life than a "fertile valley" desert.</ZMD_generalTabInfo>
+	
+	<ZMD_presets>Presets</ZMD_presets>
+	
+	<ZMD_presetFertileValley>Fertile valley</ZMD_presetFertileValley>
+	<ZMD_presetFertileValleyDesc>A secluded valley surrounded by mountains. Higher fertility, more plants, and fewer ruins.</ZMD_presetFertileValleyDesc>
+	
+	<ZMD_presetBarrens>Barrens</ZMD_presetBarrens>
+	<ZMD_presetBarrensDesc>A relatively desolate landscape with small, spiky hills. Lower fertility and less plants than normal. Extra steam geysers.</ZMD_presetBarrensDesc>
+	
+	<ZMD_presetUnnatural>This isn't natural</ZMD_presetUnnatural>
+	<ZMD_presetUnnaturalDesc>Strange, eerie mountains littered with ancient dangers.</ZMD_presetUnnaturalDesc>
+	
+	<ZMD_presetFishingVillage>Fishing village</ZMD_presetFishingVillage>
+	<ZMD_presetFishingVillageDesc>Large hills to dig into, but little solid ground otherwise.</ZMD_presetFishingVillageDesc>
+	
+	<ZMD_presetAuthorsChoice>Author's choice</ZMD_presetAuthorsChoice>
+	<ZMD_presetAuthorsChoiceDesc></ZMD_presetAuthorsChoiceDesc>
 	
 	<ZMD_flagPopup>Show this for new maps</ZMD_flagPopup>
 	<ZMD_flagPopupDesc>You can access these settings any time from Menu -> Options -> Mod Settings -> Map Designer</ZMD_flagPopupDesc>
 	
-	<ZMD_mapInfo>Customize before landing</ZMD_mapInfo>
 
-	
 	
   <!-- Levels -->
     <ZMD_size0>None</ZMD_size0>
@@ -163,8 +178,18 @@
 	<ZMD_riverBeachSize>River bank size</ZMD_riverBeachSize>
 	
 	<ZMD_flagRiverDir>Pick river direction</ZMD_flagRiverDir>
-
 	
+	<ZMD_riverStyle>River style</ZMD_riverStyle>
+	<ZMD_riverStyleVanilla>Vanilla</ZMD_riverStyleVanilla>
+	<ZMD_riverStyleVanillaDesc>Normal river</ZMD_riverStyleVanillaDesc>
+	<ZMD_riverStyleSpring>Spring</ZMD_riverStyleSpring>
+	<ZMD_riverStyleSpringDesc>Rivers starts near the middle of the map and continues to the edge</ZMD_riverStyleSpringDesc>
+	<ZMD_riverStyleConfluence>Confluence</ZMD_riverStyleConfluence>
+	<ZMD_riverStyleConfluenceDesc>Two rivers merge into one</ZMD_riverStyleConfluenceDesc>
+	<ZMD_riverStyleFork>Fork</ZMD_riverStyleFork>
+	<ZMD_riverStyleForkDesc>One river splits into two</ZMD_riverStyleForkDesc>
+
+
 <!-- ===================================	Features	================================= -->
     <!-- Tabs -->
 

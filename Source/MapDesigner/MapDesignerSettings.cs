@@ -62,6 +62,16 @@ namespace MapDesigner
         public static bool flagRiverDir = false;
         public float riverDir = 180f;
 
+        public enum RiverStyle : byte
+        {
+            Vanilla,
+            Spring,
+            Confluence,
+            Fork
+        }
+        public MapDesignerSettings.RiverStyle selRiverStyle = RiverStyle.Vanilla;
+
+
         // Terrain
         public float terrainFert = 1f;
         public float terrainWater = 1f;
@@ -143,6 +153,7 @@ namespace MapDesigner
             Scribe_Values.Look(ref riverBeachSize, "riverBeachSize", 10f);
             Scribe_Values.Look(ref flagRiverDir, "flagRiverDir", false);
             Scribe_Values.Look(ref riverDir, "riverDir", 180f);
+            Scribe_Values.Look(ref selRiverStyle, "selRiverStyle", RiverStyle.Vanilla);
 
             // Terrain
             Scribe_Values.Look(ref terrainFert, "terrainFert", 1.0f);

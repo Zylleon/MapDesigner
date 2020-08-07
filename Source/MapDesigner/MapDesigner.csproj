@@ -39,6 +39,10 @@
       <HintPath>..\..\..\..\RimWorldWin64_Data\Managed\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="MapReroll">
+      <HintPath>..\..\..\..\..\..\workshop\content\294100\761315214\v1.1\Assemblies\MapReroll.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.InteropServices.RuntimeInformation" />
@@ -299,11 +303,11 @@
     <Compile Include="Patches\CaveSettingsPatch.cs" />
     <Compile Include="Patches\HarmonyPatches.cs" />
     <Compile Include="Patches\MountainSettingsPatch.cs" />
+    <Compile Include="Patches\PopupWindowPatch.cs" />
     <Compile Include="Patches\RiverDirectionPatch.cs" />
     <Compile Include="Patches\OreDensityPatch.cs" />
     <Compile Include="Patches\RiverBankPatch.cs" />
     <Compile Include="Patches\RockTypesPatch.cs" />
-    <Compile Include="Patches\Test_RiverOverridePatch.cs" />
     <Compile Include="TerrainDefault.cs" />
     <Compile Include="TerrainUtility.cs" />
     <Compile Include="UI\TerrainCard.cs" />
@@ -322,7 +326,6 @@
     <Compile Include="ZMD_GenStep_Feature.cs" />
     <Compile Include="ZMD_GenStep_Lake.cs" />
     <Compile Include="ZMD_GenStep_Terrain.cs" />
-    <Compile Include="ZMD_RiverMaker.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

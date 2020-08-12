@@ -44,7 +44,6 @@ namespace MapDesigner.UI
             settings.hillAmount = InterfaceUtility.LabeledSlider(listingStandard, settings.hillAmount, 0.70f, 1.4f, hillAmountLabel, "ZMD_hillAmount0".Translate(), "ZMD_hillAmount5".Translate());
 
             // It's reversed because that's more intuitive for the user. Smaller numbers = bigger hills
-            //settings.hillSize = InterfaceUtility.LabeledSlider(listingStandard, settings.hillSize, 0.1f, 0.010f, hillSizeLabel, "ZMD_hillSize4".Translate(), "ZMD_hillSize0".Translate());
             settings.hillSize = InterfaceUtility.LabeledSlider(listingStandard, settings.hillSize, 0.1f, 0.010f, hillSizeLabel, "ZMD_size1".Translate(), "ZMD_size5".Translate());
             settings.hillSmoothness = InterfaceUtility.LabeledSlider(listingStandard, settings.hillSmoothness, 0f, 5f, hillSmoothnessLabel, "ZMD_hillSmoothness0".Translate(), "ZMD_hillSmoothness4".Translate());
 

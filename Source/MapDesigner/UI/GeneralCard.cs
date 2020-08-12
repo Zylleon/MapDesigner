@@ -27,10 +27,10 @@ namespace MapDesigner.UI
             listing.GapLine();
 
             // randomize
-            if (listing.ButtonText("ZMD_randomize".Translate()))
-            {
-                RandomizeSettings();
-            }
+            //if (listing.ButtonText("ZMD_randomize".Translate()))
+            //{
+            //    RandomizeSettings();
+            //}
 
             // reset
             listing.GapLine();
@@ -141,6 +141,50 @@ namespace MapDesigner.UI
             //        settings.selectedFeature = MapDesignerSettings.Features.None;
             //        break;
             //}
+        }
+
+
+        public static void PresetFertileValley()
+        {
+            ResetAllSettings();
+
+            settings.hillAmount = 1.2f;
+            MapDesignerSettings.flagMtnExit = true;
+            MapDesignerSettings.flagHillRadial = true;
+            settings.densityRuins = 0.5f;
+            settings.densityPlant = 1.3f;
+            settings.terrainFert = 1.5f;
+            MapDesignerSettings.flagRiverBeach = true;
+        }
+
+        public static void PresetBarrens()
+        {
+            ResetAllSettings();
+
+            settings.hillSize = 0.04f;
+            settings.densityGeyser = 1.3f;
+            settings.densityPlant = 0.5f;
+            settings.terrainFert = 0.7f;
+            settings.terrainWater = 0.7f;
+        }
+
+        public static void PresetUnnatural()
+        {
+            ResetAllSettings();
+
+            settings.hillSmoothness = 0f;
+            settings.rockTypeRange = new IntRange(1, 1);
+            settings.densityDanger = 1.5f;
+            settings.animaCount = Rand.Range(3, 8);
+
+        }
+
+        public static void PresetFishingVillage()
+        {
+            ResetAllSettings();
+
+            settings.hillSize = 0.01f;
+            settings.terrainWater = 2f;
         }
 
     }

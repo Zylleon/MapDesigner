@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 using Verse;
 using Verse.Noise;
 
@@ -135,14 +136,12 @@ namespace MapDesigner.Patches
 
             }
 
-
             // hill amount
             float hillAmount = settings.hillAmount;
             foreach (IntVec3 current in map.AllCells)
             {
                 elevation[current] += settings.hillAmount - 1f;
             }
-
 
             // natural distribution
             if (MapDesignerSettings.flagHillClumping)
@@ -162,7 +161,6 @@ namespace MapDesigner.Patches
                     }
                 }
             }
-
 
             // exit path
             if (MapDesignerSettings.flagMtnExit)
@@ -195,9 +193,6 @@ namespace MapDesigner.Patches
 
             }
 
-
         }
-
     }
-
 }

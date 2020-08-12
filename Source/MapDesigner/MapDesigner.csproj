@@ -325,7 +325,6 @@
     <Compile Include="UI\ThingsCard.cs" />
     <Compile Include="ZMD_GenStep_Feature.cs" />
     <Compile Include="ZMD_GenStep_Lake.cs" />
-    <Compile Include="ZMD_GenStep_Terrain.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

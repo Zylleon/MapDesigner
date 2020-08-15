@@ -299,6 +299,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BiomeDefault.cs" />
+    <Compile Include="DistanceFromOrigin.cs" />
     <Compile Include="Patches\AnimaTreePatch.cs" />
     <Compile Include="Patches\CaveSettingsPatch.cs" />
     <Compile Include="Patches\HarmonyPatches.cs" />
@@ -307,6 +308,7 @@
     <Compile Include="Patches\RiverDirectionPatch.cs" />
     <Compile Include="Patches\OreDensityPatch.cs" />
     <Compile Include="Patches\RiverBankPatch.cs" />
+    <Compile Include="Patches\RiverStylePatch.cs" />
     <Compile Include="Patches\RockTypesPatch.cs" />
     <Compile Include="TerrainDefault.cs" />
     <Compile Include="TerrainUtility.cs" />

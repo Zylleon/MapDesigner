@@ -67,7 +67,8 @@ namespace MapDesigner
             Vanilla,
             Spring,
             Confluence,
-            Fork
+            Fork,
+            Oxbow,
         }
         public MapDesignerSettings.RiverStyle selRiverStyle = RiverStyle.Vanilla;
 

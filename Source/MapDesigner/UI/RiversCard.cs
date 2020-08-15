@@ -65,20 +65,15 @@ namespace MapDesigner.UI
                 {
                     settings.selRiverStyle = MapDesignerSettings.RiverStyle.Fork;
                 }));
-
+                riverStyleList.Add(new FloatMenuOption("ZMD_riverStyleOxbow".Translate(), delegate
+                {
+                    settings.selRiverStyle = MapDesignerSettings.RiverStyle.Oxbow;
+                }));
                 Find.WindowStack.Add(new FloatMenu(riverStyleList));
             }
             Listing_selRiverStyle.End();
 
-
-
-
-
             listing.Gap(listing.verticalSpacing);
-
-
-
-
 
             // river beaches
             listing.CheckboxLabeled("ZMD_flagRiverBeach".Translate(), ref MapDesignerSettings.flagRiverBeach, "ZMD_flagRiverBeach".Translate());
@@ -165,6 +160,12 @@ namespace MapDesigner.UI
                     break;
                 case MapDesignerSettings.RiverStyle.Fork:
                     label = "ZMD_riverStyleFork";
+                    break;
+                case MapDesignerSettings.RiverStyle.Oxbow:
+                    label = "ZMD_riverStyleOxbow";
+                    break;
+                default:
+                    label = "ZMD_riverStyleVanilla";
                     break;
             }
             

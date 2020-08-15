@@ -188,7 +188,10 @@
 	<ZMD_riverStyleConfluenceDesc>Two rivers merge into one</ZMD_riverStyleConfluenceDesc>
 	<ZMD_riverStyleFork>Fork</ZMD_riverStyleFork>
 	<ZMD_riverStyleForkDesc>One river splits into two</ZMD_riverStyleForkDesc>
-
+	<ZMD_riverStyleOxbow>Oxbow</ZMD_riverStyleOxbow>
+	<ZMD_riverStyleOxbowDesc>A winding river with big, smooth loops</ZMD_riverStyleOxbowDesc>
+	<ZMD_riverStyleIsland>Island</ZMD_riverStyleIsland>
+	<ZMD_riverStyleIslandDesc>A river that splits to make an island, then joins back into one on the other side</ZMD_riverStyleIslandDesc>
 
 <!-- ===================================	Features	================================= -->
     <!-- Tabs -->

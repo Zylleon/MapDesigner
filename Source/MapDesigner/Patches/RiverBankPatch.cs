@@ -93,22 +93,59 @@ namespace MapDesigner.Patches
         //    return output;
         //}
 
-        static void Postfix(ref TerrainDef __result, ModuleBase ___generator, float ___surfaceLevel, IntVec3 loc, bool recordForValidation = false)
+        static bool Prefix(ref TerrainDef __result, ModuleBase ___generator, ModuleBase ___coordinateX, ModuleBase ___coordinateZ, ModuleBase ___shallowizer, float ___surfaceLevel, float ___shallowFactor, List<IntVec3> ___lhs, List<IntVec3> ___rhs, IntVec3 loc, bool recordForValidation = false)
         {
-            if (!MapDesignerSettings.flagRiverBeach)
-            {
-                return;
-            }
-
             float value = ___generator.GetValue(loc);
             float num = ___surfaceLevel - Mathf.Abs(value);
-            MapDesignerSettings settings = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>();
-
-            if (num < 0 && num > 0 - settings.riverBeachSize)
+            //float num = ___surfaceLevel - value;
+            if (num > 2f && ___shallowizer.GetValue(loc) > ___shallowFactor)
             {
-                __result = TerrainDef.Named(settings.riverShore);
+                __result = TerrainDefOf.WaterMovingChestDeep;
             }
+            else if (num > 0f)
+            {
+                if (recordForValidation)
+                {
+                    if (value < 0f)
+                    {
+                        ___lhs.Add(loc);
+                    }
+                    else
+                    {
+                        ___rhs.Add(loc);
+                    }
+                }
+                __result = TerrainDefOf.WaterMovingShallow;
+            }
+            else if(MapDesignerSettings.flagRiverBeach)
+            {
+                MapDesignerSettings settings = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>();
+                if (num > 0 - settings.riverBeachSize)
+                {
+                    __result = TerrainDef.Named(settings.riverShore);
+                }
+            }
+
+            return false;
         }
+
+
+        //static void Postfix(ref TerrainDef __result, ModuleBase ___generator, float ___surfaceLevel, IntVec3 loc, bool recordForValidation = false)
+        //{
+        //    if (!MapDesignerSettings.flagRiverBeach)
+        //    {
+        //        return;
+        //    }
+
+        //    float value = ___generator.GetValue(loc);
+        //    float num = ___surfaceLevel - Mathf.Abs(value);
+        //    MapDesignerSettings settings = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>();
+
+        //    if (num < 0 && num > 0 - settings.riverBeachSize)
+        //    {
+        //        __result = TerrainDef.Named(settings.riverShore);
+        //    }
+        //}
     }
 
 

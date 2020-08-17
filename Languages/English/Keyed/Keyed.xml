@@ -15,6 +15,8 @@
 	<ZMD_resetTerrain>Reset Terrain</ZMD_resetTerrain>
 	<ZMD_Angle>Angle</ZMD_Angle>
 	
+	<ZMD_numTiles>{0} tiles</ZMD_numTiles>
+	<ZMD_pctOfMap>{0} % of map width</ZMD_pctOfMap>
 	
 <!-- Levels -->
     <ZMD_size0>None</ZMD_size0>
@@ -64,11 +66,11 @@
 	<ZMD_presetZyllesChoiceDesc>I like these settings.</ZMD_presetZyllesChoiceDesc>
 	
 	
+	
 	<ZMD_presetRandom>Randomize</ZMD_presetRandom>
 	<ZMD_presetRandomDesc>This will randomize settings every time you click "apply". Results may be unpredictable.</ZMD_presetRandomDesc>
 	
-	
-	
+
 	<ZMD_flagPopup>Show this for new maps</ZMD_flagPopup>
 	<ZMD_flagPopupDesc>You can access these settings any time from Menu -> Options -> Mod Settings -> Map Designer</ZMD_flagPopupDesc>
 	
@@ -153,6 +155,15 @@
 	<ZMD_hillSideAmt2>Moderate shift to one side</ZMD_hillSideAmt2>
 	<ZMD_hillSideAmt3>Strong shift to one side</ZMD_hillSideAmt3>
 
+	<ZMD_flagHillDonut>Donut-shaped</ZMD_flagHillDonut>
+	<ZMD_flagHillDonutTooltip>Ring-shaped mountains or valleys</ZMD_flagHillDonutTooltip>
+	<ZMD_hillDonutAmt0>Distinct ring hill</ZMD_hillDonutAmt0>
+	<ZMD_hillDonutAmt1>Slight ring hill</ZMD_hillDonutAmt1>
+	<ZMD_hillDonutAmt2>Little to no change</ZMD_hillDonutAmt2>
+	<ZMD_hillDonutAmt3>Slight ring valley</ZMD_hillDonutAmt3>
+	<ZMD_hillDonutAmt4>Distinct ring valley</ZMD_hillDonutAmt4>
+	
+	
 	
   <!-- Misc settings -->
   
@@ -161,6 +172,7 @@
 	
 	<ZMD_flagMtnExit>Ensure exit</ZMD_flagMtnExit>
 	<ZMD_flagMtnExitTooltip>For very mountainous maps. Guarantees a clear path to the center of the map.</ZMD_flagMtnExitTooltip>
+	<ZMD_numMtnExit>Number of exits</ZMD_numMtnExit>
 	
 <!-- ===================================	Things	================================= -->
     <!-- Tabs -->

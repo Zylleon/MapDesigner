@@ -7,43 +7,16 @@
 	
 <!-- ===================================	general mod settings	================================= -->
 
-	<ZMD_reset>Reset everything to default</ZMD_reset>
+	
 	<ZMD_resetPage>Reset these settings</ZMD_resetPage>
 	<ZMD_resetMountain>Reset mountains to default</ZMD_resetMountain>
 	<ZMD_resetThings>Reset Things to default</ZMD_resetThings>
 	<ZMD_resetRivers>Reset Rivers to default</ZMD_resetRivers>
 	<ZMD_resetTerrain>Reset Terrain</ZMD_resetTerrain>
 	<ZMD_Angle>Angle</ZMD_Angle>
-	<ZMD_randomize>Randomize</ZMD_randomize>
 	
-    <!-- Tabs -->
-
-	<ZMD_generalTab>General</ZMD_generalTab>
-	<ZMD_generalTabInfo>Get started with a preset, or explore detailed options are available on the other tabs.\n\nAll settings are relative to your base map. A "barrens" wetland will have more plant life than a "fertile valley" desert.</ZMD_generalTabInfo>
 	
-	<ZMD_presets>Presets</ZMD_presets>
-	
-	<ZMD_presetFertileValley>Fertile valley</ZMD_presetFertileValley>
-	<ZMD_presetFertileValleyDesc>A secluded valley surrounded by mountains. Higher fertility, more plants, and fewer ruins.</ZMD_presetFertileValleyDesc>
-	
-	<ZMD_presetBarrens>Barrens</ZMD_presetBarrens>
-	<ZMD_presetBarrensDesc>A relatively desolate landscape with small, spiky hills. Lower fertility and less plants than normal. Extra steam geysers.</ZMD_presetBarrensDesc>
-	
-	<ZMD_presetUnnatural>This isn't natural</ZMD_presetUnnatural>
-	<ZMD_presetUnnaturalDesc>Strange, eerie mountains littered with ancient dangers.</ZMD_presetUnnaturalDesc>
-	
-	<ZMD_presetFishingVillage>Fishing village</ZMD_presetFishingVillage>
-	<ZMD_presetFishingVillageDesc>Large hills to dig into, but little solid ground otherwise.</ZMD_presetFishingVillageDesc>
-	
-	<ZMD_presetAuthorsChoice>Author's choice</ZMD_presetAuthorsChoice>
-	<ZMD_presetAuthorsChoiceDesc></ZMD_presetAuthorsChoiceDesc>
-	
-	<ZMD_flagPopup>Show this for new maps</ZMD_flagPopup>
-	<ZMD_flagPopupDesc>You can access these settings any time from Menu -> Options -> Mod Settings -> Map Designer</ZMD_flagPopupDesc>
-	
-
-	
-  <!-- Levels -->
+<!-- Levels -->
     <ZMD_size0>None</ZMD_size0>
 	<ZMD_size1>Tiny</ZMD_size1>
 	<ZMD_size2>Small</ZMD_size2>
@@ -55,6 +28,53 @@
 	<ZMD_narrow>Narrow</ZMD_narrow>
 	<ZMD_wide>Wide</ZMD_wide>
 	
+	
+	
+    <!-- Tabs -->
+
+<!-- ===================================	General Tab	================================= -->
+
+	<ZMD_generalTab>General</ZMD_generalTab>
+	<ZMD_generalTabInfo>Get started with a preset, or explore detailed options are available on the other tabs.\n\nAll settings are relative to your base map. A barren rainforest will have more plants than a fertile valley desert; flat maps will always have less hills than mountainous maps with the same settings.</ZMD_generalTabInfo>
+	
+	<ZMD_presets>Presets</ZMD_presets>
+	
+	<ZMD_applyPreset>Apply Preset</ZMD_applyPreset>
+	<ZMD_reset>Reset Everything</ZMD_reset>
+	
+	<ZMD_presetVanilla>Vanilla</ZMD_presetVanilla>
+	<ZMD_presetVanillaDesc>Vanilla defaults.</ZMD_presetVanillaDesc>
+	
+	<ZMD_presetFertileValley>Fertile valley</ZMD_presetFertileValley>
+	<ZMD_presetFertileValleyDesc>A secluded valley surrounded by mountains. Higher fertility, more plants, and fewer ruins.</ZMD_presetFertileValleyDesc>
+	
+	<ZMD_presetBarrens>Barrens</ZMD_presetBarrens>
+	<ZMD_presetBarrensDesc>A relatively desolate landscape with small, spiky hills. Lower fertility and less plants than normal. Extra steam geysers.</ZMD_presetBarrensDesc>
+	
+	<ZMD_presetUnnatural>This isn't natural</ZMD_presetUnnatural>
+	<ZMD_presetUnnaturalDesc>Strange, unnatural mountains littered with ancient dangers.</ZMD_presetUnnaturalDesc>
+	
+	<ZMD_presetFishingVillage>Fishing village</ZMD_presetFishingVillage>
+	<ZMD_presetFishingVillageDesc>Large hills to dig into, but little solid ground otherwise. Swamps may have NO solid ground outside of the mountains!</ZMD_presetFishingVillageDesc>
+	
+	<ZMD_presetCanyon>Canyon</ZMD_presetCanyon>
+	<ZMD_presetCanyonDesc>A narrow canyon with several types of rock. If your tile has a river, the river will follow the canyon.</ZMD_presetCanyonDesc>
+	
+	<ZMD_presetZyllesChoice>Mod author's choice</ZMD_presetZyllesChoice>
+	<ZMD_presetZyllesChoiceDesc>I like these settings.</ZMD_presetZyllesChoiceDesc>
+	
+	
+	<ZMD_presetRandom>Randomize</ZMD_presetRandom>
+	<ZMD_presetRandomDesc>This will randomize settings every time you click "apply". Results may be unpredictable.</ZMD_presetRandomDesc>
+	
+	
+	
+	<ZMD_flagPopup>Show this for new maps</ZMD_flagPopup>
+	<ZMD_flagPopupDesc>You can access these settings any time from Menu -> Options -> Mod Settings -> Map Designer</ZMD_flagPopupDesc>
+	
+
+	
+ 
 <!-- ===================================	Mountains	================================= -->
 
   <!-- Tabs -->

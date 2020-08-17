@@ -45,6 +45,7 @@ namespace MapDesigner.UI
             Listing_Standard Listing_selRiverStyle = new Listing_Standard();
             Listing_selRiverStyle.Begin(selButtonRect);
 
+            // river style selection
             if (Listing_selRiverStyle.ButtonTextLabeled("ZMD_riverStyle".Translate(), GetRiverStyleLabel(settings.selRiverStyle).Translate()))
             {
                 List<FloatMenuOption> riverStyleList = new List<FloatMenuOption>();
@@ -57,18 +58,18 @@ namespace MapDesigner.UI
                 {
                     settings.selRiverStyle = MapDesignerSettings.RiverStyle.Spring;
                 }));
-                riverStyleList.Add(new FloatMenuOption("ZMD_riverStyleConfluence".Translate(), delegate
-                {
-                    settings.selRiverStyle = MapDesignerSettings.RiverStyle.Confluence;
-                }));
-                riverStyleList.Add(new FloatMenuOption("ZMD_riverStyleFork".Translate(), delegate
-                {
-                    settings.selRiverStyle = MapDesignerSettings.RiverStyle.Fork;
-                }));
-                riverStyleList.Add(new FloatMenuOption("ZMD_riverStyleOxbow".Translate(), delegate
-                {
-                    settings.selRiverStyle = MapDesignerSettings.RiverStyle.Oxbow;
-                }));
+                //riverStyleList.Add(new FloatMenuOption("ZMD_riverStyleConfluence".Translate(), delegate
+                //{
+                //    settings.selRiverStyle = MapDesignerSettings.RiverStyle.Confluence;
+                //}));
+                //riverStyleList.Add(new FloatMenuOption("ZMD_riverStyleFork".Translate(), delegate
+                //{
+                //    settings.selRiverStyle = MapDesignerSettings.RiverStyle.Fork;
+                //}));
+                //riverStyleList.Add(new FloatMenuOption("ZMD_riverStyleOxbow".Translate(), delegate
+                //{
+                //    settings.selRiverStyle = MapDesignerSettings.RiverStyle.Oxbow;
+                //}));
                 Find.WindowStack.Add(new FloatMenu(riverStyleList));
             }
             Listing_selRiverStyle.End();

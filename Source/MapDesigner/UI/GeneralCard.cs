@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 using Verse;
 using RimWorld;
 using UnityEngine;
-
-
+using Verse.Sound;
 
 namespace MapDesigner.UI
 {
@@ -17,6 +16,20 @@ namespace MapDesigner.UI
 
         private static Vector2 scrollPosition = Vector2.zero;
         private static float viewHeight;
+
+        private enum Preset : byte
+        {
+            Vanilla,
+            FertileValley,
+            Barrens,
+            Unnatural,
+            FishingVillage,
+            Canyon,
+            ZyllesChoice,
+            Random
+        }
+
+        private static Preset selPreset;
 
         public static void DrawGeneralCard(Rect rect)
         {
@@ -33,15 +46,144 @@ namespace MapDesigner.UI
             //}
 
             // reset
+
+            #region presets
+            Rect selPresetRect = listing.GetRect(40f);
+
+            Rect selButtonRect = selPresetRect;
+            Rect descRect = selPresetRect;
+            selButtonRect.xMax -= 0.66f * rect.width;
+            descRect.xMin += 20f + 0.34f * rect.width;
+
+            Widgets.Label(descRect, (GetPresetLabel() + "Desc").Translate());
+            Listing_Standard listing_selPreset = new Listing_Standard();
+            listing_selPreset.Begin(selButtonRect);
+
+            // preset selection
+            if (listing_selPreset.ButtonTextLabeled("ZMD_presets".Translate(), GetPresetLabel().Translate()))
+            {
+                List<FloatMenuOption> presetList = new List<FloatMenuOption>();
+
+                presetList.Add(new FloatMenuOption("ZMD_presetVanilla".Translate(), delegate
+                {
+                    selPreset = Preset.Vanilla;
+                }));
+                presetList.Add(new FloatMenuOption("ZMD_presetFertileValley".Translate(), delegate
+                {
+                    selPreset = Preset.FertileValley;
+                }));
+                presetList.Add(new FloatMenuOption("ZMD_presetBarrens".Translate(), delegate
+                {
+                    selPreset = Preset.Barrens;
+                }));
+                presetList.Add(new FloatMenuOption("ZMD_presetUnnatural".Translate(), delegate
+                {
+                    selPreset = Preset.Unnatural;
+                }));
+                presetList.Add(new FloatMenuOption("ZMD_presetFishingVillage".Translate(), delegate
+                {
+                    selPreset = Preset.FishingVillage;
+                }));
+                presetList.Add(new FloatMenuOption("ZMD_presetCanyon".Translate(), delegate
+                {
+                    selPreset = Preset.Canyon;
+                }));
+                presetList.Add(new FloatMenuOption("ZMD_presetZyllesChoice".Translate(), delegate
+                {
+                    selPreset = Preset.ZyllesChoice;
+                }));
+                presetList.Add(new FloatMenuOption("ZMD_presetRandom".Translate(), delegate
+                {
+                    selPreset = Preset.Random;
+                }));
+                Find.WindowStack.Add(new FloatMenu(presetList));
+            }
+
+            listing_selPreset.End();
+            listing.GapLine();
+            if (listing.ButtonText("ZMD_applyPreset".Translate()))
+            {
+                SoundDefOf.Click.PlayOneShotOnCamera(null);
+                ApplyPreset();
+            }
+
+
+            #endregion
+
             listing.GapLine();
             if (listing.ButtonText("ZMD_reset".Translate()))
             {
+                SoundDefOf.Click.PlayOneShotOnCamera(null);
                 ResetAllSettings();
             }
 
             listing.End();
         }
 
+        private static void ApplyPreset()
+        {
+            switch (selPreset)
+            {
+                case Preset.Vanilla:
+                    ResetAllSettings();
+                    break;
+                case Preset.FertileValley:
+                    PresetFertileValley();
+                    break;
+                case Preset.Barrens:
+                    PresetBarrens();
+                    break;
+                case Preset.Unnatural:
+                    PresetUnnatural();
+                    break;
+                case Preset.FishingVillage:
+                    PresetFishingVillage();
+                    break;
+                case Preset.Canyon:
+                    PresetCanyon();
+                    break;
+                case Preset.ZyllesChoice:
+                    PresetZyllesChoice();
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private static string GetPresetLabel()
+        {
+            string label = "ZMD_presetVanilla";
+
+            switch(selPreset)
+            {
+                case Preset.Vanilla:
+                    label = "ZMD_presetVanilla";
+                    break;
+                case Preset.FertileValley:
+                    label = "ZMD_presetFertileValley";
+                    break;
+                case Preset.Barrens:
+                    label = "ZMD_presetBarrens";
+                    break;
+                case Preset.Unnatural:
+                    label = "ZMD_presetUnnatural";
+                    break;
+                case Preset.FishingVillage:
+                    label = "ZMD_presetFishingVillage";
+                    break;
+                case Preset.Canyon:
+                    label = "ZMD_presetCanyon";
+                    break;
+                case Preset.ZyllesChoice:
+                    label = "ZMD_presetZyllesChoice";
+                    break;
+                case Preset.Random:
+                    label = "ZMD_presetRandom";
+                    break;
+            }
+
+            return label;
+        }
 
         public static void ResetAllSettings()
         {
@@ -52,8 +194,7 @@ namespace MapDesigner.UI
             settings.selectedFeature = MapDesignerSettings.Features.None;
         }
 
-
-        public static void RandomizeSettings()
+        public static void PresetRandom()
         {
             // Mountains
             settings.hillAmount = Rand.Range(0f, 2.5f);
@@ -143,12 +284,12 @@ namespace MapDesigner.UI
             //}
         }
 
-
         public static void PresetFertileValley()
         {
             ResetAllSettings();
 
             settings.hillAmount = 1.2f;
+            MapDesignerSettings.flagCaves = false;
             MapDesignerSettings.flagMtnExit = true;
             MapDesignerSettings.flagHillRadial = true;
             settings.densityRuins = 0.5f;
@@ -157,11 +298,35 @@ namespace MapDesigner.UI
             MapDesignerSettings.flagRiverBeach = true;
         }
 
+
+        public static void PresetCanyon()
+        {
+            ResetAllSettings();
+
+            settings.hillAmount = 1.1f;
+            MapDesignerSettings.flagCaves = false;
+            MapDesignerSettings.flagHillSplit = true;
+            settings.hillSplitAmt = 2.2f;
+
+            float angle = 10 * Rand.Range(0, 17);
+            settings.hillSplitDir = angle;
+            Log.Message("Angle: " + angle);
+            MapDesignerSettings.flagRiverDir = true;
+            if(Rand.Bool)
+            {
+                angle += 180f;
+            }
+            settings.riverDir = angle;
+
+            settings.rockTypeRange = new IntRange(4, 5);
+        }
+
         public static void PresetBarrens()
         {
             ResetAllSettings();
 
-            settings.hillSize = 0.04f;
+            settings.hillSize = 0.05f;
+            settings.hillSmoothness = 3.0f;
             settings.densityGeyser = 1.3f;
             settings.densityPlant = 0.5f;
             settings.terrainFert = 0.7f;
@@ -172,6 +337,7 @@ namespace MapDesigner.UI
         {
             ResetAllSettings();
 
+            settings.hillAmount = 1.1f;
             settings.hillSmoothness = 0f;
             settings.rockTypeRange = new IntRange(1, 1);
             settings.densityDanger = 1.5f;
@@ -185,7 +351,18 @@ namespace MapDesigner.UI
 
             settings.hillSize = 0.01f;
             settings.terrainWater = 2f;
+            MapDesignerSettings.flagTerrainWater = true;
         }
 
+        public static void PresetZyllesChoice()
+        {
+            ResetAllSettings();
+
+            settings.hillAmount = 1.15f;
+            settings.hillSize = 0.035f;
+            settings.terrainFert = 1.4f;
+            settings.densityOre = 1.2f;
+
+        }
     }
 }

@@ -65,6 +65,8 @@ namespace MapDesigner.Patches
         /// <param name="parms"></param>
         static void Postfix(Map map, GenStepParams parms)
         {
+            // Map Reroll uses a map stub to generate previews, which is missing this info. 
+            // Checking  map.info.parent.def  filters Map Reroll previews and categorizes them as "player home" maps
             bool isPlayerHome = false;
             if (map.info.parent.def == null)
             {

@@ -15,6 +15,8 @@
   <ZMD_resetTerrain>地形をリセット</ZMD_resetTerrain>
   <ZMD_Angle>角度</ZMD_Angle>
 
+  <ZMD_numTiles>{0}タイル</ZMD_numTiles>
+  <ZMD_pctOfMap>マップ幅の{0}%</ZMD_pctOfMap>
 
   <!-- Levels -->
   <ZMD_size0>なし</ZMD_size0>
@@ -64,9 +66,9 @@
   <ZMD_presetZyllesChoiceDesc>私のオオスメ設定です。</ZMD_presetZyllesChoiceDesc>
 
 
+
   <ZMD_presetRandom>ランダム</ZMD_presetRandom>
   <ZMD_presetRandomDesc>これを選択すると、「プリセットを許可」をクリックするたびに設定がランダム化されます。結果は予測できません。</ZMD_presetRandomDesc>
-
 
 
   <ZMD_flagPopup>新しいマップにこれを表示</ZMD_flagPopup>
@@ -130,15 +132,6 @@
   <ZMD_hillRadialAmt5>マップ端に適度</ZMD_hillRadialAmt5>
   <ZMD_hillRadialAmt6>マップを囲うように</ZMD_hillRadialAmt6>
 
-  <ZMD_flagHillDonut>ドーナツ状の山と谷</ZMD_flagHillDonut>
-  <ZMD_flagHillDonutTooltip>リング状の山または谷を形成します</ZMD_flagHillDonutTooltip>
-
-  <ZMD_hillDonutAmt0>鮮明なドーナツ丘陵</ZMD_hillDonutAmt0>
-  <ZMD_hillDonutAmt1>少しリング状な丘陵</ZMD_hillDonutAmt1>
-  <ZMD_hillDonutAmt2>殆ど変化無し</ZMD_hillDonutAmt2>
-  <ZMD_hillDonutAmt3>少しリング状な渓谷</ZMD_hillDonutAmt3>
-  <ZMD_hillDonutAmt4>鮮明なリング状渓谷</ZMD_hillDonutAmt4>
-
 
   <ZMD_center>中央</ZMD_center>
   <ZMD_edges>外縁</ZMD_edges>
@@ -162,8 +155,14 @@
   <ZMD_hillSideAmt2>一方向へ適度に集中</ZMD_hillSideAmt2>
   <ZMD_hillSideAmt3>一方向へ強く集中</ZMD_hillSideAmt3>
 
-  <ZMD_numTiles>{0}タイル</ZMD_numTiles>
-  <ZMD_pctOfMap>マップ幅の{0}％</ZMD_pctOfMap>
+  <ZMD_flagHillDonut>ドーナツ状の山と谷</ZMD_flagHillDonut>
+  <ZMD_flagHillDonutTooltip>リング状の山または谷を形成します</ZMD_flagHillDonutTooltip>
+  <ZMD_hillDonutAmt0>鮮明なドーナツ丘陵</ZMD_hillDonutAmt0>
+  <ZMD_hillDonutAmt1>少しリング状な丘陵</ZMD_hillDonutAmt1>
+  <ZMD_hillDonutAmt2>殆ど変化無し</ZMD_hillDonutAmt2>
+  <ZMD_hillDonutAmt3>少しリング状な渓谷</ZMD_hillDonutAmt3>
+  <ZMD_hillDonutAmt4>鮮明なリング状渓谷</ZMD_hillDonutAmt4>
+
 
 
   <!-- Misc settings -->
@@ -173,6 +172,7 @@
 
   <ZMD_flagMtnExit>出入口を確保</ZMD_flagMtnExit>
   <ZMD_flagMtnExitTooltip>山が多いマップ用です。マップ中心部へ確実に経路ができるようにします。</ZMD_flagMtnExitTooltip>
+  <ZMD_numMtnExit>出口の数</ZMD_numMtnExit>
 
   <!-- Things -->
   <!-- Tabs -->

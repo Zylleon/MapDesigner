@@ -74,8 +74,8 @@
 	<ZMD_flagPopup>Show this for new maps</ZMD_flagPopup>
 	<ZMD_flagPopupDesc>You can access these settings any time from Menu -> Options -> Mod Settings -> Map Designer</ZMD_flagPopupDesc>
 	
-
-	
+	<ZMD_flagHomeMapOnly>Limit settings to your home map</ZMD_flagHomeMapOnly>
+	<ZMD_flagHomeMapOnlyDesc>Currently applies to: Mountains\n\nIf checked, these things will be vanilla on quest maps, ai faction bases, and other non-home maps.</ZMD_flagHomeMapOnlyDesc>
  
 <!-- ===================================	Mountains	================================= -->
 

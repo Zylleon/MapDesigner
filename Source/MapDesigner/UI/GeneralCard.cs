@@ -39,13 +39,9 @@ namespace MapDesigner.UI
 
             listing.GapLine();
 
-            // randomize
-            //if (listing.ButtonText("ZMD_randomize".Translate()))
-            //{
-            //    RandomizeSettings();
-            //}
+            listing.CheckboxLabeled("ZMD_flagHomeMapOnly".Translate(), ref MapDesignerSettings.flagHomeMapOnly, "ZMD_flagHomeMapOnlyDesc".Translate());
 
-            // reset
+            listing.GapLine();
 
             #region presets
             Rect selPresetRect = listing.GetRect(40f);

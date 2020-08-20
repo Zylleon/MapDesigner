@@ -65,10 +65,20 @@ namespace MapDesigner.Patches
         /// <param name="parms"></param>
         static void Postfix(Map map, GenStepParams parms)
         {
-            //if (parms.sitePart.site.MapGeneratorDef.defName != "Base_Player")
-            //{
-            //    return;
-            //}
+            bool isPlayerHome = false;
+            if (map.info.parent.def == null)
+            {
+                isPlayerHome = true;
+                Log.Message("map.info.parent.def is null");
+            }
+            else if(map.IsPlayerHome)
+            {
+                isPlayerHome = true;
+            }
+            if (MapDesignerSettings.flagHomeMapOnly && !isPlayerHome)
+            {
+                return;
+            }
 
             MapDesignerSettings settings = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>();
             MapGenFloatGrid elevation = MapGenerator.Elevation;

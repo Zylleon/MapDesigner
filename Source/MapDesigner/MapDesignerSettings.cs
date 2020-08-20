@@ -15,6 +15,7 @@ namespace MapDesigner
     {
         // General
         public static bool flagPopup = true;
+        public static bool flagHomeMapOnly = true;
 
         // Mountains
         public float hillAmount = 1.0f;
@@ -110,6 +111,7 @@ namespace MapDesigner
         {
             // General
             Scribe_Values.Look(ref flagPopup, "flagPopup", true);
+            Scribe_Values.Look(ref flagHomeMapOnly, "flagHomeMapOnly", true);
 
             // Mountains
             Scribe_Values.Look(ref hillAmount, "hillAmount", 1.0f);

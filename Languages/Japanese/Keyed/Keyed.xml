@@ -74,8 +74,8 @@
   <ZMD_flagPopup>新しいマップにこれを表示</ZMD_flagPopup>
   <ZMD_flagPopupDesc>これらの設定には、スタートメニューからオプションを開きMod設定からMap-Designerを開くことでいつでも設定可能です。</ZMD_flagPopupDesc>
 
-
-
+  <ZMD_flagHomeMapOnly>一部の設定をホームマップに制限</ZMD_flagHomeMapOnly>
+  <ZMD_flagHomeMapOnlyDesc>制限後に適用される設定：山と丘だけ\n\nチェックした場合、これらはクエストマップや、AI派閥の拠点とその他のホームマップで無いマップがバニラと同じになります。</ZMD_flagHomeMapOnlyDesc>
 
   <!-- Mountains -->
 

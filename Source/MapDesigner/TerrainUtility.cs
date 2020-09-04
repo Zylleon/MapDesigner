@@ -108,14 +108,27 @@ namespace MapDesigner
             }
             for (int i = 0; i < listTbf.Count(); i++)
             {
+                //if(listTbf[i].thresh.terrain.IsWater)
+                //{
+                //    Log.Message(String.Format("{0} is water", listTbf[i].thresh.terrain.defName));
+                //}
+                //else
+                //{
+                //    Log.Message(String.Format("----------{0} is NOT water", listTbf[i].thresh.terrain.defName));
+                //}
+
                 //fert
-                if(listTbf[i].thresh.terrain.fertility == maxFert)
+                if (listTbf[i].thresh.terrain.fertility == maxFert && !listTbf[i].thresh.terrain.IsWater)
                 {
                     listTbf[i].size *= settings.terrainFert;
+                    //Log.Message(String.Format("stretching {0}", listTbf[i].thresh.terrain.defName));
+
                 }
-                else if (listTbf[i].thresh.terrain.fertility == minFert)
+                else if (listTbf[i].thresh.terrain.fertility == minFert && !listTbf[i].thresh.terrain.IsWater)
                 {
                     listTbf[i].size /= settings.terrainFert;
+                    //Log.Message(String.Format("---- SHRINKING {0}", listTbf[i].thresh.terrain.defName));
+
                 }
                 //water
                 if (listTbf[i].thresh.terrain.IsWater)

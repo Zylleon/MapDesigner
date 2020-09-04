@@ -71,7 +71,6 @@ namespace MapDesigner.Patches
             if (map.info.parent.def == null)
             {
                 isPlayerHome = true;
-                Log.Message("map.info.parent.def is null");
             }
             else if(map.IsPlayerHome)
             {

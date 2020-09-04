@@ -192,6 +192,7 @@ namespace MapDesigner
                 {
                     if (!biome.terrainsByFertility.NullOrEmpty())
                     {
+                        //Log.Message("Doing adjustments for " + biome.defName);
                         try
                         {
                             TerrainDefault newTerrain;

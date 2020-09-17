@@ -81,11 +81,11 @@ namespace MapDesigner.Patches
                 return;
             }
 
-            MapDesignerSettings settings = MapDesigner_Mod.mod.settings;
+            MapDesignerSettings settings = MapDesignerMod.mod.settings;
             MapGenFloatGrid elevation = MapGenerator.Elevation;
 
             // pushes hills away from center
-            if (MapDesignerSettings.flagHillRadial)
+            if (MapDesignerMod.mod.settings.flagHillRadial)
             {
                 IntVec3 center = map.Center;
                 int size = map.Size.x / 2;
@@ -98,7 +98,7 @@ namespace MapDesigner.Patches
             }
 
             // hills to both sides
-            if (MapDesignerSettings.flagHillSplit)
+            if (MapDesignerMod.mod.settings.flagHillSplit)
             {
                 float angle = settings.hillSplitDir;
 
@@ -128,7 +128,7 @@ namespace MapDesigner.Patches
             }
 
             // hills to one side
-            if (MapDesignerSettings.flagHillSide)
+            if (MapDesignerMod.mod.settings.flagHillSide)
             {
                 float angle = settings.hillSideDir;
                 float skew = settings.hillSideAmt;
@@ -155,9 +155,9 @@ namespace MapDesigner.Patches
             }
 
             // natural distribution
-            if (MapDesignerSettings.flagHillClumping)
+            if (MapDesignerMod.mod.settings.flagHillClumping)
             {
-                float hillSize = MapDesigner_Mod.mod.settings.hillSize;
+                float hillSize = MapDesignerMod.mod.settings.hillSize;
 
                 if (hillSize > 0.022f)       // smaller than vanilla only, else skip this step
                 {
@@ -174,7 +174,7 @@ namespace MapDesigner.Patches
             }
 
             // exit path
-            if (MapDesignerSettings.flagMtnExit)
+            if (MapDesignerMod.mod.settings.flagMtnExit)
             {
                 ModuleBase exitPath = new AxisAsValueX();
                 ModuleBase crossways = new AxisAsValueZ();

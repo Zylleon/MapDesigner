@@ -12,7 +12,7 @@ namespace MapDesigner.UI
 {
     public class GeneralCard
     {
-        public static MapDesignerSettings settings = MapDesigner_Mod.mod.settings;
+        public static MapDesignerSettings settings = MapDesignerMod.mod.settings;
 
         private static Vector2 scrollPosition = Vector2.zero;
         private static float viewHeight;
@@ -196,30 +196,30 @@ namespace MapDesigner.UI
             settings.hillAmount = Rand.Range(0f, 2.5f);
             settings.hillSize = Rand.Range(0.010f, 0.1f);
             settings.hillSmoothness = Rand.Range(0f, 5f);
-            MapDesignerSettings.flagCaves = true;
+            settings.flagCaves = true;
 
             // Mountain shape
             //MapDesignerSettings.flagHillClumping = false;
-            MapDesignerSettings.flagHillRadial = false;
-            MapDesignerSettings.flagHillSplit = false;
-            MapDesignerSettings.flagHillSide = false;
+            settings.flagHillRadial = false;
+            settings.flagHillSplit = false;
+            settings.flagHillSide = false;
 
             int mountainShape = Rand.Range(0, 3);
             switch (mountainShape)
             {
                 case 0:
-                    MapDesignerSettings.flagHillRadial = true;
+                    settings.flagHillRadial = true;
                     settings.hillRadialAmt = Rand.Range(-3f, 3f);
                     settings.hillRadialSize = Rand.Range(0.2f, 1.1f);
                     break;
                 case 1:
-                    MapDesignerSettings.flagHillSplit = true;
+                    settings.flagHillSplit = true;
                     settings.hillSplitAmt = Rand.Range(-3f, 3f);
                     settings.hillSplitDir = 10f * (float)Math.Round(Rand.Range(0f, 17f));
                     settings.hillSplitSize = Rand.Range(0.05f, 1.1f);
                     break;
                 case 2:
-                    MapDesignerSettings.flagHillSide = true;
+                    settings.flagHillSide = true;
                     settings.hillSideAmt = Rand.Range(0.2f, 3f);
                     settings.hillSideDir = 10f * (float)Math.Round(Rand.Range(0f, 35f));
                     break;
@@ -239,7 +239,7 @@ namespace MapDesigner.UI
 
             // Rocks
             settings.rockTypeRange = new IntRange(1, 5);
-            MapDesignerSettings.flagBiomeRocks = true;
+            MapDesignerMod.mod.settings.flagBiomeRocks = true;
 
             // Rivers
             //Log.Message("Randomizing rivers");
@@ -251,7 +251,7 @@ namespace MapDesigner.UI
             // Terrain
             settings.terrainFert = Rand.Range(0.3f, 2f);
             settings.terrainWater = Rand.Range(0.3f, 2f);
-            MapDesignerSettings.flagTerrainWater = Rand.Bool;
+            MapDesignerMod.mod.settings.flagTerrainWater = Rand.Bool;
 
             // Features
             //int mapFeature = Rand.Range(0, 2);
@@ -285,13 +285,13 @@ namespace MapDesigner.UI
             ResetAllSettings();
 
             settings.hillAmount = 1.2f;
-            MapDesignerSettings.flagCaves = false;
-            MapDesignerSettings.flagMtnExit = true;
-            MapDesignerSettings.flagHillRadial = true;
+            MapDesignerMod.mod.settings.flagCaves = false;
+            MapDesignerMod.mod.settings.flagMtnExit = true;
+            MapDesignerMod.mod.settings.flagHillRadial = true;
             settings.densityRuins = 0.5f;
             settings.densityPlant = 1.3f;
             settings.terrainFert = 1.5f;
-            MapDesignerSettings.flagRiverBeach = true;
+            MapDesignerMod.mod.settings.flagRiverBeach = true;
         }
 
 
@@ -300,14 +300,14 @@ namespace MapDesigner.UI
             ResetAllSettings();
 
             settings.hillAmount = 1.1f;
-            MapDesignerSettings.flagCaves = false;
-            MapDesignerSettings.flagHillSplit = true;
+            MapDesignerMod.mod.settings.flagCaves = false;
+            MapDesignerMod.mod.settings.flagHillSplit = true;
             settings.hillSplitAmt = 2.2f;
 
             float angle = 10 * Rand.Range(0, 17);
             settings.hillSplitDir = angle;
             Log.Message("Angle: " + angle);
-            MapDesignerSettings.flagRiverDir = true;
+            MapDesignerMod.mod.settings.flagRiverDir = true;
             if(Rand.Bool)
             {
                 angle += 180f;
@@ -347,7 +347,7 @@ namespace MapDesigner.UI
 
             settings.hillSize = 0.01f;
             settings.terrainWater = 2f;
-            MapDesignerSettings.flagTerrainWater = true;
+            settings.flagTerrainWater = true;
         }
 
         public static void PresetZyllesChoice()

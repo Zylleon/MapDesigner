@@ -11,7 +11,7 @@ namespace MapDesigner.UI
 {
     public static class FeatureCard
     {
-        public static MapDesignerSettings settings = MapDesigner_Mod.mod.settings;
+        public static MapDesignerSettings settings = MapDesignerMod.mod.settings;
 
 
         public static void DrawFeaturesCard(Rect rect)
@@ -95,7 +95,7 @@ namespace MapDesigner.UI
             listing.Label("ZMD_priBeachSizeLabel".Translate());
             settings.priBeachSize = listing.Slider(settings.priBeachSize, 1f, 18f);
 
-            listing.CheckboxLabeled("ZMD_priMultiSpawnLabel".Translate(), ref MapDesignerSettings.priMultiSpawn);
+            listing.CheckboxLabeled("ZMD_priMultiSpawnLabel".Translate(), ref settings.priMultiSpawn);
         }
 
 
@@ -111,7 +111,7 @@ namespace MapDesigner.UI
 
             settings.lakeDepth = InterfaceUtility.LabeledSlider(listing, settings.lakeDepth, 0f, 1f, lakeDepthLabel, "ZMD_lakeDepth0".Translate(), "ZMD_lakeDepth4".Translate());
 
-            listing.CheckboxLabeled("ZMD_flagLakeSalty".Translate(), ref MapDesignerSettings.flagLakeSalty, "ZMD_flagLakeSalty".Translate());
+            listing.CheckboxLabeled("ZMD_flagLakeSalty".Translate(), ref settings.flagLakeSalty, "ZMD_flagLakeSalty".Translate());
 
             List<TerrainDef> shoreOptions = new List<TerrainDef>();
 

@@ -11,7 +11,7 @@ namespace MapDesigner.UI
 {
     public static class ThingsCard
     {
-        public static MapDesignerSettings settings = MapDesigner_Mod.mod.settings;
+        public static MapDesignerSettings settings = MapDesignerMod.mod.settings;
 
         public static void DrawThingsCard(Rect rect)
         {

@@ -17,7 +17,7 @@ namespace MapDesigner.Patches
     {
         static bool Prefix(int tile, ref bool __result, ref World __instance)
         {
-            if (!MapDesignerSettings.flagCaves)
+            if (!MapDesignerMod.mod.settings.flagCaves)
             {
                 __result = false;
                 return false;

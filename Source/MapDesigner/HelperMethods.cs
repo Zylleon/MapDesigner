@@ -13,18 +13,18 @@ namespace MapDesigner
     {
         public static float GetHillSize()
         {
-            return MapDesigner_Mod.mod.settings.hillSize;
+            return MapDesignerMod.mod.settings.hillSize;
         }
 
         public static float GetHillSmoothness()
         {
-            return MapDesigner_Mod.mod.settings.hillSmoothness;
+            return MapDesignerMod.mod.settings.hillSmoothness;
         }
 
 
         public static void InitBiomeDefaults()
         {
-            MapDesignerSettings settings = MapDesigner_Mod.mod.settings;
+            MapDesignerSettings settings = MapDesignerMod.mod.settings;
 
             Dictionary<string, BiomeDefault>  biomeDefaults = new Dictionary<string, BiomeDefault>();
 
@@ -79,7 +79,7 @@ namespace MapDesigner
         public static void ApplyBiomeSettings()
         {
             Log.Message("[Map Designer] Updating settings");
-            MapDesignerSettings settings = MapDesigner_Mod.mod.settings;
+            MapDesignerSettings settings = MapDesignerMod.mod.settings;
 
             // densities
             Dictionary<string, BiomeDefault> biomeDefaults = settings.biomeDefaults;
@@ -246,9 +246,9 @@ namespace MapDesigner
 
         public static float GetRiverDirection(float angle)
         {
-            if (MapDesignerSettings.flagRiverDir)
+            if (MapDesignerMod.mod.settings.flagRiverDir)
             {
-                angle = MapDesigner_Mod.mod.settings.riverDir;
+                angle = MapDesignerMod.mod.settings.riverDir;
             }
             return angle;
         }

@@ -117,9 +117,9 @@ namespace MapDesigner.Patches
                 }
                 __result = TerrainDefOf.WaterMovingShallow;
             }
-            else if(MapDesignerSettings.flagRiverBeach)
+            else if(MapDesignerMod.mod.settings.flagRiverBeach)
             {
-                MapDesignerSettings settings = MapDesigner_Mod.mod.settings;
+                MapDesignerSettings settings = MapDesignerMod.mod.settings;
                 if (num > 0 - settings.riverBeachSize)
                 {
                     __result = TerrainDef.Named(settings.riverShore);
@@ -139,7 +139,7 @@ namespace MapDesigner.Patches
     {
         static void Postfix(IntVec3 c, Map map, RiverMaker river, ref TerrainDef __result)
         {
-            if (!MapDesignerSettings.flagRiverBeach)
+            if (!MapDesignerMod.mod.settings.flagRiverBeach)
             {
                 return;
             }

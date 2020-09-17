@@ -28,7 +28,7 @@ namespace MapDesigner.UI
 
         public override void DoWindowContents(Rect inRect)
         {
-            MapDesignerSettings settings = MapDesigner_Mod.mod.settings;
+            MapDesignerSettings settings = MapDesignerMod.mod.settings;
             List<ThingDef> list = HelperMethods.GetRockList();
 
             Listing_Standard outerListing = new Listing_Standard();

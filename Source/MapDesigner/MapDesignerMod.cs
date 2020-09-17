@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace MapDesigner
 {
-    public class MapDesigner_Mod : Mod
+    public class MapDesignerMod : Mod
     {
         private enum InfoCardTab : byte
         {
@@ -21,14 +21,14 @@ namespace MapDesigner
             Feature,
             Beta,
         }
-        private MapDesigner_Mod.InfoCardTab tab;
+        private MapDesignerMod.InfoCardTab tab;
 
         private Vector2 scrollPosition = Vector2.zero;
 
         public MapDesignerSettings settings;
-        public static MapDesigner_Mod mod;
+        public static MapDesignerMod mod;
 
-        public MapDesigner_Mod(ModContentPack content) : base(content)
+        public MapDesignerMod(ModContentPack content) : base(content)
         {
             this.settings = GetSettings<MapDesignerSettings>();
             mod = this;
@@ -57,38 +57,38 @@ namespace MapDesigner
 
             TabRecord generalTab = new TabRecord("ZMD_generalTab".Translate(), delegate
             {
-                this.tab = MapDesigner_Mod.InfoCardTab.General;
-            }, this.tab == MapDesigner_Mod.InfoCardTab.General);
+                this.tab = MapDesignerMod.InfoCardTab.General;
+            }, this.tab == MapDesignerMod.InfoCardTab.General);
             list.Add(generalTab);
 
             TabRecord mountainTab = new TabRecord("ZMD_mountainTab".Translate(), delegate
             {
-                this.tab = MapDesigner_Mod.InfoCardTab.Mountains;
-            }, this.tab == MapDesigner_Mod.InfoCardTab.Mountains);
+                this.tab = MapDesignerMod.InfoCardTab.Mountains;
+            }, this.tab == MapDesignerMod.InfoCardTab.Mountains);
             list.Add(mountainTab);
 
             TabRecord terrainTab = new TabRecord("ZMD_terrainTab".Translate(), delegate
             {
-                this.tab = MapDesigner_Mod.InfoCardTab.Terrain;
-            }, this.tab == MapDesigner_Mod.InfoCardTab.Terrain);
+                this.tab = MapDesignerMod.InfoCardTab.Terrain;
+            }, this.tab == MapDesignerMod.InfoCardTab.Terrain);
             list.Add(terrainTab);
 
             TabRecord ThingsTab = new TabRecord("ZMD_thingsTab".Translate(), delegate
             {
-                this.tab = MapDesigner_Mod.InfoCardTab.Things;
-            }, this.tab == MapDesigner_Mod.InfoCardTab.Things);
+                this.tab = MapDesignerMod.InfoCardTab.Things;
+            }, this.tab == MapDesignerMod.InfoCardTab.Things);
             list.Add(ThingsTab);
 
             TabRecord riverTab = new TabRecord("ZMD_riverTab".Translate(), delegate
             {
-                this.tab = MapDesigner_Mod.InfoCardTab.Rivers;
-            }, this.tab == MapDesigner_Mod.InfoCardTab.Rivers);
+                this.tab = MapDesignerMod.InfoCardTab.Rivers;
+            }, this.tab == MapDesignerMod.InfoCardTab.Rivers);
             list.Add(riverTab);
 
             TabRecord featureTab = new TabRecord("ZMD_featureTab".Translate(), delegate
             {
-                this.tab = MapDesigner_Mod.InfoCardTab.Feature;
-            }, this.tab == MapDesigner_Mod.InfoCardTab.Feature);
+                this.tab = MapDesignerMod.InfoCardTab.Feature;
+            }, this.tab == MapDesignerMod.InfoCardTab.Feature);
             list.Add(featureTab);
 
             //if(Prefs.DevMode)
@@ -113,29 +113,29 @@ namespace MapDesigner
             cardRect.height -= 20f;
             switch(tab)
             {
-                case MapDesigner_Mod.InfoCardTab.General:
+                case MapDesignerMod.InfoCardTab.General:
                     UI.GeneralCard.DrawGeneralCard(cardRect);
                     break;
-                case MapDesigner_Mod.InfoCardTab.Mountains:
+                case MapDesignerMod.InfoCardTab.Mountains:
                     UI.MountainCard.DrawMountainCard(cardRect);
                     break;
-                case MapDesigner_Mod.InfoCardTab.Terrain:
+                case MapDesignerMod.InfoCardTab.Terrain:
                     UI.TerrainCard.DrawTerrainCard(cardRect);
                     break;
-                case MapDesigner_Mod.InfoCardTab.Things:
+                case MapDesignerMod.InfoCardTab.Things:
                     UI.ThingsCard.DrawThingsCard(cardRect);
                     break;
-                case MapDesigner_Mod.InfoCardTab.Rivers:
+                case MapDesignerMod.InfoCardTab.Rivers:
                     UI.RiversCard.DrawRiversCard(cardRect);
                     break;
-                case MapDesigner_Mod.InfoCardTab.Feature:
+                case MapDesignerMod.InfoCardTab.Feature:
                     UI.FeatureCard.DrawFeaturesCard(cardRect);
                     break;
                 //case MapDesigner_Mod.InfoCardTab.Beta:
                 //    UI.TerrainCardUtility.DrawBetaCard(cardRect);
                 //    break;
                 default:
-                    tab = MapDesigner_Mod.InfoCardTab.General;
+                    tab = MapDesignerMod.InfoCardTab.General;
                     //UI.GeneralCardUtility.DrawGeneralCard(cardRect);
                     break;
 

@@ -12,7 +12,7 @@ namespace MapDesigner.UI
 
     public static class MountainCard
     {
-        public static MapDesignerSettings settings = MapDesigner_Mod.mod.settings;
+        public static MapDesignerSettings settings = MapDesignerMod.mod.settings;
         private static float viewHeight;
         private static Vector2 scrollPosition = Vector2.zero;
 
@@ -22,15 +22,15 @@ namespace MapDesigner.UI
 
             // to correctly initialize scrollview height
             float height = 500f;
-            if (MapDesignerSettings.flagHillRadial)
+            if (settings.flagHillRadial)
             {
                 height += 100f;
             }
-            if (MapDesignerSettings.flagHillSplit)
+            if (settings.flagHillSplit)
             {
                 height += 140f;
             }
-            if (MapDesignerSettings.flagHillSide)
+            if (settings.flagHillSide)
             {
                 height += 100f;
             }
@@ -48,8 +48,8 @@ namespace MapDesigner.UI
             settings.hillSmoothness = InterfaceUtility.LabeledSlider(listingStandard, settings.hillSmoothness, 0f, 5f, hillSmoothnessLabel, "ZMD_hillSmoothness0".Translate(), "ZMD_hillSmoothness4".Translate());
 
             // general mountain related
-            listingStandard.CheckboxLabeled("ZMD_flagMtnExit".Translate(), ref MapDesignerSettings.flagMtnExit, "ZMD_flagMtnExitTooltip".Translate());
-            listingStandard.CheckboxLabeled("ZMD_flagCaves".Translate(), ref MapDesignerSettings.flagCaves, "ZMD_flagCavesTooltip".Translate());
+            listingStandard.CheckboxLabeled("ZMD_flagMtnExit".Translate(), ref MapDesignerMod.mod.settings.flagMtnExit, "ZMD_flagMtnExitTooltip".Translate());
+            listingStandard.CheckboxLabeled("ZMD_flagCaves".Translate(), ref MapDesignerMod.mod.settings.flagCaves, "ZMD_flagCavesTooltip".Translate());
 
             // hill distribution
             listingStandard.GapLine();
@@ -59,11 +59,11 @@ namespace MapDesigner.UI
 
             if (settings.hillSize > 0.022f)
             {
-                listingStandard.CheckboxLabeled("ZMD_flagHillClumping".Translate(), ref MapDesignerSettings.flagHillClumping, "ZMD_flagHillClumpingTooltip".Translate());
+                listingStandard.CheckboxLabeled("ZMD_flagHillClumping".Translate(), ref MapDesignerMod.mod.settings.flagHillClumping, "ZMD_flagHillClumpingTooltip".Translate());
             }
 
-            listingStandard.CheckboxLabeled("ZMD_flagHillRadial".Translate(), ref MapDesignerSettings.flagHillRadial, "ZMD_flagHillRadialTooltip".Translate());
-            if (MapDesignerSettings.flagHillRadial)
+            listingStandard.CheckboxLabeled("ZMD_flagHillRadial".Translate(), ref MapDesignerMod.mod.settings.flagHillRadial, "ZMD_flagHillRadialTooltip".Translate());
+            if (MapDesignerMod.mod.settings.flagHillRadial)
             {
                 Rect hillRadialRect = listingStandard.GetRect(100f);
                 hillRadialRect.xMin += 20f;
@@ -84,8 +84,8 @@ namespace MapDesigner.UI
                 listingStandard.Gap();
             }
 
-            listingStandard.CheckboxLabeled("ZMD_flagHillSplit".Translate(), ref MapDesignerSettings.flagHillSplit, "ZMD_flagHillSplit".Translate());
-            if (MapDesignerSettings.flagHillSplit)
+            listingStandard.CheckboxLabeled("ZMD_flagHillSplit".Translate(), ref MapDesignerMod.mod.settings.flagHillSplit, "ZMD_flagHillSplit".Translate());
+            if (MapDesignerMod.mod.settings.flagHillSplit)
             {
                 Rect hillSplitRect = listingStandard.GetRect(140f);
                 hillSplitRect.xMin += 20f;
@@ -102,8 +102,8 @@ namespace MapDesigner.UI
                 listingStandard.Gap();
             }
 
-            listingStandard.CheckboxLabeled("ZMD_flagHillSide".Translate(), ref MapDesignerSettings.flagHillSide, "ZMD_flagHillSide".Translate());
-            if(MapDesignerSettings.flagHillSide)
+            listingStandard.CheckboxLabeled("ZMD_flagHillSide".Translate(), ref MapDesignerMod.mod.settings.flagHillSide, "ZMD_flagHillSide".Translate());
+            if(MapDesignerMod.mod.settings.flagHillSide)
             {
                 Rect hillSideRect = listingStandard.GetRect(100f);
                 hillSideRect.xMin += 20f;
@@ -140,21 +140,21 @@ namespace MapDesigner.UI
             settings.hillAmount = 1.0f;
             settings.hillSize = 0.021f;
             settings.hillSmoothness = 2.0f;
-            MapDesignerSettings.flagMtnExit = false;
-            MapDesignerSettings.flagCaves = true;
+            settings.flagMtnExit = false;
+            settings.flagCaves = true;
 
-            MapDesignerSettings.flagHillClumping = false;
+            settings.flagHillClumping = false;
 
-            MapDesignerSettings.flagHillRadial = false;
+            settings.flagHillRadial = false;
             settings.hillRadialAmt = 1.0f;
             settings.hillRadialSize = 0.65f;
 
-            MapDesignerSettings.flagHillSplit = false;
+            settings.flagHillSplit = false;
             settings.hillSplitAmt = 1.5f;
             settings.hillSplitDir = 90f;
             settings.hillSplitSize = 0.35f;
 
-            MapDesignerSettings.flagHillSide = false;
+            settings.flagHillSide = false;
             settings.hillSideAmt = 1.0f;
             settings.hillSideDir = 180f;
 

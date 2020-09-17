@@ -16,7 +16,7 @@ namespace MapDesigner.Patches
     {
         static void Postfix(ref int __result)
         {
-            float animaCount = MapDesigner_Mod.mod.settings.animaCount;
+            float animaCount = MapDesignerMod.mod.settings.animaCount;
             __result *= (int)animaCount;
         }
     }

@@ -23,15 +23,15 @@ namespace MapDesigner
         {
             IntVec3 center = map.Center;
 
-            int outerRadius = (int)(0.01 * map.Size.x * MapDesigner_Mod.mod.settings.priIslandSize);
+            int outerRadius = (int)(0.01 * map.Size.x * MapDesignerMod.mod.settings.priIslandSize);
 
-            int beachSize = (int)MapDesigner_Mod.mod.settings.priBeachSize;
+            int beachSize = (int)MapDesignerMod.mod.settings.priBeachSize;
             int innerRadius = outerRadius - beachSize;
 
             List<IntVec3> beachCells = new List<IntVec3>();
             List<IntVec3> landCells = new List<IntVec3>();
 
-            if (MapDesignerSettings.priMultiSpawn)
+            if (MapDesignerMod.mod.settings.priMultiSpawn)
             {
                 outerRadius /= 2;
                 innerRadius /= 2;

@@ -89,7 +89,7 @@ namespace MapDesigner
 
         private static void FertChangeTbf(List<TBF> listTbf)
         {
-            MapDesignerSettings settings = MapDesigner_Mod.mod.settings;
+            MapDesignerSettings settings = MapDesignerMod.mod.settings;
             List<TerrainThreshold> newTbf = new List<TerrainThreshold>();
             float rangeSize = maxMapFert - minMapFert;
             List<TerrainThreshold> oldTbf = oldTerrain.terrainsByFertility;
@@ -135,7 +135,7 @@ namespace MapDesigner
                 {
                     listTbf[i].size *= settings.terrainWater;
                 }
-                else if (MapDesignerSettings.flagTerrainWater && !listTbf[i].thresh.terrain.affordances.Contains(TerrainAffordanceDefOf.Heavy))
+                else if (settings.flagTerrainWater && !listTbf[i].thresh.terrain.affordances.Contains(TerrainAffordanceDefOf.Heavy))
                 {
                     listTbf[i].size *= settings.terrainWater;
                 }
@@ -168,7 +168,7 @@ namespace MapDesigner
 
         private static void FertChangePatchMakers(List<TerrainDef> patchTerrains)
         {
-            MapDesignerSettings settings = MapDesigner_Mod.mod.settings;
+            MapDesignerSettings settings = MapDesignerMod.mod.settings;
             float minAllowable = -1.5f;
             float maxAllowable = 1.5f;
 
@@ -218,7 +218,7 @@ namespace MapDesigner
                     {
                         tbf.size *= settings.terrainWater;
                     }
-                    else if (MapDesignerSettings.flagTerrainWater && !tbf.thresh.terrain.affordances.Contains(TerrainAffordanceDefOf.Heavy))
+                    else if (settings.flagTerrainWater && !tbf.thresh.terrain.affordances.Contains(TerrainAffordanceDefOf.Heavy))
                     {
                         tbf.size *= settings.terrainWater;
                     }

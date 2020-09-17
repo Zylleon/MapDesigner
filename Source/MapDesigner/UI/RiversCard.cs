@@ -12,7 +12,7 @@ namespace MapDesigner.UI
 {
     public static class RiversCard
     {
-        public static MapDesignerSettings settings = MapDesigner_Mod.mod.settings;
+        public static MapDesignerSettings settings = MapDesignerMod.mod.settings;
 
         private static Vector2 scrollPosition = Vector2.zero;
         private static float viewHeight;
@@ -77,9 +77,9 @@ namespace MapDesigner.UI
             listing.Gap(listing.verticalSpacing);
 
             // river beaches
-            listing.CheckboxLabeled("ZMD_flagRiverBeach".Translate(), ref MapDesignerSettings.flagRiverBeach, "ZMD_flagRiverBeach".Translate());
+            listing.CheckboxLabeled("ZMD_flagRiverBeach".Translate(), ref settings.flagRiverBeach, "ZMD_flagRiverBeach".Translate());
 
-            if(MapDesignerSettings.flagRiverBeach)
+            if(MapDesignerMod.mod.settings.flagRiverBeach)
             {
                 Rect riverBeachRect = listing.GetRect(90f);
                 riverBeachRect.xMin += 20f;
@@ -116,8 +116,8 @@ namespace MapDesigner.UI
             }
 
             // river direction
-            listing.CheckboxLabeled("ZMD_flagRiverDir".Translate(), ref MapDesignerSettings.flagRiverDir, "ZMD_flagRiverDir".Translate());
-            if (MapDesignerSettings.flagRiverDir)
+            listing.CheckboxLabeled("ZMD_flagRiverDir".Translate(), ref MapDesignerMod.mod.settings.flagRiverDir, "ZMD_flagRiverDir".Translate());
+            if (MapDesignerMod.mod.settings.flagRiverDir)
             {
                 settings.riverDir = InterfaceUtility.AnglePicker(listing, settings.riverDir, "ZMD_Angle".Translate(), 2, true);
             }
@@ -136,10 +136,10 @@ namespace MapDesigner.UI
         public static void ResetRiversSettings()
         {
             settings.sizeRiver = 1.0f;
-            MapDesignerSettings.flagRiverBeach = false;
+            MapDesignerMod.mod.settings.flagRiverBeach = false;
             settings.riverShore = "SoilRich";
             settings.riverBeachSize = 10f;
-            MapDesignerSettings.flagRiverDir = false;
+            MapDesignerMod.mod.settings.flagRiverDir = false;
             settings.riverDir = 180f;
             settings.selRiverStyle = MapDesignerSettings.RiverStyle.Vanilla;
         }

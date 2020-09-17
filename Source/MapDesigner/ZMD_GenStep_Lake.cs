@@ -25,7 +25,7 @@ namespace MapDesigner
 
         public override void Generate(Map map, GenStepParams parms)
         {
-            MapDesignerSettings settings = MapDesigner_Mod.mod.settings;
+            MapDesignerSettings settings = MapDesignerMod.mod.settings;
 
             lakeSize = settings.lakeSize * map.Size.x / 2;
             lakeRoundness = settings.lakeRoundness;
@@ -50,7 +50,7 @@ namespace MapDesigner
             TerrainDef terrShallow = TerrainDefOf.WaterShallow;
             TerrainDef terrShore = TerrainDef.Named(settings.lakeShore);
 
-            if (MapDesignerSettings.flagLakeSalty)
+            if (settings.flagLakeSalty)
             {
                 terrDeep = TerrainDefOf.WaterOceanDeep;
                 terrShallow = TerrainDefOf.WaterOceanShallow;

@@ -22,7 +22,7 @@ namespace MapDesigner
         public override void Generate(Map map, GenStepParams parms)
         {
 
-            MapDesignerSettings settings = MapDesigner_Mod.mod.settings;
+            MapDesignerSettings settings = MapDesignerMod.mod.settings;
             if (settings.selectedFeature == MapDesignerSettings.Features.None)
             {
                 return;

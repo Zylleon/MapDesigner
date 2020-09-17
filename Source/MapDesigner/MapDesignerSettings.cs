@@ -22,21 +22,21 @@ namespace MapDesigner
         public float hillAmount = 1.0f;
         public float hillSize = 0.021f;
         public float hillSmoothness = 2.0f;
-        public static bool flagMtnExit = false;
-        public static bool flagCaves = true;
+        public bool flagMtnExit = false;
+        public bool flagCaves = true;
 
-        public static bool flagHillClumping = false;
+        public bool flagHillClumping = false;
 
-        public static bool flagHillRadial = false;
+        public bool flagHillRadial = false;
         public float hillRadialAmt = 1.0f;
         public float hillRadialSize = 0.65f;
 
-        public static bool flagHillSplit = false;
+        public bool flagHillSplit = false;
         public float hillSplitAmt = 1.5f;
         public float hillSplitDir = 90f;
         public float hillSplitSize = 0.35f;
 
-        public static bool flagHillSide = false;
+        public bool flagHillSide = false;
         public float hillSideAmt = 1.0f;
         public float hillSideDir = 180f;
 
@@ -52,16 +52,16 @@ namespace MapDesigner
 
         // Rocks
         public IntRange rockTypeRange = new IntRange(2, 3);
-        public static bool flagBiomeRocks = false;
+        public bool flagBiomeRocks = false;
         public Dictionary<string, bool> allowedRocks = new Dictionary<string, bool>();
 
 
         // Rivers
         public float sizeRiver = 1.0f;
-        public static bool flagRiverBeach = false;
+        public bool flagRiverBeach = false;
         public string riverShore = "SoilRich";
         public float riverBeachSize = 10f;                // in tiles
-        public static bool flagRiverDir = false;
+        public bool flagRiverDir = false;
         public float riverDir = 180f;
 
         public enum RiverStyle : byte
@@ -78,7 +78,7 @@ namespace MapDesigner
         // Terrain
         public float terrainFert = 1f;
         public float terrainWater = 1f;
-        public static bool flagTerrainWater = false;
+        public bool flagTerrainWater = false;
 
         // Features
         public enum Features : byte
@@ -93,14 +93,14 @@ namespace MapDesigner
         // Perfectly Round Islands
         public float priIslandSize = 40f;
         public float priBeachSize = 5f;
-        public static bool priMultiSpawn = false;
+        public bool priMultiSpawn = false;
 
         // Lake
         public float lakeSize = 0.20f;                  // proportion of map size
         public float lakeBeachSize = 10f;                // in tiles
         public float lakeRoundness = 1.5f;              // 0 = perfectly round
         public float lakeDepth = 0.5f;                  // proportion of deep water
-        public static bool flagLakeSalty = false;
+        public bool flagLakeSalty = false;
         public string lakeShore = "Sand";
 
         // Helper stuff

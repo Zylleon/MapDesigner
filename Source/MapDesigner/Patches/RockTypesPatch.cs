@@ -18,13 +18,13 @@ namespace MapDesigner.Patches
         {
             Rand.PushState();
             Rand.Seed = tile;
-            MapDesignerSettings settings = MapDesigner_Mod.mod.settings;
+            MapDesignerSettings settings = MapDesignerMod.mod.settings;
             IntRange rockTypeRange = settings.rockTypeRange;
 
             int num = Rand.RangeInclusive(rockTypeRange.min, rockTypeRange.max);
 
             // If it's a modded biome with special stone, check that the user allows this to change before continuing
-            if (__result.Count() == 1 && !MapDesignerSettings.flagBiomeRocks)
+            if (__result.Count() == 1 && !settings.flagBiomeRocks)
             {
                 Rand.PopState();
                 return;

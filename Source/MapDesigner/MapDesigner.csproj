@@ -318,7 +318,7 @@
     <Compile Include="UI\FeatureCard.cs" />
     <Compile Include="GenStep_RoundIsland.cs" />
     <Compile Include="UI\InterfaceUtility.cs" />
-    <Compile Include="MapDesignerSettingsWindow.cs" />
+    <Compile Include="MapDesignerMod.cs" />
     <Compile Include="HelperMethods.cs" />
     <Compile Include="MapDesignerSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

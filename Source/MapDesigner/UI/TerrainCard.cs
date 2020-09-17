@@ -13,7 +13,7 @@ namespace MapDesigner.UI
 {
     public class TerrainCard
     {
-        public static MapDesignerSettings settings = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>();
+        public static MapDesignerSettings settings = MapDesigner_Mod.mod.settings;
 
         private static Vector2 scrollPosition = Vector2.zero;
         private static float viewHeight;

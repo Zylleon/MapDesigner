@@ -89,7 +89,7 @@ namespace MapDesigner
 
         private static void FertChangeTbf(List<TBF> listTbf)
         {
-            MapDesignerSettings settings = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>();
+            MapDesignerSettings settings = MapDesigner_Mod.mod.settings;
             List<TerrainThreshold> newTbf = new List<TerrainThreshold>();
             float rangeSize = maxMapFert - minMapFert;
             List<TerrainThreshold> oldTbf = oldTerrain.terrainsByFertility;
@@ -168,7 +168,7 @@ namespace MapDesigner
 
         private static void FertChangePatchMakers(List<TerrainDef> patchTerrains)
         {
-            MapDesignerSettings settings = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>();
+            MapDesignerSettings settings = MapDesigner_Mod.mod.settings;
             float minAllowable = -1.5f;
             float maxAllowable = 1.5f;
 

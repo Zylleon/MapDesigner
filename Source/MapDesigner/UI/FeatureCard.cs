@@ -11,7 +11,7 @@ namespace MapDesigner.UI
 {
     public static class FeatureCard
     {
-        public static MapDesignerSettings settings = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>();
+        public static MapDesignerSettings settings = MapDesigner_Mod.mod.settings;
 
 
         public static void DrawFeaturesCard(Rect rect)

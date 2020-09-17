@@ -23,8 +23,9 @@ namespace MapDesigner
         {
             IntVec3 center = map.Center;
 
-            int outerRadius =(int)(0.01 * map.Size.x * LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>().priIslandSize);
-            int beachSize = (int)LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>().priBeachSize;
+            int outerRadius = (int)(0.01 * map.Size.x * MapDesigner_Mod.mod.settings.priIslandSize);
+
+            int beachSize = (int)MapDesigner_Mod.mod.settings.priBeachSize;
             int innerRadius = outerRadius - beachSize;
 
             List<IntVec3> beachCells = new List<IntVec3>();

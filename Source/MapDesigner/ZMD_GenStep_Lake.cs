@@ -25,7 +25,7 @@ namespace MapDesigner
 
         public override void Generate(Map map, GenStepParams parms)
         {
-            MapDesignerSettings settings = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>();
+            MapDesignerSettings settings = MapDesigner_Mod.mod.settings;
 
             lakeSize = settings.lakeSize * map.Size.x / 2;
             lakeRoundness = settings.lakeRoundness;

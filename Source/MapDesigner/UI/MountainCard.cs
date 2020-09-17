@@ -12,7 +12,7 @@ namespace MapDesigner.UI
 
     public static class MountainCard
     {
-        public static MapDesignerSettings settings = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>();
+        public static MapDesignerSettings settings = MapDesigner_Mod.mod.settings;
         private static float viewHeight;
         private static Vector2 scrollPosition = Vector2.zero;
 

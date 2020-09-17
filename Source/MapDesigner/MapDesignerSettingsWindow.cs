@@ -25,11 +25,13 @@ namespace MapDesigner
 
         private Vector2 scrollPosition = Vector2.zero;
 
-        MapDesignerSettings settings;
+        public MapDesignerSettings settings;
+        public static MapDesigner_Mod mod;
 
         public MapDesigner_Mod(ModContentPack content) : base(content)
         {
             this.settings = GetSettings<MapDesignerSettings>();
+            mod = this;
         }
 
         public override string SettingsCategory()

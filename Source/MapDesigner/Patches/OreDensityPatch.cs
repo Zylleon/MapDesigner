@@ -15,7 +15,7 @@ namespace MapDesigner.Patches
     {
         static bool Prefix(ref GenStep_ScatterLumpsMineable __instance)
         {
-            float densityOre = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>().densityOre;
+            float densityOre = MapDesigner_Mod.mod.settings.densityOre;
             if (densityOre > 1f)
             {
                 densityOre *= densityOre;

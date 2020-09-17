@@ -13,6 +13,7 @@ namespace MapDesigner
 
     public class MapDesignerSettings : ModSettings
     {
+        #region settings
         // General
         public static bool flagPopup = true;
         public static bool flagHomeMapOnly = true;
@@ -106,6 +107,7 @@ namespace MapDesigner
         public Dictionary<string, BiomeDefault> biomeDefaults;
         public Dictionary<string, FloatRange> densityDefaults;
 
+        #endregion
 
         public override void ExposeData()
         {

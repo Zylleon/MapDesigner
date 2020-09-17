@@ -81,7 +81,7 @@ namespace MapDesigner.Patches
                 return;
             }
 
-            MapDesignerSettings settings = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>();
+            MapDesignerSettings settings = MapDesigner_Mod.mod.settings;
             MapGenFloatGrid elevation = MapGenerator.Elevation;
 
             // pushes hills away from center
@@ -157,7 +157,7 @@ namespace MapDesigner.Patches
             // natural distribution
             if (MapDesignerSettings.flagHillClumping)
             {
-                float hillSize = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>().hillSize;
+                float hillSize = MapDesigner_Mod.mod.settings.hillSize;
 
                 if (hillSize > 0.022f)       // smaller than vanilla only, else skip this step
                 {

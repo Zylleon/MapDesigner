@@ -19,7 +19,7 @@ namespace MapDesigner.Patches
     {
         static void Postfix(ref ModuleBase ___generator, ModuleBase ___coordinateX, ModuleBase ___coordinateZ, ModuleBase ___shallowizer, float ___surfaceLevel, List<IntVec3> ___lhs, List<IntVec3> ___rhs, Vector3 center, float angle)
         {
-            MapDesignerSettings settings = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>();
+            MapDesignerSettings settings = MapDesigner_Mod.mod.settings;
             //___generator = new Abs(___generator);
             //___coordinateX = new Abs(___coordinateX);
             //ModuleBase originalBranch = new AxisAsValueX();
@@ -121,7 +121,7 @@ namespace MapDesigner.Patches
     {
         static bool Prefix()
         {
-            MapDesignerSettings settings = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>();
+            MapDesignerSettings settings = MapDesigner_Mod.mod.settings;
             if (settings.selRiverStyle == MapDesignerSettings.RiverStyle.Spring)
             {
                 return false;

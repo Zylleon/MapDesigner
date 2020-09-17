@@ -18,7 +18,7 @@ namespace MapDesigner.Patches
         {
             Rand.PushState();
             Rand.Seed = tile;
-            MapDesignerSettings settings = LoadedModManager.GetMod<MapDesigner_Mod>().GetSettings<MapDesignerSettings>();
+            MapDesignerSettings settings = MapDesigner_Mod.mod.settings;
             IntRange rockTypeRange = settings.rockTypeRange;
 
             int num = Rand.RangeInclusive(rockTypeRange.min, rockTypeRange.max);

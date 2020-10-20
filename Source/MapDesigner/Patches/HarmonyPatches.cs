@@ -9,6 +9,8 @@ using UnityEngine;
 using Verse;
 using Verse.Noise;
 using System.Reflection;
+using MapDesigner.Patches;
+using MapDesigner.Feature;
 
 
 namespace MapDesigner.Patches
@@ -21,12 +23,38 @@ namespace MapDesigner.Patches
             static MapDesigner()
             {
                 Harmony harmony = new Harmony("zylle.MapDesigner");
-                Log.Message("Initializing Map Designer");
+                Log.Message("[Map Designer] Initializing.... ");
                 harmony.PatchAll();
 
-                //MethodInfo targetmethod = AccessTools.Method(typeof(RimWorld.GenStep_Terrain), "TerrainFrom");
-                //HarmonyMethod postfix = new HarmonyMethod(typeof(MapDesigner).GetMethod("RiverBeachPostfix"));
-                //harmony.Patch(targetmethod, null, postfix);
+                if (ModsConfig.RoyaltyActive)
+                {
+                    try
+                    {
+                        MethodInfo targetmethod = AccessTools.Method(typeof(RimWorld.GenStep_AnimaTrees), "DesiredTreeCountForMap");
+                        HarmonyMethod postfix = new HarmonyMethod(typeof(MapDesigner).GetMethod("AnimaTreePatch"));
+                        harmony.Patch(targetmethod, null, postfix);
+                    }
+                    catch
+                    {
+                        Log.Message("[Map Designer] ERROR: Failed to patch anima trees");
+                    }
+                }
+
+                //if(GenTypes.GetTypeInAnyAssembly("MapReroll.MapPreviewGenerator") != null)
+                //{
+                //    MethodInfo targetmethod = AccessTools.Method(typeof(MapReroll.MapPreviewGenerator), "TerrainFrom");
+                //    Log.Message("********** FOUND MapReroll method, finding prefix");
+
+                //    //HarmonyMethod prefixmethod = new HarmonyMethod(typeof(Patches.PRI_MapReroll_TerrainFrom).GetMethod("PRI_MapReroll_TerrainFrom_Prefix"));
+                //    //HarmonyMethod prefix = new HarmonyMethod(typeof(MapDesigner).GetMethod("PRI_MapReroll_TerrainFrom"));
+
+                //    HarmonyMethod prefixmethod = new HarmonyMethod(typeof(Patches.PRI_MapReroll_TerrainFrom), "Prefix");
+
+                //    Log.Message("********** APPLYING prefix");
+
+
+                //    harmony.Patch(targetmethod, prefixmethod);
+                //}
 
                 HelperMethods.InitBiomeDefaults();
                 HelperMethods.ApplyBiomeSettings();

@@ -8,7 +8,6 @@ using Verse;
 
 namespace MapDesigner
 {
-
     public static class HelperMethods
     {
         public static float GetHillSize()
@@ -24,61 +23,86 @@ namespace MapDesigner
 
         public static void InitBiomeDefaults()
         {
+            Log.Message("[Map Designer] Finding biomes...");
             MapDesignerSettings settings = MapDesignerMod.mod.settings;
 
+            // Biomes
             Dictionary<string, BiomeDefault>  biomeDefaults = new Dictionary<string, BiomeDefault>();
-
-            foreach (BiomeDef biome in DefDatabase<BiomeDef>.AllDefs)
+            try
             {
-                BiomeDefault biodef = new BiomeDefault();
-                biodef.animalDensity = biome.animalDensity;
-                biodef.plantDensity = biome.plantDensity;
-                biodef.wildPlantRegrowDays = biome.wildPlantRegrowDays;
-                biodef.terrain = new TerrainDefault()
+                foreach (BiomeDef biome in DefDatabase<BiomeDef>.AllDefs)
                 {
-                    terrainsByFertility = new List<TerrainThreshold>(biome.terrainsByFertility),
-                    terrainPatchMakers = new List<TerrainPatchMaker>(biome.terrainPatchMakers)
-                };
-                biomeDefaults.Add(biome.defName, biodef);
+                    BiomeDefault biodef = new BiomeDefault();
+                    biodef.animalDensity = biome.animalDensity;
+                    biodef.plantDensity = biome.plantDensity;
+                    biodef.wildPlantRegrowDays = biome.wildPlantRegrowDays;
+                    biodef.terrain = new TerrainDefault()
+                    {
+                        terrainsByFertility = new List<TerrainThreshold>(biome.terrainsByFertility),
+                        terrainPatchMakers = new List<TerrainPatchMaker>(biome.terrainPatchMakers)
+                    };
+                    biomeDefaults.Add(biome.defName, biodef);
+                }
+                settings.biomeDefaults = biomeDefaults;
+            }
+            catch
+            {
+                Log.Message("[Map Designer] Could not initialize biome defaults");
             }
 
-            settings.biomeDefaults = biomeDefaults;
 
+            // Densities
             Dictionary<string, FloatRange> densityDefaults = new Dictionary<string, FloatRange>();
+            try
+            {
+                GenStepDef step = DefDatabase<GenStepDef>.GetNamed("ScatterRuinsSimple");
+                densityDefaults.Add(step.defName, (step.genStep as GenStep_Scatterer).countPer10kCellsRange);
 
-            GenStepDef step = DefDatabase<GenStepDef>.GetNamed("ScatterRuinsSimple");
-            densityDefaults.Add(step.defName, (step.genStep as GenStep_Scatterer).countPer10kCellsRange);
+                step = DefDatabase<GenStepDef>.GetNamed("ScatterShrines");
+                densityDefaults.Add(step.defName, (step.genStep as GenStep_Scatterer).countPer10kCellsRange);
 
-            step = DefDatabase<GenStepDef>.GetNamed("ScatterShrines");
-            densityDefaults.Add(step.defName, (step.genStep as GenStep_Scatterer).countPer10kCellsRange);
+                step = DefDatabase<GenStepDef>.GetNamed("SteamGeysers");
+                densityDefaults.Add(step.defName, (step.genStep as GenStep_Scatterer).countPer10kCellsRange);
 
-            step = DefDatabase<GenStepDef>.GetNamed("SteamGeysers");
-            densityDefaults.Add(step.defName, (step.genStep as GenStep_Scatterer).countPer10kCellsRange);
-
-            settings.densityDefaults = densityDefaults;
+                settings.densityDefaults = densityDefaults;
+            }
+            catch
+            {
+                Log.Message("[Map Designer] Could not initialize density defaults");
+            }
 
             // Rocks
-            if(settings.allowedRocks.EnumerableNullOrEmpty())
+            try
             {
-                settings.allowedRocks = new Dictionary<string, bool>();
-            }
-            List<ThingDef> list = GetRockList();
-            foreach (ThingDef rock in list)
-            {
-                if (!settings.allowedRocks.ContainsKey(rock.defName))
+                if (settings.allowedRocks.EnumerableNullOrEmpty())
                 {
-                    settings.allowedRocks.Add(rock.defName, true);
+                    settings.allowedRocks = new Dictionary<string, bool>();
                 }
+                List<ThingDef> list = GetRockList();
+                foreach (ThingDef rock in list)
+                {
+                    if (!settings.allowedRocks.ContainsKey(rock.defName))
+                    {
+                        settings.allowedRocks.Add(rock.defName, true);
+                    }
+                }
+                settings.rockTypeRange.max = Math.Min(list.Count, settings.rockTypeRange.max);
+                settings.rockTypeRange.min = Math.Min(list.Count, settings.rockTypeRange.min);
+            }
+            catch
+            {
+                Log.Message("[Map Designer] Could not initialize rock types");
+                settings.rockTypeRange.max = 3;
+                settings.rockTypeRange.min = 2;
             }
 
-            settings.rockTypeRange.max = Math.Min(list.Count, settings.rockTypeRange.max);
-            settings.rockTypeRange.min = Math.Min(list.Count, settings.rockTypeRange.min);
+            
         }
 
 
         public static void ApplyBiomeSettings()
         {
-            Log.Message("[Map Designer] Updating settings");
+            Log.Message("[Map Designer] Applying settings");
             MapDesignerSettings settings = MapDesignerMod.mod.settings;
 
             // densities

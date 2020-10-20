@@ -300,11 +300,15 @@
   <ItemGroup>
     <Compile Include="BiomeDefault.cs" />
     <Compile Include="DistanceFromOrigin.cs" />
+    <Compile Include="Feature\PRI_Patches.cs" />
+    <Compile Include="MapReroll\GenStep_ElevationFertility.cs" />
     <Compile Include="Patches\AnimaTreePatch.cs" />
     <Compile Include="Patches\CaveSettingsPatch.cs" />
+    <Compile Include="Patches\Feature_MapReroll_Compat.cs" />
     <Compile Include="Patches\HarmonyPatches.cs" />
     <Compile Include="Patches\MountainSettingsPatch.cs" />
     <Compile Include="Patches\PopupWindowPatch.cs" />
+    <Compile Include="Patches\PRI_MapReroll_TerrainFrom.cs" />
     <Compile Include="Patches\RiverDirectionPatch.cs" />
     <Compile Include="Patches\OreDensityPatch.cs" />
     <Compile Include="Patches\RiverBankPatch.cs" />
@@ -316,7 +320,7 @@
     <Compile Include="UI\GeneralCard.cs" />
     <Compile Include="UI\MountainCard.cs" />
     <Compile Include="UI\FeatureCard.cs" />
-    <Compile Include="GenStep_RoundIsland.cs" />
+    <Compile Include="Feature\RoundIsland.cs" />
     <Compile Include="UI\InterfaceUtility.cs" />
     <Compile Include="MapDesignerMod.cs" />
     <Compile Include="HelperMethods.cs" />
@@ -325,8 +329,8 @@
     <Compile Include="UI\RiversCard.cs" />
     <Compile Include="UI\RockSelectionDialog.cs" />
     <Compile Include="UI\ThingsCard.cs" />
-    <Compile Include="ZMD_GenStep_Feature.cs" />
-    <Compile Include="ZMD_GenStep_Lake.cs" />
+    <Compile Include="Feature\ZMD_GenStep_Feature.cs" />
+    <Compile Include="Feature\Lake.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

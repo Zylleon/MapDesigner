@@ -2,12 +2,12 @@
 <Patch>
 
 	
-	<Operation Class="PatchOperationAdd">
-		<xpath>Defs/MapGeneratorDef[defName="Base_Player"]/genSteps</xpath>
-		<value>
-			<li>ZMD_GenStepFeature</li>
-		</value>
-	</Operation>
+	<!-- <Operation Class="PatchOperationAdd"> -->
+		<!-- <xpath>Defs/MapGeneratorDef[defName="Base_Player"]/genSteps</xpath> -->
+		<!-- <value> -->
+			<!-- <li>ZMD_GenStepFeature</li> -->
+		<!-- </value> -->
+	<!-- </Operation> -->
 			
 		
 <!--

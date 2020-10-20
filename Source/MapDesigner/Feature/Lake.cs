@@ -7,9 +7,9 @@ using Verse;
 using RimWorld;
 using Verse.Noise;
 
-namespace MapDesigner
+namespace MapDesigner.Feature
 {
-    public class ZMD_GenStep_Lake : GenStep
+    public class Lake : GenStep
     {
         public override int SeedPart
         {

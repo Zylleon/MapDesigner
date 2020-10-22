@@ -88,23 +88,9 @@ namespace MapDesigner.Feature
                 beachCells = HelperMethods.GenCircle(map, center, outerRadius).Except(landCells).ToList();
             }
 
-            Log.Message("[Map Designer] PRI loop starting");
-
             foreach (IntVec3 current in map.AllCells)
             {
                 priGrid[current] = 0f;
-
-
-
-                //if (beachCells.Contains(current))
-                //{
-                //    priGrid[current] = 1f;
-                //}
-                //if (landCells.Contains(current))
-                //{
-                //    priGrid[current] = 2f;
-                //}
-
             }
 
             foreach (IntVec3 current in beachCells)
@@ -118,22 +104,26 @@ namespace MapDesigner.Feature
                 priGrid[current] = 2f;
 
             }
-
-            Log.Message("[Map Designer] PRI loop ended");
-
         }
 
         public static void AdjustElevation(Map map)
         {
             MapGenFloatGrid priGrid = MapGenerator.FloatGridNamed("ZMD_PRI");
             MapGenFloatGrid elevation = MapGenerator.Elevation;
+            MapGenFloatGrid fertility = MapGenerator.Fertility;
 
             foreach (IntVec3 current in map.AllCells)
             {
-                if(priGrid[current] < 1.1f)
+                if (priGrid[current] < 1.1f)
                 {
+                    fertility[current] = -995f;
                     elevation[current] = 0;
                 }
+                if (priGrid[current] < 0.1f)
+                {
+                    fertility[current] = -999f;
+                }
+                
             }
 
         }

@@ -40,21 +40,12 @@ namespace MapDesigner.Patches
                     }
                 }
 
-                //if(GenTypes.GetTypeInAnyAssembly("MapReroll.MapPreviewGenerator") != null)
-                //{
-                //    MethodInfo targetmethod = AccessTools.Method(typeof(MapReroll.MapPreviewGenerator), "TerrainFrom");
-                //    Log.Message("********** FOUND MapReroll method, finding prefix");
-
-                //    //HarmonyMethod prefixmethod = new HarmonyMethod(typeof(Patches.PRI_MapReroll_TerrainFrom).GetMethod("PRI_MapReroll_TerrainFrom_Prefix"));
-                //    //HarmonyMethod prefix = new HarmonyMethod(typeof(MapDesigner).GetMethod("PRI_MapReroll_TerrainFrom"));
-
-                //    HarmonyMethod prefixmethod = new HarmonyMethod(typeof(Patches.PRI_MapReroll_TerrainFrom), "Prefix");
-
-                //    Log.Message("********** APPLYING prefix");
-
-
-                //    harmony.Patch(targetmethod, prefixmethod);
-                //}
+                if (GenTypes.GetTypeInAnyAssembly("MapReroll.MapPreviewGenerator") != null)
+                {
+                    MethodInfo targetmethod = AccessTools.Method(typeof(MapReroll.MapPreviewGenerator), "TerrainFrom");
+                    HarmonyMethod prefixmethod = new HarmonyMethod(typeof(Patches.PRI_MapReroll_TerrainFrom), "Prefix");
+                    harmony.Patch(targetmethod, prefixmethod);
+                }
 
                 HelperMethods.InitBiomeDefaults();
                 HelperMethods.ApplyBiomeSettings();

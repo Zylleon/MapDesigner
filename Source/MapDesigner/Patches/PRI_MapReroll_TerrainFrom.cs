@@ -6,29 +6,32 @@ using System.Text;
 using System.Threading.Tasks;
 using Verse;
 using HarmonyLib;
+using MapReroll;
 
 
 namespace MapDesigner.Patches
 {
     static class PRI_MapReroll_TerrainFrom
     {
-        static bool PRI_MapReroll_TerrainFrom_Prefix(IntVec3 c, Map map, RiverMaker river, ref TerrainDef __result)
+        static bool Prefix(IntVec3 c, Map map, float fertility, ref TerrainDef __result)
         {
-            MapGenFloatGrid priGrid = MapGenerator.FloatGridNamed("ZMD_PRI");
+            if (MapDesignerMod.mod.settings.selectedFeature != MapDesignerSettings.Features.RoundIsland)
+            {
+                return true;
+            }
 
-            if (priGrid[c] < 0.1f)
+            if (fertility < -998f)
             {
                 __result = TerrainDefOf.WaterOceanShallow;
                 return false;
             }
-            if (priGrid[c] < 1.1f)
+
+            else if (fertility < -994f)
             {
-                if ((river?.TerrainAt(c, true).IsRiver) != true)
-                {
-                    __result = TerrainDefOf.Sand;
-                    return false;
-                }
+                __result = TerrainDefOf.Sand;
+                return false;
             }
+
             return true;
         }
     }

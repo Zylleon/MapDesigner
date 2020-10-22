@@ -11,21 +11,6 @@ using MapDesigner.Feature;
 
 namespace MapDesigner.Patches
 {
-    //[MayRequire("UnlimitedHugs.MapReroll")]
-    /// <summary>
-    /// to rewrite the terrain in MapReroll
-    /// </summary>
-    //[HarmonyPatch(typeof(MapReroll.MapPreviewGenerator), "TerrainFrom")]
-    //static class Feature_MapReroll_Compat
-    //{
-    //    static bool Prefix()
-    //    {
-            
-
-    //        return true;
-    //    }
-    //}
-
     /// <summary>
     /// Splitting feature grids
     /// </summary>
@@ -35,7 +20,6 @@ namespace MapDesigner.Patches
         [HarmonyPriority(500)]
         static void Postfix(Map map, GenStepParams parms)
         {
-            Log.Message("Running postfix");
             if (MapDesignerMod.mod.settings.selectedFeature == MapDesignerSettings.Features.None)
             {
                 return;
@@ -43,7 +27,7 @@ namespace MapDesigner.Patches
             else if (MapDesignerMod.mod.settings.selectedFeature == MapDesignerSettings.Features.Lake)
             {
                 Log.Message("[Map Desigher] Filling lakes...");
-                (new Lake()).Generate(map, parms);
+                new Lake().Generate(map, parms);
                 return;
             }
 
@@ -57,11 +41,8 @@ namespace MapDesigner.Patches
 
                 Log.Message("[Map Desigher] Carving islands...");
 
-                (new RoundIsland()).Generate(map, parms);
-                Log.Message("[Map Desigher] PRI grid generated ");
-                
+                new RoundIsland().Generate(map, parms);
                 RoundIsland.AdjustElevation(map);
-                Log.Message("[Map Desigher] PRI elevation adjusted ");
 
                 return;
             }

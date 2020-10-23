@@ -329,7 +329,6 @@
     <Compile Include="UI\RiversCard.cs" />
     <Compile Include="UI\RockSelectionDialog.cs" />
     <Compile Include="UI\ThingsCard.cs" />
-    <Compile Include="Feature\ZMD_GenStep_Feature.cs" />
     <Compile Include="Feature\Lake.cs" />
   </ItemGroup>
   <ItemGroup>

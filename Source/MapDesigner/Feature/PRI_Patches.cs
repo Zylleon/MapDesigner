@@ -13,33 +13,37 @@ namespace MapDesigner.Feature
     [HarmonyPatch(typeof(RimWorld.GenStep_Terrain), "TerrainFrom")]
     static class PRI_TerrainFrom
     {
-        static bool Prefix(IntVec3 c, Map map, RiverMaker river, ref TerrainDef __result)
+        static bool Prefix(IntVec3 c, Map map, RiverMaker river, float fertility, ref TerrainDef __result)
         {
-            if(MapDesignerMod.mod.settings.selectedFeature != MapDesignerSettings.Features.RoundIsland)
+            if (MapDesignerMod.mod.settings.selectedFeature != MapDesignerSettings.Features.RoundIsland)
             {
                 return true;
             }
 
-            MapGenFloatGrid priGrid = MapGenerator.FloatGridNamed("ZMD_PRI");
-                
-            if(priGrid[c] < 0.1f)
+            if (fertility < -998f)
             {
                 __result = TerrainDefOf.WaterOceanShallow;
                 return false;
             }
-            if (priGrid[c] < 1.1f)
+            if (fertility < -994f)
             {
-                if ((river?.TerrainAt(c, true).IsRiver) != true)
+                if (river != null)
+                {
+                    if (river?.TerrainAt(c, true) == null)
+                    {
+                        __result = TerrainDefOf.Sand;
+                        return false;
+                    }
+                }
+                else
                 {
                     __result = TerrainDefOf.Sand;
                     return false;
                 }
             }
             return true;
+            
         }
     }
-
-    
-
 
 }

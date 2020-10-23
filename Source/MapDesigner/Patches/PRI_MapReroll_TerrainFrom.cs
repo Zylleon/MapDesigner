@@ -15,21 +15,59 @@ namespace MapDesigner.Patches
     {
         static bool Prefix(IntVec3 c, Map map, float fertility, ref TerrainDef __result)
         {
-            if (MapDesignerMod.mod.settings.selectedFeature != MapDesignerSettings.Features.RoundIsland)
+            if (MapDesignerMod.mod.settings.selectedFeature == MapDesignerSettings.Features.None)
             {
                 return true;
             }
 
-            if (fertility < -998f)
+            else if (MapDesignerMod.mod.settings.selectedFeature == MapDesignerSettings.Features.RoundIsland)
             {
-                __result = TerrainDefOf.WaterOceanShallow;
-                return false;
+                if (fertility < -998f)
+                {
+                    __result = TerrainDefOf.WaterOceanShallow;
+                    return false;
+                }
+                else if (fertility < -994f)
+                {
+                    __result = TerrainDefOf.Sand;
+                    return false;
+                }
+                return true;
             }
 
-            else if (fertility < -994f)
+            else if (MapDesignerMod.mod.settings.selectedFeature == MapDesignerSettings.Features.Lake)
             {
-                __result = TerrainDefOf.Sand;
-                return false;
+                if (fertility < -998f)         // deep water
+                {
+                    if (MapDesignerMod.mod.settings.flagLakeSalty)
+                    {
+                        __result = TerrainDefOf.WaterOceanDeep;
+                    }
+                    else
+                    {
+                        __result = TerrainDefOf.WaterDeep;
+                    }
+                    return false;
+                }
+                if (fertility < -985f)         // shallow water
+                {
+                    if (MapDesignerMod.mod.settings.flagLakeSalty)
+                    {
+                        __result = TerrainDefOf.WaterOceanShallow;
+                    }
+                    else
+                    {
+                        __result = TerrainDefOf.WaterShallow;
+                    }
+                    return false;
+                }
+                else if (fertility < -975f)    // beach
+                {
+                    __result = TerrainDefOf.Sand;
+                    __result = TerrainDef.Named(MapDesignerMod.mod.settings.lakeShore);
+                    return false;
+                }
+                return true;
             }
 
             return true;

@@ -45,19 +45,9 @@ namespace MapDesigner.Feature
                 lakeGrid[current] = 0f + lakeRoundness * moduleBase.GetValue(current) + 0.1f * (lakeSize - distance);
             }
 
-            TerrainGrid terrainGrid = map.terrainGrid;
-            TerrainDef terrDeep = TerrainDefOf.WaterDeep;
-            TerrainDef terrShallow = TerrainDefOf.WaterShallow;
-            TerrainDef terrShore = TerrainDef.Named(settings.lakeShore);
-
-            if (settings.flagLakeSalty)
-            {
-                terrDeep = TerrainDefOf.WaterOceanDeep;
-                terrShallow = TerrainDefOf.WaterOceanShallow;
-            }
-
             float deepBelow = lakeGrid[mapCenter] * (1 -settings.lakeDepth);
             MapGenFloatGrid elevation = MapGenerator.Elevation;
+            MapGenFloatGrid fertility = MapGenerator.Fertility;
 
             foreach (IntVec3 current in map.AllCells)
             {
@@ -65,17 +55,17 @@ namespace MapDesigner.Feature
                 {
                     if (lakeGrid[current] > deepBelow)
                     {
-                        terrainGrid.SetTerrain(current, terrDeep);
+                        fertility[current] = -999f;
                     }
-                    else if (!terrainGrid.TerrainAt(current).IsRiver)
+                    else
                     {
                         if (lakeGrid[current] > 0f)
                         {
-                            terrainGrid.SetTerrain(current, terrShallow);
+                            fertility[current] = -990f;
                         }
                         else if (lakeGrid[current] > 0f - 0.1f * lakeBeachSize)
                         {
-                            terrainGrid.SetTerrain(current, terrShore);
+                            fertility[current] = -980f;
                         }
                     }
                 }

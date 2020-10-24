@@ -300,7 +300,7 @@
   <ItemGroup>
     <Compile Include="BiomeDefault.cs" />
     <Compile Include="DistanceFromOrigin.cs" />
-    <Compile Include="Feature\PRI_Patches.cs" />
+    <Compile Include="Feature\Feature_TerrainFrom.cs" />
     <Compile Include="MapReroll\GenStep_ElevationFertility.cs" />
     <Compile Include="Patches\AnimaTreePatch.cs" />
     <Compile Include="Patches\CaveSettingsPatch.cs" />
@@ -308,7 +308,7 @@
     <Compile Include="Patches\HarmonyPatches.cs" />
     <Compile Include="Patches\MountainSettingsPatch.cs" />
     <Compile Include="Patches\PopupWindowPatch.cs" />
-    <Compile Include="Patches\PRI_MapReroll_TerrainFrom.cs" />
+    <Compile Include="Patches\MapReroll_TerrainFrom.cs" />
     <Compile Include="Patches\RiverDirectionPatch.cs" />
     <Compile Include="Patches\OreDensityPatch.cs" />
     <Compile Include="Patches\RiverBankPatch.cs" />

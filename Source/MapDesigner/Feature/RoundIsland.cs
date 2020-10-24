@@ -21,8 +21,6 @@ namespace MapDesigner.Feature
 
         public override void Generate(Map map, GenStepParams parms)
         {
-            //MapGenFloatGrid priGrid = MapGenerator.FloatGridNamed("ZMD_PRI");
-
             IntVec3 center = map.Center;
 
             int outerRadius = (int)(0.01 * map.Size.x * MapDesignerMod.mod.settings.priIslandSize);
@@ -87,24 +85,19 @@ namespace MapDesigner.Feature
                 beachCells = HelperMethods.GenCircle(map, center, outerRadius).Except(landCells).ToList();
             }
 
-
             MapGenFloatGrid elevation = MapGenerator.Elevation;
             MapGenFloatGrid fertility = MapGenerator.Fertility;
             List<IntVec3> waterCells = map.AllCells.Except(landCells).Except(beachCells).ToList();
 
-
             foreach (IntVec3 current in beachCells)
             {
-                //priGrid[current] = 1f;
-                fertility[current] = -995f;
+                fertility[current] = -1075f;
                 elevation[current] = 0;
             }
 
-
             foreach (IntVec3 current in waterCells)
             {
-                //priGrid[current] = 2f;
-                fertility[current] = -999f;
+                fertility[current] = -2025f;
                 elevation[current] = 0;
             }
         }

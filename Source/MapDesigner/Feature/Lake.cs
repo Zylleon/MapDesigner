@@ -48,6 +48,14 @@ namespace MapDesigner.Feature
             float deepBelow = lakeGrid[mapCenter] * (1 -settings.lakeDepth);
             MapGenFloatGrid elevation = MapGenerator.Elevation;
             MapGenFloatGrid fertility = MapGenerator.Fertility;
+            float deepWater = -2005;
+            float shallowWater = -1025;
+            if (settings.flagLakeSalty)
+            {
+                deepWater = -2015;
+                shallowWater = -1035;
+            }
+            float beachValue = Feature_TerrainFrom.ValueFromTerrain(settings.lakeShore);
 
             foreach (IntVec3 current in map.AllCells)
             {
@@ -55,17 +63,17 @@ namespace MapDesigner.Feature
                 {
                     if (lakeGrid[current] > deepBelow)
                     {
-                        fertility[current] = -999f;
+                        fertility[current] = deepWater;
                     }
                     else
                     {
                         if (lakeGrid[current] > 0f)
                         {
-                            fertility[current] = -990f;
+                            fertility[current] = shallowWater;
                         }
                         else if (lakeGrid[current] > 0f - 0.1f * lakeBeachSize)
                         {
-                            fertility[current] = -980f;
+                            fertility[current] = beachValue;
                         }
                     }
                 }

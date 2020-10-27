@@ -204,12 +204,30 @@ namespace MapDesigner.Patches
 
             }
 
-            GenerateFeatureGrids(map, parms);
+
+            if (isPlayerHome)
+            {
+                GenerateFeatureGrids(map, parms);
+            }
 
         }
 
         static void GenerateFeatureGrids(Map map, GenStepParams parms)
         {
+            //bool isPlayerHome = false;
+            //if (map.info.parent.def == null)
+            //{
+            //    isPlayerHome = true;
+            //}
+            //else if (map.IsPlayerHome)
+            //{
+            //    isPlayerHome = true;
+            //}
+            //if (!isPlayerHome)
+            //{
+            //    return;
+            //}
+
             if (MapDesignerMod.mod.settings.selectedFeature == MapDesignerSettings.Features.None)
             {
                 return;

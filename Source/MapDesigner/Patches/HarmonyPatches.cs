@@ -42,9 +42,9 @@ namespace MapDesigner.Patches
 
                 if (GenTypes.GetTypeInAnyAssembly("MapReroll.MapPreviewGenerator") != null)
                 {
-                    MethodInfo targetmethod = AccessTools.Method(typeof(MapReroll.MapPreviewGenerator), "TerrainFrom");
-                    HarmonyMethod prefixmethod = new HarmonyMethod(typeof(Patches.MapReroll_TerrainFrom), "Prefix");
-                    harmony.Patch(targetmethod, prefixmethod);
+                    Log.Message("Found Map Reroll");
+                    HelperMethods.ApplyMapRerollPatches();
+                   
                 }
 
                 HelperMethods.InitBiomeDefaults();

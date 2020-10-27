@@ -1,7 +1,9 @@
-﻿using RimWorld;
+﻿using HarmonyLib;
+using RimWorld;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Verse;
@@ -331,6 +333,13 @@ namespace MapDesigner
                                        where d.category == ThingCategory.Building && d.building.isNaturalRock && !d.building.isResourceRock && !d.IsSmoothed
                                        select d).ToList<ThingDef>();
             return rockList;
+        }
+
+        public static void ApplyMapRerollPatches()
+        {
+            MethodInfo targetmethod = AccessTools.Method(typeof(MapReroll.MapPreviewGenerator), "TerrainFrom");
+            HarmonyMethod prefixmethod = new HarmonyMethod(typeof(Patches.MapReroll_TerrainFrom), "Prefix");
+            new Harmony("zylle.MapDesigner_RerollCompat").Patch(targetmethod, prefixmethod);
         }
 
     }

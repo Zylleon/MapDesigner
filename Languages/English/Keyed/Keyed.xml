@@ -229,7 +229,7 @@
     <!-- Tabs -->
 
 	<ZMD_featureTab>Map Features</ZMD_featureTab>
-	<ZMD_featureTabInfo>Add specific features to your home map. These will not spawn on other maps, like quest maps.\n\nThese will NOT show up in Map Reroll previews, but can still be rerolled.</ZMD_featureTabInfo>
+	<ZMD_featureTabInfo>Add a special feature to only your home map. These will not spawn on other maps, like quest maps.</ZMD_featureTabInfo>
 	
   <!-- Features -->
   <ZMD_selectFeature>Select feature</ZMD_selectFeature>
@@ -238,7 +238,7 @@
   <ZMD_featureNoneInfo>Baseline map.</ZMD_featureNoneInfo>
   
   <ZMD_featurePRI>Perfectly round islands</ZMD_featurePRI>
-  <ZMD_featurePRIInfo>One or more perfectly round islands, surrounded by shallow water. Trade caravans, raids and wild animals will still enter normally from the sides.</ZMD_featurePRIInfo>
+  <ZMD_featurePRIInfo>Your mape is one or more perfectly round islands, surrounded by shallow water. Trade caravans, raids and wild animals will still enter normally from the sides.</ZMD_featurePRIInfo>
   
   <ZMD_featureLake>Natural Lake</ZMD_featureLake>
   <ZMD_featureLakeInfo>A natural lake.\nMountains can spawn inside the lake by default. You can use the "Central hill distribution" option on the Mountains tab to prevent this, or to create a mountain island in the center.</ZMD_featureLakeInfo>

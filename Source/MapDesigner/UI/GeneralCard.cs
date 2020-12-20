@@ -141,9 +141,13 @@ namespace MapDesigner.UI
                 case Preset.ZyllesChoice:
                     PresetZyllesChoice();
                     break;
+                case Preset.Random:
+                    PresetRandom();
+                    break;
                 default:
                     break;
             }
+            HelperMethods.ApplyBiomeSettings();
         }
 
         private static string GetPresetLabel()
@@ -193,8 +197,12 @@ namespace MapDesigner.UI
         public static void PresetRandom()
         {
             // Mountains
-            settings.hillAmount = Rand.Range(0f, 2.5f);
-            settings.hillSize = Rand.Range(0.010f, 0.1f);
+            settings.hillAmount = Rand.Range(0.70f, 1.40f);
+
+            // doing it this way prevents randomized hills from usually being too tiny
+            settings.hillSize = Rand.Range(0.10f, 0.3f);
+            settings.hillSize *= settings.hillSize;
+
             settings.hillSmoothness = Rand.Range(0f, 5f);
             settings.flagCaves = true;
 
@@ -243,10 +251,10 @@ namespace MapDesigner.UI
 
             // Rivers
             //Log.Message("Randomizing rivers");
-            //settings.sizeRiver = Rand.Range(0.1f, 3f);
-            //MapDesignerSettings.flagRiverBeach = Rand.Bool;
+            settings.sizeRiver = Rand.Range(0.1f, 3f);
+            settings.flagRiverBeach = Rand.Bool;
             //settings.riverShore = RiversCardUtility.terrainOptions.RandomElement().defName;
-            //settings.riverBeachSize = Rand.Range(2f, 35f);
+            settings.riverBeachSize = Rand.Range(2f, 35f);
 
             // Terrain
             settings.terrainFert = Rand.Range(0.3f, 2f);

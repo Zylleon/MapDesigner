@@ -16,6 +16,11 @@ namespace MapDesigner.Patches
     [HarmonyPatch(nameof(RimWorld.GenStep_ElevationFertility.Generate))]
     internal static class MountainSettingsPatch
     {
+        static void Prefix()
+        {
+            HelperMethods.ApplyBiomeSettings();
+        }
+
         /// <summary>
         /// Mountain size and smoothness
         /// </summary>
@@ -212,7 +217,7 @@ namespace MapDesigner.Patches
 
         }
 
-        static void GenerateFeatureGrids(Map map, GenStepParams parms)
+        private static void GenerateFeatureGrids(Map map, GenStepParams parms)
         {
             //bool isPlayerHome = false;
             //if (map.info.parent.def == null)

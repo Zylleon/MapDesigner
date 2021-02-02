@@ -31,7 +31,7 @@ namespace MapDesigner.Patches
                     try
                     {
                         MethodInfo targetmethod = AccessTools.Method(typeof(RimWorld.GenStep_AnimaTrees), "DesiredTreeCountForMap");
-                        HarmonyMethod postfix = new HarmonyMethod(typeof(MapDesigner).GetMethod("AnimaTreePatch"));
+                        HarmonyMethod postfix = new HarmonyMethod(typeof(AnimaTreePatch).GetMethod("Postfix", BindingFlags.NonPublic | BindingFlags.Static));
                         harmony.Patch(targetmethod, null, postfix);
                     }
                     catch

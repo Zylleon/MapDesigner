@@ -44,6 +44,9 @@
 	<ZMD_applyPreset>Apply Preset</ZMD_applyPreset>
 	<ZMD_reset>Reset Everything</ZMD_reset>
 	
+	<ZMD_presetNone>None</ZMD_presetNone>
+	<ZMD_presetNoneDesc>No preset selected</ZMD_presetNoneDesc>
+	
 	<ZMD_presetVanilla>Vanilla</ZMD_presetVanilla>
 	<ZMD_presetVanillaDesc>Vanilla defaults.</ZMD_presetVanillaDesc>
 	
@@ -63,7 +66,7 @@
 	<ZMD_presetCanyonDesc>A narrow canyon with several types of rock. If your tile has a river, the river will follow the canyon.</ZMD_presetCanyonDesc>
 	
 	<ZMD_presetZyllesChoice>Mod author's choice</ZMD_presetZyllesChoice>
-	<ZMD_presetZyllesChoiceDesc>I like these settings.</ZMD_presetZyllesChoiceDesc>
+	<ZMD_presetZyllesChoiceDesc>I like these settings. Lots of chokepoints and half-closed valleys, with slightly increased fertile soil.</ZMD_presetZyllesChoiceDesc>
 	
 	
 	
@@ -76,6 +79,8 @@
 	
 	<ZMD_flagHomeMapOnly>Limit settings to your home map</ZMD_flagHomeMapOnly>
 	<ZMD_flagHomeMapOnlyDesc>Currently applies to: Mountains\n\nIf checked, these things will be vanilla on quest maps, ai faction bases, and other non-home maps.</ZMD_flagHomeMapOnlyDesc>
+ 
+ 
  
 <!-- ===================================	Mountains	================================= -->
 
@@ -174,6 +179,8 @@
 	<ZMD_flagMtnExitTooltip>For very mountainous maps. Guarantees a clear path to the center of the map.</ZMD_flagMtnExitTooltip>
 	<ZMD_numMtnExit>Number of exits</ZMD_numMtnExit>
 	
+	
+	
 <!-- ===================================	Things	================================= -->
     <!-- Tabs -->
 
@@ -188,7 +195,9 @@
 	<ZMD_densityDangerTooltip>NOTE: Ancient dangers will not spawn on completely flat maps</ZMD_densityDangerTooltip>
 	<ZMD_densityGeyser>Steam geysers</ZMD_densityGeyser>
 	<ZMD_densityOre>Ore</ZMD_densityOre>
-	<ZMD_animaCount>Anima trees: </ZMD_animaCount>
+	<ZMD_animaCount>Anima trees</ZMD_animaCount>
+	<ZMD_flagRockChunks>Rock chunks allowed</ZMD_flagRockChunks>
+	<ZMD_flagRockChunksTooltip>If disabled, new maps will have NO chunks.</ZMD_flagRockChunksTooltip>
 
 	<ZMD_density0>None</ZMD_density0>
 	<ZMD_density1>Very few</ZMD_density1>
@@ -224,6 +233,19 @@
 	<ZMD_riverStyleOxbowDesc>A winding river with big, smooth loops</ZMD_riverStyleOxbowDesc>
 	<ZMD_riverStyleIsland>Island</ZMD_riverStyleIsland>
 	<ZMD_riverStyleIslandDesc>A river that splits to make an island, then joins back into one on the other side</ZMD_riverStyleIslandDesc>
+	
+	
+	<ZMD_riverPosition>River position</ZMD_riverPosition>
+	<ZMD_north>North</ZMD_north>
+	<ZMD_south>South</ZMD_south>
+	<ZMD_east>East</ZMD_east>
+	<ZMD_west>West</ZMD_west>
+	<ZMD_riverRel>Relative</ZMD_riverRel>
+	<ZMD_riverRelDesc>Customize relative to the vanilla position</ZMD_riverRelDesc>
+	<ZMD_riverAbs>Absolute</ZMD_riverAbs>
+	<ZMD_riverAbsDesc>Customize relative to the center of the map</ZMD_riverAbsDesc>
+	
+	
 
 <!-- ===================================	Features	================================= -->
     <!-- Tabs -->

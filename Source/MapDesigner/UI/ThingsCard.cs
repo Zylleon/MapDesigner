@@ -27,6 +27,9 @@ namespace MapDesigner.UI
             settings.densityGeyser = ThingsSlider(listingStandard, settings.densityGeyser, 2, "ZMD_densityGeyser");
             settings.densityOre = ThingsSlider(listingStandard, settings.densityOre, 2, "ZMD_densityOre");
 
+            listingStandard.CheckboxLabeled("ZMD_flagRockChunks".Translate(), ref settings.flagRockChunks, "ZMD_flagRockChunksTooltip".Translate());
+
+
             if (ModsConfig.RoyaltyActive)
             {
                 settings.animaCount = (float)Math.Round(InterfaceUtility.LabeledSlider(listingStandard, settings.animaCount, 0f, 15f, "ZMD_animaCount".Translate() + settings.animaCount));
@@ -50,6 +53,7 @@ namespace MapDesigner.UI
             settings.densityGeyser = 1.0f;
             settings.densityOre = 1.0f;
             settings.animaCount = 1.0f;
+            settings.flagRockChunks = true;
         }
 
         private static float ThingsSlider(Listing_Standard listing, float val = 1f, float power = 1f, string label = null)

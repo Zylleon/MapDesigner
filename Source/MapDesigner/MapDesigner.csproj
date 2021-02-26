@@ -313,6 +313,7 @@
     <Compile Include="Patches\OreDensityPatch.cs" />
     <Compile Include="Patches\RiverBankPatch.cs" />
     <Compile Include="Patches\RiverStylePatch.cs" />
+    <Compile Include="Patches\RockChunkPatch.cs" />
     <Compile Include="Patches\RockTypesPatch.cs" />
     <Compile Include="TerrainDefault.cs" />
     <Compile Include="TerrainUtility.cs" />

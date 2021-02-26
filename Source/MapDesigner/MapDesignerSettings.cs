@@ -49,6 +49,7 @@ namespace MapDesigner
         public float densityGeyser = 1.0f;
         public float densityOre = 1.0f;
         public float animaCount = 1.0f;
+        public bool flagRockChunks = true;
 
         // Rocks
         public IntRange rockTypeRange = new IntRange(2, 3);
@@ -145,6 +146,7 @@ namespace MapDesigner
             Scribe_Values.Look(ref densityGeyser, "densityGeyser", 1.0f);
             Scribe_Values.Look(ref densityOre, "densityOre", 1.0f);
             Scribe_Values.Look(ref animaCount, "animaCount", 1.0f);
+            Scribe_Values.Look(ref flagRockChunks, "flagRockChunks", true);
 
             // Rocks
             Scribe_Values.Look(ref rockTypeRange, "rockTypeRange", new IntRange(2, 3));

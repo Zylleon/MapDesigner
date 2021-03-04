@@ -65,6 +65,11 @@ namespace MapDesigner
         public bool flagRiverDir = false;
         public float riverDir = 180f;
 
+        public bool flagRiverLoc = false;
+        public bool flagRiverLocAbs= false;
+        public float riverPctSouth = 0f;
+        public float riverPctEast = 0f;
+
         public enum RiverStyle : byte
         {
             Vanilla,
@@ -161,6 +166,11 @@ namespace MapDesigner
             Scribe_Values.Look(ref flagRiverDir, "flagRiverDir", false);
             Scribe_Values.Look(ref riverDir, "riverDir", 180f);
             Scribe_Values.Look(ref selRiverStyle, "selRiverStyle", RiverStyle.Vanilla);
+
+            Scribe_Values.Look(ref flagRiverLoc, "flagRiverLoc", false);
+            Scribe_Values.Look(ref flagRiverLocAbs, "flagRiverLocAbs", false);
+            Scribe_Values.Look(ref riverPctSouth, "riverPctSouth", 0.0f);
+            Scribe_Values.Look(ref riverPctEast, "riverPctEast", 0.0f);
 
             // Terrain
             Scribe_Values.Look(ref terrainFert, "terrainFert", 1.0f);

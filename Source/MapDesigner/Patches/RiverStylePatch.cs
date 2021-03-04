@@ -17,6 +17,20 @@ namespace MapDesigner.Patches
     [HarmonyPatch(new Type[] { typeof(Vector3), typeof(float), typeof(RiverDef) })]
     static class RiverStylePatch
     {
+
+        static bool Prefix (ref Vector3 center)
+        {
+            if (MapDesignerMod.mod.settings.flagRiverLoc)
+            {
+                center.x += Find.GameInitData.mapSize * MapDesignerMod.mod.settings.riverPctEast;
+                center.z += Find.GameInitData.mapSize * MapDesignerMod.mod.settings.riverPctSouth;
+            }
+
+            return true;
+        }
+
+
+
         static void Postfix(ref ModuleBase ___generator, ModuleBase ___coordinateX, ModuleBase ___coordinateZ, ModuleBase ___shallowizer, float ___surfaceLevel, List<IntVec3> ___lhs, List<IntVec3> ___rhs, Vector3 center, float angle)
         {
             MapDesignerSettings settings = MapDesignerMod.mod.settings;

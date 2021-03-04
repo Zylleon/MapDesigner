@@ -1,0 +1,305 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+<!-- ===================================	general use		================================= -->
+
+	<ZMD_ModName>Map Designer</ZMD_ModName>
+	
+<!-- ===================================	general mod settings	================================= -->
+
+	
+	<ZMD_resetPage>Сбросить настройки</ZMD_resetPage>
+	<ZMD_resetMountain>Сбросить настройки гор</ZMD_resetMountain>
+	<ZMD_resetThings>Сбросить настройки деталей</ZMD_resetThings>
+	<ZMD_resetRivers>Сбросить настройки рек</ZMD_resetRivers>
+	<ZMD_resetTerrain>Сбросить настройки ланшавта</ZMD_resetTerrain>
+	<ZMD_Angle>Градус</ZMD_Angle>
+	
+	<ZMD_numTiles>{0} клеток</ZMD_numTiles>
+	<ZMD_pctOfMap>{0} % карты</ZMD_pctOfMap>
+	
+<!-- Levels -->
+    <ZMD_size0>Нету</ZMD_size0>
+	<ZMD_size1>Редкие</ZMD_size1>
+	<ZMD_size2>Мало</ZMD_size2>
+	<ZMD_size3>Средние</ZMD_size3>
+	<ZMD_size4>Большые</ZMD_size4>
+	<ZMD_size5>Огромные</ZMD_size5>
+	<ZMD_size6>Громадные</ZMD_size6>
+
+	<ZMD_narrow>Узкий</ZMD_narrow>
+	<ZMD_wide>Широкий</ZMD_wide>
+	
+	
+	
+    <!-- Tabs -->
+
+<!--===================================General Tab=================================-->
+
+	<ZMD_generalTab>Общие</ZMD_generalTab>
+	<ZMD_generalTabInfo>Начните с предустановки или изучите подробные параметры, доступные на других вкладках.\n\nВсе настройки относятся к вашей базовой карте. В бесплодном тропическом лесу будет больше растений, чем в плодородной долине пустыни; плоские карты всегда будут иметь меньше холмов, чем горные карты с теми же настройками.</ZMD_generalTabInfo>
+	
+	<ZMD_presets>Пресеты</ZMD_presets>
+	
+	<ZMD_applyPreset>Применить пресет</ZMD_applyPreset>
+	<ZMD_reset>Сбросить настройки</ZMD_reset>
+	
+	<ZMD_presetVanilla>Ваниль</ZMD_presetVanilla>
+	<ZMD_presetVanillaDesc>Стандартные значения по умолчанию.</ZMD_presetVanillaDesc>
+	
+	<ZMD_presetFertileValley>Плодородная долина</ZMD_presetFertileValley>
+	<ZMD_presetFertileValleyDesc>Уединенная долина, окруженная горами. Более высокое плодородие, больше растений и меньше руин.</ZMD_presetFertileValleyDesc>
+	
+	<ZMD_presetBarrens>Надгорье</ZMD_presetBarrens>
+	<ZMD_presetBarrensDesc>Относительно пустынный пейзаж с небольшими остроконечными холмами. Более низкая плодовитость и меньше растений, чем обычно. Дополнительные паровые гейзеры.</ZMD_presetBarrensDesc>
+	
+	<ZMD_presetUnnatural>Неестественные</ZMD_presetUnnatural>
+	<ZMD_presetUnnaturalDesc>Странные, неестественные горы, усеянные древними опасностями.</ZMD_presetUnnaturalDesc>
+	
+	<ZMD_presetFishingVillage>Заболоченая местность</ZMD_presetFishingVillage>
+	<ZMD_presetFishingVillageDesc>Большие холмы, в которые можно копать, но мало твердой почвы. В болотах НЕТ твердой почвы за пределами гор!</ZMD_presetFishingVillageDesc>
+	
+	<ZMD_presetCanyon>Каньо́н</ZMD_presetCanyon>
+	<ZMD_presetCanyonDesc>Узкий каньон с несколькими видами скал. Если на вашем тайле есть река, она будет следовать за каньоном..</ZMD_presetCanyonDesc>
+	
+	<ZMD_presetZyllesChoice>Выбор автора мода</ZMD_presetZyllesChoice>
+	<ZMD_presetZyllesChoiceDesc>Мне нравятся эти настройки.</ZMD_presetZyllesChoiceDesc>
+	
+	
+	
+	<ZMD_presetRandom>Рандомизация</ZMD_presetRandom>
+	<ZMD_presetRandomDesc>Это будет рандомизировать настройки каждый раз, когда вы нажимаете «Применить». Результаты могут быть непредсказуемыми.</ZMD_presetRandomDesc>
+	
+
+	<ZMD_flagPopup>Показать это для новых карт</ZMD_flagPopup>
+	<ZMD_flagPopupDesc>Вы можете получить доступ к этим настройкам в любое время из Меню -> Параметры -> Настройки мода -> Дизайнер карт.</ZMD_flagPopupDesc>
+	
+	<ZMD_flagHomeMapOnly>Ограничьте настройки домашней картой</ZMD_flagHomeMapOnly>
+	<ZMD_flagHomeMapOnlyDesc>В настоящее время применяется к: Горам \n\n если этот флажок установлен, эти элементы будут ванильными на картах квестов, базах фракций и других картах, не относящихся к дому.</ZMD_flagHomeMapOnlyDesc>
+ 
+<!-- ===================================	Mountains	================================= -->
+
+  <!-- Tabs -->
+	<ZMD_mountainTab> Горы </ZMD_mountainTab>
+    <ZMD_mountainTabInfo> Настройки, относящиеся к горам </ZMD_mountainTabInfo>
+  <!-- Холмы -->
+    <ZMD_hillAmountLabel> Количество гор </ZMD_hillAmountLabel>
+    <ZMD_hillAmountTooltip> Насколько гористой будет ваша карта </ZMD_hillAmountTooltip>
+
+    <ZMD_hillAmount0> Плоская </ZMD_hillAmount0>
+    <ZMD_hillAmount1> Мало гор </ZMD_hillAmount1>
+    <ZMD_hillAmount2> Ваниль </ZMD_hillAmount2>
+    <ZMD_hillAmount3> Много гор </ZMD_hillAmount3>
+    <ZMD_hillAmount4> Очень много гор </ZMD_hillAmount4>
+    <ZMD_hillAmount5> Почти вся карта </ZMD_hillAmount5>
+
+    <ZMD_hillSizeLabel> Кучность гор </ZMD_hillSizeLabel>
+    <ZMD_hillSizeTooltip> Размер отдельных холмов. Большие холмы для карт с 1-2 большими горами, маленькие холмы для неровных ландшафтов с большим количеством углов. </ZMD_hillSizeTooltip>
+    <ZMD_hillSize0> Плотные. 1 или 2 больших горы. </ZMD_hillSize0>
+    <ZMD_hillSize1> Ваниль </ZMD_hillSize1>
+    <ZMD_hillSize2> Пару меньшых гор </ZMD_hillSize2>
+    <ZMD_hillSize3> Много маленьких гор </ZMD_hillSize3>
+    <ZMD_hillSize4> Много разбросанных клеток гор </ZMD_hillSize4>
+
+    <ZMD_hillSmoothnessLabel> Ровность </ZMD_hillSmoothnessLabel>
+    <ZMD_hillSmoothness0> Очень ровные </ZMD_hillSmoothness0>
+    <ZMD_hillSmoothness1> Ровные </ZMD_hillSmoothness1>
+    <ZMD_hillSmoothness2> Ваниль </ZMD_hillSmoothness2>
+    <ZMD_hillSmoothness3> Неровные </ZMD_hillSmoothness3>
+    <ZMD_hillSmoothness4> Очень неровные </ZMD_hillSmoothness4>
+
+
+
+   <!-- Горная раздача-->
+    
+	<ZMD_hillArrangement> Расставьте горы </ZMD_hillArrangement>
+    <ZMD_hillArrangementDesc> Как горы расположены на вашей карте. Создавайте индивидуальные долины и горы. Отключить всё = ванила </ZMD_hillArrangementDesc>
+
+    <ZMD_flagHillClumping> Естественное распределение гор </ZMD_flagHillClumping>
+    <ZMD_flagHillClumpingTooltip> Для небольших гор. Сделает горы естественными, а не равномерно распределенными. </ZMD_flagHillClumpingTooltip>
+
+    <ZMD_flagHillRadial> Центрирование </ZMD_flagHillRadial>
+    <ZMD_flagHillRadialTooltip> Придвиньте горы к краям карты, чтобы образовалась долина, или потяните их к центру и создайте твердую гору. </ZMD_flagHillRadialTooltip>
+    <ZMD_hillRadialAmtLabel> Горы </ZMD_hillRadialAmtLabel>
+    <ZMD_hillRadialAmtTooltip> Разница между центром и краями карты. </ZMD_hillRadialAmtTooltip>
+    <ZMD_hillRadialSizeLabel> Сдвиг гор </ZMD_hillRadialSizeLabel>
+    <ZMD_hillRadialSizeTooltip> Сдвиг гор к центру или к краям карты </ZMD_hillRadialSizeTooltip>
+
+    <ZMD_hillRadialAmt0> Плотно сгруппированы в центре </ZMD_hillRadialAmt0>
+    <ZMD_hillRadialAmt1> Умеренное смещение к центру </ZMD_hillRadialAmt1>
+    <ZMD_hillRadialAmt2> Немного больше в центре </ZMD_hillRadialAmt2>
+    <ZMD_hillRadialAmt3> Почти без изменений </ZMD_hillRadialAmt3>
+    <ZMD_hillRadialAmt4> Немного больше к краям </ZMD_hillRadialAmt4>
+    <ZMD_hillRadialAmt5> Умеренный сдвиг к краям </ZMD_hillRadialAmt5>
+    <ZMD_hillRadialAmt6> Почти полностью по краям </ZMD_hillRadialAmt6>
+
+
+    <ZMD_center> Центр </ZMD_center>
+    <ZMD_edges> Края </ZMD_edges>
+    <ZMD_direction> Направление </ZMD_direction>
+    <ZMD_skew> Горы </ZMD_skew>
+    <ZMD_size> Сдвиг гор </ZMD_size>
+
+
+    <ZMD_hillRadialSize0> Крошечный </ZMD_hillRadialSize0>
+    <ZMD_hillRadialSize1> Маленький </ZMD_hillRadialSize1>
+    <ZMD_hillRadialSize2> Средний </ZMD_hillRadialSize2>
+    <ZMD_hillRadialSize3> Большой </ZMD_hillRadialSize3>
+    <ZMD_hillRadialSize4> К краю карты </ZMD_hillRadialSize4>
+
+    <ZMD_flagHillSplit> Посередине </ZMD_flagHillSplit>
+
+    <ZMD_flagHillSide> В одну сторону </ZMD_flagHillSide>
+
+    <ZMD_hillSideAmt0> Почти ровный </ZMD_hillSideAmt0>
+    <ZMD_hillSideAmt1> Небольшой сдвиг в одну сторону </ZMD_hillSideAmt1>
+    <ZMD_hillSideAmt2> Умеренный сдвиг в одну сторону </ZMD_hillSideAmt2>
+    <ZMD_hillSideAmt3> Сильный сдвиг в одну сторону </ZMD_hillSideAmt3>
+
+    <ZMD_flagHillDonut> В форме пончика </ZMD_flagHillDonut>
+    <ZMD_flagHillDonutTooltip> Кольцевые горы или долины </ZMD_flagHillDonutTooltip>
+    <ZMD_hillDonutAmt0> Отчетливый кольцевой холм </ZMD_hillDonutAmt0>
+    <ZMD_hillDonutAmt1> Небольшой кольцевой холм </ZMD_hillDonutAmt1>
+    <ZMD_hillDonutAmt2> Почти без изменений </ZMD_hillDonutAmt2>
+    <ZMD_hillDonutAmt3> Небольшая кольцевая долина </ZMD_hillDonutAmt3>
+    <ZMD_hillDonutAmt4> Отчетливая кольцевая долина </ZMD_hillDonutAmt4>
+
+
+
+  <!-- Прочие настройки-->
+  
+    <ZMD_flagCaves> Разрешить пещеры </ZMD_flagCaves>
+    <ZMD_flagCavesTooltip> Снятие этого флажка предотвращает появление пещер, даже на тайлах с горами или большими холмамим. </ZMD_flagCavesTooltip>
+
+    <ZMD_flagMtnExit> Гарантировать выход </ZMD_flagMtnExit>
+    <ZMD_flagMtnExitTooltip> Для очень гористых карт. Гарантирует свободный путь к центру карты. </ZMD_flagMtnExitTooltip>
+    <ZMD_numMtnExit> Количество выходов </ZMD_numMtnExit>
+	
+<!-- =================================== Вещи =================================-->
+    <!--Вкладки-->
+
+    <ZMD_thingsTab> Детали </ZMD_thingsTab>
+    <ZMD_thingsTabInfo> Плотность руды и т. Д. </ZMD_thingsTabInfo>
+
+  <!--Плотности-->
+    <ZMD_densityPlant> Растения </ZMD_densityPlant>
+    <ZMD_densityAnimal> Животные </ZMD_densityAnimal>
+    <ZMD_densityRuins> Руины </ZMD_densityRuins>
+    <ZMD_densityDanger> Древние опасности </ZMD_densityDanger>
+    <ZMD_densityDangerTooltip> ПРИМЕЧАНИЕ: древние опасности не появляются на полностью плоских картах </ZMD_densityDangerTooltip>
+    <ZMD_densityGeyser> Паровые гейзеры </ZMD_densityGeyser>
+    <ZMD_densityOre> Руда </ZMD_densityOre>
+    <ZMD_animaCount> Деревья анимы: </ZMD_animaCount>
+
+    <ZMD_density0> Нет </ZMD_density0>
+    <ZMD_density1> Очень мало </ZMD_density1>
+    <ZMD_density2> Меньше среднего </ZMD_density2>
+    <ZMD_density3> Среднее количество </ZMD_density3>
+    <ZMD_density4> Больше среднего </ZMD_density4>
+    <ZMD_density5> Намного больше </ZMD_density5>
+    <ZMD_density6> Максимальное количество </ZMD_density6>
+
+
+
+<!--=================================== Реки =================================-->
+
+    <ZMD_riverTab> Реки </ZMD_riverTab>
+
+    <ZMD_sizeRiver> Размер реки </ZMD_sizeRiver>
+
+    <ZMD_flagRiverBeach> Берега рек </ZMD_flagRiverBeach>
+    <ZMD_riverBeachSize> Размер берега реки </ZMD_riverBeachSize>
+
+    <ZMD_flagRiverDir> Выбрать направление реки </ZMD_flagRiverDir>
+
+    <ZMD_riverStyle> Речной стиль </ZMD_riverStyle>
+    <ZMD_riverStyleVanilla> Ваниль </ZMD_riverStyleVanilla>
+    <ZMD_riverStyleVanillaDesc> Нормальная река </ZMD_riverStyleVanillaDesc>
+    <ZMD_riverStyleSpring> Прямая река </ZMD_riverStyleSpring>
+    <ZMD_riverStyleSpringDesc> Реки начинаются около середины карты и продолжаются до края </ZMD_riverStyleSpringDesc>
+    <ZMD_riverStyleConfluence> Устье </ZMD_riverStyleConfluence>
+    <ZMD_riverStyleConfluenceDesc> Две реки сливаются в одну </ZMD_riverStyleConfluenceDesc>
+    <ZMD_riverStyleFork> Вилка </ZMD_riverStyleFork>
+    <ZMD_riverStyleForkDesc> Одна река разделяется на две </ZMD_riverStyleForkDesc>
+    <ZMD_riverStyleOxbow> Змеиная </ZMD_riverStyleOxbow>
+    <ZMD_riverStyleOxbowDesc> Извилистая река с большими плавными петлями </ZMD_riverStyleOxbowDesc>
+    <ZMD_riverStyleIsland> Остров </ZMD_riverStyleIsland>
+    <ZMD_riverStyleIslandDesc> Река, которая разделяется, образуя остров, а затем снова присоединяется к одному на другой стороне </ZMD_riverStyleIslandDesc>
+
+<!--===================================Особенности=================================-->
+    <!--Вкладки-->
+
+    <ZMD_featureTab> Особенность карты </ZMD_featureTab>
+    <ZMD_featureTabInfo> Добавьте особую функцию только на свою домашнюю карту. Они не будут появляться на других картах, например картах квестов. </ZMD_featureTabInfo>
+
+  <!--Особенности-->
+    <ZMD_selectFeature> Выбрать особенность </ZMD_selectFeature>
+  
+    <ZMD_featureNone> Ванила </ZMD_featureNone>
+    <ZMD_featureNoneInfo> Базовая карта. </ZMD_featureNoneInfo>
+  
+    <ZMD_featurePRI> Архипелаги </ZMD_featurePRI>
+    <ZMD_featurePRIInfo> Ваша карта - это один или несколько идеально круглых островов, окруженных мелководьем. Торговые караваны, набеги и дикие животные по-прежнему будут входить с боков. </ZMD_featurePRIInfo>
+  
+    <ZMD_featureLake> Природное озеро </ZMD_featureLake>
+    <ZMD_featureLakeInfo> Естественное озеро. \nГоры могут появляться внутри озера по умолчанию. Вы можете использовать опцию «Центрирование» на вкладке «Горы», чтобы предотвратить это, или создать горный остров. </ZMD_featureLakeInfo>
+  
+  
+  <!--Идеально круглые острова-->
+    <ZMD_priIslandSizeLabel> Размер острова </ZMD_priIslandSizeLabel>
+    <ZMD_priBeachSizeLabel> Размер пляжа </ZMD_priBeachSizeLabel>
+    <ZMD_priMultiSpawnLabel> Создать несколько островов </ZMD_priMultiSpawnLabel>
+  
+  <!--Озера-->
+  
+    <ZMD_lakeSize> Размер озера: {0}% карты </ZMD_lakeSize>
+    <ZMD_lakeRoundness> Округлость озера </ZMD_lakeRoundness>
+    <ZMD_lakeBeachSize> Размер пляжа у озера </ZMD_lakeBeachSize>
+    <ZMD_lakeDepth> Глубина озера </ZMD_lakeDepth>
+    <ZMD_flagLakeSalty> Озеро с соленой водой </ZMD_flagLakeSalty>
+    <ZMD_lakeShore> Береговой ландшафт </ZMD_lakeShore>
+  
+    <ZMD_lakeDepth0> Очень мелко </ZMD_lakeDepth0>
+    <ZMD_lakeDepth1> Мелкий </ZMD_lakeDepth1>
+    <ZMD_lakeDepth2> Среднее </ZMD_lakeDepth2>
+    <ZMD_lakeDepth3> Глубокий </ZMD_lakeDepth3>
+    <ZMD_lakeDepth4> Очень глубокий </ZMD_lakeDepth4>
+
+    <ZMD_lakeRoundness0> Идеально круглый </ZMD_lakeRoundness0>
+    <ZMD_lakeRoundness1> В основном круглый </ZMD_lakeRoundness1>
+    <ZMD_lakeRoundness2> Среднее </ZMD_lakeRoundness2>
+    <ZMD_lakeRoundness3> Скорее с каплями </ZMD_lakeRoundness3>
+    <ZMD_lakeRoundness4> Бесформенный </ZMD_lakeRoundness4>
+
+
+   <!--=================================== Рельеф =================================-->
+
+    <!-- Вкладки-->
+
+    <ZMD_terrainTab> Рельеф </ZMD_terrainTab>
+    <ZMD_terrainTabInfo> Плодородие, уровни воды и типы скал. \n\n Повышение уровня воды увеличит размер и количество болот и озер, но НЕ добавит новые озера к биомам, в которых их иначе не было бы. </ZMD_terrainTabInfo>
+
+    <ZMD_rockTypeRange> Типы горных пород на карту </ZMD_rockTypeRange>
+    <ZMD_flagBiomeRocks> Разрешить модифицированным биомам со специальными камнями, иметь другие типы камней. </ZMD_flagBiomeRocks>
+    <ZMD_flagBiomeRocksTooltip> Это может радикально изменить игровой баланс в некоторых модифицированных биомах. Удаление особых камней может привести к потере необходимых ресурсов. </ZMD_flagBiomeRocksTooltip>
+
+    <ZMD_allRockTypes> Разрешить все типы камней </ZMD_allRockTypes>
+    <ZMD_chooseRockTypes> Выберите типы камней ... </ZMD_chooseRockTypes>
+
+    <ZMD_terrainFertAmt> Плодородность почвы: {0}%: </ZMD_terrainFertAmt>
+
+    <ZMD_terrainWaterAmt> Уровень воды: {0}%: </ZMD_terrainWaterAmt>
+    <ZMD_terrainWaterTooltip> Размер и количество озер и т.д. Не влияет на реки, береговые линии и другие объекты. </ZMD_terrainWaterTooltip>
+
+    <ZMD_flagTerrainWater> Вся не застраиваемая местность считается водой </ZMD_flagTerrainWater>
+    <ZMD_flagTerrainWaterTooltip> Все ландшафты без значительных возможностей считаются водой. Включает грязь, болото, мягкий песок </ZMD_flagTerrainWaterTooltip>
+
+
+
+<!--===================================Бета=================================-->
+    <!--Вкладки-->
+
+    <ZMD_betaTab> Бета </ZMD_betaTab>
+    <ZMD_betaTabInfo> ВНИМАНИЕ! Эти варианты находятся в стадии разработки. Они могут иметь неправильную маркировку,могут ничего не делать и,вероятно,будут спамить журнал ошибок.\n\nЕсли есть проблемы,сообщите об этом с помощью журнала ошибок. Если это сработает,сообщите об этом. </ZMD_betaTabInfo>
+
+</LanguageData>

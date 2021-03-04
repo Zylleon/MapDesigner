@@ -123,8 +123,8 @@ namespace MapDesigner.UI
                 listing.Gap();
             }
 
+            // river location
             listing.CheckboxLabeled("ZMD_riverPosition".Translate(), ref MapDesignerMod.mod.settings.flagRiverLoc, "ZMD_riverPosition".Translate());
-
             if (MapDesignerMod.mod.settings.flagRiverLoc)
             {
                 Rect riverLocRect = listing.GetRect(125f);
@@ -142,17 +142,15 @@ namespace MapDesigner.UI
                 Rect dot = dotRect;
                 dot.yMin = 30f - 100f * settings.riverPctSouth;
                 dot.xMin = 30f + 100f * settings.riverPctEast;
-
                 dot.height = 40f;
                 dot.width = 40f;
-
 
                 Texture2D dotIcon = ContentFinder<Texture2D>.Get("GUI/ZMD_dot", true);
                 Widgets.DrawTextureRotated(dot, dotIcon, 0);
 
 
                 Rect dotSliderRect = locSelRect;
-                //dotSliderRect.xMin += locSelRect.height;
+                dotSliderRect.xMin += locSelRect.height + 20f;
 
                 Listing_Standard locSelListing = new Listing_Standard();
                 locSelListing.Begin(dotSliderRect);

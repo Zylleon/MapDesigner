@@ -65,8 +65,12 @@ namespace MapDesigner.UI
 
             Rect leftSide = rect;
             Rect rightSide = rect;
-            leftSide.xMax -= 0.76f * rect.width;
-            rightSide.xMin += 0.26f * rect.width;
+            if (label != null)
+            {
+                leftSide.xMax -= 0.76f * rect.width;
+                rightSide.xMin += 0.26f * rect.width;
+            }
+
             float result = val;
 
             Widgets.Label(leftSide, label);

@@ -235,7 +235,7 @@
 	<ZMD_riverStyleIslandDesc>A river that splits to make an island, then joins back into one on the other side</ZMD_riverStyleIslandDesc>
 	
 	
-	<ZMD_riverPosition>River position</ZMD_riverPosition>
+	<ZMD_riverPosition>Customize river position</ZMD_riverPosition>
 	<ZMD_north>North</ZMD_north>
 	<ZMD_south>South</ZMD_south>
 	<ZMD_east>East</ZMD_east>

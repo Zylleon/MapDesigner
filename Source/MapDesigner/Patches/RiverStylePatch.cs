@@ -9,7 +9,6 @@ using UnityEngine;
 using Verse;
 using Verse.Noise;
 
-
 namespace MapDesigner.Patches
 {
     [HarmonyPatch(typeof(RimWorld.RiverMaker))]
@@ -22,8 +21,8 @@ namespace MapDesigner.Patches
         {
             if (MapDesignerMod.mod.settings.flagRiverLoc)
             {
-                center.x += Find.GameInitData.mapSize * MapDesignerMod.mod.settings.riverPctEast;
-                center.z += Find.GameInitData.mapSize * MapDesignerMod.mod.settings.riverPctSouth;
+                center.x += Find.World.info.initialMapSize.x * MapDesignerMod.mod.settings.riverPctEast;
+                center.z += Find.World.info.initialMapSize.z * MapDesignerMod.mod.settings.riverPctSouth;
             }
 
             return true;

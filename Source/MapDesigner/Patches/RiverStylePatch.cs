@@ -71,9 +71,8 @@ namespace MapDesigner.Patches
 
                 //    ___generator = new Min(riverA, riverB);
                 //    ___generator = new Min(originalBranch, ___generator);
-
-
                 //    break;
+
 
                 //case MapDesignerSettings.RiverStyle.Fork:
                 //    Log.Message("[Map Designer] Forking rivers");
@@ -142,5 +141,50 @@ namespace MapDesigner.Patches
             return true;
         }
     }
+/*
+    
+    [HarmonyPatch(typeof(RimWorld.RiverMaker), "WaterCoordinateAt")]
+    static class River_Flow_Patch
+    {
+        static bool Prefix(IntVec3 loc, ref Vector3 __result, ModuleBase ___coordinateX, ModuleBase ___coordinateZ)
+        {
+            //__result = new Vector3(___coordinateX.GetValue(loc), 0f, ___coordinateZ.GetValue(loc));
+            //__result = new Vector3(___coordinateX.GetValue(loc), 0f, Math.Abs(___coordinateZ.GetValue(loc)));
+            //__result = new Vector3(___coordinateZ.GetValue(loc) + ___coordinateX.GetValue(loc), 0f, ___coordinateZ.GetValue(loc));
+
+
+            // these return the correct angles for the L and R branches of a forked river
+            //__result = new Vector3(___coordinateX.GetValue(loc) + 0.6f * ___coordinateZ.GetValue(loc), 0f, ___coordinateZ.GetValue(loc));
+            //__result = new Vector3(___coordinateX.GetValue(loc) - 0.6f * ___coordinateZ.GetValue(loc), 0f, ___coordinateZ.GetValue(loc));
+
+
+            #region messy confluence
+            // this makes debug data in approx. the right shape for a confluence, but the forked part is messy
+            
+            if (loc.z < 125)
+            {
+                __result = new Vector3(___coordinateX.GetValue(loc), 0f, ___coordinateZ.GetValue(loc));
+
+            }
+
+            else
+            {
+                if (loc.x < 125)
+                {
+                    __result = new Vector3(___coordinateX.GetValue(loc) + 0.6f * ___coordinateZ.GetValue(loc), 0f, ___coordinateZ.GetValue(loc));
+                }
+                else
+                {
+                    __result = new Vector3(___coordinateX.GetValue(loc) - 0.6f * ___coordinateZ.GetValue(loc), 0f, ___coordinateZ.GetValue(loc));
+
+                }
+            }
+            
+            #endregion
+
+            return false;
+        }
+    }
+*/
 
 }

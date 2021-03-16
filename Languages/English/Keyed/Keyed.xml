@@ -195,7 +195,7 @@
 	<ZMD_densityDangerTooltip>NOTE: Ancient dangers will not spawn on completely flat maps</ZMD_densityDangerTooltip>
 	<ZMD_densityGeyser>Steam geysers</ZMD_densityGeyser>
 	<ZMD_densityOre>Ore</ZMD_densityOre>
-	<ZMD_animaCount>Anima trees</ZMD_animaCount>
+	<ZMD_animaCount>Anima trees: </ZMD_animaCount>
 	<ZMD_flagRockChunks>Rock chunks allowed</ZMD_flagRockChunks>
 	<ZMD_flagRockChunksTooltip>If disabled, new maps will have NO chunks.</ZMD_flagRockChunksTooltip>
 

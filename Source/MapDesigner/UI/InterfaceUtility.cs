@@ -141,7 +141,7 @@ namespace MapDesigner.UI
         }
 
 
-        public static void LocationPicker(Listing_Standard listing, float offset, ref float pctSouth, ref float pctEast, string dotTex = "GUI/ZMD_dot")
+        public static void LocationPicker(Listing_Standard listing, float maxDiff, ref Vector3 offset, float dotSize, string dotTex = "GUI/ZMD_dot", float rotation = 0f)
         {
             Rect riverLocRect = listing.GetRect(125f);
             riverLocRect.xMin += 20f;
@@ -156,13 +156,13 @@ namespace MapDesigner.UI
             Widgets.DrawBox(dotRect);
 
             Rect dot = dotRect;
-            dot.yMin = 30f - 100f * pctSouth;
-            dot.xMin = 30f + 100f * pctEast;
-            dot.height = 40f;
-            dot.width = 40f;
+            dot.yMin = 50f - 0.5f * dotSize - 100f * offset.z;
+            dot.xMin = 50f - 0.5f * dotSize + 100f * offset.x;
+            dot.height = dotSize;
+            dot.width = dotSize;
 
             Texture2D dotIcon = ContentFinder<Texture2D>.Get(dotTex, true);
-            Widgets.DrawTextureRotated(dot, dotIcon, 0);
+            Widgets.DrawTextureRotated(dot, dotIcon, rotation);
 
             Rect dotSliderRect = locSelRect;
             dotSliderRect.xMin += locSelRect.height + 20f;
@@ -170,9 +170,8 @@ namespace MapDesigner.UI
             Listing_Standard locSelListing = new Listing_Standard();
             locSelListing.Begin(dotSliderRect);
 
-            pctSouth = InterfaceUtility.LabeledSlider(locSelListing, pctSouth, 0 - offset, offset, null, "ZMD_south".Translate(), "ZMD_north".Translate());
-
-            pctEast = InterfaceUtility.LabeledSlider(locSelListing, pctEast, 0 - offset, offset, null, "ZMD_west".Translate(), "ZMD_east".Translate());
+            offset.z = InterfaceUtility.LabeledSlider(locSelListing, offset.z, 0 - maxDiff, maxDiff, null, "ZMD_south".Translate(), "ZMD_north".Translate());
+            offset.x = InterfaceUtility.LabeledSlider(locSelListing, offset.x, 0 - maxDiff,  maxDiff, null, "ZMD_west".Translate(), "ZMD_east".Translate());
 
             locSelListing.End();
 

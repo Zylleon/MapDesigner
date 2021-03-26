@@ -67,8 +67,8 @@ namespace MapDesigner
 
         public bool flagRiverLoc = false;               // for whether the location is picked at all
         public bool flagRiverLocAbs= false;
-        public float riverPctSouth = 0f;
-        public float riverPctEast = 0f;
+        public Vector3 riverCenterDisp = new Vector3(0.0f, 0.0f, 0.0f);
+
 
         public enum RiverStyle : byte
         {
@@ -101,7 +101,7 @@ namespace MapDesigner
         public float priBeachSize = 5f;
         //public bool priMultiSpawn = false;
         public PriStyle priStyle = PriStyle.Single;
-        public Vector3 priSingleCenterLoc = new Vector3(0.0f, 0.0f, 0.0f);
+        public Vector3 priSingleCenterDisp = new Vector3(0.0f, 0.0f, 0.0f);
 
         public enum PriStyle : byte
         {
@@ -117,6 +117,7 @@ namespace MapDesigner
         public float lakeDepth = 0.5f;                  // proportion of deep water
         public bool flagLakeSalty = false;
         public string lakeShore = "Sand";
+        public Vector3 lakeCenterDisp = new Vector3(0.0f, 0.0f, 0.0f);
 
         // Helper stuff
         public Dictionary<string, BiomeDefault> biomeDefaults;
@@ -178,8 +179,7 @@ namespace MapDesigner
 
             Scribe_Values.Look(ref flagRiverLoc, "flagRiverLoc", false);
             Scribe_Values.Look(ref flagRiverLocAbs, "flagRiverLocAbs", false);
-            Scribe_Values.Look(ref riverPctSouth, "riverPctSouth", 0.0f);
-            Scribe_Values.Look(ref riverPctEast, "riverPctEast", 0.0f);
+            Scribe_Values.Look(ref riverCenterDisp, "riverCenterDisp", new Vector3(0.0f, 0.0f, 0.0f));
 
             // Terrain
             Scribe_Values.Look(ref terrainFert, "terrainFert", 1.0f);
@@ -194,7 +194,7 @@ namespace MapDesigner
             Scribe_Values.Look(ref priIslandSize, "priIslandSize", 40f);
             Scribe_Values.Look(ref priBeachSize, "priBeachSize", 5f);
             Scribe_Values.Look(ref priStyle, "priStyle", PriStyle.Single);
-            Scribe_Values.Look(ref priSingleCenterLoc, "priSingleCenterLoc", new Vector3(0.0f, 0.0f, 0.0f));
+            Scribe_Values.Look(ref priSingleCenterDisp, "priSingleCenterDisp", new Vector3(0.0f, 0.0f, 0.0f));
 
             // Lake
             Scribe_Values.Look(ref lakeSize, "lakeSize", 0.20f);
@@ -203,8 +203,7 @@ namespace MapDesigner
             Scribe_Values.Look(ref lakeDepth, "lakeDepth", 0.5f);
             Scribe_Values.Look(ref flagLakeSalty, "flagLakeSalty", false);
             Scribe_Values.Look(ref lakeShore, "lakeShore", "Sand");
-
-
+            Scribe_Values.Look(ref lakeCenterDisp, "lakeCenterDisp", new Vector3(0.0f, 0.0f, 0.0f));
 
         }
     }

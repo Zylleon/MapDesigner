@@ -109,8 +109,8 @@ namespace MapDesigner.Feature
                 {
                     Log.Message("[Map Designer] Creating single island");
 
-                    center.x += (int)(MapDesignerMod.mod.settings.priSingleCenterLoc.x * map.Size.x);
-                    center.z += (int)(MapDesignerMod.mod.settings.priSingleCenterLoc.z * map.Size.z);
+                    center.x += (int)(MapDesignerMod.mod.settings.priSingleCenterDisp.x * map.Size.x);
+                    center.z += (int)(MapDesignerMod.mod.settings.priSingleCenterDisp.z * map.Size.z);
 
                     landCells = HelperMethods.GenCircle(map, center, innerRadius);
                     beachCells = HelperMethods.GenCircle(map, center, outerRadius).Except(landCells).ToList();
@@ -186,8 +186,8 @@ namespace MapDesigner.Feature
         {
             Log.Message("[Map Designer] Creating single island");
 
-            center.x += (int)(MapDesignerMod.mod.settings.priSingleCenterLoc.x * myMap.Size.x);
-            center.z += (int)(MapDesignerMod.mod.settings.priSingleCenterLoc.z * myMap.Size.z);
+            center.x += (int)(MapDesignerMod.mod.settings.priSingleCenterDisp.x * myMap.Size.x);
+            center.z += (int)(MapDesignerMod.mod.settings.priSingleCenterDisp.z * myMap.Size.z);
 
             landCells = HelperMethods.GenCircle(myMap, center, innerRadius);
             beachCells = HelperMethods.GenCircle(myMap, center, outerRadius).Except(landCells).ToList();

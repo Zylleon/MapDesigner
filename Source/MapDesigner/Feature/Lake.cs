@@ -37,6 +37,10 @@ namespace MapDesigner.Feature
 
             MapGenFloatGrid lakeGrid = MapGenerator.FloatGridNamed("ZMD_Lake");
             IntVec3 mapCenter = map.Center;
+
+            mapCenter.x += (int)(MapDesignerMod.mod.settings.lakeCenterDisp.x * map.Size.x);
+            mapCenter.z += (int)(MapDesignerMod.mod.settings.lakeCenterDisp.z * map.Size.z);
+
             ModuleBase moduleBase = new Perlin(0.020999999716877937, 2.0, 0.5, 6, Rand.Range(0, 2147483647), QualityMode.High);
 
             foreach (IntVec3 current in map.AllCells)

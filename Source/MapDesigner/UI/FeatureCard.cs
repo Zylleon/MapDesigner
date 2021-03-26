@@ -117,7 +117,12 @@ namespace MapDesigner.UI
 
             if (settings.priStyle == MapDesignerSettings.PriStyle.Single)
             {
-                InterfaceUtility.LocationPicker(listing, 0.2f, ref settings.priSingleCenterLoc.z, ref settings.priSingleCenterLoc.x);
+                //InterfaceUtility.LocationPicker(listing, 0.0f, ref settings.priSingleCenterDisp, 40f);
+
+                //InterfaceUtility.LocationPicker(listing, 0.0f, ref settings.priSingleCenterDisp, settings.priIslandSize
+
+                InterfaceUtility.LocationPicker(listing, 0.5f, ref settings.priSingleCenterDisp, 2 * settings.priIslandSize);
+
             }
 
         }
@@ -128,6 +133,8 @@ namespace MapDesigner.UI
             listing.Label("ZMD_featureLakeInfo".Translate());
 
             settings.lakeSize = InterfaceUtility.LabeledSlider(listing, settings.lakeSize, 0.04f, 1.0f, String.Format("ZMD_lakeSize".Translate(), Math.Round(100 * settings.lakeSize)));
+
+            InterfaceUtility.LocationPicker(listing, 0.45f, ref settings.lakeCenterDisp, 100 * settings.lakeSize);
 
             settings.lakeRoundness = InterfaceUtility.LabeledSlider(listing, settings.lakeRoundness, 0f, 6f, lakeRoundnessLabel, "ZMD_lakeRoundness0".Translate(), "ZMD_lakeRoundness4".Translate());
 
@@ -157,6 +164,8 @@ namespace MapDesigner.UI
 
                 Find.WindowStack.Add(new FloatMenu(shoreTerrList));
             }
+
+
 
         }
 
@@ -283,7 +292,7 @@ namespace MapDesigner.UI
             settings.priIslandSize = 40f;
             settings.priBeachSize = 5f;
             settings.priStyle = MapDesignerSettings.PriStyle.Single;
-            settings.priSingleCenterLoc = new Vector3(0.0f, 0.0f, 0.0f);
+            settings.priSingleCenterDisp = new Vector3(0.0f, 0.0f, 0.0f);
 
             settings.lakeSize = 0.20f;
             settings.lakeBeachSize = 10f;
@@ -291,6 +300,7 @@ namespace MapDesigner.UI
             settings.lakeDepth = 0.5f;
             settings.flagLakeSalty = false;
             settings.lakeShore = "Sand";
+            settings.lakeCenterDisp = new Vector3(0.0f, 0.0f, 0.0f);
 
         }
     }

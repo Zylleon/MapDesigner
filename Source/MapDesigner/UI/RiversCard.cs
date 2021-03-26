@@ -138,8 +138,8 @@ namespace MapDesigner.UI
                     listing.Label("ZMD_riverLocRelDesc".Translate());
                 }
 
-                InterfaceUtility.LocationPicker(listing, 0.3f, ref settings.riverPctSouth, ref settings.riverPctEast);
-
+                //InterfaceUtility.LocationPicker(listing, 0.3f, ref settings.riverCenterDisp, 40f);
+                InterfaceUtility.LocationPicker(listing, 0.3f, ref settings.riverCenterDisp, 40f);
             }
 
 
@@ -166,12 +166,7 @@ namespace MapDesigner.UI
             settings.selRiverStyle = MapDesignerSettings.RiverStyle.Vanilla;
             settings.flagRiverLoc = false;
             settings.flagRiverLocAbs = false;
-            settings.riverPctSouth = 0.0f;
-            settings.riverPctEast = 0.0f;
-
-
-            //public bool flagRiverLoc = false;
-            //public bool flagRiverLocAbs = false;
+            settings.riverCenterDisp = new Vector3(0.0f, 0.0f, 0.0f);
         }
 
 

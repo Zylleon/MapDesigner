@@ -191,7 +191,8 @@ namespace MapDesigner.UI
             TerrainCard.ResetTerrainSettings();
             ThingsCard.ResetThingsSettings();
             RiversCard.ResetRiversSettings();
-            settings.selectedFeature = MapDesignerSettings.Features.None;
+            FeatureCard.ResetFeatureSettings();
+            //settings.selectedFeature = MapDesignerSettings.Features.None;
         }
 
         public static void PresetRandom()

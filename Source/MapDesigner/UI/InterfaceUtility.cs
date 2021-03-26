@@ -141,7 +141,7 @@ namespace MapDesigner.UI
         }
 
 
-        public static void LocationPicker(Listing_Standard listing, float offset, ref float pctSouth, ref float pctEast)
+        public static void LocationPicker(Listing_Standard listing, float offset, ref float pctSouth, ref float pctEast, string dotTex = "GUI/ZMD_dot")
         {
             Rect riverLocRect = listing.GetRect(125f);
             riverLocRect.xMin += 20f;
@@ -161,7 +161,7 @@ namespace MapDesigner.UI
             dot.height = 40f;
             dot.width = 40f;
 
-            Texture2D dotIcon = ContentFinder<Texture2D>.Get("GUI/ZMD_dot", true);
+            Texture2D dotIcon = ContentFinder<Texture2D>.Get(dotTex, true);
             Widgets.DrawTextureRotated(dot, dotIcon, 0);
 
             Rect dotSliderRect = locSelRect;

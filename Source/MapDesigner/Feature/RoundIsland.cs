@@ -19,70 +19,104 @@ namespace MapDesigner.Feature
             }
         }
 
+        private Map myMap;
+
+        private IntVec3 center = new IntVec3(125, 0, 125);
+
+        private List<IntVec3> beachCells = new List<IntVec3>();
+        private List<IntVec3> landCells = new List<IntVec3>();
+
+        private int outerRadius = 50;
+        private int innerRadius = 40;
+        private int beachSize = (int)MapDesignerMod.mod.settings.priBeachSize;
+
         public override void Generate(Map map, GenStepParams parms)
         {
-            IntVec3 center = map.Center;
+            myMap = map;
+            //IntVec3 center = map.Center;
+            center = myMap.Center;
 
-            int outerRadius = (int)(0.01 * map.Size.x * MapDesignerMod.mod.settings.priIslandSize);
+            outerRadius = (int)(0.01 * myMap.Size.x * MapDesignerMod.mod.settings.priIslandSize);
 
             int beachSize = (int)MapDesignerMod.mod.settings.priBeachSize;
-            int innerRadius = outerRadius - beachSize;
+            innerRadius = outerRadius - beachSize;
 
-            List<IntVec3> beachCells = new List<IntVec3>();
-            List<IntVec3> landCells = new List<IntVec3>();
+
 
             Log.Message("[Map Designer] Creating multiple islands");
 
-            if (MapDesignerMod.mod.settings.priMultiSpawn)
+
+            switch (MapDesignerMod.mod.settings.priStyle)
             {
-                Log.Message("[Map Designer] Island Multispawn");
+                case MapDesignerSettings.PriStyle.Single:
+                    GenSingleIsland();
+                    break;
 
-                outerRadius /= 2;
-                innerRadius /= 2;
-                //beachSize /= 2;
+                case MapDesignerSettings.PriStyle.Multi:
+                    GenMultiIslands();
+                    break;
 
-                List<CircleDef> islandList = new List<CircleDef>();
-                islandList.Add(new CircleDef(center, outerRadius));
-                CircleDef circle = new CircleDef(center, outerRadius);
-                islandList = GenNestedCircles(circle, islandList);
+            }
 
-                List<CircleDef> finalIslands = new List<CircleDef>();
-
-                islandList = islandList.OrderByDescending(ci => ci.Radius).ToList();
-
-                foreach (CircleDef c in islandList)
+            if (false)
+            {
+                /*
+                if (MapDesignerMod.mod.settings.priMultiSpawn)
                 {
-                    if (c.Radius > 3)
-                    {
-                        if (c.Center.DistanceToEdge(map) >= 15)
-                        {
-                            List<IntVec3> newCells = HelperMethods.GenCircle(map, c.Center, c.Radius);
-                            if (!newCells.Intersect(beachCells).Any())
-                            {
-                                finalIslands.Add(c);
-                                beachCells.AddRange(HelperMethods.GenCircle(map, c.Center, c.Radius));
-                            }
+                    Log.Message("[Map Designer] Island Multispawn");
 
+                    outerRadius /= 2;
+                    innerRadius /= 2;
+                    //beachSize /= 2;
+
+                    List<CircleDef> islandList = new List<CircleDef>();
+                    islandList.Add(new CircleDef(center, outerRadius));
+                    CircleDef circle = new CircleDef(center, outerRadius);
+                    islandList = GenNestedCircles(circle, islandList);
+
+                    List<CircleDef> finalIslands = new List<CircleDef>();
+
+                    islandList = islandList.OrderByDescending(ci => ci.Radius).ToList();
+
+                    foreach (CircleDef c in islandList)
+                    {
+                        if (c.Radius > 3)
+                        {
+                            if (c.Center.DistanceToEdge(map) >= 15)
+                            {
+                                List<IntVec3> newCells = HelperMethods.GenCircle(map, c.Center, c.Radius);
+                                if (!newCells.Intersect(beachCells).Any())
+                                {
+                                    finalIslands.Add(c);
+                                    beachCells.AddRange(HelperMethods.GenCircle(map, c.Center, c.Radius));
+                                }
+
+                            }
+                        }
+                    }
+
+                    foreach (CircleDef f in finalIslands)
+                    {
+                        if (f.Radius > beachSize * 2)
+                        {
+                            landCells.AddRange(HelperMethods.GenCircle(map, f.Center, f.Radius - beachSize));
+                            beachCells = beachCells.Except(HelperMethods.GenCircle(map, f.Center, f.Radius - beachSize)).ToList();
                         }
                     }
                 }
 
-                foreach (CircleDef f in finalIslands)
+                else
                 {
-                    if (f.Radius > beachSize * 2)
-                    {
-                        landCells.AddRange(HelperMethods.GenCircle(map, f.Center, f.Radius - beachSize));
-                        beachCells = beachCells.Except(HelperMethods.GenCircle(map, f.Center, f.Radius - beachSize)).ToList();
-                    }
+                    Log.Message("[Map Designer] Creating single island");
+
+                    center.x += (int)(MapDesignerMod.mod.settings.priSingleCenterLoc.x * map.Size.x);
+                    center.z += (int)(MapDesignerMod.mod.settings.priSingleCenterLoc.z * map.Size.z);
+
+                    landCells = HelperMethods.GenCircle(map, center, innerRadius);
+                    beachCells = HelperMethods.GenCircle(map, center, outerRadius).Except(landCells).ToList();
                 }
-            }
 
-            else
-            {
-                Log.Message("[Map Designer] Creating single island");
-
-                landCells = HelperMethods.GenCircle(map, center, innerRadius);
-                beachCells = HelperMethods.GenCircle(map, center, outerRadius).Except(landCells).ToList();
+                */
             }
 
             MapGenFloatGrid elevation = MapGenerator.Elevation;
@@ -102,6 +136,64 @@ namespace MapDesigner.Feature
             }
         }
         
+
+
+        private void GenMultiIslands()
+        {
+            Log.Message("[Map Designer] Island Multispawn");
+
+            outerRadius /= 2;
+            innerRadius /= 2;
+            //beachSize /= 2;
+
+            List<CircleDef> islandList = new List<CircleDef>();
+            islandList.Add(new CircleDef(center, outerRadius));
+            CircleDef circle = new CircleDef(center, outerRadius);
+            islandList = GenNestedCircles(circle, islandList);
+
+            List<CircleDef> finalIslands = new List<CircleDef>();
+
+            islandList = islandList.OrderByDescending(ci => ci.Radius).ToList();
+
+            foreach (CircleDef c in islandList)
+            {
+                if (c.Radius > 3)
+                {
+                    if (c.Center.DistanceToEdge(myMap) >= 15)
+                    {
+                        List<IntVec3> newCells = HelperMethods.GenCircle(myMap, c.Center, c.Radius);
+                        if (!newCells.Intersect(beachCells).Any())
+                        {
+                            finalIslands.Add(c);
+                            beachCells.AddRange(HelperMethods.GenCircle(myMap, c.Center, c.Radius));
+                        }
+
+                    }
+                }
+            }
+
+            foreach (CircleDef f in finalIslands)
+            {
+                if (f.Radius > beachSize * 2)
+                {
+                    landCells.AddRange(HelperMethods.GenCircle(myMap, f.Center, f.Radius - beachSize));
+                    beachCells = beachCells.Except(HelperMethods.GenCircle(myMap, f.Center, f.Radius - beachSize)).ToList();
+                }
+            }
+        }
+
+        private void GenSingleIsland()
+        {
+            Log.Message("[Map Designer] Creating single island");
+
+            center.x += (int)(MapDesignerMod.mod.settings.priSingleCenterLoc.x * myMap.Size.x);
+            center.z += (int)(MapDesignerMod.mod.settings.priSingleCenterLoc.z * myMap.Size.z);
+
+            landCells = HelperMethods.GenCircle(myMap, center, innerRadius);
+            beachCells = HelperMethods.GenCircle(myMap, center, outerRadius).Except(landCells).ToList();
+        }
+
+
 
         private static List<CircleDef> GenNestedCircles(CircleDef starterCircle, List<CircleDef> circles, int i = 0)
         {

@@ -99,7 +99,16 @@ namespace MapDesigner
         // Perfectly Round Islands
         public float priIslandSize = 40f;
         public float priBeachSize = 5f;
-        public bool priMultiSpawn = false;
+        //public bool priMultiSpawn = false;
+        public PriStyle priStyle = PriStyle.Single;
+        public Vector3 priSingleCenterLoc = new Vector3(0.0f, 0.0f, 0.0f);
+
+        public enum PriStyle : byte
+        {
+            Single,
+            Multi
+        }
+
 
         // Lake
         public float lakeSize = 0.20f;                  // proportion of map size
@@ -184,7 +193,8 @@ namespace MapDesigner
             // Round islands
             Scribe_Values.Look(ref priIslandSize, "priIslandSize", 40f);
             Scribe_Values.Look(ref priBeachSize, "priBeachSize", 5f);
-            Scribe_Values.Look(ref priMultiSpawn, "priMultiSpawn", false);
+            Scribe_Values.Look(ref priStyle, "priStyle", PriStyle.Single);
+            Scribe_Values.Look(ref priSingleCenterLoc, "priSingleCenterLoc", new Vector3(0.0f, 0.0f, 0.0f));
 
             // Lake
             Scribe_Values.Look(ref lakeSize, "lakeSize", 0.20f);

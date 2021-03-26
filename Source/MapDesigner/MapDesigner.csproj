@@ -304,7 +304,6 @@
     <Compile Include="MapReroll\GenStep_ElevationFertility.cs" />
     <Compile Include="Patches\AnimaTreePatch.cs" />
     <Compile Include="Patches\CaveSettingsPatch.cs" />
-    <Compile Include="Patches\Feature_MapReroll_Compat.cs" />
     <Compile Include="Patches\HarmonyPatches.cs" />
     <Compile Include="Patches\MountainSettingsPatch.cs" />
     <Compile Include="Patches\PopupWindowPatch.cs" />

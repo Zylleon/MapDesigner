@@ -64,7 +64,7 @@ namespace MapDesigner.UI
 
             MapDesignerSettings.Features selectedFeature = settings.selectedFeature;
 
-            if(settings.selectedFeature == MapDesignerSettings.Features.None)
+            if (settings.selectedFeature == MapDesignerSettings.Features.None)
             {
                 DrawNoOptions(listing);
             }
@@ -85,7 +85,7 @@ namespace MapDesigner.UI
 
         }
 
-        public static  void DrawRoundIslandOptions(Listing_Standard listing)
+        public static void DrawRoundIslandOptions(Listing_Standard listing)
         {
             listing.Label("ZMD_featurePRIInfo".Translate());
 
@@ -95,7 +95,31 @@ namespace MapDesigner.UI
             listing.Label("ZMD_priBeachSizeLabel".Translate());
             settings.priBeachSize = listing.Slider(settings.priBeachSize, 1f, 18f);
 
-            listing.CheckboxLabeled("ZMD_priMultiSpawnLabel".Translate(), ref settings.priMultiSpawn);
+            //listing.CheckboxLabeled("ZMD_priMultiSpawnLabel".Translate(), ref settings.priMultiSpawn);
+
+            if (listing.ButtonTextLabeled("ZMD_priIslandStyle".Translate(), priStyleLabel))
+            {
+                List<FloatMenuOption> featureList = new List<FloatMenuOption>();
+
+                featureList.Add(new FloatMenuOption("ZMD_priStyle_Single".Translate(), delegate
+                {
+                    settings.priStyle = MapDesignerSettings.PriStyle.Single;
+                }, MenuOptionPriority.Default, null, null, 0f, null, null));
+
+                featureList.Add(new FloatMenuOption("ZMD_priStyle_Multi".Translate(), delegate
+                {
+                    settings.priStyle = MapDesignerSettings.PriStyle.Multi;
+                }, MenuOptionPriority.Default, null, null, 0f, null, null));
+
+                Find.WindowStack.Add(new FloatMenu(featureList));
+            }
+
+
+            if (settings.priStyle == MapDesignerSettings.PriStyle.Single)
+            {
+                InterfaceUtility.LocationPicker(listing, 0.2f, ref settings.priSingleCenterLoc.z, ref settings.priSingleCenterLoc.x);
+            }
+
         }
 
 
@@ -136,11 +160,14 @@ namespace MapDesigner.UI
 
         }
 
+
+
+
         #region labels
 
         public static string GetFeatureLabel(MapDesignerSettings.Features feature)
         {
-            if(feature == MapDesignerSettings.Features.None)
+            if (feature == MapDesignerSettings.Features.None)
             {
                 return "ZMD_featureNone".Translate();
             }
@@ -155,7 +182,7 @@ namespace MapDesigner.UI
             return "ZMD_selectFeature".Translate();
         }
 
-        private static  string lakeRoundnessLabel
+        private static string lakeRoundnessLabel
         {
             get
             {
@@ -221,7 +248,50 @@ namespace MapDesigner.UI
                 return InterfaceUtility.FormatLabel("ZMD_lakeDepth", "ZMD_lakeDepth" + label);
             }
         }
-        
-        #endregion
+
+
+        private static string priStyleLabel
+        {
+            get
+            {
+                string output = "";
+                switch (settings.priStyle)
+                {
+                    case MapDesignerSettings.PriStyle.Single:
+                        output = "ZMD_priSingleSpawnLabel".Translate();
+                        break;
+
+                    case MapDesignerSettings.PriStyle.Multi:
+                        output = "ZMD_priMultiSpawnLabel".Translate();
+                        break;
+                }
+
+                return output;
+            }
+
+            
+        }
+
+    #endregion
+
+
+
+        public static void ResetFeatureSettings()
+        {
+            settings.selectedFeature = MapDesignerSettings.Features.None;
+
+            settings.priIslandSize = 40f;
+            settings.priBeachSize = 5f;
+            settings.priStyle = MapDesignerSettings.PriStyle.Single;
+            settings.priSingleCenterLoc = new Vector3(0.0f, 0.0f, 0.0f);
+
+            settings.lakeSize = 0.20f;
+            settings.lakeBeachSize = 10f;
+            settings.lakeRoundness = 1.5f;
+            settings.lakeDepth = 0.5f;
+            settings.flagLakeSalty = false;
+            settings.lakeShore = "Sand";
+
+        }
     }
 }

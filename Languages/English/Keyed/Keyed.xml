@@ -267,9 +267,11 @@
   
   
   <!-- Perfectly Round Islands -->
+  <ZMD_priIslandStyle>Island style</ZMD_priIslandStyle>
   <ZMD_priIslandSizeLabel>Island size</ZMD_priIslandSizeLabel>
   <ZMD_priBeachSizeLabel>Beach size</ZMD_priBeachSizeLabel>
-  <ZMD_priMultiSpawnLabel>Spawn multiple islands</ZMD_priMultiSpawnLabel>
+  <ZMD_priSingleSpawnLabel>A single large circular island.</ZMD_priSingleSpawnLabel>
+  <ZMD_priMultiSpawnLabel>Spawn multiple islands. Islands are randomly placed, with the biggest in the middle.</ZMD_priMultiSpawnLabel>
   
   <!-- Lakes -->
   

@@ -21,8 +21,16 @@ namespace MapDesigner.Patches
         {
             if (MapDesignerMod.mod.settings.flagRiverLoc)
             {
-                center.x += Find.World.info.initialMapSize.x * MapDesignerMod.mod.settings.riverPctEast;
-                center.z += Find.World.info.initialMapSize.z * MapDesignerMod.mod.settings.riverPctSouth;
+                if(MapDesignerMod.mod.settings.flagRiverLocAbs)
+                {
+                    center.x =  Find.World.info.initialMapSize.x * (0.5f + MapDesignerMod.mod.settings.riverPctEast);
+                    center.z = Find.World.info.initialMapSize.z * (0.5f + MapDesignerMod.mod.settings.riverPctSouth);
+                }
+                else
+                {
+                    center.x += Find.World.info.initialMapSize.x * MapDesignerMod.mod.settings.riverPctEast;
+                    center.z += Find.World.info.initialMapSize.z * MapDesignerMod.mod.settings.riverPctSouth;
+                }
             }
 
             return true;

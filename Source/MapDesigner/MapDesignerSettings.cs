@@ -65,7 +65,7 @@ namespace MapDesigner
         public bool flagRiverDir = false;
         public float riverDir = 180f;
 
-        public bool flagRiverLoc = false;
+        public bool flagRiverLoc = false;               // for whether the location is picked at all
         public bool flagRiverLocAbs= false;
         public float riverPctSouth = 0f;
         public float riverPctEast = 0f;

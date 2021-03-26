@@ -140,5 +140,46 @@ namespace MapDesigner.UI
             return String.Format("{0}: {1}", label.Translate(), desc.Translate());
         }
 
+
+        public static void LocationPicker(Listing_Standard listing, float offset, ref float pctSouth, ref float pctEast)
+        {
+            Rect riverLocRect = listing.GetRect(125f);
+            riverLocRect.xMin += 20f;
+            riverLocRect.xMax -= 20f;
+            Listing_Standard riverLocListing = new Listing_Standard();
+            riverLocListing.Begin(riverLocRect);
+
+            Rect locSelRect = riverLocListing.GetRect(100f);
+
+            Rect dotRect = locSelRect;
+            dotRect.xMax = dotRect.xMin + locSelRect.height;
+            Widgets.DrawBox(dotRect);
+
+            Rect dot = dotRect;
+            dot.yMin = 30f - 100f * pctSouth;
+            dot.xMin = 30f + 100f * pctEast;
+            dot.height = 40f;
+            dot.width = 40f;
+
+            Texture2D dotIcon = ContentFinder<Texture2D>.Get("GUI/ZMD_dot", true);
+            Widgets.DrawTextureRotated(dot, dotIcon, 0);
+
+            Rect dotSliderRect = locSelRect;
+            dotSliderRect.xMin += locSelRect.height + 20f;
+
+            Listing_Standard locSelListing = new Listing_Standard();
+            locSelListing.Begin(dotSliderRect);
+
+            pctSouth = InterfaceUtility.LabeledSlider(locSelListing, pctSouth, 0 - offset, offset, null, "ZMD_south".Translate(), "ZMD_north".Translate());
+
+            pctEast = InterfaceUtility.LabeledSlider(locSelListing, pctEast, 0 - offset, offset, null, "ZMD_west".Translate(), "ZMD_east".Translate());
+
+            locSelListing.End();
+
+            riverLocListing.End();
+
+        }
+
+
     }
 }

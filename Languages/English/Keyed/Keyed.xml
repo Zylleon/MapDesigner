@@ -240,10 +240,10 @@
 	<ZMD_south>South</ZMD_south>
 	<ZMD_east>East</ZMD_east>
 	<ZMD_west>West</ZMD_west>
-	<ZMD_riverRel>Relative</ZMD_riverRel>
-	<ZMD_riverRelDesc>Customize relative to the vanilla position</ZMD_riverRelDesc>
-	<ZMD_riverAbs>Absolute</ZMD_riverAbs>
-	<ZMD_riverAbsDesc>Customize relative to the center of the map</ZMD_riverAbsDesc>
+	<ZMD_riverLocRel>Relative</ZMD_riverLocRel>
+	<ZMD_riverLocRelDesc>Location is relative to the vanilla position</ZMD_riverLocRelDesc>
+	<ZMD_riverLocAbs>Absolute</ZMD_riverLocAbs>
+	<ZMD_riverLocAbsDesc>Exactly where you put it, no randomness</ZMD_riverLocAbsDesc>
 	
 	
 

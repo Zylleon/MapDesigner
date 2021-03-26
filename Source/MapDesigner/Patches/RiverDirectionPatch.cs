@@ -29,14 +29,14 @@ namespace MapDesigner.Patches
                     if (codes[i].OperandIs(rivermaker))
                     {
                         riverIndex = i;
-                        Log.Message("River index: " + riverIndex);
+                        //Log.Message("River index: " + riverIndex);
                         break;
                     }
                 }
                 if (codes[i].opcode == OpCodes.Ldloc_1)
                 {
                     replaceIndex = i;
-                    Log.Message("replace index: " + replaceIndex);
+                    //Log.Message("replace index: " + replaceIndex);
                 }
             }
             codes.Insert(replaceIndex + 1, new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(HelperMethods), name: nameof(HelperMethods.GetRiverDirection))));

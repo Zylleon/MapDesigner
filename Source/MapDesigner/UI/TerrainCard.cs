@@ -37,7 +37,6 @@ namespace MapDesigner.UI
             List<ThingDef> rockList = HelperMethods.GetRockList();
             int maxRocks = Math.Min(15, rockList.Count);
 
-            //InterfaceUtility.LabeledIntRange(listing, ref settings.rockTypeRange, 1, 5, "ZMD_rockTypeRange".Translate());
             InterfaceUtility.LabeledIntRange(listing, ref settings.rockTypeRange, 1, maxRocks, "ZMD_rockTypeRange".Translate());
 
             listing.CheckboxLabeled("ZMD_flagBiomeRocks".Translate(), ref settings.flagBiomeRocks, "ZMD_flagBiomeRocksTooltip".Translate());

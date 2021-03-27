@@ -155,6 +155,8 @@ namespace MapDesigner.UI
             dotRect.xMax = dotRect.xMin + locSelRect.height;
             Widgets.DrawBox(dotRect);
 
+            Listing_Standard dotListing = new Listing_Standard();
+            dotListing.Begin(dotRect);
             Rect dot = dotRect;
             dot.yMin = 50f - 0.5f * dotSize - 100f * offset.z;
             dot.xMin = 50f - 0.5f * dotSize + 100f * offset.x;
@@ -163,6 +165,7 @@ namespace MapDesigner.UI
 
             Texture2D dotIcon = ContentFinder<Texture2D>.Get(dotTex, true);
             Widgets.DrawTextureRotated(dot, dotIcon, rotation);
+            dotListing.End();
 
             Rect dotSliderRect = locSelRect;
             dotSliderRect.xMin += locSelRect.height + 20f;

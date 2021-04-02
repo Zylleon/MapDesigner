@@ -198,6 +198,9 @@
 	<ZMD_animaCount>Anima trees: </ZMD_animaCount>
 	<ZMD_flagRockChunks>Rock chunks allowed</ZMD_flagRockChunks>
 	<ZMD_flagRockChunksTooltip>If disabled, new maps will have NO chunks.</ZMD_flagRockChunksTooltip>
+	
+	<ZMD_chooseOreTypes>Choose ore types ...</ZMD_chooseOreTypes>
+	<ZMD_resetOreTypes>Reset ore</ZMD_resetOreTypes>
 
 	<ZMD_density0>None</ZMD_density0>
 	<ZMD_density1>Very few</ZMD_density1>

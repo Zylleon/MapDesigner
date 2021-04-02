@@ -51,6 +51,9 @@ namespace MapDesigner
         public float animaCount = 1.0f;
         public bool flagRockChunks = true;
 
+        public Dictionary<string, float> oreCommonality = new Dictionary<string, float>();
+
+
         // Rocks
         public IntRange rockTypeRange = new IntRange(2, 3);
         public bool flagBiomeRocks = false;
@@ -162,6 +165,8 @@ namespace MapDesigner
             Scribe_Values.Look(ref densityOre, "densityOre", 1.0f);
             Scribe_Values.Look(ref animaCount, "animaCount", 1.0f);
             Scribe_Values.Look(ref flagRockChunks, "flagRockChunks", true);
+
+            Scribe_Collections.Look(ref oreCommonality, "oreCommonality");
 
             // Rocks
             Scribe_Values.Look(ref rockTypeRange, "rockTypeRange", new IntRange(2, 3));

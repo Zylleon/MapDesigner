@@ -98,7 +98,28 @@ namespace MapDesigner
                 settings.rockTypeRange.min = 2;
             }
 
-            
+            // Ore
+            try
+            {
+                if (settings.oreCommonality.EnumerableNullOrEmpty())
+                {
+                    settings.oreCommonality = new Dictionary<string, float>();
+                }
+                List<ThingDef> list = GetMineableList();
+                foreach (ThingDef ore in list)
+                {
+                    if (!settings.oreCommonality.ContainsKey(ore.defName))
+                    {
+                        settings.oreCommonality.Add(ore.defName, 1f);
+                    }
+                }
+               
+            }
+            catch
+            {
+                Log.Message("[Map Designer] Could not initialize ore types");
+            }
+
         }
 
 
@@ -333,6 +354,14 @@ namespace MapDesigner
                                        where d.category == ThingCategory.Building && d.building.isNaturalRock && !d.building.isResourceRock && !d.IsSmoothed
                                        select d).ToList<ThingDef>();
             return rockList;
+        }
+
+        public static List<ThingDef> GetMineableList()
+        {
+            List<ThingDef> oreList = (from d in DefDatabase<ThingDef>.AllDefs
+                                       where d.category == ThingCategory.Building && d.building.isResourceRock && d.building.mineableThing != null
+                                       select d).ToList<ThingDef>();
+            return oreList;
         }
 
         public static void ApplyMapRerollPatches()

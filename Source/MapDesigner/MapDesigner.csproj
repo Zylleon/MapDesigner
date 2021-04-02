@@ -300,6 +300,7 @@
   <ItemGroup>
     <Compile Include="BiomeDefault.cs" />
     <Compile Include="DistanceFromOrigin.cs" />
+    <Compile Include="Feature\Cubism.cs" />
     <Compile Include="Feature\Feature_TerrainFrom.cs" />
     <Compile Include="MapReroll\GenStep_ElevationFertility.cs" />
     <Compile Include="Patches\AnimaTreePatch.cs" />
@@ -313,9 +314,11 @@
     <Compile Include="Patches\RiverBankPatch.cs" />
     <Compile Include="Patches\RiverStylePatch.cs" />
     <Compile Include="Patches\RockChunkPatch.cs" />
+    <Compile Include="Patches\OreCommonalityPatch.cs" />
     <Compile Include="Patches\RockTypesPatch.cs" />
     <Compile Include="TerrainDefault.cs" />
     <Compile Include="TerrainUtility.cs" />
+    <Compile Include="UI\OreSelectionDialog.cs" />
     <Compile Include="UI\TerrainCard.cs" />
     <Compile Include="UI\GeneralCard.cs" />
     <Compile Include="UI\MountainCard.cs" />

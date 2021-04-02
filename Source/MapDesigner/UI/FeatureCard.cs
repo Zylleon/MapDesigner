@@ -89,14 +89,6 @@ namespace MapDesigner.UI
         {
             listing.Label("ZMD_featurePRIInfo".Translate());
 
-            listing.Label("ZMD_priIslandSizeLabel".Translate());
-            settings.priIslandSize = listing.Slider(settings.priIslandSize, 5f, 45f);
-
-            listing.Label("ZMD_priBeachSizeLabel".Translate());
-            settings.priBeachSize = listing.Slider(settings.priBeachSize, 1f, 18f);
-
-            //listing.CheckboxLabeled("ZMD_priMultiSpawnLabel".Translate(), ref settings.priMultiSpawn);
-
             if (listing.ButtonTextLabeled("ZMD_priIslandStyle".Translate(), priStyleLabel))
             {
                 List<FloatMenuOption> featureList = new List<FloatMenuOption>();
@@ -115,6 +107,11 @@ namespace MapDesigner.UI
             }
 
 
+
+
+            listing.Label("ZMD_priIslandSizeLabel".Translate());
+            settings.priIslandSize = listing.Slider(settings.priIslandSize, 5f, 45f);
+
             if (settings.priStyle == MapDesignerSettings.PriStyle.Single)
             {
                 //InterfaceUtility.LocationPicker(listing, 0.0f, ref settings.priSingleCenterDisp, 40f);
@@ -124,6 +121,13 @@ namespace MapDesigner.UI
                 InterfaceUtility.LocationPicker(listing, 0.5f, ref settings.priSingleCenterDisp, 2 * settings.priIslandSize);
 
             }
+
+            listing.Label("ZMD_priBeachSizeLabel".Translate());
+            settings.priBeachSize = listing.Slider(settings.priBeachSize, 1f, 18f);
+
+            //listing.CheckboxLabeled("ZMD_priMultiSpawnLabel".Translate(), ref settings.priMultiSpawn);
+
+          
 
         }
 

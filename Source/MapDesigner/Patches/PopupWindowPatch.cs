@@ -5,22 +5,20 @@ using System.Text;
 using System.Threading.Tasks;
 using HarmonyLib;
 using RimWorld;
+using UnityEngine;
 using Verse;
 
 namespace MapDesigner.Patches
 {
-    //[HarmonyPatch(typeof(RimWorld.Page_ConfigureStartingPawns), "DoNext")]
+    //[HarmonyPatch(typeof(RimWorld.Page_ConfigureStartingPawns), "PreOpen")]
     //internal static class PopupWindowPatch
     //{
-    //    static void Postfix()
+    //    static void Prefix()
     //    {
     //        Log.Message("... found window");
-    //        var mod = LoadedModManager.GetMod<MapDesigner_Mod>();
-
-    //        var settingsDialog = new Dialog_ModSettings();
-    //        Find.WindowStack.Add(settingsDialog);
-
+    //        Rect inRect2 = new Rect(0f, 0f, 300f, 300f);
+    //        Mod selMod = LoadedModManager.GetMod<MapDesignerMod>();
+    //        selMod.DoSettingsWindowContents(inRect2);
     //    }
-
     //}
 }

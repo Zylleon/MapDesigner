@@ -27,6 +27,11 @@ namespace MapDesigner.UI
             settings.densityGeyser = ThingsSlider(listingStandard, settings.densityGeyser, 2, "ZMD_densityGeyser");
             settings.densityOre = ThingsSlider(listingStandard, settings.densityOre, 2, "ZMD_densityOre");
 
+            if (InterfaceUtility.SizedTextButton(listingStandard, "ZMD_chooseOreTypes".Translate()))
+            {
+                Find.WindowStack.Add(new OreSelectionDialog());
+            }
+
             listingStandard.CheckboxLabeled("ZMD_flagRockChunks".Translate(), ref settings.flagRockChunks, "ZMD_flagRockChunksTooltip".Translate());
 
 

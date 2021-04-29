@@ -183,10 +183,9 @@ namespace MapDesigner.Patches
             {
                 ModuleBase exitPath = new AxisAsValueX();
                 ModuleBase crossways = new AxisAsValueZ();
-                double exitDir = Rand.Range(0, 360);
+                //double exitDir = Rand.Range(0, 360);
+                double exitDir = 90.0 * Rand.Range(0, 3);
 
-                //ModuleBase noise = new Perlin(0.021, 3.5, 0.5, 3, Rand.Range(0, 2147483647), QualityMode.Medium);
-                //ModuleBase noise = new Perlin(Rand.Range(0.015f, 0.035f), 2.0, 0.5, 3, Rand.Range(0, 2147483647), QualityMode.Medium);
                 ModuleBase noise = new Perlin(Rand.Range(0.015f, 0.03f), Math.Min(3.5, settings.hillSmoothness), 0.5, 3, Rand.Range(0, 2147483647), QualityMode.Medium);
 
                 noise = new Multiply(noise, new Const(25.0));
@@ -203,7 +202,8 @@ namespace MapDesigner.Patches
                 {
                     if (crossways.GetValue(current) > 0f)
                     {
-                        elevation[current] *= Math.Min(1, 0.1f * exitPath.GetValue(current) - 0.5f);
+                        elevation[current] *= Math.Min(1, 0.1f * exitPath.GetValue(current) - 1f);
+
                     }
                 }
 

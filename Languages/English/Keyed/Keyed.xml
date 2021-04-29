@@ -228,6 +228,8 @@
 	<ZMD_riverStyleVanillaDesc>Normal river</ZMD_riverStyleVanillaDesc>
 	<ZMD_riverStyleSpring>Spring</ZMD_riverStyleSpring>
 	<ZMD_riverStyleSpringDesc>Rivers starts near the middle of the map and continues to the edge</ZMD_riverStyleSpringDesc>
+	<ZMD_riverStyleCanal>Canal</ZMD_riverStyleCanal>
+	<ZMD_riverStyleCanalDesc>Perfectly straight rivers</ZMD_riverStyleCanalDesc>
 	<ZMD_riverStyleConfluence>Confluence</ZMD_riverStyleConfluence>
 	<ZMD_riverStyleConfluenceDesc>Two rivers merge into one</ZMD_riverStyleConfluenceDesc>
 	<ZMD_riverStyleFork>Fork</ZMD_riverStyleFork>

@@ -38,14 +38,14 @@ namespace MapDesigner.Patches
 
 
 
-        static void Postfix(ref ModuleBase ___generator, ModuleBase ___coordinateX, ModuleBase ___coordinateZ, ModuleBase ___shallowizer, float ___surfaceLevel, List<IntVec3> ___lhs, List<IntVec3> ___rhs, Vector3 center, float angle)
+        static void Postfix(ref ModuleBase ___generator, ref ModuleBase ___coordinateX, ref ModuleBase ___coordinateZ, ModuleBase ___shallowizer, float ___surfaceLevel, List<IntVec3> ___lhs, List<IntVec3> ___rhs, Vector3 center, float angle)
         {
             MapDesignerSettings settings = MapDesignerMod.mod.settings;
             //___generator = new Abs(___generator);
             //___coordinateX = new Abs(___coordinateX);
-            //ModuleBase originalBranch = new AxisAsValueX();
-            //ModuleBase riverA = new AxisAsValueX();
-            //ModuleBase riverB = new AxisAsValueX();
+            ModuleBase originalBranch = new AxisAsValueX();
+            ModuleBase riverA = new AxisAsValueX();
+            ModuleBase riverB = new AxisAsValueX();
 
             ////ModuleBase originalBranch = new AxisAsValueX();
             ////originalBranch = new Rotate(0.0, angle, 0.0, originalBranch);
@@ -62,24 +62,45 @@ namespace MapDesigner.Patches
 
                     break;
 
-                //case MapDesignerSettings.RiverStyle.Confluence:
-                //    Log.Message("[Map Designer] Merging rivers");
+                case MapDesignerSettings.RiverStyle.Confluence:
+                    Log.Message("[Map Designer] Merging rivers");
 
-                //    originalBranch = new Rotate(0.0, angle - 180, 0.0, originalBranch);
-                //    originalBranch = new Translate((double)(-(double)center.x), 0.0, (double)(-(double)center.z), originalBranch);
-                //    originalBranch = new Subtract(new Abs(originalBranch), new Min(___coordinateZ, new Const(0.0)));
+                    ___coordinateX = new AxisAsValueX();
+                    ___coordinateZ = new AxisAsValueZ();
+                    ___coordinateX = new Rotate(0.0, 0f - angle, 0.0, ___coordinateX);
+                    ___coordinateZ = new Rotate(0.0, 0f - angle, 0.0, ___coordinateZ);
+                    ___coordinateX = new Translate(0f - center.x, 0.0, 0f - center.z, ___coordinateX);
+                    ___coordinateZ = new Translate(0f - center.x, 0.0, 0f - center.z, ___coordinateZ);
+                    ModuleBase moduleBase = new Perlin(0.029999999329447746, 2.0, 0.5, 3, Rand.Range(0, int.MaxValue), QualityMode.Medium);
+                    ModuleBase moduleBase2 = new Perlin(0.029999999329447746, 2.0, 0.5, 3, Rand.Range(0, int.MaxValue), QualityMode.Medium);
+                    ModuleBase moduleBase3 = new Const(8.0);
+                    moduleBase = new Multiply(moduleBase, moduleBase3);
+                    moduleBase2 = new Multiply(moduleBase2, moduleBase3);
+                    ___coordinateX = new Displace(___coordinateX, moduleBase, new Const(0.0), moduleBase2);
+                    ___coordinateZ = new Displace(___coordinateZ, moduleBase, new Const(0.0), moduleBase2);
 
-                //    riverA = new Rotate(0.0, angle - 30, 0.0, riverA);
-                //    riverA = new Translate((double)(-(double)center.x), 0.0, (double)(-(double)center.z), riverA);
-                //    riverA = new Subtract(new Abs(riverA), new Min(new Invert(___coordinateZ), new Const(0.0)));
 
-                //    riverB = new Rotate(0.0, angle + 30, 0.0, riverB);
-                //    riverB = new Translate((double)(-(double)center.x), 0.0, (double)(-(double)center.z), riverB);
-                //    riverB = new Subtract(new Abs(riverB), new Min(new Invert(___coordinateZ), new Const(0.0)));
 
-                //    ___generator = new Min(riverA, riverB);
-                //    ___generator = new Min(originalBranch, ___generator);
-                //    break;
+                    originalBranch = new Rotate(0.0, angle - 180, 0.0, originalBranch);
+                    originalBranch = new Translate((double)(-(double)center.x), 0.0, (double)(-(double)center.z), originalBranch);
+                    originalBranch = new Subtract(new Abs(originalBranch), new Min(___coordinateZ, new Const(0.0)));
+
+                    riverA = new Rotate(0.0, angle - 30, 0.0, riverA);
+                    riverA = new Translate((double)(-(double)center.x), 0.0, (double)(-(double)center.z), riverA);
+                    riverA = new Subtract(new Abs(riverA), new Min(new Invert(___coordinateZ), new Const(0.0)));
+
+                    riverB = new Rotate(0.0, angle + 30, 0.0, riverB);
+                    riverB = new Translate((double)(-(double)center.x), 0.0, (double)(-(double)center.z), riverB);
+                    riverB = new Subtract(new Abs(riverB), new Min(new Invert(___coordinateZ), new Const(0.0)));
+
+                    ___generator = new Min(riverA, riverB);
+                    ___generator = new Min(originalBranch, ___generator);
+
+
+
+                    ___generator = new Displace(___generator, moduleBase, new Const(0.0), moduleBase2);
+
+                    break;
 
 
                 //case MapDesignerSettings.RiverStyle.Fork:
@@ -149,50 +170,9 @@ namespace MapDesigner.Patches
             return true;
         }
     }
-/*
-    
-    [HarmonyPatch(typeof(RimWorld.RiverMaker), "WaterCoordinateAt")]
-    static class River_Flow_Patch
-    {
-        static bool Prefix(IntVec3 loc, ref Vector3 __result, ModuleBase ___coordinateX, ModuleBase ___coordinateZ)
-        {
-            //__result = new Vector3(___coordinateX.GetValue(loc), 0f, ___coordinateZ.GetValue(loc));
-            //__result = new Vector3(___coordinateX.GetValue(loc), 0f, Math.Abs(___coordinateZ.GetValue(loc)));
-            //__result = new Vector3(___coordinateZ.GetValue(loc) + ___coordinateX.GetValue(loc), 0f, ___coordinateZ.GetValue(loc));
 
 
-            // these return the correct angles for the L and R branches of a forked river
-            //__result = new Vector3(___coordinateX.GetValue(loc) + 0.6f * ___coordinateZ.GetValue(loc), 0f, ___coordinateZ.GetValue(loc));
-            //__result = new Vector3(___coordinateX.GetValue(loc) - 0.6f * ___coordinateZ.GetValue(loc), 0f, ___coordinateZ.GetValue(loc));
 
 
-            #region messy confluence
-            // this makes debug data in approx. the right shape for a confluence, but the forked part is messy
-            
-            if (loc.z < 125)
-            {
-                __result = new Vector3(___coordinateX.GetValue(loc), 0f, ___coordinateZ.GetValue(loc));
-
-            }
-
-            else
-            {
-                if (loc.x < 125)
-                {
-                    __result = new Vector3(___coordinateX.GetValue(loc) + 0.6f * ___coordinateZ.GetValue(loc), 0f, ___coordinateZ.GetValue(loc));
-                }
-                else
-                {
-                    __result = new Vector3(___coordinateX.GetValue(loc) - 0.6f * ___coordinateZ.GetValue(loc), 0f, ___coordinateZ.GetValue(loc));
-
-                }
-            }
-            
-            #endregion
-
-            return false;
-        }
-    }
-*/
 
 }

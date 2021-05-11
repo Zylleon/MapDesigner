@@ -93,12 +93,12 @@ namespace MapDesigner.UI
             {
                 List<FloatMenuOption> featureList = new List<FloatMenuOption>();
 
-                featureList.Add(new FloatMenuOption("ZMD_priStyle_Single".Translate(), delegate
+                featureList.Add(new FloatMenuOption("ZMD_priSingleLabel".Translate(), delegate
                 {
                     settings.priStyle = MapDesignerSettings.PriStyle.Single;
                 }, MenuOptionPriority.Default, null, null, 0f, null, null));
 
-                featureList.Add(new FloatMenuOption("ZMD_priStyle_Multi".Translate(), delegate
+                featureList.Add(new FloatMenuOption("ZMD_priMultiLabel".Translate(), delegate
                 {
                     settings.priStyle = MapDesignerSettings.PriStyle.Multi;
                 }, MenuOptionPriority.Default, null, null, 0f, null, null));
@@ -271,11 +271,11 @@ namespace MapDesigner.UI
                 switch (settings.priStyle)
                 {
                     case MapDesignerSettings.PriStyle.Single:
-                        output = "ZMD_priSingleSpawnLabel".Translate();
+                        output = "ZMD_priSingleDesc".Translate();
                         break;
 
                     case MapDesignerSettings.PriStyle.Multi:
-                        output = "ZMD_priMultiSpawnLabel".Translate();
+                        output = "ZMD_priMultiDesc".Translate();
                         break;
                 }
 

@@ -44,8 +44,8 @@
   <ZMD_applyPreset>プリセットを許可</ZMD_applyPreset>
   <ZMD_reset>全てをリセット</ZMD_reset>
 
-  <ZMD_presetNone>なし</ZMD_presetNone>
-  <ZMD_presetNoneDesc>プリセットが選択されていません。</ZMD_presetNoneDesc>
+  <ZMD_presetNone>プリセット無し</ZMD_presetNone>
+  <ZMD_presetNoneDesc>プリセットが選択されていません</ZMD_presetNoneDesc>
 
   <ZMD_presetVanilla>バニラ</ZMD_presetVanilla>
   <ZMD_presetVanillaDesc>デフォルトのバニラ状態です。</ZMD_presetVanillaDesc>
@@ -66,7 +66,7 @@
   <ZMD_presetCanyonDesc>岩の種類が豊富な狭い渓谷です。マップタイル上に川がある場合、川は渓谷に沿って流れます。</ZMD_presetCanyonDesc>
 
   <ZMD_presetZyllesChoice>Mod作成者の選択</ZMD_presetZyllesChoice>
-  <ZMD_presetZyllesChoiceDesc>私のオオスメ設定です。肥沃な土壌がわずかに増えて、狭い部分が多く半分閉ざされた谷です。</ZMD_presetZyllesChoiceDesc>
+  <ZMD_presetZyllesChoiceDesc>私のオオスメ設定です。</ZMD_presetZyllesChoiceDesc>
 
 
 
@@ -78,7 +78,7 @@
   <ZMD_flagPopupDesc>これらの設定には、スタートメニューからオプションを開きMod設定からMap-Designerを開くことでいつでも設定可能です。</ZMD_flagPopupDesc>
 
   <ZMD_flagHomeMapOnly>一部の設定をホームマップに制限</ZMD_flagHomeMapOnly>
-  <ZMD_flagHomeMapOnlyDesc>制限後に適用されるいくつかの設定：山と丘だけ\n\nチェックした場合、これらはクエストマップや、AI派閥の拠点とその他のホームマップで無いマップがバニラと同じになります。</ZMD_flagHomeMapOnlyDesc>
+  <ZMD_flagHomeMapOnlyDesc>制限後に適用される設定：山と丘だけ\n\nチェックした場合、これらはクエストマップや、AI派閥の拠点とその他のホームマップで無いマップがバニラと同じになります。</ZMD_flagHomeMapOnlyDesc>
 
 
 
@@ -196,8 +196,8 @@
   <ZMD_densityGeyser>間欠泉密度</ZMD_densityGeyser>
   <ZMD_densityOre>鉱物密度</ZMD_densityOre>
   <ZMD_animaCount>アニマツリーの数：</ZMD_animaCount>
-  <ZMD_flagRockChunks>岩の塊を許可する</ZMD_flagRockChunks>
-  <ZMD_flagRockChunksTooltip>無効にすると、新しいマップには岩の塊が存在しなくなります。</ZMD_flagRockChunksTooltip>
+  <ZMD_flagRockChunks>岩の塊を許可</ZMD_flagRockChunks>
+  <ZMD_flagRockChunksTooltip>無効にすると、新しいマップにはチャンクがなくなります。</ZMD_flagRockChunksTooltip>
 
   <ZMD_density0>なし</ZMD_density0>
   <ZMD_density1>最低</ZMD_density1>
@@ -235,15 +235,15 @@
   <ZMD_riverStyleIslandDesc>川が別れて島(中州)を形成して反対側でまた合流します</ZMD_riverStyleIslandDesc>
 
 
-  <ZMD_riverPosition>川の位置を編集する</ZMD_riverPosition>
+  <ZMD_riverPosition>川の位置を変更する</ZMD_riverPosition>
   <ZMD_north>北</ZMD_north>
   <ZMD_south>南</ZMD_south>
   <ZMD_east>東</ZMD_east>
   <ZMD_west>西</ZMD_west>
   <ZMD_riverRel>相対配置</ZMD_riverRel>
-  <ZMD_riverRelDesc>バニラの配置を基準としてカスタマイズします</ZMD_riverRelDesc>
-  <ZMD_riverAbs>中央配置</ZMD_riverAbs>
-  <ZMD_riverAbsDesc>マップの中心を基準にしてカスタマイズします</ZMD_riverAbsDesc>
+  <ZMD_riverRelDesc>バニラの位置を基準にして変更する</ZMD_riverRelDesc>
+  <ZMD_riverAbs>中心配置</ZMD_riverAbs>
+  <ZMD_riverAbsDesc>マップの中心を基準にして変更する</ZMD_riverAbsDesc>
 
 
 
@@ -251,7 +251,7 @@
   <!-- Tabs -->
 
   <ZMD_featureTab>マップの特徴</ZMD_featureTab>
-  <ZMD_featureTabInfo>コロニーマップに特定の機能を追加します。これらの機能はクエストマップのような他のマップには適用されません。</ZMD_featureTabInfo>
+  <ZMD_featureTabInfo>拠点のマップに特定の機能を追加します。これらの機能はクエストのマップのような他のマップには適用されません。\n\nこの設定内容はプレビュー表示されませんが再ロールすることはできます。</ZMD_featureTabInfo>
 
   <!-- Features -->
   <ZMD_selectFeature>特徴を選択</ZMD_selectFeature>
@@ -260,7 +260,7 @@
   <ZMD_featureNoneInfo>基本マップ</ZMD_featureNoneInfo>
 
   <ZMD_featurePRI>丸い島々</ZMD_featurePRI>
-  <ZMD_featurePRIInfo>このマップは浅瀬に囲まれた１つ以上の丸い島です。トレーダーのキャラバン隊や宙賊や野生動物はマップの隅から普通に入ってきます。</ZMD_featurePRIInfo>
+  <ZMD_featurePRIInfo>浅瀬に囲まれた１つ以上の丸い島。交易やキャラバン、宙賊、野生動物が普通にやってきます。</ZMD_featurePRIInfo>
 
   <ZMD_featureLake>湖</ZMD_featureLake>
   <ZMD_featureLakeInfo>自然に見える湖。</ZMD_featureLakeInfo>
@@ -269,7 +269,10 @@
   <!-- Perfectly Round Islands -->
   <ZMD_priIslandSizeLabel>島サイズ</ZMD_priIslandSizeLabel>
   <ZMD_priBeachSizeLabel>ビーチサイズ</ZMD_priBeachSizeLabel>
-  <ZMD_priMultiSpawnLabel>複数の島々</ZMD_priMultiSpawnLabel>
+  <ZMD_priSingleLabel>Single island</ZMD_priSingleLabel>
+  <ZMD_priSingleDesc>A single large circular island.</ZMD_priSingleDesc>
+  <ZMD_priMultiLabel>Multiple islands</ZMD_priMultiLabel>
+  <ZMD_priMultiDesc>複数の島々</ZMD_priMultiDesc>
 
   <!-- Lakes -->
 

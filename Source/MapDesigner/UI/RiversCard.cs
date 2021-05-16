@@ -58,10 +58,10 @@ namespace MapDesigner.UI
                 {
                     settings.selRiverStyle = MapDesignerSettings.RiverStyle.Spring;
                 }));
-                riverStyleList.Add(new FloatMenuOption("ZMD_riverStyleConfluence".Translate(), delegate
-                {
-                    settings.selRiverStyle = MapDesignerSettings.RiverStyle.Confluence;
-                }));
+                //riverStyleList.Add(new FloatMenuOption("ZMD_riverStyleConfluence".Translate(), delegate
+                //{
+                //    settings.selRiverStyle = MapDesignerSettings.RiverStyle.Confluence;
+                //}));
                 //riverStyleList.Add(new FloatMenuOption("ZMD_riverStyleFork".Translate(), delegate
                 //{
                 //    settings.selRiverStyle = MapDesignerSettings.RiverStyle.Fork;

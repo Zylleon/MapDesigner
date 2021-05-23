@@ -127,15 +127,17 @@ namespace MapDesigner.UI
             listing.CheckboxLabeled("ZMD_riverPosition".Translate(), ref MapDesignerMod.mod.settings.flagRiverLoc, "ZMD_riverPosition".Translate());
             if (MapDesignerMod.mod.settings.flagRiverLoc)
             {
-                listing.CheckboxLabeled("ZMD_riverLocAbs".Translate(), ref MapDesignerMod.mod.settings.flagRiverLocAbs, "ZMD_riverLocAbsDesc".Translate());
-
                 if(settings.flagRiverLocAbs)
                 {
-                    listing.Label("ZMD_riverLocAbsDesc".Translate());
+                    listing.CheckboxLabeled(String.Format("{0}: {1}", "ZMD_riverLocAbs".Translate(), "ZMD_riverLocAbsDesc".Translate()), ref MapDesignerMod.mod.settings.flagRiverLocAbs, "ZMD_riverLocAbsDesc".Translate());
+                    //listing.Label("ZMD_riverLocAbsDesc".Translate());
                 }
                 else
                 {
-                    listing.Label("ZMD_riverLocRelDesc".Translate());
+                    listing.CheckboxLabeled(String.Format("{0}: {1}", "ZMD_riverLocRel".Translate(), "ZMD_riverLocRelDesc".Translate()), ref MapDesignerMod.mod.settings.flagRiverLocAbs, "ZMD_riverLocRelDesc".Translate());
+
+                    //listing.CheckboxLabeled("ZMD_riverLocRel".Translate(), ref MapDesignerMod.mod.settings.flagRiverLocAbs, "ZMD_riverLocRelDesc".Translate());
+                    //listing.Label("ZMD_riverLocRelDesc".Translate());
                 }
 
                 //InterfaceUtility.LocationPicker(listing, 0.3f, ref settings.riverCenterDisp, 40f);

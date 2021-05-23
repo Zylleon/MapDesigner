@@ -199,6 +199,9 @@
   <ZMD_flagRockChunks>岩の塊を許可</ZMD_flagRockChunks>
   <ZMD_flagRockChunksTooltip>無効にすると、新しいマップにはチャンクがなくなります。</ZMD_flagRockChunksTooltip>
 
+  <ZMD_chooseOreTypes>鉱石の種類を選択...</ZMD_chooseOreTypes>
+  <ZMD_resetOreTypes>鉱石をリセット</ZMD_resetOreTypes>
+
   <ZMD_density0>なし</ZMD_density0>
   <ZMD_density1>最低</ZMD_density1>
   <ZMD_density2>低</ZMD_density2>
@@ -225,6 +228,8 @@
   <ZMD_riverStyleVanillaDesc>普通の河川</ZMD_riverStyleVanillaDesc>
   <ZMD_riverStyleSpring>泉</ZMD_riverStyleSpring>
   <ZMD_riverStyleSpringDesc>河川はマップ中央付近から始まり、マップの端まで続いています</ZMD_riverStyleSpringDesc>
+  <ZMD_riverStyleCanal>運河</ZMD_riverStyleCanal>
+  <ZMD_riverStyleCanalDesc>完全に直線な川</ZMD_riverStyleCanalDesc>
   <ZMD_riverStyleConfluence>合流</ZMD_riverStyleConfluence>
   <ZMD_riverStyleConfluenceDesc>2つの川が1つに合流しています</ZMD_riverStyleConfluenceDesc>
   <ZMD_riverStyleFork>分岐</ZMD_riverStyleFork>
@@ -240,17 +245,17 @@
   <ZMD_south>南</ZMD_south>
   <ZMD_east>東</ZMD_east>
   <ZMD_west>西</ZMD_west>
-  <ZMD_riverRel>相対配置</ZMD_riverRel>
-  <ZMD_riverRelDesc>バニラの位置を基準にして変更する</ZMD_riverRelDesc>
-  <ZMD_riverAbs>中心配置</ZMD_riverAbs>
-  <ZMD_riverAbsDesc>マップの中心を基準にして変更する</ZMD_riverAbsDesc>
+  <ZMD_riverLocRel>相対配置</ZMD_riverLocRel>
+  <ZMD_riverLocRelDesc>バニラの位置を基準にしています</ZMD_riverLocRelDesc>
+  <ZMD_riverLocAbs>中心配置</ZMD_riverLocAbs>
+  <ZMD_riverLocAbsDesc>どこに配置してもランダムにはなりません</ZMD_riverLocAbsDesc>
 
 
 
   <!-- Features -->
   <!-- Tabs -->
 
-  <ZMD_featureTab>マップの特徴</ZMD_featureTab>
+  <ZMD_featureTab>特徴的なマップ</ZMD_featureTab>
   <ZMD_featureTabInfo>拠点のマップに特定の機能を追加します。これらの機能はクエストのマップのような他のマップには適用されません。\n\nこの設定内容はプレビュー表示されませんが再ロールすることはできます。</ZMD_featureTabInfo>
 
   <!-- Features -->
@@ -267,12 +272,13 @@
 
 
   <!-- Perfectly Round Islands -->
+  <ZMD_priIslandStyle>島の形</ZMD_priIslandStyle>
   <ZMD_priIslandSizeLabel>島サイズ</ZMD_priIslandSizeLabel>
   <ZMD_priBeachSizeLabel>ビーチサイズ</ZMD_priBeachSizeLabel>
-  <ZMD_priSingleLabel>Single island</ZMD_priSingleLabel>
-  <ZMD_priSingleDesc>A single large circular island.</ZMD_priSingleDesc>
-  <ZMD_priMultiLabel>Multiple islands</ZMD_priMultiLabel>
-  <ZMD_priMultiDesc>複数の島々</ZMD_priMultiDesc>
+  <ZMD_priSingleLabel>孤島</ZMD_priSingleLabel>
+  <ZMD_priSingleDesc>大きな円い形の孤島</ZMD_priSingleDesc>
+  <ZMD_priMultiLabel>複数の島々</ZMD_priMultiLabel>
+  <ZMD_priMultiDesc>ランダム配置された諸島です。中央の島が最大になります。</ZMD_priMultiDesc>
 
   <!-- Lakes -->
 

@@ -1,4 +1,5 @@
-﻿using HarmonyLib;
+﻿using BiomesCore.DefModExtensions;
+using HarmonyLib;
 using RimWorld;
 using System;
 using System.Collections.Generic;
@@ -242,15 +243,18 @@ namespace MapDesigner
                         //Log.Message("Doing adjustments for " + biome.defName);
                         try
                         {
+                       
                             TerrainDefault newTerrain;
-                            if (biome.defName.Contains("BiomesIsland"))
+                            float minFertBound = -0.2f;
+                            float maxFertBound = 1.2f;
+
+                            if (ModsConfig.IsActive("BiomesTeam.BiomesCore"))
                             {
-                                newTerrain = TerrainUtility.StretchTerrainFertility(biomeDefaults[biome.defName].terrain, -.20f, 17.0f);
+                                maxFertBound = HelperMethods.GetMaxFertByBiome(biome);
                             }
-                            else
-                            {
-                                newTerrain = TerrainUtility.StretchTerrainFertility(biomeDefaults[biome.defName].terrain, -.20f, 1.20f);
-                            }
+                            newTerrain = TerrainUtility.StretchTerrainFertility(biomeDefaults[biome.defName].terrain, minFertBound, maxFertBound);
+
+
                             biome.terrainsByFertility = newTerrain.terrainsByFertility;
                             biome.terrainPatchMakers = newTerrain.terrainPatchMakers;
                         }
@@ -371,5 +375,23 @@ namespace MapDesigner
             new Harmony("zylle.MapDesigner_RerollCompat").Patch(targetmethod, prefixmethod);
         }
 
+
+        public static float GetMaxFertByBiome(BiomeDef biome)
+        {
+            if (!biome.HasModExtension<BiomesMap>())
+            {
+                return 1.2f;
+            }
+            if (biome.GetModExtension<BiomesMap>().isOasis)
+            {
+                return 17f;
+            }
+            if (biome.GetModExtension<BiomesMap>().isIsland)
+            {
+                return 17f;
+            }
+
+            return 1.2f;
+        }
     }
 }

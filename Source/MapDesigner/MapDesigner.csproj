@@ -39,6 +39,10 @@
       <HintPath>..\..\..\..\RimWorldWin64_Data\Managed\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="BiomesCore">
+      <HintPath>..\..\..\RWBiomes_Core\1.2\Assemblies\BiomesCore.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="MapReroll">
       <HintPath>..\..\..\..\..\..\workshop\content\294100\761315214\v1.1\Assemblies\MapReroll.dll</HintPath>
       <Private>False</Private>

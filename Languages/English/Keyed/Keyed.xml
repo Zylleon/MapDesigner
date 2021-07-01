@@ -214,7 +214,7 @@
 	
 <!-- ===================================	Rivers	================================= -->
 	
-	<ZMD_riverTab>Rivers</ZMD_riverTab>
+	<ZMD_riverTab>Rivers and Beaches</ZMD_riverTab>
 	
 	<ZMD_sizeRiver>River size</ZMD_sizeRiver>
 	
@@ -251,6 +251,10 @@
 	<ZMD_riverLocAbsDesc>Exactly where you put it, no randomness</ZMD_riverLocAbsDesc>
 	
 	
+	<!-- Beaches -->
+	
+	<ZMD_coastDir>Coast direction</ZMD_coastDir>
+	<ZMD_coastDirVanilla>Vanilla</ZMD_coastDirVanilla>
 
 <!-- ===================================	Features	================================= -->
     <!-- Tabs -->

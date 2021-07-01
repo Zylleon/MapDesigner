@@ -19,18 +19,40 @@ namespace MapDesigner.UI
 
         public static void DrawRiversCard(Rect rect)
         {
+            // setting up the scrollbar
+            Rect rect2 = rect.ContractedBy(4f);
+
+            // initial height with everything collapsed
+            float height = 400f;
+            if (settings.flagRiverBeach)
+            {
+                height += 100f;
+            }
+            if (settings.flagRiverDir)
+            {
+                height += 70f;
+            }
+            if (settings.flagRiverLoc)
+            {
+                height += 150f;
+            }
+
+            Rect viewRect = new Rect(0f, 0f, rect2.width - 18f, Math.Max(height, viewHeight));
+            Widgets.BeginScrollView(rect2, ref scrollPosition, viewRect, true);
+
+
             Listing_Standard listing = new Listing_Standard();
-            listing.Begin(rect);
+            listing.Begin(viewRect);
             listing.GapLine();
 
-            // size and style
+            // River size and style
             settings.sizeRiver = InterfaceUtility.LabeledSlider(listing, settings.sizeRiver, 0.1f, 3f, InterfaceUtility.FormatLabel("ZMD_sizeRiver", "ZMD_size" + ThingsCard.GetDensityLabel(settings.sizeRiver)), "ZMD_size1".Translate(), "ZMD_size6".Translate());
             Rect selStyleRect = listing.GetRect(40f);
 
             Rect selButtonRect = selStyleRect;
             Rect descRect = selStyleRect;
-            selButtonRect.xMax -= 0.66f * rect.width;
-            descRect.xMin += 0.34f * rect.width;
+            selButtonRect.xMax -= 0.66f * viewRect.width;
+            descRect.xMin += 0.34f * viewRect.width;
             Rect iconRect = new Rect(descRect);
             iconRect.xMin += 10f;
             iconRect.xMax = iconRect.xMin + 40f;
@@ -76,7 +98,7 @@ namespace MapDesigner.UI
 
             listing.Gap(listing.verticalSpacing);
 
-            // river beaches
+            // river banks
             listing.CheckboxLabeled("ZMD_flagRiverBeach".Translate(), ref settings.flagRiverBeach, "ZMD_flagRiverBeach".Translate());
 
             if(MapDesignerMod.mod.settings.flagRiverBeach)
@@ -130,19 +152,55 @@ namespace MapDesigner.UI
                 if(settings.flagRiverLocAbs)
                 {
                     listing.CheckboxLabeled(String.Format("{0}: {1}", "ZMD_riverLocAbs".Translate(), "ZMD_riverLocAbsDesc".Translate()), ref MapDesignerMod.mod.settings.flagRiverLocAbs, "ZMD_riverLocAbsDesc".Translate());
-                    //listing.Label("ZMD_riverLocAbsDesc".Translate());
                 }
                 else
                 {
                     listing.CheckboxLabeled(String.Format("{0}: {1}", "ZMD_riverLocRel".Translate(), "ZMD_riverLocRelDesc".Translate()), ref MapDesignerMod.mod.settings.flagRiverLocAbs, "ZMD_riverLocRelDesc".Translate());
 
-                    //listing.CheckboxLabeled("ZMD_riverLocRel".Translate(), ref MapDesignerMod.mod.settings.flagRiverLocAbs, "ZMD_riverLocRelDesc".Translate());
-                    //listing.Label("ZMD_riverLocRelDesc".Translate());
                 }
 
-                //InterfaceUtility.LocationPicker(listing, 0.3f, ref settings.riverCenterDisp, 40f);
                 InterfaceUtility.LocationPicker(listing, 0.3f, ref settings.riverCenterDisp, 40f);
             }
+
+
+
+            // Beaches
+            listing.GapLine();
+
+            Rect selCoastDir = listing.GetRect(40f);
+            selCoastDir.xMax -= 0.66f * viewRect.width;
+            Listing_Standard Listing_selCoastDir = new Listing_Standard();
+            Listing_selCoastDir.Begin(selCoastDir);
+
+            // beach direction
+            if (Listing_selCoastDir.ButtonTextLabeled("ZMD_coastDir".Translate(), GetCoastDirLabel(settings.coastDir).Translate()))
+            {
+                List<FloatMenuOption> coastDirList = new List<FloatMenuOption>();
+
+                coastDirList.Add(new FloatMenuOption("ZMD_coastDirVanilla".Translate(), delegate
+                {
+                    settings.coastDir = MapDesignerSettings.CoastDirection.Vanilla;
+                }));
+                coastDirList.Add(new FloatMenuOption("ZMD_north".Translate(), delegate
+                {
+                    settings.coastDir = MapDesignerSettings.CoastDirection.North;
+                }));
+                coastDirList.Add(new FloatMenuOption("ZMD_east".Translate(), delegate
+                {
+                    settings.coastDir = MapDesignerSettings.CoastDirection.East;
+                }));
+                coastDirList.Add(new FloatMenuOption("ZMD_south".Translate(), delegate
+                {
+                    settings.coastDir = MapDesignerSettings.CoastDirection.South;
+                }));
+                coastDirList.Add(new FloatMenuOption("ZMD_west".Translate(), delegate
+                {
+                    settings.coastDir = MapDesignerSettings.CoastDirection.West;
+                }));
+
+                Find.WindowStack.Add(new FloatMenu(coastDirList));
+            }
+            Listing_selCoastDir.End();
 
 
             // reset
@@ -154,6 +212,9 @@ namespace MapDesigner.UI
             }
 
             listing.End();
+
+            viewHeight = listing.CurHeight;
+            Widgets.EndScrollView();
         }
 
 
@@ -199,5 +260,27 @@ namespace MapDesigner.UI
             
             return label;
         }
+
+        public static string GetCoastDirLabel(MapDesignerSettings.CoastDirection dir)
+        {
+            string label = "ZMD_coastDirVanilla";
+            switch (dir)
+            {
+                case MapDesignerSettings.CoastDirection.North:
+                    label = "ZMD_north";
+                    break;
+                case MapDesignerSettings.CoastDirection.East:
+                    label = "ZMD_east";
+                    break;
+                case MapDesignerSettings.CoastDirection.South:
+                    label = "ZMD_south";
+                    break;
+                case MapDesignerSettings.CoastDirection.West:
+                    label = "ZMD_west";
+                    break;
+            }
+            return label;
+        }
+
     }
 }

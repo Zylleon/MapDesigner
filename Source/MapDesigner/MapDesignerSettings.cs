@@ -72,7 +72,6 @@ namespace MapDesigner
         public bool flagRiverLocAbs= false;
         public Vector3 riverCenterDisp = new Vector3(0.0f, 0.0f, 0.0f);
 
-
         public enum RiverStyle : byte
         {
             Vanilla,
@@ -83,6 +82,17 @@ namespace MapDesigner
         }
         public MapDesignerSettings.RiverStyle selRiverStyle = RiverStyle.Vanilla;
 
+        // Beaches
+        public CoastDirection coastDir = CoastDirection.Vanilla;
+
+        public enum CoastDirection : byte
+        {
+            Vanilla,
+            North,
+            East,
+            South,
+            West
+        }
 
         // Terrain
         public float terrainFert = 1f;
@@ -185,6 +195,10 @@ namespace MapDesigner
             Scribe_Values.Look(ref flagRiverLoc, "flagRiverLoc", false);
             Scribe_Values.Look(ref flagRiverLocAbs, "flagRiverLocAbs", false);
             Scribe_Values.Look(ref riverCenterDisp, "riverCenterDisp", new Vector3(0.0f, 0.0f, 0.0f));
+
+            // Beaches
+            Scribe_Values.Look(ref coastDir, "coastDir", CoastDirection.Vanilla);
+
 
             // Terrain
             Scribe_Values.Look(ref terrainFert, "terrainFert", 1.0f);

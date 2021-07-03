@@ -254,7 +254,10 @@
 	<!-- Beaches -->
 	
 	<ZMD_coastDir>Coast direction</ZMD_coastDir>
-	<ZMD_coastDirVanilla>Vanilla</ZMD_coastDirVanilla>
+	<ZMD_coastDirVanilla>Vanilla</ZMD_coastDirVanilla>		<!-- whatever direction the coast would normally be on that tile -->
+	
+	<ZMD_coastTerr>Beach terrain</ZMD_coastTerr>
+	<ZMD_coastTerrVanilla>Vanilla</ZMD_coastTerrVanilla>	<!-- sand for most biomes, ice for sea ice -->
 
 <!-- ===================================	Features	================================= -->
     <!-- Tabs -->

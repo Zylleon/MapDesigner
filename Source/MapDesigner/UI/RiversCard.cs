@@ -167,7 +167,7 @@ namespace MapDesigner.UI
             // Beaches
             listing.GapLine();
 
-            Rect selCoastDir = listing.GetRect(40f);
+            Rect selCoastDir = listing.GetRect(35f);
             selCoastDir.xMax -= 0.66f * viewRect.width;
             Listing_Standard Listing_selCoastDir = new Listing_Standard();
             Listing_selCoastDir.Begin(selCoastDir);
@@ -201,6 +201,41 @@ namespace MapDesigner.UI
                 Find.WindowStack.Add(new FloatMenu(coastDirList));
             }
             Listing_selCoastDir.End();
+
+            // beach terrain
+            Rect beachTerrRect = listing.GetRect(35f);
+            beachTerrRect.xMax -= 0.66f * viewRect.width;
+
+            //beachTerrRect.xMin += 20f;
+            //beachTerrRect.xMax -= 20f;
+            //Listing_Standard riverBeachListing = new Listing_Standard();
+            //riverBeachListing.Begin(beachTerrRect);
+
+            List<string> beachTerrOptions = new List<string>();
+
+            beachTerrOptions.Add("Sand");
+            beachTerrOptions.Add("Soil");
+            beachTerrOptions.Add("SoilRich");
+            beachTerrOptions.Add("MarshyTerrain");
+            beachTerrOptions.Add("Mud");
+            beachTerrOptions.Add("Ice");
+
+            Listing_Standard beachTerrListing = new Listing_Standard();
+            beachTerrListing.Begin(beachTerrRect);
+
+            if (beachTerrListing.ButtonTextLabeled("ZMD_lakeShore".Translate(), settings.beachTerr == "Vanilla" ? "ZMD_coastTerrVanilla".Translate().ToString() : TerrainDef.Named(settings.beachTerr).label))
+            {
+                List<FloatMenuOption> beachTerrList = new List<FloatMenuOption>();
+                beachTerrList.Add(new FloatMenuOption("ZMD_coastTerrVanilla".Translate(), delegate { settings.beachTerr = "Vanilla"; }, MenuOptionPriority.Default));
+
+                foreach (string terr in beachTerrOptions)
+                {
+                    beachTerrList.Add(new FloatMenuOption(TerrainDef.Named(terr).label, delegate { settings.beachTerr = terr; }, MenuOptionPriority.Default));
+                }
+                Find.WindowStack.Add(new FloatMenu(beachTerrList));
+            }
+            beachTerrListing.End();
+
 
 
             // reset

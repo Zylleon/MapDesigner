@@ -94,6 +94,9 @@ namespace MapDesigner
             West
         }
 
+        public string beachTerr = "Vanilla";
+
+
         // Terrain
         public float terrainFert = 1f;
         public float terrainWater = 1f;
@@ -198,6 +201,7 @@ namespace MapDesigner
 
             // Beaches
             Scribe_Values.Look(ref coastDir, "coastDir", CoastDirection.Vanilla);
+            Scribe_Values.Look(ref beachTerr, "beachTerr", "Vanilla");
 
 
             // Terrain

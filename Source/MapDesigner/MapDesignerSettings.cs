@@ -76,6 +76,7 @@ namespace MapDesigner
         {
             Vanilla,
             Spring,
+            Canal,
             Confluence,
             Fork,
             Oxbow,

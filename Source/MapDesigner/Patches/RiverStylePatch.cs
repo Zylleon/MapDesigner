@@ -62,6 +62,16 @@ namespace MapDesigner.Patches
 
                     break;
 
+                case MapDesignerSettings.RiverStyle.Canal:
+                    ___coordinateX = new AxisAsValueX();
+                    ___coordinateZ = new AxisAsValueZ();
+                    ___coordinateX = new Rotate(0.0, 0f - angle, 0.0, ___coordinateX);
+                    ___coordinateZ = new Rotate(0.0, 0f - angle, 0.0, ___coordinateZ);
+                    ___coordinateX = new Translate(0f - center.x, 0.0, 0f - center.z, ___coordinateX);
+                    ___coordinateZ = new Translate(0f - center.x, 0.0, 0f - center.z, ___coordinateZ);
+                    ___generator = ___coordinateX;
+                    break;
+
                 case MapDesignerSettings.RiverStyle.Confluence:
                     Log.Message("[Map Designer] Merging rivers");
 

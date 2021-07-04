@@ -63,7 +63,6 @@ namespace MapDesigner.UI
             descRect.xMin += 60f;
 
             Widgets.Label(descRect, (GetRiverStyleLabel(settings.selRiverStyle) + "Desc").Translate());
-            //Rect descRect = listing.GetRect(60f).RightHalf();
             Listing_Standard Listing_selRiverStyle = new Listing_Standard();
             Listing_selRiverStyle.Begin(selButtonRect);
 
@@ -80,6 +79,11 @@ namespace MapDesigner.UI
                 {
                     settings.selRiverStyle = MapDesignerSettings.RiverStyle.Spring;
                 }));
+                riverStyleList.Add(new FloatMenuOption("ZMD_riverStyleCanal".Translate(), delegate
+                {
+                    settings.selRiverStyle = MapDesignerSettings.RiverStyle.Canal;
+                }));
+
                 //riverStyleList.Add(new FloatMenuOption("ZMD_riverStyleConfluence".Translate(), delegate
                 //{
                 //    settings.selRiverStyle = MapDesignerSettings.RiverStyle.Confluence;
@@ -223,7 +227,7 @@ namespace MapDesigner.UI
             Listing_Standard beachTerrListing = new Listing_Standard();
             beachTerrListing.Begin(beachTerrRect);
 
-            if (beachTerrListing.ButtonTextLabeled("ZMD_lakeShore".Translate(), settings.beachTerr == "Vanilla" ? "ZMD_coastTerrVanilla".Translate().ToString() : TerrainDef.Named(settings.beachTerr).label))
+            if (beachTerrListing.ButtonTextLabeled("ZMD_coastTerr".Translate(), settings.beachTerr == "Vanilla" ? "ZMD_coastTerrVanilla".Translate().ToString() : TerrainDef.Named(settings.beachTerr).label))
             {
                 List<FloatMenuOption> beachTerrList = new List<FloatMenuOption>();
                 beachTerrList.Add(new FloatMenuOption("ZMD_coastTerrVanilla".Translate(), delegate { settings.beachTerr = "Vanilla"; }, MenuOptionPriority.Default));
@@ -278,6 +282,9 @@ namespace MapDesigner.UI
                     break;
                 case MapDesignerSettings.RiverStyle.Spring:
                     label = "ZMD_riverStyleSpring";
+                    break;
+                case MapDesignerSettings.RiverStyle.Canal:
+                    label = "ZMD_riverStyleCanal";
                     break;
                 case MapDesignerSettings.RiverStyle.Confluence:
                     label = "ZMD_riverStyleConfluence";

@@ -23,7 +23,7 @@ namespace MapDesigner.Patches
             static MapDesigner()
             {
                 Harmony harmony = new Harmony("zylle.MapDesigner");
-                Log.Message("[Map Designer] Initializing.... ");
+                Log.Message("[Map Designer for 1.3] Initializing.... ");
                 harmony.PatchAll();
 
                 if (ModsConfig.RoyaltyActive)

@@ -259,6 +259,7 @@ namespace MapDesigner.UI
 
         public static void ResetRiversSettings()
         {
+            //Rivers
             settings.sizeRiver = 1.0f;
             MapDesignerMod.mod.settings.flagRiverBeach = false;
             settings.riverShore = "SoilRich";
@@ -269,6 +270,10 @@ namespace MapDesigner.UI
             settings.flagRiverLoc = false;
             settings.flagRiverLocAbs = false;
             settings.riverCenterDisp = new Vector3(0.0f, 0.0f, 0.0f);
+
+            //Beaches
+            settings.coastDir = MapDesignerSettings.CoastDirection.Vanilla;
+            settings.beachTerr = "Vanilla";
         }
 
 

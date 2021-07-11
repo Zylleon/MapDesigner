@@ -214,7 +214,7 @@
 
   <!-- Rivers -->
 
-  <ZMD_riverTab>河川</ZMD_riverTab>
+  <ZMD_riverTab>河川と海岸</ZMD_riverTab>
 
   <ZMD_sizeRiver>河川の大きさ</ZMD_sizeRiver>
 
@@ -251,6 +251,13 @@
   <ZMD_riverLocAbsDesc>どこに配置してもランダムにはなりません</ZMD_riverLocAbsDesc>
 
 
+  <!-- Beaches -->
+
+  <ZMD_coastDir>海岸方向</ZMD_coastDir>
+  <ZMD_coastDirVanilla>バニラ</ZMD_coastDirVanilla>
+
+  <ZMD_coastTerr>浜辺の地形</ZMD_coastTerr>
+  <ZMD_coastTerrVanilla>バニラ</ZMD_coastTerrVanilla>
 
   <!-- Features -->
   <!-- Tabs -->
@@ -273,8 +280,8 @@
 
   <!-- Perfectly Round Islands -->
   <ZMD_priIslandStyle>島の形</ZMD_priIslandStyle>
-  <ZMD_priIslandSizeLabel>島サイズ</ZMD_priIslandSizeLabel>
-  <ZMD_priBeachSizeLabel>ビーチサイズ</ZMD_priBeachSizeLabel>
+  <ZMD_priIslandSizeLabel>島の大きさ</ZMD_priIslandSizeLabel>
+  <ZMD_priBeachSizeLabel>浜辺の大きさ</ZMD_priBeachSizeLabel>
   <ZMD_priSingleLabel>孤島</ZMD_priSingleLabel>
   <ZMD_priSingleDesc>大きな円い形の孤島</ZMD_priSingleDesc>
   <ZMD_priMultiLabel>複数の島々</ZMD_priMultiLabel>

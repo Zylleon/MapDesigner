@@ -204,27 +204,13 @@ namespace MapDesigner
             }
 
             // rivers
-            float widthOnMap = 6;
+            float widthOnMap = 6f;
             foreach (RiverDef river in DefDatabase<RiverDef>.AllDefs)
             {
                 try
                 {
-                    switch (river.defName)
-                    {
-                        case "HugeRiver":
-                            widthOnMap = 30f;
-                            break;
-                        case "LargeRiver":
-                            widthOnMap = 14f;
-                            break;
-                        case "River":
-                            widthOnMap = 6f;
-                            break;
-                        case "Creek":
-                            widthOnMap = 4f;
-                            break;
-                    }
-                    river.widthOnMap = widthOnMap * settings.sizeRiver;
+                    river.widthOnMap *= settings.sizeRiver;
+                    river.widthOnMap = Math.Min(175, river.widthOnMap);
                 }
                 catch
                 {

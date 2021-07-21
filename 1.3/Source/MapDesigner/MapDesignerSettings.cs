@@ -139,6 +139,7 @@ namespace MapDesigner
         // Helper stuff
         public Dictionary<string, BiomeDefault> biomeDefaults;
         public Dictionary<string, FloatRange> densityDefaults;
+        public Dictionary<string, float> riverDefaults;
 
         #endregion
 

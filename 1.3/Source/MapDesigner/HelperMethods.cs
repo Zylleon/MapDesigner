@@ -121,6 +121,13 @@ namespace MapDesigner
                 Log.Message("[Map Designer] Could not initialize ore types");
             }
 
+            Dictionary<string, float> rivers = new Dictionary<string, float>();
+            foreach (RiverDef river in DefDatabase<RiverDef>.AllDefs)
+            {
+                rivers.Add(river.defName, river.widthOnMap);
+            }
+            settings.riverDefaults = rivers;
+
         }
 
 
@@ -204,12 +211,13 @@ namespace MapDesigner
             }
 
             // rivers
-            float widthOnMap = 6f;
             foreach (RiverDef river in DefDatabase<RiverDef>.AllDefs)
             {
                 try
                 {
-                    river.widthOnMap *= settings.sizeRiver;
+                    river.widthOnMap = settings.riverDefaults[river.defName] * settings.sizeRiver;
+
+                    //river.widthOnMap *= settings.sizeRiver;
                     river.widthOnMap = Math.Min(175, river.widthOnMap);
                 }
                 catch

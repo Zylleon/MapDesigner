@@ -10,9 +10,9 @@ using Verse;
 
 namespace MapDesigner.Patches
 {
-    [HarmonyPatch(typeof(RimWorld.GenStep_ScatterLumpsMineable), "ChooseThingDef")]
-    internal static class OreCommonalityPatch
-    {
+    //[HarmonyPatch(typeof(RimWorld.GenStep_ScatterLumpsMineable), "ChooseThingDef")]
+    //internal static class OreCommonalityPatch
+    //{
 
         //static bool Prefix(GenStep_ScatterLumpsMineable __instance, ref ThingDef __result)
         //{
@@ -44,8 +44,25 @@ namespace MapDesigner.Patches
 
         //    return false;
         //}
+    //}
 
-    }
+
+
+    //// Counts steel and puts the number in the debug log.
+    //// Useful for checking ore spawns
+    //[HarmonyPatch(typeof(GenStep_FindPlayerStartSpot), nameof(GenStep_FindPlayerStartSpot.Generate))]
+    //internal static class CouuntMinableSteel
+    //{
+    //    internal static void Postfix(Map map, GenStepParams parms)
+    //    {
+    //        int steelCount = map.spawnedThings.Count(thing => thing.def == ThingDefOf.MineableSteel);
+    //        Log.Message(String.Format("Steel: {0}", steelCount));
+
+    //        int goldCount = map.spawnedThings.Count(thing => thing.def == ThingDefOf.MineableGold);
+    //        Log.Message(String.Format("Gold : {0}", goldCount));
+    //    }
+    //}
+
 
 
 }

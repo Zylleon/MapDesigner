@@ -377,6 +377,9 @@ namespace MapDesigner
             return oreList;
         }
 
+
+
+        // Compatibility 
         public static void ApplyMapRerollPatches()
         {
             MethodInfo targetmethod = AccessTools.Method(typeof(MapReroll.MapPreviewGenerator), "TerrainFrom");
@@ -402,5 +405,8 @@ namespace MapDesigner
 
             return 1.2f;
         }
+    
+    
+    
     }
 }

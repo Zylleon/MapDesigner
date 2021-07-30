@@ -196,7 +196,7 @@
 	<ZMD_densityGeyser>Steam geysers</ZMD_densityGeyser>
 	<ZMD_densityOre>Ore</ZMD_densityOre>
 	<ZMD_animaCount>Anima trees: </ZMD_animaCount>
-	<ZMD_flagRockChunks>Rock chunks allowed</ZMD_flagRockChunks>
+	<ZMD_flagRockChunks>Rock chunks</ZMD_flagRockChunks>
 	<ZMD_flagRockChunksTooltip>If disabled, new maps will have NO chunks.</ZMD_flagRockChunksTooltip>
 	
 	<ZMD_chooseOreTypes>Choose ore types ...</ZMD_chooseOreTypes>
@@ -210,7 +210,14 @@
 	<ZMD_density5>A lot more</ZMD_density5>
 	<ZMD_density6>Max amount</ZMD_density6>
 	
-	
+<!-- Ideology -->
+	<ZMD_flagRoadDebris>Road debris</ZMD_flagRoadDebris>
+	<ZMD_flagCaveDebris>Cave debris</ZMD_flagCaveDebris>
+	<ZMD_flagAncientUtilityBuilding>Ancient utility buildings</ZMD_flagAncientUtilityBuilding>
+	<ZMD_flagAncientTurret>Ancient turrets</ZMD_flagAncientTurret>
+	<ZMD_flagAncientMechs>Ancient Mechs</ZMD_flagAncientMechs>
+	<ZMD_flagAncientLandingPad>Ancient landing pads</ZMD_flagAncientLandingPad>
+	<ZMD_flagAncientFences>Ancient fences</ZMD_flagAncientFences>
 	
 <!-- ===================================	Rivers	================================= -->
 	

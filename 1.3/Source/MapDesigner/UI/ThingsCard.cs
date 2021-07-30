@@ -33,14 +33,31 @@ namespace MapDesigner.UI
                 Find.WindowStack.Add(new OreSelectionDialog());
             }
 
-            listingStandard.CheckboxLabeled("ZMD_flagRockChunks".Translate(), ref settings.flagRockChunks, "ZMD_flagRockChunksTooltip".Translate());
+            Rect columnRect = listingStandard.GetRect(180);
+            Listing_Standard columnListing = new Listing_Standard();
+            columnListing.ColumnWidth = 0.5f * columnRect.width - 17f;
+            columnListing.Begin(columnRect);
+
+            columnListing.CheckboxLabeled("ZMD_flagRockChunks".Translate(), ref settings.flagRockChunks, "ZMD_flagRockChunks".Translate());
 
 
             if (ModsConfig.RoyaltyActive)
             {
-                settings.animaCount = (float)Math.Round(InterfaceUtility.LabeledSlider(listingStandard, settings.animaCount, 0f, 15f, "ZMD_animaCount".Translate() + settings.animaCount));
+                settings.animaCount = (float)Math.Round(InterfaceUtility.LabeledSlider(columnListing, settings.animaCount, 0f, 15f, "ZMD_animaCount".Translate() + settings.animaCount));
             }
 
+            if (ModsConfig.IdeologyActive)
+            {
+                columnListing.CheckboxLabeled("ZMD_flagRoadDebris".Translate(), ref settings.flagRoadDebris, "ZMD_flagRoadDebris".Translate());
+                columnListing.CheckboxLabeled("ZMD_flagCaveDebris".Translate(), ref settings.flagCaveDebris, "ZMD_flagCaveDebris".Translate());
+                columnListing.CheckboxLabeled("ZMD_flagAncientUtilityBuilding".Translate(), ref settings.flagAncientUtilityBuilding, "ZMD_flagAncientUtilityBuilding".Translate());
+                columnListing.CheckboxLabeled("ZMD_flagAncientTurret".Translate(), ref settings.flagAncientTurret, "ZMD_flagAncientTurret".Translate());
+                columnListing.CheckboxLabeled("ZMD_flagAncientMechs".Translate(), ref settings.flagAncientMechs, "ZMD_flagAncientMechs".Translate());
+                columnListing.CheckboxLabeled("ZMD_flagAncientLandingPad".Translate(), ref settings.flagAncientLandingPad, "ZMD_flagAncientLandingPad".Translate());
+                columnListing.CheckboxLabeled("ZMD_flagAncientFences".Translate(), ref settings.flagAncientFences, "ZMD_flagAncientFences".Translate());
+            }
+
+            columnListing.End();
             // Reset
             if (listingStandard.ButtonText("ZMD_resetThings".Translate()))
             {
@@ -60,6 +77,16 @@ namespace MapDesigner.UI
             settings.densityOre = 1.0f;
             settings.animaCount = 1.0f;
             settings.flagRockChunks = true;
+
+            // Ideology
+            settings.flagRoadDebris = true;
+            settings.flagCaveDebris = true;
+            settings.flagAncientUtilityBuilding = true;
+            settings.flagAncientTurret = true;
+            settings.flagAncientMechs = true;
+            settings.flagAncientLandingPad = true;
+            settings.flagAncientFences = true;
+
             new OreSelectionDialog().ResetAllOre(settings, HelperMethods.GetMineableList());
         }
 

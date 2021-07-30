@@ -53,6 +53,14 @@ namespace MapDesigner
 
         public Dictionary<string, float> oreCommonality = new Dictionary<string, float>();
 
+        // Ideology
+        public bool flagRoadDebris = true;
+        public bool flagCaveDebris = true;
+        public bool flagAncientUtilityBuilding = true;
+        public bool flagAncientTurret = true;
+        public bool flagAncientMechs = true;
+        public bool flagAncientLandingPad = true;
+        public bool flagAncientFences = true;
 
         // Rocks
         public IntRange rockTypeRange = new IntRange(2, 3);
@@ -182,6 +190,15 @@ namespace MapDesigner
             Scribe_Values.Look(ref flagRockChunks, "flagRockChunks", true);
 
             Scribe_Collections.Look(ref oreCommonality, "oreCommonality");
+
+            // Ideology
+            Scribe_Values.Look(ref flagRoadDebris, "flagRoadDebris", true);
+            Scribe_Values.Look(ref flagCaveDebris, "flagCaveDebris", true);
+            Scribe_Values.Look(ref flagAncientUtilityBuilding, "flagAncientUtilityBuilding", true);
+            Scribe_Values.Look(ref flagAncientTurret, "flagAncientTurret", true);
+            Scribe_Values.Look(ref flagAncientLandingPad, "flagAncientMechs", true);
+            Scribe_Values.Look(ref flagAncientFences, "flagAncientLandingPad", true);
+            Scribe_Values.Look(ref flagRoadDebris, "flagAncientFences", true);
 
             // Rocks
             Scribe_Values.Look(ref rockTypeRange, "rockTypeRange", new IntRange(2, 3));

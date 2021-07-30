@@ -41,6 +41,45 @@ namespace MapDesigner.Patches
                     }
                 }
 
+
+                if (ModsConfig.IdeologyActive)
+                {
+                    // RoadDebris
+                    harmony.Patch(AccessTools.Method(typeof(RimWorld.GenStep_ScatterRoadDebris), "Generate"), new HarmonyMethod(typeof(IdeologyPatch).GetMethod("RoadDebris", BindingFlags.NonPublic | BindingFlags.Static)));
+
+                    // CaveDebris
+                    harmony.Patch(AccessTools.Method(typeof(RimWorld.GenStep_ScatterCaveDebris), "Generate"), new HarmonyMethod(typeof(IdeologyPatch).GetMethod("CaveDebris", BindingFlags.NonPublic | BindingFlags.Static)));
+
+                    // AncientUtilityBuilding
+                    harmony.Patch(AccessTools.Method(typeof(RimWorld.GenStep_ScatterAncientUtilityBuilding), "Generate"), new HarmonyMethod(typeof(IdeologyPatch).GetMethod("AncientUtilityBuilding", BindingFlags.NonPublic | BindingFlags.Static)));
+                    
+                    // AncientTurret
+                    harmony.Patch(AccessTools.Method(typeof(RimWorld.GenStep_ScatterAncientTurret), "Generate"), new HarmonyMethod(typeof(IdeologyPatch).GetMethod("AncientTurret", BindingFlags.NonPublic | BindingFlags.Static)));
+
+                    // AncientMechs
+                    harmony.Patch(AccessTools.Method(typeof(RimWorld.GenStep_ScatterAncientMechs), "Generate"), new HarmonyMethod(typeof(IdeologyPatch).GetMethod("AncientMechs", BindingFlags.NonPublic | BindingFlags.Static)));
+
+                    // AncientLandingPad
+                    harmony.Patch(AccessTools.Method(typeof(RimWorld.GenStep_ScatterAncientLandingPad), "Generate"), new HarmonyMethod(typeof(IdeologyPatch).GetMethod("AncientLandingPad", BindingFlags.NonPublic | BindingFlags.Static)));
+
+                    // AncientFences
+                    harmony.Patch(AccessTools.Method(typeof(RimWorld.GenStep_ScatterAncientFences), "Generate"), new HarmonyMethod(typeof(IdeologyPatch).GetMethod("AncientFences", BindingFlags.NonPublic | BindingFlags.Static)));
+
+                    // TODO: MechanoidRemains
+
+                    // TODO: AncientMiscDebris
+
+                    // TODO: AncientPipelineSection
+
+                    // TODO: AncientJunkClusters
+
+                }
+
+
+
+
+
+
                 if (GenTypes.GetTypeInAnyAssembly("MapReroll.MapPreviewGenerator") != null)
                 {
                     Log.Message("Found Map Reroll");

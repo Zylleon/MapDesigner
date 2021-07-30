@@ -315,6 +315,7 @@
     <Compile Include="Patches\CaveSettingsPatch.cs" />
     <Compile Include="Patches\CoastPatches.cs" />
     <Compile Include="Patches\HarmonyPatches.cs" />
+    <Compile Include="Patches\IdeologyPatches.cs" />
     <Compile Include="Patches\MountainSettingsPatch.cs" />
     <Compile Include="Patches\PopupWindowPatch.cs" />
     <Compile Include="Patches\MapReroll_TerrainFrom.cs" />

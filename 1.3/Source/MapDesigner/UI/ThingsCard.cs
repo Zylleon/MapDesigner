@@ -28,10 +28,10 @@ namespace MapDesigner.UI
             settings.densityOre = ThingsSlider(listingStandard, settings.densityOre, 2, "ZMD_densityOre");
 
             //TODO: Fix and enable ore commonality selection
-            //if (InterfaceUtility.SizedTextButton(listingStandard, "ZMD_chooseOreTypes".Translate()))
-            //{
-            //    Find.WindowStack.Add(new OreSelectionDialog());
-            //}
+            if (InterfaceUtility.SizedTextButton(listingStandard, "ZMD_chooseOreTypes".Translate()))
+            {
+                Find.WindowStack.Add(new OreSelectionDialog());
+            }
 
             listingStandard.CheckboxLabeled("ZMD_flagRockChunks".Translate(), ref settings.flagRockChunks, "ZMD_flagRockChunksTooltip".Translate());
 
@@ -60,6 +60,7 @@ namespace MapDesigner.UI
             settings.densityOre = 1.0f;
             settings.animaCount = 1.0f;
             settings.flagRockChunks = true;
+            new OreSelectionDialog().ResetAllOre(settings, HelperMethods.GetMineableList());
         }
 
         private static float ThingsSlider(Listing_Standard listing, float val = 1f, float power = 1f, string label = null)

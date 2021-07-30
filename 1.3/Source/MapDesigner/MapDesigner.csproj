@@ -324,7 +324,6 @@
     <Compile Include="Patches\RiverStylePatch.cs" />
     <Compile Include="Patches\River_ForkFlow.cs" />
     <Compile Include="Patches\RockChunkPatch.cs" />
-    <Compile Include="Patches\OreCommonalityPatch.cs" />
     <Compile Include="Patches\RockTypesPatch.cs" />
     <Compile Include="TerrainDefault.cs" />
     <Compile Include="TerrainUtility.cs" />

@@ -140,7 +140,7 @@ namespace MapDesigner
         public Dictionary<string, BiomeDefault> biomeDefaults;
         public Dictionary<string, FloatRange> densityDefaults;
         public Dictionary<string, float> riverDefaults;
-
+        public Dictionary<string, float> oreDefaults;
         #endregion
 
         public override void ExposeData()

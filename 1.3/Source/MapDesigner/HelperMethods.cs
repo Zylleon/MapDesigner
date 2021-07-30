@@ -100,8 +100,10 @@ namespace MapDesigner
             }
 
             // Ore
+
             try
             {
+                Dictionary<string, float> oreDefaults = new Dictionary<string, float>();
                 if (settings.oreCommonality.EnumerableNullOrEmpty())
                 {
                     settings.oreCommonality = new Dictionary<string, float>();
@@ -109,18 +111,22 @@ namespace MapDesigner
                 List<ThingDef> list = GetMineableList();
                 foreach (ThingDef ore in list)
                 {
+                    oreDefaults.Add(ore.defName, ore.building.mineableScatterCommonality);
+
                     if (!settings.oreCommonality.ContainsKey(ore.defName))
                     {
                         settings.oreCommonality.Add(ore.defName, 1f);
                     }
                 }
-               
+
+                settings.oreDefaults = oreDefaults;
             }
             catch
             {
                 Log.Message("[Map Designer] Could not initialize ore types");
             }
 
+            // Rivers
             Dictionary<string, float> rivers = new Dictionary<string, float>();
             foreach (RiverDef river in DefDatabase<RiverDef>.AllDefs)
             {
@@ -287,6 +293,13 @@ namespace MapDesigner
                     biome.terrainPatchMakers = biomeDefaults[biome.defName].terrain.terrainPatchMakers;
                 }
             }
+
+            // ore
+            foreach (var ore in settings.oreDefaults)
+            {
+                ThingDef.Named(ore.Key).building.mineableScatterCommonality *= settings.oreCommonality[ore.Key];
+            }
+
         }
 
         public static float GetRiverDirection(float angle)
@@ -356,9 +369,11 @@ namespace MapDesigner
 
         public static List<ThingDef> GetMineableList()
         {
+
             List<ThingDef> oreList = (from d in DefDatabase<ThingDef>.AllDefs
-                                       where d.category == ThingCategory.Building && d.building.isResourceRock && d.building.mineableThing != null
-                                       select d).ToList<ThingDef>();
+                                      where d.building?.isResourceRock == true && d.building?.mineableThing != null
+                                      select d).ToList<ThingDef>();
+
             return oreList;
         }
 

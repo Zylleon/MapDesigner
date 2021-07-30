@@ -41,7 +41,7 @@ namespace MapDesigner.UI
 
             Rect windowRect = outerListing.GetRect(inRect.height - outerListing.CurHeight).ContractedBy(4f);
 
-            Rect viewRect = new Rect(0f, 0f, 400f, 50f + 24 * list.Count());
+            Rect viewRect = new Rect(0f, 0f, 400f, 50f + 46 * list.Count());
 
             Widgets.BeginScrollView(windowRect, ref scrollPosition, viewRect, true);
 

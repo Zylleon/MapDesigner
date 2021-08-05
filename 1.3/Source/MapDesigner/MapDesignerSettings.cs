@@ -61,6 +61,10 @@ namespace MapDesigner
         public bool flagAncientMechs = true;
         public bool flagAncientLandingPad = true;
         public bool flagAncientFences = true;
+        public int countMechanoidRemains = 1;
+        public float densityAncientPipelineSection = 1f;
+        public float densityAncientJunkClusters = 1f;
+
 
         // Rocks
         public IntRange rockTypeRange = new IntRange(2, 3);
@@ -196,10 +200,14 @@ namespace MapDesigner
             Scribe_Values.Look(ref flagCaveDebris, "flagCaveDebris", true);
             Scribe_Values.Look(ref flagAncientUtilityBuilding, "flagAncientUtilityBuilding", true);
             Scribe_Values.Look(ref flagAncientTurret, "flagAncientTurret", true);
-            Scribe_Values.Look(ref flagAncientLandingPad, "flagAncientMechs", true);
-            Scribe_Values.Look(ref flagAncientFences, "flagAncientLandingPad", true);
-            Scribe_Values.Look(ref flagRoadDebris, "flagAncientFences", true);
+            Scribe_Values.Look(ref flagAncientMechs, "flagAncientMechs", true);
+            Scribe_Values.Look(ref flagAncientLandingPad, "flagAncientLandingPad", true);
+            Scribe_Values.Look(ref flagAncientFences, "flagAncientFences", true);
 
+            Scribe_Values.Look(ref countMechanoidRemains, "countMechanoidRemains", 1);
+            Scribe_Values.Look(ref densityAncientPipelineSection, "densityAncientPipelineSection", 1f);
+            Scribe_Values.Look(ref densityAncientJunkClusters, "densityAncientJunkClusters", 1f);
+                   
             // Rocks
             Scribe_Values.Look(ref rockTypeRange, "rockTypeRange", new IntRange(2, 3));
             Scribe_Values.Look(ref flagBiomeRocks, "flagBiomeRocks", false);

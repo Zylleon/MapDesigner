@@ -64,15 +64,6 @@ namespace MapDesigner.Patches
 
                     // AncientFences
                     harmony.Patch(AccessTools.Method(typeof(RimWorld.GenStep_ScatterAncientFences), "Generate"), new HarmonyMethod(typeof(IdeologyPatch).GetMethod("AncientFences", BindingFlags.NonPublic | BindingFlags.Static)));
-
-                    // TODO: MechanoidRemains
-
-                    // TODO: AncientMiscDebris
-
-                    // TODO: AncientPipelineSection
-
-                    // TODO: AncientJunkClusters
-
                 }
 
 

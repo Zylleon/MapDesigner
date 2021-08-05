@@ -68,6 +68,19 @@ namespace MapDesigner
                 densityDefaults.Add(step.defName, (step.genStep as GenStep_Scatterer).countPer10kCellsRange);
 
                 settings.densityDefaults = densityDefaults;
+
+                if (ModsConfig.IdeologyActive)
+                {
+                    step = DefDatabase<GenStepDef>.GetNamed("MechanoidRemains");
+                    densityDefaults.Add(step.defName, (step.genStep as GenStep_ScatterGroup).countPer10kCellsRange);
+
+                    step = DefDatabase<GenStepDef>.GetNamed("AncientPipelineSection");
+                    densityDefaults.Add(step.defName, (step.genStep as GenStep_ScatterThings).countPer10kCellsRange);
+
+                    step = DefDatabase<GenStepDef>.GetNamed("AncientJunkClusters");
+                    densityDefaults.Add(step.defName, (step.genStep as GenStep_ScatterGroup).countPer10kCellsRange);
+                }
+
             }
             catch
             {
@@ -134,6 +147,8 @@ namespace MapDesigner
             }
             settings.riverDefaults = rivers;
 
+
+            
         }
 
 
@@ -214,6 +229,33 @@ namespace MapDesigner
             catch
             {
                 Log.Message("[Map Designer] ERROR with settings: geysers");
+            }
+
+            // Ideology
+            if (ModsConfig.IdeologyActive)
+            {
+                int countMechs = settings.countMechanoidRemains;
+
+                (DefDatabase<GenStepDef>.GetNamed("MechanoidRemains").genStep as GenStep_ScatterGroup).count = countMechs;
+
+
+                float densityPipeline = settings.densityAncientPipelineSection;
+                if (densityPipeline > 1)
+                {
+                    densityPipeline = (float)Math.Pow(densityPipeline, 2);
+                }
+                (DefDatabase<GenStepDef>.GetNamed("AncientPipelineSection").genStep as GenStep_ScatterThings).countPer10kCellsRange.min = densityDefaults["AncientPipelineSection"].min * densityPipeline;
+                (DefDatabase<GenStepDef>.GetNamed("AncientPipelineSection").genStep as GenStep_ScatterThings).countPer10kCellsRange.max = densityDefaults["AncientPipelineSection"].max * densityPipeline;
+
+
+                float densityJunk = settings.densityAncientJunkClusters;
+                if (densityJunk > 1)
+                {
+                    densityJunk = (float)Math.Pow(densityJunk, 2);
+                }
+                (DefDatabase<GenStepDef>.GetNamed("AncientJunkClusters").genStep as GenStep_ScatterGroup).countPer10kCellsRange.min = densityDefaults["AncientJunkClusters"].min * densityJunk;
+                (DefDatabase<GenStepDef>.GetNamed("AncientJunkClusters").genStep as GenStep_ScatterGroup).countPer10kCellsRange.max = densityDefaults["AncientJunkClusters"].max * densityJunk;
+
             }
 
             // rivers

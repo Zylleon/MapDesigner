@@ -42,6 +42,5 @@ namespace MapDesigner.Patches
         {
             return MapDesignerMod.mod.settings.flagAncientFences;
         }
-
     }
 }

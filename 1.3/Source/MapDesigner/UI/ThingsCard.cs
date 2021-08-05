@@ -48,13 +48,21 @@ namespace MapDesigner.UI
 
             if (ModsConfig.IdeologyActive)
             {
-                columnListing.CheckboxLabeled("ZMD_flagRoadDebris".Translate(), ref settings.flagRoadDebris, "ZMD_flagRoadDebris".Translate());
+                columnListing.CheckboxLabeled("ZMD_flagRoadDebris".Translate(), ref settings.flagRoadDebris, "ZMD_flagRoadDebrisTooltip".Translate());
                 columnListing.CheckboxLabeled("ZMD_flagCaveDebris".Translate(), ref settings.flagCaveDebris, "ZMD_flagCaveDebris".Translate());
                 columnListing.CheckboxLabeled("ZMD_flagAncientUtilityBuilding".Translate(), ref settings.flagAncientUtilityBuilding, "ZMD_flagAncientUtilityBuilding".Translate());
                 columnListing.CheckboxLabeled("ZMD_flagAncientTurret".Translate(), ref settings.flagAncientTurret, "ZMD_flagAncientTurret".Translate());
                 columnListing.CheckboxLabeled("ZMD_flagAncientMechs".Translate(), ref settings.flagAncientMechs, "ZMD_flagAncientMechs".Translate());
                 columnListing.CheckboxLabeled("ZMD_flagAncientLandingPad".Translate(), ref settings.flagAncientLandingPad, "ZMD_flagAncientLandingPad".Translate());
                 columnListing.CheckboxLabeled("ZMD_flagAncientFences".Translate(), ref settings.flagAncientFences, "ZMD_flagAncientFences".Translate());
+
+                settings.countMechanoidRemains = (int)Math.Round(InterfaceUtility.LabeledSlider(columnListing, settings.countMechanoidRemains, 0, 15, "ZMD_countMechanoidRemains".Translate() + settings.countMechanoidRemains));
+                settings.densityAncientPipelineSection = ThingsSlider(columnListing, settings.densityAncientPipelineSection, 2, "ZMD_densityAncientPipelineSection");
+                settings.densityAncientJunkClusters = ThingsSlider(columnListing, settings.densityAncientJunkClusters, 2, "ZMD_densityAncientJunkClusters");
+
+                //columnListing.CheckboxLabeled("ZMD_countMechanoidRemains".Translate(), ref settings.flagMechanoidRemains, "ZMD_countMechanoidRemains".Translate());
+                //columnListing.CheckboxLabeled("ZMD_flagAncientPipelineSection".Translate(), ref settings.flagAncientPipelineSection, "ZMD_flagAncientPipelineSection".Translate());
+                //columnListing.CheckboxLabeled("ZMD_flagAncientJunkClusters".Translate(), ref settings.flagAncientJunkClusters, "ZMD_flagAncientJunkClusters".Translate());
             }
 
             columnListing.End();
@@ -86,6 +94,10 @@ namespace MapDesigner.UI
             settings.flagAncientMechs = true;
             settings.flagAncientLandingPad = true;
             settings.flagAncientFences = true;
+
+            settings.countMechanoidRemains = 1;
+            settings.densityAncientPipelineSection = 1f;
+            settings.densityAncientJunkClusters = 1f;
 
             new OreSelectionDialog().ResetAllOre(settings, HelperMethods.GetMineableList());
         }

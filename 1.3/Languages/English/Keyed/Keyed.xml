@@ -187,6 +187,11 @@
 	<ZMD_thingsTab>Things</ZMD_thingsTab>
 	<ZMD_thingsTabInfo>Ore density, etc</ZMD_thingsTabInfo>
 	
+	<ZMD_thingsClassic>Classic</ZMD_thingsClassic>
+	<ZMD_thingsRoyalty>Royalty</ZMD_thingsRoyalty>
+	<ZMD_thingsIdeology>Ideology</ZMD_thingsIdeology>
+	
+	
   <!-- Densities -->
 	<ZMD_densityPlant>Plants</ZMD_densityPlant>
 	<ZMD_densityAnimal>Animals</ZMD_densityAnimal>

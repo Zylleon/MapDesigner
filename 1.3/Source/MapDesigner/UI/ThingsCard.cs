@@ -54,7 +54,7 @@ namespace MapDesigner.UI
                 Text.Font = GameFont.Medium;
                 mainListing.Label("ZMD_thingsRoyalty".Translate());
                 Text.Font = GameFont.Small;
-                settings.animaCount = (float)Math.Round(InterfaceUtility.LabeledSlider(mainListing, settings.animaCount, 0f, 15f, "ZMD_animaCount".Translate() + settings.animaCount));
+                settings.animaCount = (float)Math.Round(InterfaceUtility.LabeledSlider(mainListing, settings.animaCount, 0f, 15f, null, "ZMD_animaCount".Translate(), settings.animaCount.ToString()));
             }
 
             if (ModsConfig.IdeologyActive)
@@ -70,8 +70,8 @@ namespace MapDesigner.UI
 
 
                 mainListing.CheckboxLabeled("ZMD_flagRoadDebris".Translate(), ref settings.flagRoadDebris, "ZMD_flagRoadDebrisTooltip".Translate());
-                mainListing.CheckboxLabeled("ZMD_flagCaveDebris".Translate(), ref settings.flagCaveDebris, "ZMD_flagCaveDebris".Translate());
-                mainListing.CheckboxLabeled("ZMD_flagAncientUtilityBuilding".Translate(), ref settings.flagAncientUtilityBuilding, "ZMD_flagAncientUtilityBuilding".Translate());
+                mainListing.CheckboxLabeled("ZMD_flagCaveDebris".Translate(), ref settings.flagCaveDebris, "ZMD_flagCaveDebrisTooltip".Translate());
+                mainListing.CheckboxLabeled("ZMD_flagAncientUtilityBuilding".Translate(), ref settings.flagAncientUtilityBuilding, "ZMD_flagAncientUtilityBuildingTooltip".Translate());
                 mainListing.CheckboxLabeled("ZMD_flagAncientTurret".Translate(), ref settings.flagAncientTurret, "ZMD_flagAncientTurret".Translate());
                 mainListing.CheckboxLabeled("ZMD_flagAncientMechs".Translate(), ref settings.flagAncientMechs, "ZMD_flagAncientMechs".Translate());
                 mainListing.CheckboxLabeled("ZMD_flagAncientLandingPad".Translate(), ref settings.flagAncientLandingPad, "ZMD_flagAncientLandingPad".Translate());

@@ -219,9 +219,11 @@
 	<ZMD_flagRoadDebris>Road debris</ZMD_flagRoadDebris>
 	<ZMD_flagRoadDebrisTooltip>Rusted cars and tanks</ZMD_flagRoadDebrisTooltip>
 	<ZMD_flagCaveDebris>Cave debris</ZMD_flagCaveDebris>
+	<ZMD_flagCaveDebrisTooltip>Ancient beds, sometimes with old uniforms or scattered documents</ZMD_flagCaveDebrisTooltip>
 	<ZMD_flagAncientUtilityBuilding>Ancient utility buildings</ZMD_flagAncientUtilityBuilding>
+	<ZMD_flagAncientUtilityBuildingTooltip>Ancient power stations, sometimes including fences or buildings</ZMD_flagAncientUtilityBuildingTooltip>
 	<ZMD_flagAncientTurret>Ancient turrets</ZMD_flagAncientTurret>
-	<ZMD_flagAncientMechs>Ancient Mechs</ZMD_flagAncientMechs>
+	<ZMD_flagAncientMechs>Ancient mechs</ZMD_flagAncientMechs>
 	<ZMD_flagAncientLandingPad>Ancient landing pads</ZMD_flagAncientLandingPad>
 	<ZMD_flagAncientFences>Ancient fences</ZMD_flagAncientFences>
 	

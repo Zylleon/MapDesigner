@@ -304,6 +304,10 @@
       <HintPath>..\..\..\..\..\RimWorldWin64_Data\Managed\UnityEngine.XRModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="VanillaPowerExpanded">
+      <HintPath>..\..\..\..\..\..\..\workshop\content\294100\2062943477\1.3\Assemblies\VanillaPowerExpanded.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BiomeDefault.cs" />

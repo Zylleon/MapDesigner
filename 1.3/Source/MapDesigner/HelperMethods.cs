@@ -258,6 +258,12 @@ namespace MapDesigner
 
             }
 
+            // VPE
+            if (GenTypes.GetTypeInAnyAssembly("VanillaPowerExpanded.SpecialPowerSpawnsDef") != null)
+            {
+                ApplyVPEPatches();
+            }
+
             // rivers
             foreach (RiverDef river in DefDatabase<RiverDef>.AllDefs)
             {
@@ -429,6 +435,13 @@ namespace MapDesigner
             new Harmony("zylle.MapDesigner_RerollCompat").Patch(targetmethod, prefixmethod);
         }
 
+
+        public static void ApplyVPEPatches()
+        {
+
+            DefDatabase<VanillaPowerExpanded.SpecialPowerSpawnsDef>.GetNamed("VPE_SpawnChemfuelPonds").numberToSpawn = MapDesignerMod.mod.settings.vpe_ChemfuelPonds;
+            DefDatabase<VanillaPowerExpanded.SpecialPowerSpawnsDef>.GetNamed("VPE_SpawnHelixienVents").numberToSpawn = MapDesignerMod.mod.settings.vpe_HelixienVents;
+        }
 
         public static float GetMaxFertByBiome(BiomeDef biome)
         {

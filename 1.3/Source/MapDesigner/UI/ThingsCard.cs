@@ -19,7 +19,8 @@ namespace MapDesigner.UI
             wrapperListing.Begin(rect);
 
             Listing_Standard mainListing = new Listing_Standard();
-            mainListing.ColumnWidth = 0.5f * rect.width - 17f;
+            //mainListing.ColumnWidth = 0.5f * rect.width - 17f;
+            mainListing.ColumnWidth = 0.333f * rect.width - 34f;
 
 
             Rect mainRect = wrapperListing.GetRect(rect.height - 40f);
@@ -78,6 +79,24 @@ namespace MapDesigner.UI
                 mainListing.CheckboxLabeled("ZMD_flagAncientFences".Translate(), ref settings.flagAncientFences, "ZMD_flagAncientFences".Translate());
             }
 
+
+            // VPE
+            if (GenTypes.GetTypeInAnyAssembly("VanillaPowerExpanded.SpecialPowerSpawnsDef") != null)
+            {
+                mainListing.NewColumn();
+                mainListing.Gap();
+                Text.Font = GameFont.Medium;
+                mainListing.Label("ZMD_thingsVPE".Translate());
+                Text.Font = GameFont.Small;
+
+
+                InterfaceUtility.LabeledIntRange(mainListing, ref settings.vpe_ChemfuelPonds, 0, 20, "ZMD_VPE_chemfuelPonds".Translate());
+                InterfaceUtility.LabeledIntRange(mainListing, ref settings.vpe_HelixienVents, 0, 20, "ZMD_VPE_helixienVents".Translate());
+            }
+
+
+
+
             mainListing.End();
 
             // Reset
@@ -112,6 +131,10 @@ namespace MapDesigner.UI
             settings.countMechanoidRemains = 1;
             settings.densityAncientPipelineSection = 1f;
             settings.densityAncientJunkClusters = 1f;
+
+            // VPE
+            settings.vpe_ChemfuelPonds = new IntRange(1, 3);
+            settings.vpe_HelixienVents = new IntRange(1, 2);
 
             new OreSelectionDialog().ResetAllOre(settings, HelperMethods.GetMineableList());
         }

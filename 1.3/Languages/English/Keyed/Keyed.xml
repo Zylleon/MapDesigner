@@ -190,6 +190,7 @@
 	<ZMD_thingsClassic>Classic</ZMD_thingsClassic>
 	<ZMD_thingsRoyalty>Royalty</ZMD_thingsRoyalty>
 	<ZMD_thingsIdeology>Ideology</ZMD_thingsIdeology>
+	<ZMD_thingsVPE>Vanilla Power Expanded</ZMD_thingsVPE>
 	
 	
   <!-- Densities -->
@@ -230,6 +231,12 @@
 	<ZMD_countMechanoidRemains>Mechanoid remains</ZMD_countMechanoidRemains>
 	<ZMD_densityAncientJunkClusters>Ancient junk clusters</ZMD_densityAncientJunkClusters>
 	<ZMD_densityAncientPipelineSection>Ancient pipline</ZMD_densityAncientPipelineSection>
+	
+<!-- Vanilla Power Expanded -->
+	<ZMD_VPE_chemfuelPonds>Chemfuel ponds</ZMD_VPE_chemfuelPonds>
+	<ZMD_VPE_helixienVents>Helixien vents</ZMD_VPE_helixienVents>
+
+
 	
 <!-- ===================================	Rivers	================================= -->
 	

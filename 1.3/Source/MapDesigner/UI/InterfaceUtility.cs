@@ -121,7 +121,12 @@ namespace MapDesigner.UI
 
             Rect leftSide = innerRect;
             Rect rightSide = innerRect;
-            leftSide.xMax -= Math.Max(innerRect.width-125f, 0.76f * innerRect.width);
+            //leftSide.xMax -= 0.76f * rect.width;
+            //rightSide.xMin += 0.26f * rect.width;
+            //leftSide.xMax -= Math.Max(innerRect.width - 125f, 0.76f * innerRect.width);
+
+            leftSide.xMax -= Math.Min(innerRect.width - 125f, 0.76f * innerRect.width);
+
             rightSide.xMin += Math.Max(120f, 0.26f * innerRect.width);
 
             Widgets.Label(leftSide, label);

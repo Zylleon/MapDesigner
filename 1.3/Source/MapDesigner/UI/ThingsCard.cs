@@ -19,11 +19,11 @@ namespace MapDesigner.UI
             wrapperListing.Begin(rect);
 
             Listing_Standard mainListing = new Listing_Standard();
-            //mainListing.ColumnWidth = 0.5f * rect.width - 17f;
-            mainListing.ColumnWidth = 0.333f * rect.width - 34f;
+            mainListing.ColumnWidth = 0.5f * rect.width - 17f;
+            //mainListing.ColumnWidth = 0.333f * rect.width - 34f;
 
 
-            Rect mainRect = wrapperListing.GetRect(rect.height - 40f);
+            Rect mainRect = wrapperListing.GetRect(rect.height - 26f);
             //Rect mainRect = new Rect(rect.xMin, rect.yMin, rect.width, rect.height );
 
             mainListing.Begin(mainRect);
@@ -51,16 +51,17 @@ namespace MapDesigner.UI
 
             if (ModsConfig.RoyaltyActive)
             {
-                mainListing.Gap();
+                mainListing.GapLine();
                 Text.Font = GameFont.Medium;
                 mainListing.Label("ZMD_thingsRoyalty".Translate());
                 Text.Font = GameFont.Small;
                 settings.animaCount = (float)Math.Round(InterfaceUtility.LabeledSlider(mainListing, settings.animaCount, 0f, 15f, null, "ZMD_animaCount".Translate(), settings.animaCount.ToString()));
             }
 
+            mainListing.NewColumn();
+
             if (ModsConfig.IdeologyActive)
             {
-                mainListing.NewColumn();
                 Text.Font = GameFont.Medium;
                 mainListing.Label("ZMD_thingsIdeology".Translate());
                 Text.Font = GameFont.Small;
@@ -77,17 +78,21 @@ namespace MapDesigner.UI
                 mainListing.CheckboxLabeled("ZMD_flagAncientMechs".Translate(), ref settings.flagAncientMechs, "ZMD_flagAncientMechs".Translate());
                 mainListing.CheckboxLabeled("ZMD_flagAncientLandingPad".Translate(), ref settings.flagAncientLandingPad, "ZMD_flagAncientLandingPad".Translate());
                 mainListing.CheckboxLabeled("ZMD_flagAncientFences".Translate(), ref settings.flagAncientFences, "ZMD_flagAncientFences".Translate());
+                mainListing.GapLine();
             }
 
 
             // VPE
             if (GenTypes.GetTypeInAnyAssembly("VanillaPowerExpanded.SpecialPowerSpawnsDef") != null)
             {
-                mainListing.NewColumn();
-                mainListing.Gap();
                 Text.Font = GameFont.Medium;
                 mainListing.Label("ZMD_thingsVPE".Translate());
                 Text.Font = GameFont.Small;
+
+                //string test = "ZMD_VPE_chemfuelPonds".Translate();
+                //string chemfuelLabel = String.Format("{0}: {1} - {2}", test, settings.vpe_ChemfuelPonds.min, settings.vpe_ChemfuelPonds.max);
+                //Widgets.IntRange(mainListing.GetRect(28f), (int)mainListing.CurHeight, ref settings.vpe_ChemfuelPonds, 0, 20, chemfuelLabel, 0);
+                //Widgets.IntRange(mainListing.GetRect(28f), (int)mainListing.CurHeight, ref settings.vpe_ChemfuelPonds, 0, 20, "ZMD_VPE_chemfuelPonds".Translate(), 0);
 
 
                 InterfaceUtility.LabeledIntRange(mainListing, ref settings.vpe_ChemfuelPonds, 0, 20, "ZMD_VPE_chemfuelPonds".Translate());

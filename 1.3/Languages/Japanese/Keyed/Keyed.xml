@@ -187,6 +187,12 @@
   <ZMD_thingsTab>マップオブジェクト</ZMD_thingsTab>
   <ZMD_thingsTabInfo>鉱物密度など</ZMD_thingsTabInfo>
 
+  <ZMD_thingsClassic>クラシック</ZMD_thingsClassic>
+  <ZMD_thingsRoyalty>Royalty</ZMD_thingsRoyalty>
+  <ZMD_thingsIdeology>Ideology</ZMD_thingsIdeology>
+  <ZMD_thingsVPE>Vanilla Power Expanded</ZMD_thingsVPE>
+
+
   <!-- Densities -->
   <ZMD_densityPlant>植物密度</ZMD_densityPlant>
   <ZMD_densityAnimal>動物密度</ZMD_densityAnimal>
@@ -209,6 +215,26 @@
   <ZMD_density4>高</ZMD_density4>
   <ZMD_density5>凄く高</ZMD_density5>
   <ZMD_density6>最高</ZMD_density6>
+
+  <!-- Ideology -->
+  <ZMD_flagRoadDebris>道路のがれき</ZMD_flagRoadDebris>
+  <ZMD_flagRoadDebrisTooltip>錆びた車や戦車</ZMD_flagRoadDebrisTooltip>
+  <ZMD_flagCaveDebris>洞窟のがれき</ZMD_flagCaveDebris>
+  <ZMD_flagCaveDebrisTooltip>古代のベッドや時には古い制服に散らばった文書</ZMD_flagCaveDebrisTooltip>
+  <ZMD_flagAncientUtilityBuilding>古代の実用的な建築物</ZMD_flagAncientUtilityBuilding>
+  <ZMD_flagAncientUtilityBuildingTooltip>古代の発電所や時には柵や建築物を含む</ZMD_flagAncientUtilityBuildingTooltip>
+  <ZMD_flagAncientTurret>古代のタレット</ZMD_flagAncientTurret>
+  <ZMD_flagAncientMechs>古代のメカノイド</ZMD_flagAncientMechs>
+  <ZMD_flagAncientLandingPad>古代の着陸パッド</ZMD_flagAncientLandingPad>
+  <ZMD_flagAncientFences>古代のフェンス</ZMD_flagAncientFences>
+
+  <ZMD_countMechanoidRemains>メカノイドの残骸</ZMD_countMechanoidRemains>
+  <ZMD_densityAncientJunkClusters>古代のクラスターの残骸</ZMD_densityAncientJunkClusters>
+  <ZMD_densityAncientPipelineSection>古代のパイプライン</ZMD_densityAncientPipelineSection>
+
+  <!-- Vanilla Power Expanded -->
+  <ZMD_VPE_chemfuelPonds>化学燃料の池</ZMD_VPE_chemfuelPonds>
+  <ZMD_VPE_helixienVents>Helixienの排出口</ZMD_VPE_helixienVents>
 
 
 

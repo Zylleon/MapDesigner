@@ -54,7 +54,7 @@ namespace MapDesigner.UI
 
                 //listing.CheckboxLabeled(ore.label, ref commonality);
 
-                commonality = InterfaceUtility.LabeledSlider(listing, settings.oreCommonality[ore.defName], 0f, 2.5f, ore.label); ;
+                commonality = InterfaceUtility.LabeledSlider(listing, settings.oreCommonality[ore.defName], 0f, 2f, ore.label); ;
 
                 settings.oreCommonality[ore.defName] = commonality;
             }

@@ -37,10 +37,12 @@ namespace MapDesigner.Patches
     //{
     //    internal static void Postfix(Map map, GenStepParams parms)
     //    {
-    //        int countSteel = map.spawnedThings.Count(thing => thing.def == ThingDefOf.MineableSteel);
-    //        Log.Message(String.Format("{0} steel", countSteel));
-    //        int countGold = map.spawnedThings.Count(thing => thing.def == ThingDefOf.MineableGold);
-    //        Log.Message(String.Format("{0} gold", countGold));
+    //        int count = map.spawnedThings.Count(thing => thing.def == ThingDefOf.MineableSteel);
+    //        Log.Message(String.Format("{0} steel", count));
+    //        count = map.spawnedThings.Count(thing => thing.def == ThingDefOf.MineableGold);
+    //        Log.Message(String.Format("{0} gold", count));
+    //        count = map.spawnedThings.Count(thing => thing.def == ThingDefOf.MineableComponentsIndustrial);
+    //        Log.Message(String.Format("{0} compacted machinery", count));
     //    }
     //}
 

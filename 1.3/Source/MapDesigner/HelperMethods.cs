@@ -345,7 +345,9 @@ namespace MapDesigner
             // ore
             foreach (var ore in settings.oreDefaults)
             {
-                ThingDef.Named(ore.Key).building.mineableScatterCommonality *= settings.oreCommonality[ore.Key];
+                float commonality = settings.oreCommonality[ore.Key];
+                if (commonality > 1) { commonality *= commonality; }
+                ThingDef.Named(ore.Key).building.mineableScatterCommonality = ore.Value * settings.oreCommonality[ore.Key];
             }
 
         }

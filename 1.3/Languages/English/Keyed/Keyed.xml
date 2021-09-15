@@ -298,7 +298,7 @@
   <ZMD_featureNoneInfo>Baseline map.</ZMD_featureNoneInfo>
   
   <ZMD_featurePRI>Perfectly round islands</ZMD_featurePRI>
-  <ZMD_featurePRIInfo>Your mape is one or more perfectly round islands, surrounded by shallow water. Trade caravans, raids and wild animals will still enter normally from the sides.</ZMD_featurePRIInfo>
+  <ZMD_featurePRIInfo>Your map is one or more perfectly round islands, surrounded by shallow water. Trade caravans, raids and wild animals will still enter normally from the sides.</ZMD_featurePRIInfo>
   
   <ZMD_featureLake>Natural Lake</ZMD_featureLake>
   <ZMD_featureLakeInfo>A natural lake.\nMountains can spawn inside the lake by default. You can use the "Central hill distribution" option on the Mountains tab to prevent this, or to create a mountain island in the center.</ZMD_featureLakeInfo>

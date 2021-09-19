@@ -71,14 +71,21 @@ namespace MapDesigner
 
                 if (ModsConfig.IdeologyActive)
                 {
-                    step = DefDatabase<GenStepDef>.GetNamed("MechanoidRemains");
-                    densityDefaults.Add(step.defName, (step.genStep as GenStep_ScatterGroup).countPer10kCellsRange);
+                    try
+                    {
+                        step = DefDatabase<GenStepDef>.GetNamed("MechanoidRemains");
+                        densityDefaults.Add(step.defName, (step.genStep as GenStep_ScatterGroup).countPer10kCellsRange);
 
-                    step = DefDatabase<GenStepDef>.GetNamed("AncientPipelineSection");
-                    densityDefaults.Add(step.defName, (step.genStep as GenStep_ScatterThings).countPer10kCellsRange);
+                        step = DefDatabase<GenStepDef>.GetNamed("AncientPipelineSection");
+                        densityDefaults.Add(step.defName, (step.genStep as GenStep_ScatterThings).countPer10kCellsRange);
 
-                    step = DefDatabase<GenStepDef>.GetNamed("AncientJunkClusters");
-                    densityDefaults.Add(step.defName, (step.genStep as GenStep_ScatterGroup).countPer10kCellsRange);
+                        step = DefDatabase<GenStepDef>.GetNamed("AncientJunkClusters");
+                        densityDefaults.Add(step.defName, (step.genStep as GenStep_ScatterGroup).countPer10kCellsRange);
+                    }
+                    catch
+                    {
+                        Log.Message("[Map Designer] Couldn't initialize Ideology Things. Ideology settings may not work.");
+                    }
                 }
 
             }
@@ -234,27 +241,37 @@ namespace MapDesigner
             // Ideology
             if (ModsConfig.IdeologyActive)
             {
-                int countMechs = settings.countMechanoidRemains;
 
-                (DefDatabase<GenStepDef>.GetNamed("MechanoidRemains").genStep as GenStep_ScatterGroup).count = countMechs;
-
-
-                float densityPipeline = settings.densityAncientPipelineSection;
-                if (densityPipeline > 1)
+                try
                 {
-                    densityPipeline = (float)Math.Pow(densityPipeline, 2);
+
+
+                    int countMechs = settings.countMechanoidRemains;
+
+                    (DefDatabase<GenStepDef>.GetNamed("MechanoidRemains").genStep as GenStep_ScatterGroup).count = countMechs;
+
+
+                    float densityPipeline = settings.densityAncientPipelineSection;
+                    if (densityPipeline > 1)
+                    {
+                        densityPipeline = (float)Math.Pow(densityPipeline, 2);
+                    }
+                    (DefDatabase<GenStepDef>.GetNamed("AncientPipelineSection").genStep as GenStep_ScatterThings).countPer10kCellsRange.min = densityDefaults["AncientPipelineSection"].min * densityPipeline;
+                    (DefDatabase<GenStepDef>.GetNamed("AncientPipelineSection").genStep as GenStep_ScatterThings).countPer10kCellsRange.max = densityDefaults["AncientPipelineSection"].max * densityPipeline;
+
+
+                    float densityJunk = settings.densityAncientJunkClusters;
+                    if (densityJunk > 1)
+                    {
+                        densityJunk = (float)Math.Pow(densityJunk, 2);
+                    }
+                    (DefDatabase<GenStepDef>.GetNamed("AncientJunkClusters").genStep as GenStep_ScatterGroup).countPer10kCellsRange.min = densityDefaults["AncientJunkClusters"].min * densityJunk;
+                    (DefDatabase<GenStepDef>.GetNamed("AncientJunkClusters").genStep as GenStep_ScatterGroup).countPer10kCellsRange.max = densityDefaults["AncientJunkClusters"].max * densityJunk;
                 }
-                (DefDatabase<GenStepDef>.GetNamed("AncientPipelineSection").genStep as GenStep_ScatterThings).countPer10kCellsRange.min = densityDefaults["AncientPipelineSection"].min * densityPipeline;
-                (DefDatabase<GenStepDef>.GetNamed("AncientPipelineSection").genStep as GenStep_ScatterThings).countPer10kCellsRange.max = densityDefaults["AncientPipelineSection"].max * densityPipeline;
-
-
-                float densityJunk = settings.densityAncientJunkClusters;
-                if (densityJunk > 1)
+                catch
                 {
-                    densityJunk = (float)Math.Pow(densityJunk, 2);
+                    Log.Message("[Map Designer] Couldn't apply settings to Ideology Things. Ideology settings may not work.");
                 }
-                (DefDatabase<GenStepDef>.GetNamed("AncientJunkClusters").genStep as GenStep_ScatterGroup).countPer10kCellsRange.min = densityDefaults["AncientJunkClusters"].min * densityJunk;
-                (DefDatabase<GenStepDef>.GetNamed("AncientJunkClusters").genStep as GenStep_ScatterGroup).countPer10kCellsRange.max = densityDefaults["AncientJunkClusters"].max * densityJunk;
 
             }
 
@@ -440,9 +457,15 @@ namespace MapDesigner
 
         public static void ApplyVPEPatches()
         {
-
-            DefDatabase<VanillaPowerExpanded.SpecialPowerSpawnsDef>.GetNamed("VPE_SpawnChemfuelPonds").numberToSpawn = MapDesignerMod.mod.settings.vpe_ChemfuelPonds;
-            DefDatabase<VanillaPowerExpanded.SpecialPowerSpawnsDef>.GetNamed("VPE_SpawnHelixienVents").numberToSpawn = MapDesignerMod.mod.settings.vpe_HelixienVents;
+            try
+            {
+                DefDatabase<VanillaPowerExpanded.SpecialPowerSpawnsDef>.GetNamed("VPE_SpawnChemfuelPonds").numberToSpawn = MapDesignerMod.mod.settings.vpe_ChemfuelPonds;
+                DefDatabase<VanillaPowerExpanded.SpecialPowerSpawnsDef>.GetNamed("VPE_SpawnHelixienVents").numberToSpawn = MapDesignerMod.mod.settings.vpe_HelixienVents;
+            }
+            catch
+            {
+                Log.Message("[Map Designer] Could not apply VFE settings");
+            }
         }
 
         public static float GetMaxFertByBiome(BiomeDef biome)

@@ -9,10 +9,11 @@
 
 	
 	<ZMD_resetPage>Reset these settings</ZMD_resetPage>
-	<ZMD_resetMountain>Reset mountains to default</ZMD_resetMountain>
-	<ZMD_resetThings>Reset Things to default</ZMD_resetThings>
-	<ZMD_resetRivers>Reset Rivers to default</ZMD_resetRivers>
+	<ZMD_resetMountain>Reset Mountains</ZMD_resetMountain>
+	<ZMD_resetThings>Reset Things</ZMD_resetThings>
+	<ZMD_resetRivers>Reset Rivers and Beaches</ZMD_resetRivers>
 	<ZMD_resetTerrain>Reset Terrain</ZMD_resetTerrain>
+	
 	<ZMD_Angle>Angle</ZMD_Angle>
 	
 	<ZMD_numTiles>{0} tiles</ZMD_numTiles>

@@ -84,18 +84,18 @@ namespace MapDesigner.UI
                     settings.selRiverStyle = MapDesignerSettings.RiverStyle.Canal;
                 }));
 
-                //riverStyleList.Add(new FloatMenuOption("ZMD_riverStyleConfluence".Translate(), delegate
-                //{
-                //    settings.selRiverStyle = MapDesignerSettings.RiverStyle.Confluence;
-                //}));
-                //riverStyleList.Add(new FloatMenuOption("ZMD_riverStyleFork".Translate(), delegate
-                //{
-                //    settings.selRiverStyle = MapDesignerSettings.RiverStyle.Fork;
-                //}));
-                //riverStyleList.Add(new FloatMenuOption("ZMD_riverStyleOxbow".Translate(), delegate
-                //{
-                //    settings.selRiverStyle = MapDesignerSettings.RiverStyle.Oxbow;
-                //}));
+                riverStyleList.Add(new FloatMenuOption("ZMD_riverStyleConfluence".Translate(), delegate
+                {
+                    settings.selRiverStyle = MapDesignerSettings.RiverStyle.Confluence;
+                }));
+                riverStyleList.Add(new FloatMenuOption("ZMD_riverStyleFork".Translate(), delegate
+                {
+                    settings.selRiverStyle = MapDesignerSettings.RiverStyle.Fork;
+                }));
+                riverStyleList.Add(new FloatMenuOption("ZMD_riverStyleOxbow".Translate(), delegate
+                {
+                    settings.selRiverStyle = MapDesignerSettings.RiverStyle.Oxbow;
+                }));
                 Find.WindowStack.Add(new FloatMenu(riverStyleList));
             }
             Listing_selRiverStyle.End();

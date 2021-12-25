@@ -33,7 +33,7 @@ namespace MapDesigner.Patches
 
 	
 
-    [HarmonyPatch(typeof(RimWorld.RiverMaker), "WaterCoordinateAt")]
+    //[HarmonyPatch(typeof(RimWorld.RiverMaker), "WaterCoordinateAt")]
     static class River_Flow_Patch
     {
         static bool Prefix(IntVec3 loc, ref Vector3 __result, ModuleBase ___coordinateX, ModuleBase ___coordinateZ)

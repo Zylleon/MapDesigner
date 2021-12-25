@@ -77,6 +77,8 @@ namespace MapDesigner.Patches
 
                     ___coordinateX = new AxisAsValueX();
                     ___coordinateZ = new AxisAsValueZ();
+                    //___coordinateX = new Rotate(0.0, 0f - angle, 0.0, ___coordinateX);
+                    //___coordinateZ = new Rotate(0.0, 0f - angle, 0.0, ___coordinateZ);
                     ___coordinateX = new Rotate(0.0, 0f - angle, 0.0, ___coordinateX);
                     ___coordinateZ = new Rotate(0.0, 0f - angle, 0.0, ___coordinateZ);
                     ___coordinateX = new Translate(0f - center.x, 0.0, 0f - center.z, ___coordinateX);
@@ -89,17 +91,16 @@ namespace MapDesigner.Patches
                     ___coordinateX = new Displace(___coordinateX, moduleBase, new Const(0.0), moduleBase2);
                     ___coordinateZ = new Displace(___coordinateZ, moduleBase, new Const(0.0), moduleBase2);
 
+                    originalBranch = new Rotate(0.0, 180 - angle, 0.0, originalBranch);
 
-
-                    originalBranch = new Rotate(0.0, angle - 180, 0.0, originalBranch);
                     originalBranch = new Translate((double)(-(double)center.x), 0.0, (double)(-(double)center.z), originalBranch);
                     originalBranch = new Subtract(new Abs(originalBranch), new Min(___coordinateZ, new Const(0.0)));
 
-                    riverA = new Rotate(0.0, angle - 30, 0.0, riverA);
+                    riverA = new Rotate(0.0, 30 - angle, 0.0, riverA);
                     riverA = new Translate((double)(-(double)center.x), 0.0, (double)(-(double)center.z), riverA);
                     riverA = new Subtract(new Abs(riverA), new Min(new Invert(___coordinateZ), new Const(0.0)));
 
-                    riverB = new Rotate(0.0, angle + 30, 0.0, riverB);
+                    riverB = new Rotate(0.0, 330 - angle, 0.0, riverB);
                     riverB = new Translate((double)(-(double)center.x), 0.0, (double)(-(double)center.z), riverB);
                     riverB = new Subtract(new Abs(riverB), new Min(new Invert(___coordinateZ), new Const(0.0)));
 
@@ -113,44 +114,53 @@ namespace MapDesigner.Patches
                     break;
 
 
-                //case MapDesignerSettings.RiverStyle.Fork:
-                //    Log.Message("[Map Designer] Forking rivers");
+                case MapDesignerSettings.RiverStyle.Fork:
+                    Log.Message("[Map Designer] Forking rivers");
 
-                //    originalBranch = new Rotate(0.0, angle, 0.0, originalBranch);
-                //    originalBranch = new Translate((double)(-(double)center.x), 0.0, (double)(-(double)center.z), originalBranch);
-                //    originalBranch = new Subtract(new Abs(originalBranch), new Min(new Invert(___coordinateZ), new Const(0.0)));
+                    ModuleBase forkNoise1 = new Perlin(0.029999999329447746, 2.0, 0.5, 3, Rand.Range(0, int.MaxValue), QualityMode.Medium);
+                    ModuleBase forkNoise2 = new Perlin(0.029999999329447746, 2.0, 0.5, 3, Rand.Range(0, int.MaxValue), QualityMode.Medium);
+                    ModuleBase forkNoise3 = new Const(8.0);
+                    forkNoise1 = new Multiply(forkNoise1, forkNoise3);
+                    forkNoise2 = new Multiply(forkNoise2, forkNoise3);
+                    ___coordinateX = new Displace(___coordinateX, forkNoise1, new Const(0.0), forkNoise2);
+                    ___coordinateZ = new Displace(___coordinateZ, forkNoise1, new Const(0.0), forkNoise2);
 
-                //    riverA = new Rotate(0.0, angle - 30, 0.0, riverA);
-                //    riverA = new Translate((double)(-(double)center.x), 0.0, (double)(-(double)center.z), riverA);
-                //    riverA = new Subtract(new Abs(riverA), new Min(___coordinateZ, new Const(0.0)));
+                    originalBranch = new Rotate(0.0, 0 - angle, 0.0, originalBranch);
+                    originalBranch = new Translate((double)(-(double)center.x), 0.0, (double)(-(double)center.z), originalBranch);
+                    originalBranch = new Subtract(new Abs(originalBranch), new Min(new Invert(___coordinateZ), new Const(0.0)));
 
-                //    riverB = new Rotate(0.0, angle + 30, 0.0, riverB);
-                //    riverB = new Translate((double)(-(double)center.x), 0.0, (double)(-(double)center.z), riverB);
-                //    riverB = new Subtract(new Abs(riverB), new Min(___coordinateZ, new Const(0.0)));
+                    riverA = new Rotate(0.0, 150 - angle, 0.0, riverA);
+                    riverA = new Translate((double)(-(double)center.x), 0.0, (double)(-(double)center.z), riverA);
+                    riverA = new Subtract(new Abs(riverA), new Min(___coordinateZ, new Const(0.0)));
 
-                //    ___generator = new Min(riverA, riverB);
-                //    ___generator = new Min(originalBranch, ___generator);
+                    riverB = new Rotate(0.0, -150 - angle, 0.0, riverB);
+                    riverB = new Translate((double)(-(double)center.x), 0.0, (double)(-(double)center.z), riverB);
+                    riverB = new Subtract(new Abs(riverB), new Min(___coordinateZ, new Const(0.0)));
 
-                //    break;
+                    ___generator = new Min(riverA, riverB);
+                    ___generator = new Min(originalBranch, ___generator);
+                    ___generator = new Displace(___generator, forkNoise1, new Const(0.0), forkNoise2);
 
-                //case MapDesignerSettings.RiverStyle.Oxbow:
-                //    Log.Message("[Map Designer] Winding rivers");
+                    break;
 
-                //    ModuleBase oxbow = new AxisAsValueX();
+                case MapDesignerSettings.RiverStyle.Oxbow:
+                    Log.Message("[Map Designer] Winding rivers");
 
-                //    ModuleBase x = new Perlin(0.008, 0.0, 0.5, 3, Rand.Range(0, 2147483647), QualityMode.Medium);
-                //    ModuleBase z = new Perlin(0.015, 0.0, 0.5, 3, Rand.Range(0, 2147483647), QualityMode.Medium);
-                //    //ModuleBase scaling = new Const(40.0);
-                //    x = new Multiply(x, new Const(50.0));
-                //    z = new Multiply(z, new Const(30.0));
-                //    oxbow = new Displace(oxbow, x, new Const(0.0), z);
+                    ModuleBase oxbow = new AxisAsValueX();
 
-                //    oxbow = new Rotate(0.0, 0.0 - angle, 0.0, oxbow);
-                //    oxbow = new Translate(0.0 - center.x, 0.0, 0.0 - center.z, oxbow);
-                //    ___coordinateX = oxbow;
-                //    ___generator = oxbow;
+                    ModuleBase x = new Perlin(0.01, 1.0, 0.5, 3, Rand.Range(0, 2147483647), QualityMode.Medium);
+                    ModuleBase z = new Perlin(0.020, 1.0, 0.5, 3, Rand.Range(0, 2147483647), QualityMode.Medium);
+                    //ModuleBase scaling = new Const(40.0);
+                    x = new Multiply(x, new Const(60.0));
+                    z = new Multiply(z, new Const(45.0));
+                    oxbow = new Displace(oxbow, x, new Const(0.0), z);
 
-                //    break;
+                    oxbow = new Rotate(0.0, 0.0 - angle, 0.0, oxbow);
+                    oxbow = new Translate(0.0 - center.x, 0.0, 0.0 - center.z, oxbow);
+                    ___coordinateX = oxbow;
+                    ___generator = oxbow;
+
+                    break;
 
                 default:
                     break;
@@ -174,6 +184,14 @@ namespace MapDesigner.Patches
         {
             MapDesignerSettings settings = MapDesignerMod.mod.settings;
             if (settings.selRiverStyle == MapDesignerSettings.RiverStyle.Spring)
+            {
+                return false;
+            }
+            if (settings.selRiverStyle == MapDesignerSettings.RiverStyle.Confluence)
+            {
+                return false;
+            }
+            if (settings.selRiverStyle == MapDesignerSettings.RiverStyle.Fork)
             {
                 return false;
             }

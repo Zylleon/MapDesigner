@@ -96,17 +96,58 @@ namespace MapDesigner.UI
             }
 
             listing_selPreset.End();
-            listing.GapLine();
+            //listing.GapLine();
             if (listing.ButtonText("ZMD_applyPreset".Translate()))
             {
                 SoundDefOf.Click.PlayOneShotOnCamera(null);
                 ApplyPreset();
             }
+            listing.GapLine();
 
 
             #endregion
 
+            #region save custom settings
+
+            /*
+            Rect selCustomRect = listing.GetRect(80f);
+
+            Rect selCustomButtonRect = selCustomRect;
+            Rect descCustomRect = selCustomRect;
+            selCustomButtonRect.xMax -= 0.66f * rect.width;
+            descCustomRect.xMin += 20f + 0.34f * rect.width;
+
+            // TODO: proper label **IMPORTANT**
+            Widgets.Label(descCustomRect, (GetPresetLabel() + "Desc").Translate());
+
+            Listing_Standard  listing_selCustomPreset = new Listing_Standard();
+            listing_selPreset.Begin(selCustomButtonRect);
+
+            // preset selection
+            if (listing_selCustomPreset.ButtonTextLabeled("ZMD_presets".Translate(), GetPresetLabel().Translate()))
+            {
+                //List<FloatMenuOption> customList = new List<FloatMenuOption>();
+
+                //presetList.Add(new FloatMenuOption("ZMD_presetVanilla".Translate(), delegate
+                //{
+                //    selPreset = Preset.Vanilla;
+                //}));
+                //Find.WindowStack.Add(new FloatMenu(presetList));
+            }
+
+
+
+
+
+
+
+            listing_selPreset.End();
+
             listing.GapLine();
+            */
+            #endregion
+
+
             if (listing.ButtonText("ZMD_reset".Translate()))
             {
                 SoundDefOf.Click.PlayOneShotOnCamera(null);

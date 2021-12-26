@@ -9,10 +9,11 @@
 
 
   <ZMD_resetPage>これらの設定をリセット</ZMD_resetPage>
-  <ZMD_resetMountain>山岳をデフォルトにリセット</ZMD_resetMountain>
-  <ZMD_resetThings>オブジェクトをデフォルトにリセット</ZMD_resetThings>
-  <ZMD_resetRivers>河川をデフォルトにリセット</ZMD_resetRivers>
+  <ZMD_resetMountain>山岳をリセット</ZMD_resetMountain>
+  <ZMD_resetThings>オブジェクトをリセット</ZMD_resetThings>
+  <ZMD_resetRivers>河川と海岸をリセット</ZMD_resetRivers>
   <ZMD_resetTerrain>地形をリセット</ZMD_resetTerrain>
+
   <ZMD_Angle>角度</ZMD_Angle>
 
   <ZMD_numTiles>{0}タイル</ZMD_numTiles>

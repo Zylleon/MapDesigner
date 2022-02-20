@@ -6,17 +6,54 @@ using System.Threading.Tasks;
 using Verse;
 using UnityEngine;
 using RimWorld;
-
+using System.Reflection;
+using System.Globalization;
 
 namespace MapDesigner
 {
 
     public class MapDesignerSettings : ModSettings
     {
+        #region Enums
+        public enum RiverStyle : byte
+        {
+            Vanilla,
+            Spring,
+            Canal,
+            Confluence,
+            Fork,
+            Oxbow,
+        }
+
+        public enum CoastDirection : byte
+        {
+            Vanilla,
+            North,
+            East,
+            South,
+            West
+        }
+
+        public enum Features : byte
+        {
+            None,
+            RoundIsland,
+            Lake
+        }
+
+        public enum PriStyle : byte
+        {
+            Single,
+            Multi
+        }
+
+        #endregion
+
+
         #region settings
         // General
-        public static bool flagPopup = true;
         public static bool flagHomeMapOnly = true;
+        public string configName = "";
 
         // Mountains
         public float hillAmount = 1.0f;
@@ -74,7 +111,6 @@ namespace MapDesigner
         public bool flagBiomeRocks = false;
         public Dictionary<string, bool> allowedRocks = new Dictionary<string, bool>();
 
-
         // Rivers
         public float sizeRiver = 1.0f;
         public bool flagRiverBeach = false;
@@ -87,29 +123,10 @@ namespace MapDesigner
         public bool flagRiverLocAbs= false;
         public Vector3 riverCenterDisp = new Vector3(0.0f, 0.0f, 0.0f);
 
-        public enum RiverStyle : byte
-        {
-            Vanilla,
-            Spring,
-            Canal,
-            Confluence,
-            Fork,
-            Oxbow,
-        }
         public MapDesignerSettings.RiverStyle selRiverStyle = RiverStyle.Vanilla;
 
         // Beaches
         public CoastDirection coastDir = CoastDirection.Vanilla;
-
-        public enum CoastDirection : byte
-        {
-            Vanilla,
-            North,
-            East,
-            South,
-            West
-        }
-
         public string beachTerr = "Vanilla";
 
 
@@ -118,29 +135,15 @@ namespace MapDesigner
         public float terrainWater = 1f;
         public bool flagTerrainWater = false;
 
-        // Features
-        public enum Features : byte
-        {
-            None,
-            RoundIsland,
-            Lake
-        }
 
+        // Features
         public MapDesignerSettings.Features selectedFeature = Features.None;
 
         // Perfectly Round Islands
         public float priIslandSize = 40f;
         public float priBeachSize = 5f;
-        //public bool priMultiSpawn = false;
         public PriStyle priStyle = PriStyle.Single;
         public Vector3 priSingleCenterDisp = new Vector3(0.0f, 0.0f, 0.0f);
-
-        public enum PriStyle : byte
-        {
-            Single,
-            Multi
-        }
-
 
         // Lake
         public float lakeSize = 0.20f;                  // proportion of map size
@@ -151,18 +154,162 @@ namespace MapDesigner
         public string lakeShore = "Sand";
         public Vector3 lakeCenterDisp = new Vector3(0.0f, 0.0f, 0.0f);
 
+
         // Helper stuff
         public Dictionary<string, BiomeDefault> biomeDefaults;
         public Dictionary<string, FloatRange> densityDefaults;
         public Dictionary<string, float> riverDefaults;
         public Dictionary<string, float> oreDefaults;
+
         #endregion
+
+
+        public List<string> configs = new List<string>();
+
+
+        public bool SaveNewConfig()
+        {
+            if (configName == "")
+            {
+                Messages.Message("ZMD_safeFail2".Translate(), MessageTypeDefOf.RejectInput);
+                return false;
+            }
+
+            if(!configs.NullOrEmpty())
+            {
+                foreach(string config in configs)
+                {
+                    if(config.Split(':')[0] == configName)
+                    {
+                        Messages.Message("ZMD_safeFail1".Translate(), MessageTypeDefOf.RejectInput);
+                        return false;
+                    }
+                }
+            }
+
+            if (configs == null)
+            {
+                configs = new List<string>();
+            }
+            configs.Add(this.ToString());
+            Messages.Message(string.Format("ZMD_saveSuccess".Translate(), configName), MessageTypeDefOf.TaskCompletion);
+            return true;
+
+        }
+
+        public void LoadConfig(string configName)
+        {
+            string configString = configs.Where(c => c.Split(':')[0] == configName).FirstOrDefault();
+            MapDesignerMod.mod.settings = new MapDesignerSettings(configString);
+
+        }
+
+
+        public override string ToString()
+        {
+            string configString = configName + ":";
+            var fields = typeof(MapDesignerSettings).GetFields();
+            List<string> toIgnore = new List<string>
+            {
+                "configs",                  // list of configs, don't save them recursively
+
+                "biomeDefaults",            // these are default data for reference when changing various defs
+                "densityDefaults",          // they don't get saved between sessions and aren't settings
+                "riverDefaults",
+                "oreDefaults",
+
+                "oreCommonality",           // oreCommonality and allowedRocks are dictionaries that get special handling
+                "allowedRocks"
+            };
+            foreach (var field in fields)
+            {
+                if (field.Name == "oreCommonality")
+                {
+                    configString += field.Name + "=" + HelperMethods.DictToString((Dictionary<string, float>)field.GetValue(MapDesignerMod.mod.settings));
+                }
+                else if (field.Name == "allowedRocks")
+                {
+                    configString += field.Name + "=" + HelperMethods.DictToString((Dictionary<string, bool>)field.GetValue(MapDesignerMod.mod.settings));
+                }
+                //else if (field.Name != "configs" && field.Name != "configName" && field.Name != "biomeDefaults" && field.Name != "densityDefaults" && field.Name != "riverDefaults" && field.Name != "oreDefaults")
+                else if(!toIgnore.Contains(field.Name))
+                {
+                    configString += field.Name + "=" + field.GetValue(MapDesignerMod.mod.settings).ToString() + ";";
+                }
+            }
+            return configString;
+        }
+
+
+        public MapDesignerSettings(string configString)
+        {
+            var nameAndSettings = configString.Split(':');
+            configName = nameAndSettings[0];
+            var settings = nameAndSettings[1];
+            var settingValues = settings.Split(';');
+            var fields = typeof(MapDesignerSettings).GetFields();
+            foreach (var setting in settingValues)
+            {
+                var nameAndValue = setting.Split('=');
+                var settingName = nameAndValue[0];
+                Log.Message("... " + settingName);
+
+                if (!settingName.NullOrEmpty())
+                {
+
+
+
+                    var settingValue = nameAndValue[1];
+
+                    FieldInfo field = fields.Single(fi => fi.Name == settingName);
+                    if (field.FieldType == typeof(string))
+                    {
+                        field.SetValue(this, settingValue); //settingValue will need to be un-ToString'd
+                    }
+                    else if (field.FieldType == typeof(bool))
+                    {
+                        if (settingValue == "1" || settingValue.ToLower() == "true")
+                        {
+                            field.SetValue(this, true);
+                        }
+                        else
+                        {
+                            field.SetValue(this, false);
+                        }
+                    }
+                    else if (field.FieldType == typeof(float))
+                    {
+                        float fval = float.Parse(settingValue);
+                        field.SetValue(this, fval);
+                    }
+                    else
+                    {
+                        Log.Message("Skipping " + field.Name);
+                    }
+                    //else
+                    //{
+                    //    field.SetValue(this, settingValue); //settingValue will need to be un-ToString'd
+
+                    //}
+
+
+
+                    //fields.Single(fi => fi.Name == settingName).SetValue(this, settingValue); //settingValue will need to be un-ToString'd
+
+                }
+            }
+        }
+
+        public MapDesignerSettings() : base() { }
+
 
         public override void ExposeData()
         {
             // General
-            Scribe_Values.Look(ref flagPopup, "flagPopup", true);
             Scribe_Values.Look(ref flagHomeMapOnly, "flagHomeMapOnly", true);
+
+            // Saving and Loading
+            Scribe_Collections.Look(ref configs, "configs");
 
             // Mountains
             Scribe_Values.Look(ref hillAmount, "hillAmount", 1.0f);
@@ -214,12 +361,11 @@ namespace MapDesigner
             Scribe_Values.Look(ref vpe_HelixienVents, "vpe_HelixienVents", new IntRange(1, 2));
             Scribe_Values.Look(ref vpe_ChemfuelPonds, "vpe_ChemfuelPonds", new IntRange(1, 3));
 
-
-
             // Rocks
             Scribe_Values.Look(ref rockTypeRange, "rockTypeRange", new IntRange(2, 3));
             Scribe_Values.Look(ref flagBiomeRocks, "flagBiomeRocks", false);
             Scribe_Collections.Look(ref allowedRocks, "allowedRocks", LookMode.Value, LookMode.Value);
+
 
             // Rivers
             Scribe_Values.Look(ref sizeRiver, "sizeRiver", 1.0f);
@@ -262,8 +408,20 @@ namespace MapDesigner
             Scribe_Values.Look(ref flagLakeSalty, "flagLakeSalty", false);
             Scribe_Values.Look(ref lakeShore, "lakeShore", "Sand");
             Scribe_Values.Look(ref lakeCenterDisp, "lakeCenterDisp", new Vector3(0.0f, 0.0f, 0.0f));
-
         }
+   
     }
+
+
+    public class Config
+    {
+        public string name;
+        
+        public Dictionary<string,string> settings;
+
+
+    }
+
+
 
 }

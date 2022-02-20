@@ -16,7 +16,8 @@ namespace MapDesigner.UI
 
         private static Vector2 scrollPosition = Vector2.zero;
         private static float viewHeight;
-
+        private static string customName = "";
+        private static string selConfig;
         private enum Preset : byte
         {
             Vanilla,
@@ -96,28 +97,80 @@ namespace MapDesigner.UI
             }
 
             listing_selPreset.End();
-            //listing.GapLine();
+
             if (listing.ButtonText("ZMD_applyPreset".Translate()))
             {
                 SoundDefOf.Click.PlayOneShotOnCamera(null);
                 ApplyPreset();
+
             }
             listing.GapLine();
 
-
-            #endregion
-
-            #region save custom settings
-
-            
-
             #endregion
 
 
+
+            #region save / load custom settings
+
+            // saving
+            string name = listing.TextEntryLabeled("ZMD_saveCurrent".Translate(), settings.configName);
+            settings.configName = name;
+
+            if (listing.ButtonText("ZMD_save".Translate()))
+            {
+                settings.SaveNewConfig();
+            }
+
+
+
+            // look for saved configs
+
+            if(!settings.configs.NullOrEmpty())
+            {
+                listing.GapLine();
+                if (selConfig == null)
+                {
+                    selConfig = settings.configs[0].Split(':')[0];
+                }
+                if (listing.ButtonTextLabeled("ZMD_selConfig".Translate(), selConfig))
+                {
+                    List<FloatMenuOption> configList = new List<FloatMenuOption>();
+                    foreach (string c in settings.configs)
+                    {
+                        string configName = c.Split(':')[0];
+                        configList.Add(new FloatMenuOption(configName, delegate { selConfig = configName; }, MenuOptionPriority.Default));
+                    }
+                    Find.WindowStack.Add(new FloatMenu(configList));
+                }
+
+                if(listing.ButtonText("ZMD_load".Translate()))
+                {
+                    settings.LoadConfig(selConfig);
+                    Messages.Message("ZMD_loadSuccess".Translate() + selConfig, MessageTypeDefOf.TaskCompletion, false);
+                }
+
+                if (listing.ButtonText("ZMD_delete".Translate()))
+                {
+                    settings.configs.RemoveAll(c => c.Split(':')[0] == selConfig);
+                    Messages.Message("ZMD_delSuccess".Translate() + selConfig, MessageTypeDefOf.TaskCompletion, false);
+                    if(!settings.configs.NullOrEmpty())
+                    {
+                        selConfig = settings.configs[0].Split(':')[0];
+                    }
+                }
+            }
+
+
+
+
+            #endregion
+
+            listing.GapLine();
             if (listing.ButtonText("ZMD_reset".Translate()))
             {
                 SoundDefOf.Click.PlayOneShotOnCamera(null);
                 ResetAllSettings();
+                Messages.Message("ZMD_resetSuccess".Translate(), MessageTypeDefOf.TaskCompletion, false);
             }
 
             listing.End();
@@ -129,27 +182,35 @@ namespace MapDesigner.UI
             {
                 case Preset.Vanilla:
                     ResetAllSettings();
+                    Messages.Message("ZMD_loadSuccess".Translate(), MessageTypeDefOf.TaskCompletion, false);
                     break;
                 case Preset.FertileValley:
                     PresetFertileValley();
+                    Messages.Message("ZMD_loadSuccess".Translate(), MessageTypeDefOf.TaskCompletion, false);
                     break;
                 case Preset.Barrens:
                     PresetBarrens();
+                    Messages.Message("ZMD_loadSuccess".Translate(), MessageTypeDefOf.TaskCompletion, false);
                     break;
                 case Preset.Unnatural:
                     PresetUnnatural();
+                    Messages.Message("ZMD_loadSuccess".Translate(), MessageTypeDefOf.TaskCompletion, false);
                     break;
                 case Preset.FishingVillage:
                     PresetFishingVillage();
+                    Messages.Message("ZMD_loadSuccess".Translate(), MessageTypeDefOf.TaskCompletion, false);
                     break;
                 case Preset.Canyon:
                     PresetCanyon();
+                    Messages.Message("ZMD_loadSuccess".Translate(), MessageTypeDefOf.TaskCompletion, false);
                     break;
                 case Preset.ZyllesChoice:
                     PresetZyllesChoice();
+                    Messages.Message("ZMD_loadSuccess".Translate(), MessageTypeDefOf.TaskCompletion, false);
                     break;
                 case Preset.Random:
                     PresetRandom();
+                    Messages.Message("ZMD_randSuccess".Translate(), MessageTypeDefOf.TaskCompletion, false);
                     break;
                 default:
                     break;

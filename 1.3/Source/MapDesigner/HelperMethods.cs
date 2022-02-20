@@ -485,8 +485,31 @@ namespace MapDesigner
 
             return 1.2f;
         }
-    
-    
-    
+
+
+        public static string DictToString(Dictionary<string,float> dict)
+        {
+            string output = "";
+
+            foreach(var entry in dict)
+            {
+                output += entry.Key + "-" + entry.Value + ",";
+            }
+            return output;
+        }
+
+        public static string DictToString(this Dictionary<string, bool> dict)
+        {
+            string output = "";
+
+            foreach (var entry in dict)
+            {
+                output += entry.Key + "-" + entry.Value + ",";
+            }
+            return output;
+        }
+
+
+
     }
 }

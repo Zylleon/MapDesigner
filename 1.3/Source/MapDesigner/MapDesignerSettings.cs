@@ -171,17 +171,23 @@ namespace MapDesigner
         {
             if (configName == "")
             {
-                Messages.Message("ZMD_safeFail2".Translate(), MessageTypeDefOf.RejectInput);
+                Messages.Message("ZMD_saveFail2".Translate(), MessageTypeDefOf.RejectInput);
                 return false;
             }
 
             if(!configs.NullOrEmpty())
             {
-                foreach(string config in configs)
+                if(configs.Count >= 15)
+                {
+                    Messages.Message("ZMD_saveFail3".Translate(), MessageTypeDefOf.RejectInput);
+                    return false;
+                }
+
+                foreach (string config in configs)
                 {
                     if(config.Split(':')[0] == configName)
                     {
-                        Messages.Message("ZMD_safeFail1".Translate(), MessageTypeDefOf.RejectInput);
+                        Messages.Message("ZMD_saveFail1".Translate(), MessageTypeDefOf.RejectInput);
                         return false;
                     }
                 }

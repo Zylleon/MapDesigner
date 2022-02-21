@@ -113,26 +113,54 @@ namespace MapDesigner.UI
             #region save / load custom settings
 
             // saving
-            string name = listing.TextEntryLabeled("ZMD_saveCurrent".Translate(), settings.configName);
-            settings.configName = name;
+            listing.Label("ZMD_addConfig".Translate());
 
-            if (listing.ButtonText("ZMD_save".Translate()))
+            Rect saveTextboxRect = listing.GetRect(50f);
+            Rect saveButtonRect = saveTextboxRect;
+
+            saveTextboxRect.xMax -= 0.34f * rect.width;
+            saveButtonRect.xMin += 20f + 0.66f * rect.width;
+            Listing_Standard saveListing1 = new Listing_Standard();
+            saveListing1.Begin(saveTextboxRect);
+
+            string name = saveListing1.TextEntryLabeled("ZMD_saveCurrent".Translate(), settings.configName);
+            settings.configName = name;
+            saveListing1.End();
+
+            Listing_Standard saveListing2 = new Listing_Standard();
+            saveListing2.Begin(saveButtonRect);
+            if (saveListing2.ButtonText("ZMD_save".Translate()))
             {
                 settings.SaveNewConfig();
             }
-
+            saveListing2.End();
 
 
             // look for saved configs
 
-            if(!settings.configs.NullOrEmpty())
+            if (!settings.configs.NullOrEmpty())
             {
                 listing.GapLine();
+                listing.Label("ZMD_manageConfigs".Translate());
+
+                //TODO: LAYOUT
+                Rect configRect1 = listing.GetRect(50f);
+                Rect configRect2 = configRect1;
+                Rect configRect3 = configRect1;
+
+                configRect1.xMax -= 0.48f * rect.width;
+                configRect2.xMin += 0.52f * rect.width;
+                configRect2.xMax -= 0.26f * rect.width;
+                configRect3.xMin += 0.76f * rect.width;
+                
                 if (selConfig == null)
                 {
                     selConfig = settings.configs[0].Split(':')[0];
                 }
-                if (listing.ButtonTextLabeled("ZMD_selConfig".Translate(), selConfig))
+
+                Listing_Standard configListing1 = new Listing_Standard();
+                configListing1.Begin(configRect1);
+                if (configListing1.ButtonTextLabeled("ZMD_selConfig".Translate(), selConfig))
                 {
                     List<FloatMenuOption> configList = new List<FloatMenuOption>();
                     foreach (string c in settings.configs)
@@ -142,14 +170,21 @@ namespace MapDesigner.UI
                     }
                     Find.WindowStack.Add(new FloatMenu(configList));
                 }
+                configListing1.End();
 
-                if(listing.ButtonText("ZMD_load".Translate()))
+                Listing_Standard configListing2 = new Listing_Standard();
+                configListing2.Begin(configRect2);
+                if (configListing2.ButtonText("ZMD_load".Translate()))
                 {
                     settings.LoadConfig(selConfig);
                     Messages.Message("ZMD_loadSuccess".Translate() + selConfig, MessageTypeDefOf.TaskCompletion, false);
                 }
+                configListing2.End();
 
-                if (listing.ButtonText("ZMD_delete".Translate()))
+                Listing_Standard configListing3 = new Listing_Standard();
+                configListing3.Begin(configRect3);
+
+                if (configListing3.ButtonText("ZMD_delete".Translate()))
                 {
                     settings.configs.RemoveAll(c => c.Split(':')[0] == selConfig);
                     Messages.Message("ZMD_delSuccess".Translate() + selConfig, MessageTypeDefOf.TaskCompletion, false);
@@ -158,6 +193,7 @@ namespace MapDesigner.UI
                         selConfig = settings.configs[0].Split(':')[0];
                     }
                 }
+                configListing3.End();
             }
 
 

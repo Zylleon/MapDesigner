@@ -82,13 +82,16 @@
  
  	
 <!-- saving and loading -->
+	<ZMD_addConfig>Add new config</ZMD_addConfig>
 	<ZMD_save>Save</ZMD_save>
 	<ZMD_saveCurrent>Save currrent settings as  </ZMD_saveCurrent>
 	<ZMD_applySettings>Apply settings</ZMD_applySettings>
 	<ZMD_saveSuccess>Settings saved as {0}</ZMD_saveSuccess>
-	<ZMD_safeFail1>A config with this name is already saved, delete it first.</ZMD_safeFail1>
-	<ZMD_safeFail2>Your config must have a name.</ZMD_safeFail2>
+	<ZMD_saveFail1>A config with this name is already saved, delete it first.</ZMD_saveFail1>
+	<ZMD_saveFail2>Your config must have a name.</ZMD_saveFail2>
+	<ZMD_saveFail3>You have too many saved configs, delete some to make room.</ZMD_saveFail3>
 	
+	<ZMD_manageConfigs>Managed saved configs</ZMD_manageConfigs>
 	<ZMD_selConfig>Select config</ZMD_selConfig>
 	<ZMD_load>Apply</ZMD_load>
 	<ZMD_loadSuccess>Applied settings.</ZMD_loadSuccess>

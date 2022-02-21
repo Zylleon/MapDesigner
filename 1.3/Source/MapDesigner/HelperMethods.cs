@@ -495,6 +495,7 @@ namespace MapDesigner
             {
                 output += entry.Key + "-" + entry.Value + ",";
             }
+            output += ";";
             return output;
         }
 
@@ -506,6 +507,8 @@ namespace MapDesigner
             {
                 output += entry.Key + "-" + entry.Value + ",";
             }
+            output += ";";
+
             return output;
         }
 

@@ -83,7 +83,7 @@
  	
 <!-- saving and loading -->
 	<ZMD_save>Save</ZMD_save>
-	<ZMD_saveCurrent>Save currrent settings as</ZMD_saveCurrent>
+	<ZMD_saveCurrent>Save currrent settings as  </ZMD_saveCurrent>
 	<ZMD_applySettings>Apply settings</ZMD_applySettings>
 	<ZMD_saveSuccess>Settings saved as {0}</ZMD_saveSuccess>
 	<ZMD_safeFail1>A config with this name is already saved, delete it first.</ZMD_safeFail1>

@@ -200,7 +200,7 @@ namespace MapDesigner
         public void LoadConfig(string configName)
         {
             string configString = configs.Where(c => c.Split(':')[0] == configName).FirstOrDefault();
-            MapDesignerMod.mod.settings = new MapDesignerSettings(configString);
+            MapDesignerMod.mod.settings.ParseConfigString(configString);
 
         }
 
@@ -231,7 +231,6 @@ namespace MapDesigner
                 {
                     configString += field.Name + "=" + HelperMethods.DictToString((Dictionary<string, bool>)field.GetValue(MapDesignerMod.mod.settings));
                 }
-                //else if (field.Name != "configs" && field.Name != "configName" && field.Name != "biomeDefaults" && field.Name != "densityDefaults" && field.Name != "riverDefaults" && field.Name != "oreDefaults")
                 else if(!toIgnore.Contains(field.Name))
                 {
                     configString += field.Name + "=" + field.GetValue(MapDesignerMod.mod.settings).ToString() + ";";
@@ -241,7 +240,8 @@ namespace MapDesigner
         }
 
 
-        public MapDesignerSettings(string configString)
+        // this was previously the constructor
+        public void ParseConfigString(string configString)
         {
             var nameAndSettings = configString.Split(':');
             configName = nameAndSettings[0];
@@ -256,9 +256,6 @@ namespace MapDesigner
 
                 if (!settingName.NullOrEmpty())
                 {
-
-
-
                     var settingValue = nameAndValue[1];
 
                     FieldInfo field = fields.Single(fi => fi.Name == settingName);
@@ -282,19 +279,64 @@ namespace MapDesigner
                         float fval = float.Parse(settingValue);
                         field.SetValue(this, fval);
                     }
+                    else if (field.FieldType == typeof(Vector3))
+                    {
+                        field.SetValue(this, ParseHelper.FromStringVector3(settingValue));
+                    }
+                    else if (field.FieldType == typeof(IntRange))
+                    {
+                        field.SetValue(this, ParseHelper.ParseIntRange(settingValue));
+                    }
+                    else if (field.FieldType == typeof(int))
+                    {
+                        field.SetValue(this, Int32.Parse(settingValue));
+                    }
+                    else if (field.FieldType == typeof(Dictionary<string, float>))
+                    {
+                        Dictionary<string, float> val = new Dictionary<string, float>();
+                        string[] pairs = settingValue.Split(',');
+                        foreach(var pair in pairs)
+                        {
+                            if(!pair.NullOrEmpty())
+                            {
+                                var kv = pair.Split('-');
+                                val.Add(kv[0], float.Parse(kv[1]));
+                            }
+                            
+                        }
+                        field.SetValue(this, val);
+                    }
+                    else if (field.FieldType == typeof(Dictionary<string, bool>))
+                    {
+                        Dictionary<string, bool> val = new Dictionary<string, bool>();
+                        string[] pairs = settingValue.Split(',');
+                        foreach (var pair in pairs)
+                        {
+                            if (!pair.NullOrEmpty())
+                            {
+                                var kv = pair.Split('-');
+                                if(kv[1] == "1")
+                                {
+                                    val.Add(kv[0], true);
+                                }
+                                else
+                                {
+                                    val.Add(kv[0], false);
+                                }
+                            }
+                        }
+                        field.SetValue(this, val);
+                    }
+                    // enums
+                    else if (field.FieldType == typeof(RiverStyle) || field.FieldType == typeof(CoastDirection) || field.FieldType == typeof(Features) || field.FieldType == typeof(PriStyle))
+                    {
+                        Log.Message(field.Name + " is an enum");
+                        field.SetValue(this, Enum.Parse(field.FieldType, settingValue));
+                    }
                     else
                     {
-                        Log.Message("Skipping " + field.Name);
+                        Log.Message("Skipping " + field.Name + " because it is a " + field.FieldType);
                     }
-                    //else
-                    //{
-                    //    field.SetValue(this, settingValue); //settingValue will need to be un-ToString'd
-
-                    //}
-
-
-
-                    //fields.Single(fi => fi.Name == settingName).SetValue(this, settingValue); //settingValue will need to be un-ToString'd
 
                 }
             }
@@ -410,16 +452,6 @@ namespace MapDesigner
             Scribe_Values.Look(ref lakeCenterDisp, "lakeCenterDisp", new Vector3(0.0f, 0.0f, 0.0f));
         }
    
-    }
-
-
-    public class Config
-    {
-        public string name;
-        
-        public Dictionary<string,string> settings;
-
-
     }
 
 

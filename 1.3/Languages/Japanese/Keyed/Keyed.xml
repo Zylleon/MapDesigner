@@ -44,6 +44,7 @@
 
   <ZMD_applyPreset>プリセットを許可</ZMD_applyPreset>
   <ZMD_reset>全てをリセット</ZMD_reset>
+  <ZMD_resetSuccess>すべての設定がリセットされました</ZMD_resetSuccess>
 
   <ZMD_presetNone>プリセット無し</ZMD_presetNone>
   <ZMD_presetNoneDesc>プリセットが選択されていません</ZMD_presetNoneDesc>
@@ -81,6 +82,22 @@
   <ZMD_flagHomeMapOnly>一部の設定をホームマップに制限</ZMD_flagHomeMapOnly>
   <ZMD_flagHomeMapOnlyDesc>制限後に適用される設定：山と丘だけ\n\nチェックした場合、これらはクエストマップや、AI派閥の拠点とその他のホームマップで無いマップがバニラと同じになります。</ZMD_flagHomeMapOnlyDesc>
 
+
+  <!-- saving and loading -->
+
+  <ZMD_save>セーブ</ZMD_save>
+  <ZMD_saveCurrent>現在の設定を名前を付けて保存</ZMD_saveCurrent>
+  <ZMD_applySettings>設定を適用</ZMD_applySettings>
+  <ZMD_saveSuccess>設定を{0}として保存しました</ZMD_saveSuccess>
+  <ZMD_safeFail1>この名前の設定はすでに保存されています.先に古い設定を削除してください.</ZMD_safeFail1>
+  <ZMD_safeFail2>設定には名前が必要</ZMD_safeFail2>
+
+  <ZMD_selConfig>設定を選択</ZMD_selConfig>
+  <ZMD_load>適用</ZMD_load>
+  <ZMD_loadSuccess>設定を適用しました</ZMD_loadSuccess>
+  <ZMD_randSuccess>設定をランダム化しました</ZMD_randSuccess>
+  <ZMD_delete>削除</ZMD_delete>
+  <ZMD_delSuccess>削除した設定：</ZMD_delSuccess>
 
 
   <!-- Mountains -->

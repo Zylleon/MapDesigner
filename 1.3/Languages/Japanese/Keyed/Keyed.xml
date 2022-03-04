@@ -337,7 +337,7 @@
   <ZMD_lakeRoundness>湖の丸さ</ZMD_lakeRoundness>
   <ZMD_lakeBeachSize>湖の岸辺の大きさ</ZMD_lakeBeachSize>
   <ZMD_lakeDepth>湖の深さ</ZMD_lakeDepth>
-  <ZMD_flagLakeSalty>塩水湖</ZMD_flagLakeSalty>
+  <ZMD_flagLakeSalty>塩水</ZMD_flagLakeSalty> <!-- same label is now used for both the Lake and Round Island features -->
   <ZMD_lakeShore>岸の地形</ZMD_lakeShore>
 
   <ZMD_lakeDepth0>とても浅い</ZMD_lakeDepth0>

@@ -336,7 +336,7 @@
   <ZMD_lakeRoundness>Lake roundness</ZMD_lakeRoundness>
   <ZMD_lakeBeachSize>Lake beach size</ZMD_lakeBeachSize>
   <ZMD_lakeDepth>Lake depth</ZMD_lakeDepth>
-  <ZMD_flagLakeSalty>Saltwater lake</ZMD_flagLakeSalty>
+  <ZMD_flagLakeSalty>Salt water</ZMD_flagLakeSalty>		<!-- same label is now used for both the Lake and Round Island features -->
   <ZMD_lakeShore>Shore terrain</ZMD_lakeShore>
   
   <ZMD_lakeDepth0>Very shallow</ZMD_lakeDepth0>

@@ -10,24 +10,22 @@ using MapDesigner;
 
 namespace MapDesigner.Feature
 {
-
-    /// <summary>
-    /// if fert less than -2000, feature terrain overrides rivers
-    /// else if fert less than -1000, rivers override feature
-    /// else if fert >= -999, no feature terrain
-    /// Terrains:
-    /// 000 deep water
-    /// 010 deep ocean water
-    /// 020 shallow water
-    /// 030 shallow ocean water
-    /// 040 marshy soil
-    /// 050 mud
-    /// 060 ice
-    /// 070 sand
-    /// 080 soil
-    /// 090 rich soil
-    /// 
-    /// </summary>
+    /*
+         if fert less than -2000, feature terrain overrides rivers
+         else if fert less than -1000, rivers override feature
+         else if fert >= -999, no feature terrain
+         Terrains:
+         000 deep water
+         010 deep ocean water
+         020 shallow water
+         030 shallow ocean water
+         040 marshy soil
+         050 mud
+         060 ice
+         070 sand
+         080 soil
+         090 rich soil
+    */
     [HarmonyPatch(typeof(RimWorld.GenStep_Terrain), "TerrainFrom")]
     public static class Feature_TerrainFrom
     {

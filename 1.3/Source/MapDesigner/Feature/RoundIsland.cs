@@ -129,9 +129,14 @@ namespace MapDesigner.Feature
                 elevation[current] = 0;
             }
 
+            float water = -2025f;
+            if (MapDesignerMod.mod.settings.flagPriSalty)
+            {
+                water = -2035;
+            }
             foreach (IntVec3 current in waterCells)
             {
-                fertility[current] = -2025f;
+                fertility[current] = water;
                 elevation[current] = 0;
             }
         }

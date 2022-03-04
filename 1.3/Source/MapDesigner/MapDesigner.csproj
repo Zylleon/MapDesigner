@@ -312,7 +312,6 @@
   <ItemGroup>
     <Compile Include="BiomeDefault.cs" />
     <Compile Include="DistanceFromOrigin.cs" />
-    <Compile Include="Feature\Cubism.cs" />
     <Compile Include="Feature\Feature_TerrainFrom.cs" />
     <Compile Include="MapReroll\GenStep_ElevationFertility.cs" />
     <Compile Include="Patches\AnimaTreePatch.cs" />

@@ -367,30 +367,38 @@ namespace MapDesigner.UI
             MapDesignerMod.mod.settings.flagTerrainWater = Rand.Bool;
 
             // Features
-            //int mapFeature = Rand.Range(0, 2);
-            //switch (mapFeature)
-            //{
-            //    case 1:
-            //        // Perfectly Round Islands
-            //        settings.selectedFeature = MapDesignerSettings.Features.RoundIsland;
-            //        settings.priIslandSize = Rand.Range(5f, 45f);
-            //        settings.priBeachSize = Rand.Range(1f, 18f);
-            //        MapDesignerSettings.priMultiSpawn = Rand.Bool;
-            //        break;
-            //    case 2:
-            //        // Lake
-            //        settings.selectedFeature = MapDesignerSettings.Features.Lake;
-            //        settings.lakeSize = Rand.Range(0.04f, 1.0f);
-            //        settings.lakeRoundness = Rand.Range(0f, 3.5f);
-            //        settings.lakeBeachSize = Rand.Range(0f, 35f);
-            //        settings.lakeDepth = Rand.Range(0f, 1f);
-            //        MapDesignerSettings.flagLakeSalty = Rand.Bool;
-            //        //settings.lakeShore = RiversCardUtility.terrainOptions.RandomElement().defName;
-            //        break;
-            //    default:
-            //        settings.selectedFeature = MapDesignerSettings.Features.None;
-            //        break;
-            //}
+            int mapFeature = Rand.Range(0, 4);
+            switch (mapFeature)
+            {
+                case 0:
+                    // Perfectly Round Islands
+                    settings.selectedFeature = MapDesignerSettings.Features.RoundIsland;
+                    settings.priIslandSize = Rand.Range(5f, 45f);
+                    settings.priBeachSize = Rand.Range(1f, 18f);
+                    settings.flagPriSalty = Rand.Bool;
+                    if (Rand.Bool)
+                    {
+                        settings.priStyle = MapDesignerSettings.PriStyle.Multi;
+                    }
+                    else
+                    {
+                        settings.priStyle = MapDesignerSettings.PriStyle.Single;
+                    }
+                    break;
+                case 1:
+                    // Lake
+                    settings.selectedFeature = MapDesignerSettings.Features.Lake;
+                    settings.lakeSize = Rand.Range(0.04f, 1.0f);
+                    settings.lakeRoundness = Rand.Range(0f, 3.5f);
+                    settings.lakeBeachSize = Rand.Range(0f, 35f);
+                    settings.lakeDepth = Rand.Range(0f, 1f);
+                    settings.flagLakeSalty = Rand.Bool;
+                    //settings.lakeShore = RiversCardUtility.terrainOptions.RandomElement().defName;
+                    break;
+                default:
+                    settings.selectedFeature = MapDesignerSettings.Features.None;
+                    break;
+            }
         }
 
         public static void PresetFertileValley()

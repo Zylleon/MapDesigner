@@ -106,6 +106,7 @@ namespace MapDesigner.UI
                 Find.WindowStack.Add(new FloatMenu(featureList));
             }
 
+            listing.CheckboxLabeled("ZMD_flagLakeSalty".Translate(), ref settings.flagPriSalty, "ZMD_flagLakeSalty".Translate());
 
 
 
@@ -297,6 +298,7 @@ namespace MapDesigner.UI
             settings.priBeachSize = 5f;
             settings.priStyle = MapDesignerSettings.PriStyle.Single;
             settings.priSingleCenterDisp = new Vector3(0.0f, 0.0f, 0.0f);
+            settings.flagPriSalty = false;
 
             settings.lakeSize = 0.20f;
             settings.lakeBeachSize = 10f;

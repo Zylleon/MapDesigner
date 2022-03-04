@@ -144,6 +144,7 @@ namespace MapDesigner
         public float priBeachSize = 5f;
         public PriStyle priStyle = PriStyle.Single;
         public Vector3 priSingleCenterDisp = new Vector3(0.0f, 0.0f, 0.0f);
+        public bool flagPriSalty = false;
 
         // Lake
         public float lakeSize = 0.20f;                  // proportion of map size
@@ -447,6 +448,7 @@ namespace MapDesigner
             Scribe_Values.Look(ref priBeachSize, "priBeachSize", 5f);
             Scribe_Values.Look(ref priStyle, "priStyle", PriStyle.Single);
             Scribe_Values.Look(ref priSingleCenterDisp, "priSingleCenterDisp", new Vector3(0.0f, 0.0f, 0.0f));
+            Scribe_Values.Look(ref flagPriSalty, "flagPriSalty", false);
 
             // Lake
             Scribe_Values.Look(ref lakeSize, "lakeSize", 0.20f);

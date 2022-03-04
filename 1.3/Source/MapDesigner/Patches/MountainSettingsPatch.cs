@@ -209,7 +209,7 @@ namespace MapDesigner.Patches
 
             }
 
-
+            // features
             if (isPlayerHome)
             {
                 GenerateFeatureGrids(map, parms);
@@ -246,16 +246,8 @@ namespace MapDesigner.Patches
 
             else if (MapDesignerMod.mod.settings.selectedFeature == MapDesignerSettings.Features.RoundIsland)
             {
-                if (map.Biome.defName.Contains("BiomesIsland"))
-                {
-                    Log.Message("Can't make round islands, this is already an island!");
-                    return;
-                }
-
                 Log.Message("[Map Desigher] Carving islands...");
-
                 new Feature.RoundIsland().Generate(map, parms);
-                //RoundIsland.AdjustMapGrids(map);
 
                 return;
             }

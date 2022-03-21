@@ -111,7 +111,7 @@ namespace MapDesigner.UI
 
 
             listing.Label("ZMD_priIslandSizeLabel".Translate());
-            settings.priIslandSize = listing.Slider(settings.priIslandSize, 5f, 45f);
+            settings.priIslandSize = listing.Slider(settings.priIslandSize, 5f, 75f);
 
             if (settings.priStyle == MapDesignerSettings.PriStyle.Single)
             {
@@ -137,7 +137,7 @@ namespace MapDesigner.UI
         {
             listing.Label("ZMD_featureLakeInfo".Translate());
 
-            settings.lakeSize = InterfaceUtility.LabeledSlider(listing, settings.lakeSize, 0.04f, 1.0f, String.Format("ZMD_lakeSize".Translate(), Math.Round(100 * settings.lakeSize)));
+            settings.lakeSize = InterfaceUtility.LabeledSlider(listing, settings.lakeSize, 0.04f, 1.5f, String.Format("ZMD_lakeSize".Translate(), Math.Round(100 * settings.lakeSize)));
 
             InterfaceUtility.LocationPicker(listing, 0.45f, ref settings.lakeCenterDisp, 100 * settings.lakeSize);
 

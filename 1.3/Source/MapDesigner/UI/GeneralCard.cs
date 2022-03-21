@@ -41,7 +41,8 @@ namespace MapDesigner.UI
             listing.GapLine();
 
             listing.CheckboxLabeled("ZMD_flagHomeMapOnly".Translate(), ref MapDesignerSettings.flagHomeMapOnly, "ZMD_flagHomeMapOnlyDesc".Translate());
-
+            
+            listing.Gap();
             listing.GapLine();
 
             #region presets
@@ -57,6 +58,7 @@ namespace MapDesigner.UI
             listing_selPreset.Begin(selButtonRect);
 
             // preset selection
+
             if (listing_selPreset.ButtonTextLabeled("ZMD_presets".Translate(), GetPresetLabel().Translate()))
             {
                 List<FloatMenuOption> presetList = new List<FloatMenuOption>();
@@ -104,22 +106,25 @@ namespace MapDesigner.UI
                 ApplyPreset();
 
             }
+
+            listing.Gap();
             listing.GapLine();
 
             #endregion
 
 
-
             #region save / load custom settings
 
             // saving
+            Text.Font = GameFont.Medium;
             listing.Label("ZMD_addConfig".Translate());
+            Text.Font = GameFont.Small;
 
             Rect saveTextboxRect = listing.GetRect(50f);
             Rect saveButtonRect = saveTextboxRect;
 
-            saveTextboxRect.xMax -= 0.34f * rect.width;
-            saveButtonRect.xMin += 20f + 0.66f * rect.width;
+            saveTextboxRect.xMax -= 0.28f * rect.width;
+            saveButtonRect.xMin += 20f + 0.70f * rect.width;
             Listing_Standard saveListing1 = new Listing_Standard();
             saveListing1.Begin(saveTextboxRect);
 
@@ -140,15 +145,17 @@ namespace MapDesigner.UI
 
             if (!settings.configs.NullOrEmpty())
             {
-                listing.GapLine();
+                //listing.GapLine();
+                Text.Font = GameFont.Medium;
                 listing.Label("ZMD_manageConfigs".Translate());
+                Text.Font = GameFont.Small;
 
-                //TODO: LAYOUT
+
                 Rect configRect1 = listing.GetRect(50f);
                 Rect configRect2 = configRect1;
                 Rect configRect3 = configRect1;
 
-                configRect1.xMax -= 0.48f * rect.width;
+                configRect1.xMax -= 0.52f * rect.width;
                 configRect2.xMin += 0.52f * rect.width;
                 configRect2.xMax -= 0.26f * rect.width;
                 configRect3.xMin += 0.76f * rect.width;

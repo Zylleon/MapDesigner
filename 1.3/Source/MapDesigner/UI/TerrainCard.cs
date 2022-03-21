@@ -26,9 +26,9 @@ namespace MapDesigner.UI
 
             listing.GapLine();
 
-            settings.terrainFert = InterfaceUtility.LabeledSlider(listing, settings.terrainFert, 0.30f, 2f, String.Format("ZMD_terrainFertAmt".Translate(), Math.Round(100 * settings.terrainFert)));
+            settings.terrainFert = InterfaceUtility.LabeledSlider(listing, settings.terrainFert, 0.20f, 2.5f, String.Format("ZMD_terrainFertAmt".Translate(), Math.Round(100 * settings.terrainFert)));
 
-            settings.terrainWater = InterfaceUtility.LabeledSlider(listing, settings.terrainWater, 0.30f, 2f, String.Format("ZMD_terrainWaterAmt".Translate(), Math.Round(100 * settings.terrainWater)), null, null, null, "ZMD_terrainWaterTooltip".Translate());
+            settings.terrainWater = InterfaceUtility.LabeledSlider(listing, settings.terrainWater, 0.20f, 2.5f, String.Format("ZMD_terrainWaterAmt".Translate(), Math.Round(100 * settings.terrainWater)), null, null, null, "ZMD_terrainWaterTooltip".Translate());
             listing.CheckboxLabeled("ZMD_flagTerrainWater".Translate(), ref settings.flagTerrainWater, "ZMD_flagTerrainWater".Translate());
 
             // Rocks

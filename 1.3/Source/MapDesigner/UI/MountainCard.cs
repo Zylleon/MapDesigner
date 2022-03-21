@@ -41,7 +41,7 @@ namespace MapDesigner.UI
             listingStandard.Begin(viewRect);
 
             // mountains
-            settings.hillAmount = InterfaceUtility.LabeledSlider(listingStandard, settings.hillAmount, 0.70f, 1.4f, hillAmountLabel, "ZMD_hillAmount0".Translate(), "ZMD_hillAmount5".Translate());
+            settings.hillAmount = InterfaceUtility.LabeledSlider(listingStandard, settings.hillAmount, 0.50f, 1.6f, hillAmountLabel, "ZMD_hillAmount0".Translate(), "ZMD_hillAmount5".Translate());
 
             // It's reversed because that's more intuitive for the user. Smaller numbers = bigger hills
             settings.hillSize = InterfaceUtility.LabeledSlider(listingStandard, settings.hillSize, 0.1f, 0.010f, hillSizeLabel, "ZMD_size1".Translate(), "ZMD_size5".Translate());
@@ -73,10 +73,10 @@ namespace MapDesigner.UI
                 hillRadialListing.Begin(hillRadialRect);
 
                 //settings.hillRadialAmt = InterfaceUtility.LabeledSlider(hillRadialListing, settings.hillRadialAmt, -3.0f, 3.0f, GetHillRadialAmtLabel(settings.hillRadialAmt), "ZMD_center".Translate(), "ZMD_edges".Translate(), "ZMD_hillRadialAmtTooltip".Translate());
-                settings.hillRadialAmt = InterfaceUtility.LabeledSlider(hillRadialListing, settings.hillRadialAmt, -2.0f, 2.0f, GetHillRadialAmtLabel(settings.hillRadialAmt), "ZMD_center".Translate(), "ZMD_edges".Translate(), null, "ZMD_hillRadialAmtTooltip".Translate());
+                settings.hillRadialAmt = InterfaceUtility.LabeledSlider(hillRadialListing, settings.hillRadialAmt, -2.5f, 2.5f, GetHillRadialAmtLabel(settings.hillRadialAmt), "ZMD_center".Translate(), "ZMD_edges".Translate(), null, "ZMD_hillRadialAmtTooltip".Translate());
 
                 //settings.hillRadialSize = InterfaceUtility.LabeledSlider(hillRadialListing, settings.hillRadialSize, 0.2f, 1.1f, hillRadialSizeLabel, "ZMD_center".Translate(), "ZMD_edges".Translate(), null, "ZMD_hillRadialSizeTooltip".Translate());
-                settings.hillRadialSize = InterfaceUtility.LabeledSlider(hillRadialListing, settings.hillRadialSize, 0.2f, 1.1f, hillRadialSizeLabel, null, null, String.Format("ZMD_pctOfMap".Translate(), 100 * Math.Round(settings.hillRadialSize, 1)), "ZMD_hillRadialSizeTooltip".Translate());
+                settings.hillRadialSize = InterfaceUtility.LabeledSlider(hillRadialListing, settings.hillRadialSize, 0.1f, 1.2f, hillRadialSizeLabel, null, null, String.Format("ZMD_pctOfMap".Translate(), 100 * Math.Round(settings.hillRadialSize, 1)), "ZMD_hillRadialSizeTooltip".Translate());
 
                 
 
@@ -92,7 +92,7 @@ namespace MapDesigner.UI
                 hillSplitRect.xMax -= 20f;
                 Listing_Standard hillSplitListing = new Listing_Standard();
                 hillSplitListing.Begin(hillSplitRect);
-                settings.hillSplitAmt = InterfaceUtility.LabeledSlider(hillSplitListing, settings.hillSplitAmt, -2.5f, 2.5f, GetHillRadialAmtLabel(settings.hillSplitAmt), "ZMD_center".Translate(), "ZMD_edges".Translate(), null, "ZMD_hillRadialAmtTooltip".Translate());
+                settings.hillSplitAmt = InterfaceUtility.LabeledSlider(hillSplitListing, settings.hillSplitAmt, -3.0f, 3.0f, GetHillRadialAmtLabel(settings.hillSplitAmt), "ZMD_center".Translate(), "ZMD_edges".Translate(), null, "ZMD_hillRadialAmtTooltip".Translate());
 
                 settings.hillSplitSize = InterfaceUtility.LabeledSlider(hillSplitListing, settings.hillSplitSize, 0.05f, 1.1f, "ZMD_size".Translate(), null, null, String.Format("ZMD_pctOfMap".Translate(), 100 * Math.Round(settings.hillSplitSize, 1)), "ZMD_hillRadialSizeTooltip".Translate());
 

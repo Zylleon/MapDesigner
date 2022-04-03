@@ -70,8 +70,6 @@
   <ZMD_presetZyllesChoice>Mod作成者の選択</ZMD_presetZyllesChoice>
   <ZMD_presetZyllesChoiceDesc>私のオオスメ設定です。</ZMD_presetZyllesChoiceDesc>
 
-
-
   <ZMD_presetRandom>ランダム</ZMD_presetRandom>
   <ZMD_presetRandomDesc>これを選択すると、「プリセットを許可」をクリックするたびに設定がランダム化されます。結果は予測できません。</ZMD_presetRandomDesc>
 
@@ -84,21 +82,22 @@
 
 
   <!-- saving and loading -->
-
+  <ZMD_addConfig>新しい設定を追加</ZMD_addConfig>
   <ZMD_save>セーブ</ZMD_save>
   <ZMD_saveCurrent>現在の設定を名前を付けて保存</ZMD_saveCurrent>
   <ZMD_applySettings>設定を適用</ZMD_applySettings>
   <ZMD_saveSuccess>設定を{0}として保存しました</ZMD_saveSuccess>
   <ZMD_safeFail1>この名前の設定はすでに保存されています.先に古い設定を削除してください.</ZMD_safeFail1>
   <ZMD_safeFail2>設定には名前が必要</ZMD_safeFail2>
+  <ZMD_saveFail3>保存された設定が多すぎます.いくつか削除して領域を空けてください.</ZMD_saveFail3>
 
+  <ZMD_manageConfigs>保存設定の管理</ZMD_manageConfigs>
   <ZMD_selConfig>設定を選択</ZMD_selConfig>
   <ZMD_load>適用</ZMD_load>
   <ZMD_loadSuccess>設定を適用しました</ZMD_loadSuccess>
   <ZMD_randSuccess>設定をランダム化しました</ZMD_randSuccess>
   <ZMD_delete>削除</ZMD_delete>
   <ZMD_delSuccess>削除した設定：</ZMD_delSuccess>
-
 
   <!-- Mountains -->
 

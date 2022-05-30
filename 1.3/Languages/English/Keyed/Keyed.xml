@@ -13,6 +13,7 @@
 	<ZMD_resetThings>Reset Things</ZMD_resetThings>
 	<ZMD_resetRivers>Reset Rivers and Beaches</ZMD_resetRivers>
 	<ZMD_resetTerrain>Reset Terrain</ZMD_resetTerrain>
+	<ZMD_resetFeatures>Reset Features</ZMD_resetFeatures>
 	
 	<ZMD_Angle>Angle</ZMD_Angle>
 	
@@ -35,7 +36,7 @@
 	
     <!-- Tabs -->
 
-<!-- ===================================	General Tab	================================= -->
+<!-- ===================================	General Tab	   ================================= -->
 
 	<ZMD_generalTab>General</ZMD_generalTab>
 	<ZMD_generalTabInfo>Get started with a preset, or explore detailed options are available on the other tabs.\n\nAll settings are relative to your base map. A barren rainforest will have more plants than a fertile valley desert; flat maps will always have less hills than mountainous maps with the same settings.</ZMD_generalTabInfo>
@@ -320,6 +321,8 @@
   <ZMD_featureLake>Natural Lake</ZMD_featureLake>
   <ZMD_featureLakeInfo>A natural lake.\nMountains can spawn inside the lake by default. You can use the "Central hill distribution" option on the Mountains tab to prevent this, or to create a mountain island in the center.</ZMD_featureLakeInfo>
   
+  <ZMD_featureNI>Natural islands</ZMD_featureNI>
+  <ZMD_featureNiInfo>A natural island, surrounded by a mix of shallow and deep water. Trade caravans, raids and wild animals will still enter normally from the sides, and will path over any passable water.</ZMD_featureNiInfo>
   
   <!-- Perfectly Round Islands -->
   <ZMD_priIslandStyle>Island style</ZMD_priIslandStyle>
@@ -333,7 +336,7 @@
   <!-- Lakes -->
   
   <ZMD_lakeSize>Lake size: {0} % of map</ZMD_lakeSize>
-  <ZMD_lakeRoundness>Lake roundness</ZMD_lakeRoundness>
+  <ZMD_lakeRoundness>Roundness</ZMD_lakeRoundness>
   <ZMD_lakeBeachSize>Lake beach size</ZMD_lakeBeachSize>
   <ZMD_lakeDepth>Lake depth</ZMD_lakeDepth>
   <ZMD_flagLakeSalty>Salt water</ZMD_flagLakeSalty>		<!-- same label is now used for both the Lake and Round Island features -->
@@ -350,6 +353,17 @@
   <ZMD_lakeRoundness2>Average</ZMD_lakeRoundness2>
   <ZMD_lakeRoundness3>Somewhat blobular</ZMD_lakeRoundness3>
   <ZMD_lakeRoundness4>Shapeless</ZMD_lakeRoundness4>
+
+<!-- Natural Islands -->
+	 
+  <ZMD_niRoundness>Island smoothness</ZMD_niRoundness>
+  <ZMD_niStyle>Style</ZMD_niStyle>
+  <ZMD_niSelStyle>Select Style</ZMD_niSelStyle>
+  <ZMD_niStyleRound>Round</ZMD_niStyleRound>
+  <ZMD_niStyleSquare>Square</ZMD_niStyleSquare>
+  <ZMD_niStyleCrescent>Crescent</ZMD_niStyleCrescent>
+  <ZMD_niStyleRing>Ring</ZMD_niStyleRing>
+
 
 
 <!-- ===================================	Terrain	================================= -->

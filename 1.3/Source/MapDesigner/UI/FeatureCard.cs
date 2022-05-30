@@ -44,6 +44,10 @@ namespace MapDesigner.UI
                 {
                     settings.selectedFeature = MapDesignerSettings.Features.Lake;
                 }, MenuOptionPriority.Default, null, null, 0f, null, null));
+                featureList.Add(new FloatMenuOption("ZMD_featureNI".Translate(), delegate
+                {
+                    settings.selectedFeature = MapDesignerSettings.Features.NatIsland;
+                }, MenuOptionPriority.Default, null, null, 0f, null, null));
 
                 Find.WindowStack.Add(new FloatMenu(featureList));
             }
@@ -75,6 +79,10 @@ namespace MapDesigner.UI
             else if (settings.selectedFeature == MapDesignerSettings.Features.Lake)
             {
                 DrawLakeOptions(listing);
+            }
+            else if (settings.selectedFeature == MapDesignerSettings.Features.NatIsland)
+            {
+                DrawNIOptions(listing);
             }
 
         }
@@ -174,7 +182,69 @@ namespace MapDesigner.UI
 
         }
 
+        public static void DrawNIOptions(Listing_Standard listing)
+        {
+            listing.Label("ZMD_featureNiInfo".Translate());
 
+            if (listing.ButtonTextLabeled("ZMD_niStyle".Translate(), GetNiStyleLabel(settings.niStyle)))
+            {
+                List<FloatMenuOption> featureList = new List<FloatMenuOption>();
+
+                featureList.Add(new FloatMenuOption("ZMD_niStyleRound".Translate(), delegate
+                {
+                    settings.niStyle = MapDesignerSettings.NiStyle.Round;
+                }, MenuOptionPriority.Default, null, null, 0f, null, null));
+
+                featureList.Add(new FloatMenuOption("ZMD_niStyleSquare".Translate(), delegate
+                {
+                    settings.niStyle = MapDesignerSettings.NiStyle.Square;
+                }, MenuOptionPriority.Default, null, null, 0f, null, null));
+
+                featureList.Add(new FloatMenuOption("ZMD_niStyleRing".Translate(), delegate
+                {
+                    settings.niStyle = MapDesignerSettings.NiStyle.Ring;
+                }, MenuOptionPriority.Default, null, null, 0f, null, null));
+
+                featureList.Add(new FloatMenuOption("ZMD_niStyleCrescent".Translate(), delegate
+                {
+                    settings.niStyle = MapDesignerSettings.NiStyle.Crescent;
+                }, MenuOptionPriority.Default, null, null, 0f, null, null));
+                Find.WindowStack.Add(new FloatMenu(featureList));
+            }
+
+
+            settings.niSize = InterfaceUtility.LabeledSlider(listing, settings.niSize, 0.04f, 1.5f, String.Format("ZMD_priIslandSizeLabel".Translate(), Math.Round(100 * settings.niSize)));
+
+            InterfaceUtility.LocationPicker(listing, 0.45f, ref settings.niCenterDisp, 100 * settings.niSize);
+
+            settings.niRoundness = InterfaceUtility.LabeledSlider(listing, settings.niRoundness, 0f, 6f, niRoundnessLabel, "ZMD_lakeRoundness0".Translate(), "ZMD_lakeRoundness4".Translate());
+
+            settings.niBeachSize = InterfaceUtility.LabeledSlider(listing, settings.niBeachSize, 0f, 35f, "ZMD_priBeachSizeLabel".Translate(), "ZMD_size0".Translate(), "ZMD_size6".Translate());
+
+            listing.CheckboxLabeled("ZMD_flagLakeSalty".Translate(), ref settings.flagNiSalty, "ZMD_flagLakeSalty".Translate());
+
+            List<TerrainDef> shoreOptions = new List<TerrainDef>();
+
+            shoreOptions.Add(TerrainDefOf.Soil);
+            shoreOptions.Add(TerrainDef.Named("SoilRich"));
+            shoreOptions.Add(TerrainDefOf.Sand);
+            shoreOptions.Add(TerrainDef.Named("MarshyTerrain"));
+            shoreOptions.Add(TerrainDef.Named("Mud"));
+            shoreOptions.Add(TerrainDefOf.Ice);
+
+            if (listing.ButtonTextLabeled("ZMD_lakeShore".Translate(), TerrainDef.Named(settings.niShore).label))
+            {
+                List<FloatMenuOption> shoreTerrList = new List<FloatMenuOption>();
+
+                foreach (TerrainDef terr in shoreOptions)
+                {
+                    shoreTerrList.Add(new FloatMenuOption(terr.label, delegate { settings.niShore = terr.defName; }, MenuOptionPriority.Default));
+                }
+
+                Find.WindowStack.Add(new FloatMenu(shoreTerrList));
+            }
+
+        }
 
 
         #region labels
@@ -193,7 +263,32 @@ namespace MapDesigner.UI
             {
                 return "ZMD_featureLake".Translate();
             }
+            if(feature == MapDesignerSettings.Features.NatIsland)
+            {
+                return "ZMD_featureNI".Translate();
+            }
             return "ZMD_selectFeature".Translate();
+        }
+
+        public static string GetNiStyleLabel(MapDesignerSettings.NiStyle style)
+        {
+            if (style == MapDesignerSettings.NiStyle.Round)
+            {
+                return "ZMD_niStyleRound".Translate();
+            }
+            if (style == MapDesignerSettings.NiStyle.Square)
+            {
+                return "ZMD_niStyleSquare".Translate();
+            }
+            if (style == MapDesignerSettings.NiStyle.Crescent)
+            {
+                return "ZMD_niStyleCrescent".Translate();
+            }
+            if (style == MapDesignerSettings.NiStyle.Ring)
+            {
+                return "ZMD_niStyleRing".Translate();
+            }
+            return "ZMD_niSelStyle".Translate();
         }
 
         private static string lakeRoundnessLabel
@@ -201,23 +296,6 @@ namespace MapDesigner.UI
             get
             {
                 int label = 0;
-                //if (settings.lakeRoundness > 0.3f)
-                //{
-                //    label++;
-                //}
-                //if (settings.lakeRoundness > 0.75f)
-                //{
-                //    label++;
-                //}
-                //if (settings.lakeRoundness > 2f)
-                //{
-                //    label++;
-                //}
-                //if (settings.lakeRoundness > 2.75f)
-                //{
-                //    label++;
-                //}
-
                 if (settings.lakeRoundness > 0.75f)
                 {
                     label++;
@@ -231,6 +309,31 @@ namespace MapDesigner.UI
                     label++;
                 }
                 if (settings.lakeRoundness > 4.25f)
+                {
+                    label++;
+                }
+                return InterfaceUtility.FormatLabel("ZMD_lakeRoundness", "ZMD_lakeRoundness" + label);
+            }
+        }
+
+        private static string niRoundnessLabel
+        {
+            get
+            {
+                int label = 0;
+                if (settings.niRoundness > 0.75f)
+                {
+                    label++;
+                }
+                if (settings.niRoundness > 1.75f)
+                {
+                    label++;
+                }
+                if (settings.niRoundness > 3f)
+                {
+                    label++;
+                }
+                if (settings.niRoundness > 4.25f)
                 {
                     label++;
                 }

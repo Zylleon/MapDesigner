@@ -313,6 +313,7 @@
     <Compile Include="BiomeDefault.cs" />
     <Compile Include="DistanceFromOrigin.cs" />
     <Compile Include="Feature\Feature_TerrainFrom.cs" />
+    <Compile Include="Feature\NatIsland.cs" />
     <Compile Include="MapReroll\GenStep_ElevationFertility.cs" />
     <Compile Include="Patches\AnimaTreePatch.cs" />
     <Compile Include="Patches\CaveSettingsPatch.cs" />

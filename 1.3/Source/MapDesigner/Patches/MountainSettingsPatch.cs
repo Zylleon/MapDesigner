@@ -252,6 +252,14 @@ namespace MapDesigner.Patches
                 return;
             }
 
+            else if (MapDesignerMod.mod.settings.selectedFeature == MapDesignerSettings.Features.NatIsland)
+            {
+                Log.Message("[Map Desigher] Building islands...");
+                new Feature.NatIsland().Generate(map, parms);
+
+                return;
+            }
+
         }
 
     }

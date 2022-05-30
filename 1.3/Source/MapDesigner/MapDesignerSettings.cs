@@ -38,13 +38,22 @@ namespace MapDesigner
         {
             None,
             RoundIsland,
-            Lake
+            Lake,
+            NatIsland
         }
 
         public enum PriStyle : byte
         {
             Single,
             Multi
+        }
+
+        public enum NiStyle : byte
+        {
+            Round,
+            Crescent,
+            Square,
+            Ring
         }
 
         #endregion
@@ -154,6 +163,15 @@ namespace MapDesigner
         public bool flagLakeSalty = false;
         public string lakeShore = "Sand";
         public Vector3 lakeCenterDisp = new Vector3(0.0f, 0.0f, 0.0f);
+
+        // Natural Islands
+        public float niSize = 0.75f;                  // proportion of map size
+        public float niBeachSize = 20f;                // in tiles
+        public float niRoundness = 1.5f;              // 0 = perfectly round
+        public bool flagNiSalty = false;
+        public string niShore = "Sand";
+        public Vector3 niCenterDisp = new Vector3(0.0f, 0.0f, 0.0f);
+        public NiStyle niStyle = NiStyle.Round;
 
 
         // Helper stuff
@@ -335,7 +353,7 @@ namespace MapDesigner
                         field.SetValue(this, val);
                     }
                     // enums
-                    else if (field.FieldType == typeof(RiverStyle) || field.FieldType == typeof(CoastDirection) || field.FieldType == typeof(Features) || field.FieldType == typeof(PriStyle))
+                    else if (field.FieldType == typeof(RiverStyle) || field.FieldType == typeof(CoastDirection) || field.FieldType == typeof(Features) || field.FieldType == typeof(PriStyle) || field.FieldType == typeof(NiStyle))
                     {
                         Log.Message(field.Name + " is an enum");
                         field.SetValue(this, Enum.Parse(field.FieldType, settingValue));
@@ -458,8 +476,18 @@ namespace MapDesigner
             Scribe_Values.Look(ref flagLakeSalty, "flagLakeSalty", false);
             Scribe_Values.Look(ref lakeShore, "lakeShore", "Sand");
             Scribe_Values.Look(ref lakeCenterDisp, "lakeCenterDisp", new Vector3(0.0f, 0.0f, 0.0f));
+
+            // Natural Islands
+            Scribe_Values.Look(ref niSize, "niSize", 0.20f);
+            Scribe_Values.Look(ref niBeachSize, "niBeachSize", 20f);
+            Scribe_Values.Look(ref niRoundness, "niRoundness", 1.5f);
+            Scribe_Values.Look(ref flagNiSalty, "flagNiSalty", false);
+            Scribe_Values.Look(ref niShore, "niShore", "Sand");
+            Scribe_Values.Look(ref niCenterDisp, "niCenterDisp", new Vector3(0.0f, 0.0f, 0.0f));
+            Scribe_Values.Look(ref niStyle, "niStyle", NiStyle.Round);
+
         }
-   
+
     }
 
 

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Verse;
 using UnityEngine;
 using RimWorld;
+using static MapDesigner.MapDesignerSettings;
 
 namespace MapDesigner.UI
 {
@@ -90,7 +91,13 @@ namespace MapDesigner.UI
         public static void DrawNoOptions(Listing_Standard listing)
         {
             listing.Label("ZMD_featureNoneInfo".Translate());
+            
+            listing.Gap();
 
+            if (listing.ButtonText("ZMD_resetFeatures".Translate()))
+            {
+                ResetFeatureSettings();
+            }
         }
 
         public static void DrawRoundIslandOptions(Listing_Standard listing)
@@ -453,6 +460,15 @@ namespace MapDesigner.UI
             settings.flagLakeSalty = false;
             settings.lakeShore = "Sand";
             settings.lakeCenterDisp = new Vector3(0.0f, 0.0f, 0.0f);
+
+            settings.niSize = 0.75f;
+            settings.niBeachSize = 20f;
+            settings.niRoundness = 1.5f;
+            settings.flagNiSalty = false;
+            settings.niShore = "Sand";
+            settings.niCenterDisp = new Vector3(0.0f, 0.0f, 0.0f);
+            settings.niStyle = NiStyle.Round;
+            settings.niWaterDepth = 0.4f;
 
         }
     }

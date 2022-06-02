@@ -108,27 +108,23 @@ namespace MapDesigner.Feature
                     elevation[current] = 0f;
                 }
 
-                //if (settings.niStyle == MapDesignerSettings.NiStyle.Ring)
-                //{
-                //    if niGrid[current] < 
-                //}
-
                 if (elevation[current] < 0.65f)         // leaves mountains & most surrounding gravel untouched
                 {
-
                     if (niGrid[current] < niSize && niGrid[current] >= niSize - niBeachSize)
                     {
                         fertility[current] = beachValue;
                     }
                     else if (niGrid[current] > niSize)
                     {
-                        if (niGrid[current] > niSize + 10 && fertility[current] <= 0.5f)
+                        if (niGrid[current] > niSize + 22 && fertility[current] <= 0.4f)
                         {
                             fertility[current] = deepWater;
                         }
-                        fertility[current] = shallowWater;
+                        else
+                        {
+                            fertility[current] = shallowWater;
+                        }
                     }
-
                 }
             }
 

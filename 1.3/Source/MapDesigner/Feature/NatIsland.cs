@@ -67,7 +67,7 @@ namespace MapDesigner.Feature
                     distance -= niSize;
                     distance *= 3.5f;
                     distance = Math.Abs(distance);
-                    niGrid[current] = 0f + 10 * niRoundness * noiseModule.GetValue(current) + distance;
+                    niGrid[current] = 0f + 30 * niRoundness * noiseModule.GetValue(current) + distance;
                 }
             }
 
@@ -80,7 +80,7 @@ namespace MapDesigner.Feature
                     distance -= niSize;
                     distance *= 3.5f;
                     distance = Math.Abs(distance);
-                    niGrid[current] = 0f + 10 * niRoundness * noiseModule.GetValue(current) + distance;
+                    niGrid[current] = 0f + 30 * niRoundness * noiseModule.GetValue(current) + distance;
                 }
             }
 
@@ -96,7 +96,10 @@ namespace MapDesigner.Feature
                 shallowWater = -1035;
             }
             float beachValue = Feature_TerrainFrom.ValueFromTerrain(settings.niShore);
-
+            if (settings.niStyle == MapDesignerSettings.NiStyle.Ring || settings.niStyle == MapDesignerSettings.NiStyle.SquareRing)
+            {
+                niBeachSize *= 2f;
+            }
             foreach (IntVec3 current in map.AllCells)
             {
                 // removes mountains from water

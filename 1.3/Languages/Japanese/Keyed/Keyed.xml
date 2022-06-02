@@ -13,6 +13,7 @@
   <ZMD_resetThings>オブジェクトをリセット</ZMD_resetThings>
   <ZMD_resetRivers>河川と海岸をリセット</ZMD_resetRivers>
   <ZMD_resetTerrain>地形をリセット</ZMD_resetTerrain>
+  <ZMD_resetFeatures>地形物をリセット</ZMD_resetFeatures>
 
   <ZMD_Angle>角度</ZMD_Angle>
 
@@ -320,6 +321,8 @@
   <ZMD_featureLake>湖</ZMD_featureLake>
   <ZMD_featureLakeInfo>自然に見える湖。</ZMD_featureLakeInfo>
 
+  <ZMD_featureNI>自然な島</ZMD_featureNI>
+  <ZMD_featureNiInfo>浅瀬と海に囲まれた自然の島です。トレードキャラバンや襲撃や野生動物は従来通りマップ側面から入って来て、通行可能な水面の上を通ります。</ZMD_featureNiInfo>
 
   <!-- Perfectly Round Islands -->
   <ZMD_priIslandStyle>島の形</ZMD_priIslandStyle>
@@ -333,7 +336,7 @@
   <!-- Lakes -->
 
   <ZMD_lakeSize>湖の大きさ：マップの{0} %</ZMD_lakeSize>
-  <ZMD_lakeRoundness>湖の丸さ</ZMD_lakeRoundness>
+  <ZMD_lakeRoundness>丸さ</ZMD_lakeRoundness>
   <ZMD_lakeBeachSize>湖の岸辺の大きさ</ZMD_lakeBeachSize>
   <ZMD_lakeDepth>湖の深さ</ZMD_lakeDepth>
   <ZMD_flagLakeSalty>塩水湖</ZMD_flagLakeSalty>
@@ -350,6 +353,25 @@
   <ZMD_lakeRoundness2>普通</ZMD_lakeRoundness2>
   <ZMD_lakeRoundness3>やや丸い</ZMD_lakeRoundness3>
   <ZMD_lakeRoundness4>不定形</ZMD_lakeRoundness4>
+
+  <!-- Natural Islands -->
+
+  <ZMD_niRoundness>島の滑らかさ</ZMD_niRoundness>
+  <ZMD_niRoundness0>完璧な幾何学形</ZMD_niRoundness0>
+  <ZMD_niRoundness1>ほとんど幾何学形</ZMD_niRoundness1>
+  <ZMD_niRoundness2>平均的</ZMD_niRoundness2>
+  <ZMD_niRoundness3>やや球形</ZMD_niRoundness3>
+  <ZMD_niRoundness4>不定形</ZMD_niRoundness4>
+
+  <ZMD_niStyle>定型</ZMD_niStyle>
+  <ZMD_niSelStyle>定型を選択</ZMD_niSelStyle>
+  <ZMD_niStyleRound>円形</ZMD_niStyleRound>
+  <ZMD_niStyleSquare>四角</ZMD_niStyleSquare>
+  <ZMD_niStyleSquareRing>四角形環礁</ZMD_niStyleSquareRing>
+  <ZMD_niStyleRing>環礁</ZMD_niStyleRing>
+
+  <ZMD_niWaterDepth>外洋(歩行不可)</ZMD_niWaterDepth>
+  <ZMD_niWaterDepthWarning>警告：小川や外洋は、歩いて渡れない島を作成する可能性があります！</ZMD_niWaterDepthWarning>
 
 
   <!-- Terrain -->

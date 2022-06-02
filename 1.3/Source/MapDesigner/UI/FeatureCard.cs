@@ -185,43 +185,44 @@ namespace MapDesigner.UI
         public static void DrawNIOptions(Listing_Standard listing)
         {
             listing.Label("ZMD_featureNiInfo".Translate());
+            Rect niStyleRect = listing.GetRect(30f).LeftHalf();
 
-            if (listing.ButtonTextLabeled("ZMD_niStyle".Translate(), GetNiStyleLabel(settings.niStyle)))
+            Listing_Standard niStyleSelectListing = new Listing_Standard();
+            niStyleSelectListing.Begin(niStyleRect);
+            if (niStyleSelectListing.ButtonTextLabeled("ZMD_niStyle".Translate(), GetNiStyleLabel(settings.niStyle)))
             {
-                List<FloatMenuOption> featureList = new List<FloatMenuOption>();
+                List<FloatMenuOption> styleList = new List<FloatMenuOption>();
 
-                featureList.Add(new FloatMenuOption("ZMD_niStyleRound".Translate(), delegate
+                styleList.Add(new FloatMenuOption("ZMD_niStyleRound".Translate(), delegate
                 {
                     settings.niStyle = MapDesignerSettings.NiStyle.Round;
                 }, MenuOptionPriority.Default, null, null, 0f, null, null));
 
-                featureList.Add(new FloatMenuOption("ZMD_niStyleSquare".Translate(), delegate
+                styleList.Add(new FloatMenuOption("ZMD_niStyleSquare".Translate(), delegate
                 {
                     settings.niStyle = MapDesignerSettings.NiStyle.Square;
                 }, MenuOptionPriority.Default, null, null, 0f, null, null));
 
-                featureList.Add(new FloatMenuOption("ZMD_niStyleRing".Translate(), delegate
+                styleList.Add(new FloatMenuOption("ZMD_niStyleRing".Translate(), delegate
                 {
                     settings.niStyle = MapDesignerSettings.NiStyle.Ring;
                 }, MenuOptionPriority.Default, null, null, 0f, null, null));
 
-                featureList.Add(new FloatMenuOption("ZMD_niStyleSquareRing".Translate(), delegate
+                styleList.Add(new FloatMenuOption("ZMD_niStyleSquareRing".Translate(), delegate
                 {
                     settings.niStyle = MapDesignerSettings.NiStyle.SquareRing;
                 }, MenuOptionPriority.Default, null, null, 0f, null, null));
-                Find.WindowStack.Add(new FloatMenu(featureList));
+                Find.WindowStack.Add(new FloatMenu(styleList));
             }
-
+            niStyleSelectListing.End();
 
             settings.niSize = InterfaceUtility.LabeledSlider(listing, settings.niSize, 0.04f, 1.5f, String.Format("ZMD_priIslandSizeLabel".Translate(), Math.Round(100 * settings.niSize)));
 
             InterfaceUtility.LocationPicker(listing, 0.45f, ref settings.niCenterDisp, 100 * settings.niSize);
 
-            settings.niRoundness = InterfaceUtility.LabeledSlider(listing, settings.niRoundness, 0f, 6f, niRoundnessLabel, "ZMD_lakeRoundness0".Translate(), "ZMD_lakeRoundness4".Translate());
+            settings.niRoundness = InterfaceUtility.LabeledSlider(listing, settings.niRoundness, 0f, 6f, niRoundnessLabel, "ZMD_niRoundness0".Translate(), "ZMD_niRoundness4".Translate());
 
             settings.niBeachSize = InterfaceUtility.LabeledSlider(listing, settings.niBeachSize, 0f, 35f, "ZMD_priBeachSizeLabel".Translate(), "ZMD_size0".Translate(), "ZMD_size6".Translate());
-
-            listing.CheckboxLabeled("ZMD_flagLakeSalty".Translate(), ref settings.flagNiSalty, "ZMD_flagLakeSalty".Translate());
 
             List<TerrainDef> shoreOptions = new List<TerrainDef>();
 
@@ -232,7 +233,11 @@ namespace MapDesigner.UI
             shoreOptions.Add(TerrainDef.Named("Mud"));
             shoreOptions.Add(TerrainDefOf.Ice);
 
-            if (listing.ButtonTextLabeled("ZMD_lakeShore".Translate(), TerrainDef.Named(settings.niShore).label))
+            Rect niShoreRect = listing.GetRect(30f).LeftHalf();
+
+            Listing_Standard niShoreSelectListing = new Listing_Standard();
+            niShoreSelectListing.Begin(niShoreRect);
+            if (niShoreSelectListing.ButtonTextLabeled("ZMD_lakeShore".Translate(), TerrainDef.Named(settings.niShore).label))
             {
                 List<FloatMenuOption> shoreTerrList = new List<FloatMenuOption>();
 
@@ -243,6 +248,20 @@ namespace MapDesigner.UI
 
                 Find.WindowStack.Add(new FloatMenu(shoreTerrList));
             }
+            niShoreSelectListing.End();
+
+            settings.niWaterDepth = InterfaceUtility.LabeledSlider(listing, settings.niWaterDepth, -0.2f, 1.3f, niWaterDepthLabel, "ZMD_lakeDepth0".Translate(), "ZMD_lakeDepth4".Translate());
+            if (settings.niWaterDepth >= 0.5f)
+            {
+                GUI.color = new Color(255, 180, 0);
+                listing.Label("ZMD_niWaterDepthWarning".Translate());
+
+                GUI.color = Color.white;
+            }
+
+            listing.CheckboxLabeled("ZMD_flagLakeSalty".Translate(), ref settings.flagNiSalty, "ZMD_flagLakeSalty".Translate());
+
+           
 
         }
 
@@ -337,7 +356,7 @@ namespace MapDesigner.UI
                 {
                     label++;
                 }
-                return InterfaceUtility.FormatLabel("ZMD_lakeRoundness", "ZMD_lakeRoundness" + label);
+                return InterfaceUtility.FormatLabel("ZMD_niRoundness", "ZMD_niRoundness" + label);
             }
         }
 
@@ -366,6 +385,30 @@ namespace MapDesigner.UI
             }
         }
 
+        private static string niWaterDepthLabel
+        {
+            get
+            {
+                int label = 0;
+                if (settings.niWaterDepth > 0.1f)
+                {
+                    label++;
+                }
+                if (settings.niWaterDepth > 0.3f)
+                {
+                    label++;
+                }
+                if (settings.niWaterDepth > 0.50f)
+                {
+                    label++;
+                }
+                if (settings.niWaterDepth > 0.85f)
+                {
+                    label++;
+                }
+                return InterfaceUtility.FormatLabel("ZMD_niWaterDepth", "ZMD_lakeDepth" + label);
+            }
+        }
 
         private static string priStyleLabel
         {

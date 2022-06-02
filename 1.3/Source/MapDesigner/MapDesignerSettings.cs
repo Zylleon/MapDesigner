@@ -172,6 +172,7 @@ namespace MapDesigner
         public string niShore = "Sand";
         public Vector3 niCenterDisp = new Vector3(0.0f, 0.0f, 0.0f);
         public NiStyle niStyle = NiStyle.Round;
+        public float niWaterDepth = 0.4f;
 
 
         // Helper stuff
@@ -485,6 +486,7 @@ namespace MapDesigner
             Scribe_Values.Look(ref niShore, "niShore", "Sand");
             Scribe_Values.Look(ref niCenterDisp, "niCenterDisp", new Vector3(0.0f, 0.0f, 0.0f));
             Scribe_Values.Look(ref niStyle, "niStyle", NiStyle.Round);
+            Scribe_Values.Look(ref niWaterDepth, "niWaterDepth", 0.4f);
 
         }
 

@@ -356,14 +356,22 @@
 
 <!-- Natural Islands -->
 	 
-  <ZMD_niRoundness>Island smoothness</ZMD_niRoundness>
+  <ZMD_niRoundness>Island Smoothness</ZMD_niRoundness>
+  <ZMD_niRoundness0>Geometrically perfect</ZMD_niRoundness0>
+  <ZMD_niRoundness1>Mostly geometric</ZMD_niRoundness1>
+  <ZMD_niRoundness2>Average</ZMD_niRoundness2>
+  <ZMD_niRoundness3>Somewhat blobular</ZMD_niRoundness3>
+  <ZMD_niRoundness4>Shapeless</ZMD_niRoundness4>
+  
   <ZMD_niStyle>Style</ZMD_niStyle>
   <ZMD_niSelStyle>Select Style</ZMD_niSelStyle>
   <ZMD_niStyleRound>Round</ZMD_niStyleRound>
   <ZMD_niStyleSquare>Square</ZMD_niStyleSquare>
   <ZMD_niStyleSquareRing>Square Ring</ZMD_niStyleSquareRing>
   <ZMD_niStyleRing>Ring</ZMD_niStyleRing>
-
+  
+  <ZMD_niWaterDepth>Water depth</ZMD_niWaterDepth>
+  <ZMD_niWaterDepthWarning>WARNING: Too much deep water can create unpathable islands!</ZMD_niWaterDepthWarning>
 
 
 <!-- ===================================	Terrain	================================= -->

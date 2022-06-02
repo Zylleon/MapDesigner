@@ -100,6 +100,7 @@ namespace MapDesigner.Feature
             {
                 niBeachSize *= 2f;
             }
+
             foreach (IntVec3 current in map.AllCells)
             {
                 // removes mountains from water
@@ -116,7 +117,7 @@ namespace MapDesigner.Feature
                     }
                     else if (niGrid[current] > niSize)
                     {
-                        if (niGrid[current] > niSize + 22 && fertility[current] <= 0.4f)
+                        if (niGrid[current] > niSize + 22 && fertility[current] <= settings.niWaterDepth)
                         {
                             fertility[current] = deepWater;
                         }

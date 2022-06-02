@@ -39,12 +39,13 @@ namespace MapDesigner.Feature
 
             ModuleBase noiseModule = new Perlin(0.020999999716877937, 2.0, 0.5, 6, Rand.Range(0, 2147483647), QualityMode.High);
             
+
             if (settings.niStyle == MapDesignerSettings.NiStyle.Square)
             {
                 foreach (IntVec3 current in map.AllCells)
                 {
-                    float distance = Math.Max(Math.Abs(current.z - mapCenter.z), Math.Abs(current.x - mapCenter.x));
-                    niGrid[current] = 0f + niRoundness * noiseModule.GetValue(current) + 0.1f * (niSize - distance);
+                    float distance = distance = Math.Max(Math.Abs(current.z - mapCenter.z), Math.Abs(current.x - mapCenter.x));
+                    niGrid[current] = 0f + 10 * niRoundness * noiseModule.GetValue(current) + distance;
                 }
             }
 
@@ -52,14 +53,39 @@ namespace MapDesigner.Feature
             {
                 foreach (IntVec3 current in map.AllCells)
                 {
-                    float distance = HelperMethods.DistanceBetweenPoints(current, mapCenter);
-                    niGrid[current] = 0f + niRoundness * noiseModule.GetValue(current) + 0.1f * (niSize - distance);
+                    float distance = distance = HelperMethods.DistanceBetweenPoints(current, mapCenter);
+                    niGrid[current] = 0f + 10 * niRoundness * noiseModule.GetValue(current) + distance;
                 }
             }
-            
+
+            else if (settings.niStyle == MapDesignerSettings.NiStyle.Ring)
+            {
+                foreach (IntVec3 current in map.AllCells)
+                {
+                    float distance = distance = HelperMethods.DistanceBetweenPoints(current, mapCenter);
+
+                    distance -= niSize;
+                    distance *= 3.5f;
+                    distance = Math.Abs(distance);
+                    niGrid[current] = 0f + 10 * niRoundness * noiseModule.GetValue(current) + distance;
+                }
+            }
+
+            else if (settings.niStyle == MapDesignerSettings.NiStyle.SquareRing)
+            {
+                foreach (IntVec3 current in map.AllCells)
+                {
+                    float distance = distance = Math.Max(Math.Abs(current.z - mapCenter.z), Math.Abs(current.x - mapCenter.x));
+
+                    distance -= niSize;
+                    distance *= 3.5f;
+                    distance = Math.Abs(distance);
+                    niGrid[current] = 0f + 10 * niRoundness * noiseModule.GetValue(current) + distance;
+                }
+            }
 
 
-            //float deepBelow = niGrid[mapCenter] * (1 -settings.lakeDepth);
+
             MapGenFloatGrid elevation = MapGenerator.Elevation;
             MapGenFloatGrid fertility = MapGenerator.Fertility;
             float deepWater = -2005;
@@ -73,25 +99,33 @@ namespace MapDesigner.Feature
 
             foreach (IntVec3 current in map.AllCells)
             {
+                // removes mountains from water
+                if(niGrid[current] > niSize)
+                {
+                    elevation[current] = 0f;
+                }
+
+                //if (settings.niStyle == MapDesignerSettings.NiStyle.Ring)
+                //{
+                //    if niGrid[current] < 
+                //}
+
                 if (elevation[current] < 0.65f)         // leaves mountains & most surrounding gravel untouched
                 {
-                    //if (niGrid[current] > deepBelow)
-                    //{
-                    //    fertility[current] = deepWater;
-                    //}
-                    //else
-                    //{
-                        
-                    if (niGrid[current] <= 0f && niGrid[current] > 0f - 0.1f * niBeachSize)
+
+                    if (niGrid[current] < niSize && niGrid[current] >= niSize - niBeachSize)
                     {
                         fertility[current] = beachValue;
                     }
-                    else if (niGrid[current] < 0f - 0.1f * niBeachSize)
+                    else if (niGrid[current] > niSize)
                     {
+                        if (niGrid[current] > niSize + 10 && fertility[current] <= 0.5f)
+                        {
+                            fertility[current] = deepWater;
+                        }
                         fertility[current] = shallowWater;
                     }
 
-                    //}
                 }
             }
 

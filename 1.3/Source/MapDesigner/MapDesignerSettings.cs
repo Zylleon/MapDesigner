@@ -51,9 +51,9 @@ namespace MapDesigner
         public enum NiStyle : byte
         {
             Round,
-            Crescent,
             Square,
-            Ring
+            Ring,
+            SquareRing
         }
 
         #endregion

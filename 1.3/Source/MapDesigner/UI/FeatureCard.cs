@@ -205,9 +205,9 @@ namespace MapDesigner.UI
                     settings.niStyle = MapDesignerSettings.NiStyle.Ring;
                 }, MenuOptionPriority.Default, null, null, 0f, null, null));
 
-                featureList.Add(new FloatMenuOption("ZMD_niStyleCrescent".Translate(), delegate
+                featureList.Add(new FloatMenuOption("ZMD_niStyleSquareRing".Translate(), delegate
                 {
-                    settings.niStyle = MapDesignerSettings.NiStyle.Crescent;
+                    settings.niStyle = MapDesignerSettings.NiStyle.SquareRing;
                 }, MenuOptionPriority.Default, null, null, 0f, null, null));
                 Find.WindowStack.Add(new FloatMenu(featureList));
             }
@@ -280,9 +280,9 @@ namespace MapDesigner.UI
             {
                 return "ZMD_niStyleSquare".Translate();
             }
-            if (style == MapDesignerSettings.NiStyle.Crescent)
+            if (style == MapDesignerSettings.NiStyle.SquareRing)
             {
-                return "ZMD_niStyleCrescent".Translate();
+                return "ZMD_niStyleSquareRing".Translate();
             }
             if (style == MapDesignerSettings.NiStyle.Ring)
             {

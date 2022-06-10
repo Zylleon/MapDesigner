@@ -89,11 +89,13 @@ namespace MapDesigner.Feature
             MapGenFloatGrid elevation = MapGenerator.Elevation;
             MapGenFloatGrid fertility = MapGenerator.Fertility;
             float deepWater = -2005;
-            float shallowWater = -1025;
+            float shallowWater = -2025;
+            float shoreline = -1025;
             if (settings.flagNiSalty)
             {
                 deepWater = -2015;
-                shallowWater = -1035;
+                shallowWater = -2035;
+                shoreline = -1035;
             }
             float beachValue = Feature_TerrainFrom.ValueFromTerrain(settings.niShore);
             if (settings.niStyle == MapDesignerSettings.NiStyle.Ring || settings.niStyle == MapDesignerSettings.NiStyle.SquareRing)
@@ -121,6 +123,11 @@ namespace MapDesigner.Feature
                         {
                             fertility[current] = deepWater;
                         }
+                        else if (niGrid[current] <= niSize + 22)
+                        {
+                            fertility[current] = shoreline;
+                        }
+
                         else
                         {
                             fertility[current] = shallowWater;

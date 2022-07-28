@@ -28,6 +28,11 @@ namespace MapDesigner.Feature
             MapDesignerSettings settings = MapDesignerMod.mod.settings;
 
             niSize = settings.niSize * map.Size.x / 2;
+            if(settings.niStyle == MapDesignerSettings.NiStyle.Ring || settings.niStyle == MapDesignerSettings.NiStyle.SquareRing)
+            {
+                // this is because rings are -centered- on the island diameter
+                niSize *= .78f;
+            }
             niRoundness = settings.niRoundness;
             niBeachSize = settings.niBeachSize;
 
@@ -44,7 +49,7 @@ namespace MapDesigner.Feature
             {
                 foreach (IntVec3 current in map.AllCells)
                 {
-                    float distance = distance = Math.Max(Math.Abs(current.z - mapCenter.z), Math.Abs(current.x - mapCenter.x));
+                    float distance = Math.Max(Math.Abs(current.z - mapCenter.z), Math.Abs(current.x - mapCenter.x));
                     niGrid[current] = 0f + 10 * niRoundness * noiseModule.GetValue(current) + distance;
                 }
             }
@@ -53,7 +58,7 @@ namespace MapDesigner.Feature
             {
                 foreach (IntVec3 current in map.AllCells)
                 {
-                    float distance = distance = HelperMethods.DistanceBetweenPoints(current, mapCenter);
+                    float distance = HelperMethods.DistanceBetweenPoints(current, mapCenter);
                     niGrid[current] = 0f + 10 * niRoundness * noiseModule.GetValue(current) + distance;
                 }
             }
@@ -62,7 +67,7 @@ namespace MapDesigner.Feature
             {
                 foreach (IntVec3 current in map.AllCells)
                 {
-                    float distance = distance = HelperMethods.DistanceBetweenPoints(current, mapCenter);
+                    float distance = HelperMethods.DistanceBetweenPoints(current, mapCenter);
 
                     distance -= niSize;
                     distance *= 3.5f;
@@ -75,7 +80,7 @@ namespace MapDesigner.Feature
             {
                 foreach (IntVec3 current in map.AllCells)
                 {
-                    float distance = distance = Math.Max(Math.Abs(current.z - mapCenter.z), Math.Abs(current.x - mapCenter.x));
+                    float distance = Math.Max(Math.Abs(current.z - mapCenter.z), Math.Abs(current.x - mapCenter.x));
 
                     distance -= niSize;
                     distance *= 3.5f;

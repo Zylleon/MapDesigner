@@ -225,7 +225,7 @@ namespace MapDesigner.UI
 
             settings.niSize = InterfaceUtility.LabeledSlider(listing, settings.niSize, 0.04f, 1.5f, String.Format("ZMD_priIslandSizeLabel".Translate(), Math.Round(100 * settings.niSize)));
 
-            InterfaceUtility.LocationPicker(listing, 0.45f, ref settings.niCenterDisp, 100 * settings.niSize);
+            InterfaceUtility.LocationPicker(listing, 0.45f, ref settings.niCenterDisp, 100 * settings.niSize, niStyleTexture);
 
             settings.niRoundness = InterfaceUtility.LabeledSlider(listing, settings.niRoundness, 0f, 6f, niRoundnessLabel, "ZMD_niRoundness0".Translate(), "ZMD_niRoundness4".Translate());
 
@@ -417,6 +417,30 @@ namespace MapDesigner.UI
             }
         }
 
+        private static string niStyleTexture
+        {
+            get
+            {
+                string output = "GUI/ZMD_circle";
+                switch (settings.niStyle)
+                {
+                    case MapDesignerSettings.NiStyle.Round:
+                        output = "GUI/ZMD_circle";
+                        break;
+                    case MapDesignerSettings.NiStyle.Square:
+                        output = "GUI/ZMD_square";
+                        break;
+                    case MapDesignerSettings.NiStyle.Ring:
+                        output = "GUI/ZMD_ring";
+                        break;
+                    case MapDesignerSettings.NiStyle.SquareRing:
+                        output = "GUI/ZMD_squareRing";
+                        break;
+
+                }
+                return output;
+            }
+        }
         private static string priStyleLabel
         {
             get

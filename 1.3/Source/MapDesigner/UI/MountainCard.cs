@@ -137,7 +137,7 @@ namespace MapDesigner.UI
                 settings.hillDonutAmt = InterfaceUtility.LabeledSlider(hillDonutListing, settings.hillDonutAmt, -1.5f, 1.5f, GetHillDonutAmtLabel(settings.hillDonutAmt));
                 settings.hillDonutSize = InterfaceUtility.LabeledSlider(hillDonutListing, settings.hillDonutSize, 0.1f, 1.2f, hillDonutSizeLabel, null, null, String.Format("ZMD_pctOfMap".Translate(), 100 * Math.Round(settings.hillDonutSize, 1)), "ZMD_hillRadialSizeTooltip".Translate());
 
-                InterfaceUtility.LocationPicker(hillDonutListing, 0.45f, ref settings.hillDonutDisp, 100 * settings.niSize, "GUI/ZMD_ring");
+                InterfaceUtility.LocationPicker(hillDonutListing, 0.45f, ref settings.hillDonutDisp, 100 * settings.hillDonutSize, "GUI/ZMD_ring");
 
                 hillDonutListing.End();
             }

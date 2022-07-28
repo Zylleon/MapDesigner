@@ -173,6 +173,7 @@ namespace MapDesigner.UI
             dotListing.End();
 
             Rect dotSliderRect = locSelRect;
+            dotSliderRect.height += 30f;
             dotSliderRect.xMin += locSelRect.height + 20f;
 
             Listing_Standard locSelListing = new Listing_Standard();
@@ -180,6 +181,17 @@ namespace MapDesigner.UI
 
             offset.z = InterfaceUtility.LabeledSlider(locSelListing, offset.z, 0 - maxDiff, maxDiff, null, "ZMD_south".Translate(), "ZMD_north".Translate());
             offset.x = InterfaceUtility.LabeledSlider(locSelListing, offset.x, 0 - maxDiff,  maxDiff, null, "ZMD_west".Translate(), "ZMD_east".Translate());
+
+            Rect centerButtonRect = locSelListing.GetRect(30f);
+            centerButtonRect.xMax -= 0.75f * centerButtonRect.width;
+            Listing_Standard centerbuttonListing = new Listing_Standard();
+            centerbuttonListing.Begin(centerButtonRect);
+            if (centerbuttonListing.ButtonText("ZMD_center".Translate()))
+            {
+                offset.x = 0f;
+                offset.z = 0f;
+            }
+            centerbuttonListing.End();
 
             locSelListing.End();
 

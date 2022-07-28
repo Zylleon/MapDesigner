@@ -152,6 +152,27 @@ namespace MapDesigner.Patches
 
             }
 
+
+            // donut hills and valleys
+            if (MapDesignerMod.mod.settings.flagHillDonut)
+            {
+                IntVec3 center = map.Center;
+                center.x += (int)(MapDesignerMod.mod.settings.hillDonutDisp.x * map.Size.x);
+                center.z += (int)(MapDesignerMod.mod.settings.hillDonutDisp.z * map.Size.z);
+                int mapSize = map.Size.x / 2;
+                float donutSize = settings.hillDonutSize * mapSize;
+                donutSize *= 0.78f;
+                foreach (IntVec3 current in map.AllCells)
+                {
+                    float distance = (float)Math.Sqrt(Math.Pow(current.x - center.x, 2) + Math.Pow(current.z - center.z, 2));
+                    distance -= donutSize;
+                    distance *= 3.5f;
+                    distance = Math.Abs(distance);
+                    elevation[current] += (settings.hillDonutAmt * (distance - donutSize) / mapSize);
+                }
+            }
+
+
             // hill amount
             float hillAmount = settings.hillAmount;
             foreach (IntVec3 current in map.AllCells)

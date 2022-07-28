@@ -34,6 +34,10 @@ namespace MapDesigner.UI
             {
                 height += 100f;
             }
+            if (settings.flagHillDonut)
+            {
+                height += 200f;
+            }
 
             Rect viewRect = new Rect(0f, 0f, rect2.width - 18f, Math.Max(height, viewHeight + 200f));
             Widgets.BeginScrollView(rect2, ref scrollPosition, viewRect, true);
@@ -116,8 +120,28 @@ namespace MapDesigner.UI
                 settings.hillSideDir = InterfaceUtility.AnglePicker(hillSideListing, settings.hillSideDir, "ZMD_Angle".Translate(), 3, true);
 
                 hillSideListing.End();
+                listingStandard.Gap();
 
             }
+
+            listingStandard.CheckboxLabeled("ZMD_flagHillDonut".Translate(), ref MapDesignerMod.mod.settings.flagHillDonut, "ZMD_flagHillDonutTooltip".Translate());
+            if (MapDesignerMod.mod.settings.flagHillDonut)
+            {
+                Rect hillDonutRect = listingStandard.GetRect(250f);
+                hillDonutRect.xMin += 20f;
+                hillDonutRect.xMax -= 20f;
+
+                Listing_Standard hillDonutListing = new Listing_Standard();
+                hillDonutListing.Begin(hillDonutRect);
+                
+                settings.hillDonutAmt = InterfaceUtility.LabeledSlider(hillDonutListing, settings.hillDonutAmt, -1.5f, 1.5f, GetHillDonutAmtLabel(settings.hillDonutAmt));
+                settings.hillDonutSize = InterfaceUtility.LabeledSlider(hillDonutListing, settings.hillDonutSize, 0.1f, 1.2f, hillDonutSizeLabel, null, null, String.Format("ZMD_pctOfMap".Translate(), 100 * Math.Round(settings.hillDonutSize, 1)), "ZMD_hillRadialSizeTooltip".Translate());
+
+                InterfaceUtility.LocationPicker(hillDonutListing, 0.45f, ref settings.hillDonutDisp, 100 * settings.niSize, "GUI/ZMD_ring");
+
+                hillDonutListing.End();
+            }
+
 
             // reset
             listingStandard.GapLine();
@@ -158,7 +182,12 @@ namespace MapDesigner.UI
             settings.hillSideAmt = 1.0f;
             settings.hillSideDir = 180f;
 
-        }
+            settings.flagHillDonut = false;
+            settings.hillDonutAmt = -0.9f;
+            settings.hillDonutSize = 0.75f;
+            settings.hillDonutDisp = new Vector3(0.0f, 0.0f, 0.0f);
+
+    }
 
 
         private static string GetHillRadialAmtLabel(float val)
@@ -211,7 +240,37 @@ namespace MapDesigner.UI
             return InterfaceUtility.FormatLabel("ZMD_hillRadialAmtLabel", "ZMD_hillSideAmt" + label);
         }
 
+        private static string GetHillDonutAmtLabel(float val)
+        {
 
+            int label = 0;      // 0 - Distinct ring hill
+            if (val > -1)    //1 Broken ring hill
+            {
+                label++;
+            }
+            if (val > -0.6f)    //2  Slight ring hill
+            {
+                label++;
+            }
+            if (val > -0.25f)    //no cluster = 3
+            {
+                label++;
+            }
+            if (val > 0.25f)    //4 Slight ring valley
+            {
+                label++;
+            }
+            if (val > 0.6f)    //5 Partial ring valley
+            {
+                label++;
+            }
+            if (val > 1f)    //6 Distinct ring valley
+            {
+                label++;
+            }
+
+            return InterfaceUtility.FormatLabel("ZMD_skew", "ZMD_hillDonutAmt" + label);
+        }
         private static string hillRadialSizeLabel
         {
             get
@@ -238,7 +297,31 @@ namespace MapDesigner.UI
             }
         }
 
-
+        private static string hillDonutSizeLabel
+        {
+            get
+            {
+                float radialSize = settings.hillRadialSize;
+                int label = 0;
+                if (radialSize > 0.25f)
+                {
+                    label++;
+                }
+                if (radialSize > 0.45f)
+                {
+                    label++;
+                }
+                if (radialSize > 0.70f)
+                {
+                    label++;
+                }
+                if (radialSize > 0.90f)
+                {
+                    label++;
+                }
+                return InterfaceUtility.FormatLabel("ZMD_size", "ZMD_hillRadialSize" + label);
+            }
+        }
         public static string hillAmountLabel
         {
             get

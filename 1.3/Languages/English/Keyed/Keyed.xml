@@ -181,10 +181,12 @@
 	<ZMD_flagHillDonut>Donut-shaped</ZMD_flagHillDonut>
 	<ZMD_flagHillDonutTooltip>Ring-shaped mountains or valleys</ZMD_flagHillDonutTooltip>
 	<ZMD_hillDonutAmt0>Distinct ring hill</ZMD_hillDonutAmt0>
-	<ZMD_hillDonutAmt1>Slight ring hill</ZMD_hillDonutAmt1>
-	<ZMD_hillDonutAmt2>Little to no change</ZMD_hillDonutAmt2>
-	<ZMD_hillDonutAmt3>Slight ring valley</ZMD_hillDonutAmt3>
-	<ZMD_hillDonutAmt4>Distinct ring valley</ZMD_hillDonutAmt4>
+	<ZMD_hillDonutAmt1>Broken ring hill</ZMD_hillDonutAmt1>
+	<ZMD_hillDonutAmt2>Slight ring hill</ZMD_hillDonutAmt2>
+	<ZMD_hillDonutAmt3>Little to no change</ZMD_hillDonutAmt3>
+	<ZMD_hillDonutAmt4>Slight ring valley</ZMD_hillDonutAmt4>
+	<ZMD_hillDonutAmt5>Partial ring valley</ZMD_hillDonutAmt5>
+	<ZMD_hillDonutAmt6>Distinct ring valley</ZMD_hillDonutAmt6>
 	
 	
 	

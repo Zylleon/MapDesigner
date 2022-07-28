@@ -86,6 +86,12 @@ namespace MapDesigner
         public float hillSideAmt = 1.0f;
         public float hillSideDir = 180f;
 
+        public bool flagHillDonut = false;
+        public float hillDonutAmt = -0.9f;
+        public float hillDonutSize = 0.75f;
+        public Vector3 hillDonutDisp = new Vector3(0.0f, 0.0f, 0.0f);
+
+
         // Things
         public float densityPlant = 1.0f;
         public float densityAnimal = 1.0f;
@@ -399,6 +405,12 @@ namespace MapDesigner
             Scribe_Values.Look(ref flagHillSide, "flagHillSide", false);
             Scribe_Values.Look(ref hillSideAmt, "hillSideAmt", 1.0f);
             Scribe_Values.Look(ref hillSideDir, "hillSideDir", 180f);
+
+            Scribe_Values.Look(ref flagHillDonut, "flagHillDonut", false);
+            Scribe_Values.Look(ref hillDonutAmt, "hillDonutAmt", -0.9f);
+            Scribe_Values.Look(ref hillDonutSize, "hillDonutSize", 0.75f);
+            Scribe_Values.Look(ref hillDonutDisp, "hillDonutDisp", new Vector3(0.0f, 0.0f, 0.0f));
+
 
 
             // Things

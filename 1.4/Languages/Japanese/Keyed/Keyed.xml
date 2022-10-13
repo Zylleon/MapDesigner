@@ -1,0 +1,408 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- General Use -->
+
+  <ZMD_ModName>Map Designer</ZMD_ModName>
+
+  <!-- General Mod Settings -->
+
+
+  <ZMD_resetPage>これらの設定をリセット</ZMD_resetPage>
+  <ZMD_resetMountain>山岳をリセット</ZMD_resetMountain>
+  <ZMD_resetThings>オブジェクトをリセット</ZMD_resetThings>
+  <ZMD_resetRivers>河川と海岸をリセット</ZMD_resetRivers>
+  <ZMD_resetTerrain>地形をリセット</ZMD_resetTerrain>
+  <ZMD_resetFeatures>地形物をリセット</ZMD_resetFeatures>
+
+  <ZMD_Angle>角度</ZMD_Angle>
+
+  <ZMD_numTiles>{0}タイル</ZMD_numTiles>
+  <ZMD_pctOfMap>マップ幅の{0}%</ZMD_pctOfMap>
+
+  <!-- Levels -->
+  <ZMD_size0>なし</ZMD_size0>
+  <ZMD_size1>最小</ZMD_size1>
+  <ZMD_size2>小</ZMD_size2>
+  <ZMD_size3>平均</ZMD_size3>
+  <ZMD_size4>大</ZMD_size4>
+  <ZMD_size5>巨大</ZMD_size5>
+  <ZMD_size6>最大</ZMD_size6>
+
+  <ZMD_narrow>狭い</ZMD_narrow>
+  <ZMD_wide>幅広</ZMD_wide>
+
+
+
+  <!-- Tabs -->
+
+  <!-- General Tab -->
+
+  <ZMD_generalTab>総合</ZMD_generalTab>
+  <ZMD_generalTabInfo>プリセットを使用して作業を開始するか、他のタブで詳細なオプションを使用できます。\n\nすべての設定は、ベースとなったマップを基準にしています。不毛の熱帯雨林には肥沃な砂漠よりも多くの植物が生えているでしょう。平面マップは同じ設定の山岳マップよりも丘の数が少なくなります。</ZMD_generalTabInfo>
+
+  <ZMD_presets>プリセット</ZMD_presets>
+
+  <ZMD_applyPreset>プリセットを許可</ZMD_applyPreset>
+  <ZMD_reset>全てをリセット</ZMD_reset>
+  <ZMD_resetSuccess>すべての設定がリセットされました</ZMD_resetSuccess>
+
+  <ZMD_presetNone>プリセット無し</ZMD_presetNone>
+  <ZMD_presetNoneDesc>プリセットが選択されていません</ZMD_presetNoneDesc>
+
+  <ZMD_presetVanilla>バニラ</ZMD_presetVanilla>
+  <ZMD_presetVanillaDesc>デフォルトのバニラ状態です。</ZMD_presetVanillaDesc>
+
+  <ZMD_presetFertileValley>肥沃な谷</ZMD_presetFertileValley>
+  <ZMD_presetFertileValleyDesc>山々に囲まれた人里離れた谷です。肥沃度な土も植物も多くて、遺跡が少ない。</ZMD_presetFertileValleyDesc>
+
+  <ZMD_presetBarrens>荒れ地</ZMD_presetBarrens>
+  <ZMD_presetBarrensDesc>比較的荒涼とした風景が広がり、小さな山がそびえ立っています。通常よりも少ない肥沃度な土と植物。追加された間欠泉があります。</ZMD_presetBarrensDesc>
+
+  <ZMD_presetUnnatural>不自然な場所</ZMD_presetUnnatural>
+  <ZMD_presetUnnaturalDesc>奇妙で不自然な山々には、古代の危険が散在しています。</ZMD_presetUnnaturalDesc>
+
+  <ZMD_presetFishingVillage>漁村</ZMD_presetFishingVillage>
+  <ZMD_presetFishingVillageDesc>採掘するには大きくて良い丘がありますが、それ以外の場所は硬い地面が少しだけです。沼地では山以外に固い地面がないかもしれません！</ZMD_presetFishingVillageDesc>
+
+  <ZMD_presetCanyon>渓谷</ZMD_presetCanyon>
+  <ZMD_presetCanyonDesc>岩の種類が豊富な狭い渓谷です。マップタイル上に川がある場合、川は渓谷に沿って流れます。</ZMD_presetCanyonDesc>
+
+  <ZMD_presetZyllesChoice>Mod作成者の選択</ZMD_presetZyllesChoice>
+  <ZMD_presetZyllesChoiceDesc>私のオオスメ設定です。</ZMD_presetZyllesChoiceDesc>
+
+  <ZMD_presetRandom>ランダム</ZMD_presetRandom>
+  <ZMD_presetRandomDesc>これを選択すると、「プリセットを許可」をクリックするたびに設定がランダム化されます。結果は予測できません。</ZMD_presetRandomDesc>
+
+
+  <ZMD_flagPopup>新しいマップにこれを表示</ZMD_flagPopup>
+  <ZMD_flagPopupDesc>これらの設定には、スタートメニューからオプションを開きMod設定からMap-Designerを開くことでいつでも設定可能です。</ZMD_flagPopupDesc>
+
+  <ZMD_flagHomeMapOnly>一部の設定をホームマップに制限</ZMD_flagHomeMapOnly>
+  <ZMD_flagHomeMapOnlyDesc>制限後に適用される設定：山と丘だけ\n\nチェックした場合、これらはクエストマップや、AI派閥の拠点とその他のホームマップで無いマップがバニラと同じになります。</ZMD_flagHomeMapOnlyDesc>
+
+
+  <!-- saving and loading -->
+  <ZMD_addConfig>新しい設定を追加</ZMD_addConfig>
+  <ZMD_save>セーブ</ZMD_save>
+  <ZMD_saveCurrent>現在の設定を名前を付けて保存</ZMD_saveCurrent>
+  <ZMD_applySettings>設定を適用</ZMD_applySettings>
+  <ZMD_saveSuccess>設定を{0}として保存しました</ZMD_saveSuccess>
+  <ZMD_saveFail1>この名前の設定はすでに保存されています.先に古い設定を削除してください.</ZMD_saveFail1>
+  <ZMD_saveFail2>設定には名前が必要</ZMD_saveFail2>
+  <ZMD_saveFail3>保存された設定が多すぎます.いくつか削除して領域を空けてください.</ZMD_saveFail3>
+
+  <ZMD_manageConfigs>保存設定の管理</ZMD_manageConfigs>
+  <ZMD_selConfig>設定を選択</ZMD_selConfig>
+  <ZMD_load>適用</ZMD_load>
+  <ZMD_loadSuccess>設定を適用しました</ZMD_loadSuccess>
+  <ZMD_randSuccess>設定をランダム化しました</ZMD_randSuccess>
+  <ZMD_delete>削除</ZMD_delete>
+  <ZMD_delSuccess>削除した設定：</ZMD_delSuccess>
+
+  <!-- Mountains -->
+
+  <!-- Tabs -->
+  <ZMD_mountainTab>山と丘</ZMD_mountainTab>
+  <ZMD_mountainTabInfo>山と丘についての設定</ZMD_mountainTabInfo>
+  <!-- Hills -->
+  <ZMD_hillAmountLabel>山と丘の数</ZMD_hillAmountLabel>
+  <ZMD_hillAmountTooltip>マップにはどれだけの山と丘が存在するか</ZMD_hillAmountTooltip>
+
+  <ZMD_hillAmount0>平坦</ZMD_hillAmount0>
+  <ZMD_hillAmount1>少</ZMD_hillAmount1>
+  <ZMD_hillAmount2>バニラ</ZMD_hillAmount2>
+  <ZMD_hillAmount3>多</ZMD_hillAmount3>
+  <ZMD_hillAmount4>とても多い</ZMD_hillAmount4>
+  <ZMD_hillAmount5>みっちり</ZMD_hillAmount5>
+
+  <ZMD_hillSizeLabel>丘陵の大きさ</ZMD_hillSizeLabel>
+  <ZMD_hillSizeTooltip>1つ1つの山や丘の大きさです。1つか2つの大きな山を持つマップには大きな丘を、多くの角を持つギザギザのマップには小さな丘になります。</ZMD_hillSizeTooltip>
+  <ZMD_hillSize0>大</ZMD_hillSize0>
+  <ZMD_hillSize1>バニラ</ZMD_hillSize1>
+  <ZMD_hillSize2>小</ZMD_hillSize2>
+  <ZMD_hillSize3>極小</ZMD_hillSize3>
+  <ZMD_hillSize4>最小</ZMD_hillSize4>
+
+  <ZMD_hillSmoothnessLabel>丘陵の滑らかさ</ZMD_hillSmoothnessLabel>
+  <ZMD_hillSmoothness0>とても滑らか</ZMD_hillSmoothness0>
+  <ZMD_hillSmoothness1>滑らか</ZMD_hillSmoothness1>
+  <ZMD_hillSmoothness2>バニラ</ZMD_hillSmoothness2>
+  <ZMD_hillSmoothness3>ギザギザ</ZMD_hillSmoothness3>
+  <ZMD_hillSmoothness4>とてもギザギザ</ZMD_hillSmoothness4>
+
+
+
+  <!-- Mountain distribution -->
+  <ZMD_hillArrangement>山や丘をカスタムする</ZMD_hillArrangement>
+  <ZMD_hillArrangementDesc>マップ上での山や丘の分布を編集します。カスタマイズされた谷や山岳を形成します。すべてを無効にするとバニラと同じになります</ZMD_hillArrangementDesc>
+
+  <ZMD_flagHillClumping>丘陵の分布</ZMD_flagHillClumping>
+  <ZMD_flagHillClumpingTooltip>小さな丘のための設定。丘陵が均等になるのではなく自然な塊になるようにします。</ZMD_flagHillClumpingTooltip>
+
+  <ZMD_flagHillRadial>中央分布</ZMD_flagHillRadial>
+  <ZMD_flagHillRadialTooltip>山や丘がマップの端や中央に纏まって作成されます</ZMD_flagHillRadialTooltip>
+  <ZMD_hillRadialAmtLabel>偏差量</ZMD_hillRadialAmtLabel>
+  <ZMD_hillRadialAmtTooltip>マップの中央と端で差がどれくらいあるのか</ZMD_hillRadialAmtTooltip>
+  <ZMD_hillRadialSizeLabel>中心サイズ</ZMD_hillRadialSizeLabel>
+  <ZMD_hillRadialSizeTooltip>山や丘を中心だけからマップ端まで満たすか</ZMD_hillRadialSizeTooltip>
+
+  <ZMD_hillRadialAmt0>マップ中央に密集</ZMD_hillRadialAmt0>
+  <ZMD_hillRadialAmt1>マップ中央に適度</ZMD_hillRadialAmt1>
+  <ZMD_hillRadialAmt2>マップ中央に多め</ZMD_hillRadialAmt2>
+  <ZMD_hillRadialAmt3>殆ど変化無し</ZMD_hillRadialAmt3>
+  <ZMD_hillRadialAmt4>マップ端に多め</ZMD_hillRadialAmt4>
+  <ZMD_hillRadialAmt5>マップ端に適度</ZMD_hillRadialAmt5>
+  <ZMD_hillRadialAmt6>マップを囲うように</ZMD_hillRadialAmt6>
+
+
+  <ZMD_center>中央</ZMD_center>
+  <ZMD_edges>外縁</ZMD_edges>
+  <ZMD_direction>方向</ZMD_direction>
+  <ZMD_skew>歪曲</ZMD_skew>
+  <ZMD_size>サイズ</ZMD_size>
+
+
+  <ZMD_hillRadialSize0>極小</ZMD_hillRadialSize0>
+  <ZMD_hillRadialSize1>小</ZMD_hillRadialSize1>
+  <ZMD_hillRadialSize2>平均</ZMD_hillRadialSize2>
+  <ZMD_hillRadialSize3>大</ZMD_hillRadialSize3>
+  <ZMD_hillRadialSize4>エッジ</ZMD_hillRadialSize4>
+
+  <ZMD_flagHillSplit>中央に寄せる</ZMD_flagHillSplit>
+
+  <ZMD_flagHillSide>片側に寄せる</ZMD_flagHillSide>
+
+  <ZMD_hillSideAmt0>ほぼ均一</ZMD_hillSideAmt0>
+  <ZMD_hillSideAmt1>一方向へ弱く集中</ZMD_hillSideAmt1>
+  <ZMD_hillSideAmt2>一方向へ適度に集中</ZMD_hillSideAmt2>
+  <ZMD_hillSideAmt3>一方向へ強く集中</ZMD_hillSideAmt3>
+
+  <ZMD_flagHillDonut>ドーナツ状の山と谷</ZMD_flagHillDonut>
+  <ZMD_flagHillDonutTooltip>リング状の山または谷を形成します</ZMD_flagHillDonutTooltip>
+  <ZMD_hillDonutAmt0>鮮明なドーナツ丘陵</ZMD_hillDonutAmt0>
+  <ZMD_hillDonutAmt1>少しリング状な丘陵</ZMD_hillDonutAmt1>
+  <ZMD_hillDonutAmt2>殆ど変化無し</ZMD_hillDonutAmt2>
+  <ZMD_hillDonutAmt3>少しリング状な渓谷</ZMD_hillDonutAmt3>
+  <ZMD_hillDonutAmt4>鮮明なリング状渓谷</ZMD_hillDonutAmt4>
+  <ZMD_hillDonutAmt5>不完全なリング状渓谷</ZMD_hillDonutAmt5>
+  <ZMD_hillDonutAmt6>完全なリング状渓谷</ZMD_hillDonutAmt6>
+
+
+  <!-- Misc settings -->
+
+  <ZMD_flagCaves>洞窟を許可</ZMD_flagCaves>
+  <ZMD_flagCavesTooltip>チェックを外すと洞窟が生成されなくなります。</ZMD_flagCavesTooltip>
+
+  <ZMD_flagMtnExit>出入口を確保</ZMD_flagMtnExit>
+  <ZMD_flagMtnExitTooltip>山が多いマップ用です。マップ中心部へ確実に経路ができるようにします。</ZMD_flagMtnExitTooltip>
+  <ZMD_numMtnExit>出口の数</ZMD_numMtnExit>
+
+
+
+  <!-- Things -->
+  <!-- Tabs -->
+
+  <ZMD_thingsTab>マップオブジェクト</ZMD_thingsTab>
+  <ZMD_thingsTabInfo>鉱物密度など</ZMD_thingsTabInfo>
+
+  <ZMD_thingsClassic>クラシック</ZMD_thingsClassic>
+  <ZMD_thingsRoyalty>Royalty</ZMD_thingsRoyalty>
+  <ZMD_thingsIdeology>Ideology</ZMD_thingsIdeology>
+  <ZMD_thingsVPE>Vanilla Power Expanded</ZMD_thingsVPE>
+
+
+  <!-- Densities -->
+  <ZMD_densityPlant>植物密度</ZMD_densityPlant>
+  <ZMD_densityAnimal>動物密度</ZMD_densityAnimal>
+  <ZMD_densityRuins>廃墟密度</ZMD_densityRuins>
+  <ZMD_densityDanger>太古の建造物密度</ZMD_densityDanger>
+  <ZMD_densityDangerTooltip>注意：太古の脅威は完全に平面なマップでは発生しません</ZMD_densityDangerTooltip>
+  <ZMD_densityGeyser>間欠泉密度</ZMD_densityGeyser>
+  <ZMD_densityOre>鉱物密度</ZMD_densityOre>
+  <ZMD_animaCount>アニマツリーの数：</ZMD_animaCount>
+  <ZMD_flagRockChunks>岩の塊を許可</ZMD_flagRockChunks>
+  <ZMD_flagRockChunksTooltip>無効にすると、新しいマップにはチャンクがなくなります。</ZMD_flagRockChunksTooltip>
+
+  <ZMD_chooseOreTypes>鉱石の種類を選択...</ZMD_chooseOreTypes>
+  <ZMD_resetOreTypes>鉱石をリセット</ZMD_resetOreTypes>
+
+  <ZMD_density0>なし</ZMD_density0>
+  <ZMD_density1>最低</ZMD_density1>
+  <ZMD_density2>低</ZMD_density2>
+  <ZMD_density3>平均</ZMD_density3>
+  <ZMD_density4>高</ZMD_density4>
+  <ZMD_density5>凄く高</ZMD_density5>
+  <ZMD_density6>最高</ZMD_density6>
+
+  <!-- Ideology -->
+  <ZMD_flagRoadDebris>道路のがれき</ZMD_flagRoadDebris>
+  <ZMD_flagRoadDebrisTooltip>錆びた車や戦車</ZMD_flagRoadDebrisTooltip>
+  <ZMD_flagCaveDebris>洞窟のがれき</ZMD_flagCaveDebris>
+  <ZMD_flagCaveDebrisTooltip>古代のベッドや時には古い制服に散らばった文書</ZMD_flagCaveDebrisTooltip>
+  <ZMD_flagAncientUtilityBuilding>古代の実用的な建築物</ZMD_flagAncientUtilityBuilding>
+  <ZMD_flagAncientUtilityBuildingTooltip>古代の発電所や時には柵や建築物を含む</ZMD_flagAncientUtilityBuildingTooltip>
+  <ZMD_flagAncientTurret>古代のタレット</ZMD_flagAncientTurret>
+  <ZMD_flagAncientMechs>古代のメカノイド</ZMD_flagAncientMechs>
+  <ZMD_flagAncientLandingPad>古代の着陸パッド</ZMD_flagAncientLandingPad>
+  <ZMD_flagAncientFences>古代のフェンス</ZMD_flagAncientFences>
+
+  <ZMD_countMechanoidRemains>メカノイドの残骸</ZMD_countMechanoidRemains>
+  <ZMD_densityAncientJunkClusters>古代のクラスターの残骸</ZMD_densityAncientJunkClusters>
+  <ZMD_densityAncientPipelineSection>古代のパイプライン</ZMD_densityAncientPipelineSection>
+
+  <!-- Vanilla Power Expanded -->
+  <ZMD_VPE_chemfuelPonds>化学燃料の池</ZMD_VPE_chemfuelPonds>
+  <ZMD_VPE_helixienVents>Helixienの排出口</ZMD_VPE_helixienVents>
+
+
+
+  <!-- Rivers -->
+
+  <ZMD_riverTab>河川と海岸</ZMD_riverTab>
+
+  <ZMD_sizeRiver>河川の大きさ</ZMD_sizeRiver>
+
+  <ZMD_flagRiverBeach>川岸</ZMD_flagRiverBeach>
+  <ZMD_riverBeachSize>川岸の大きさ</ZMD_riverBeachSize>
+
+  <ZMD_flagRiverDir>川の方向を選択</ZMD_flagRiverDir>
+
+  <ZMD_riverStyle>河川の形式</ZMD_riverStyle>
+  <ZMD_riverStyleVanilla>バニラ</ZMD_riverStyleVanilla>
+  <ZMD_riverStyleVanillaDesc>普通の河川</ZMD_riverStyleVanillaDesc>
+  <ZMD_riverStyleSpring>泉</ZMD_riverStyleSpring>
+  <ZMD_riverStyleSpringDesc>河川はマップ中央付近から始まり、マップの端まで続いています</ZMD_riverStyleSpringDesc>
+  <ZMD_riverStyleCanal>運河</ZMD_riverStyleCanal>
+  <ZMD_riverStyleCanalDesc>完全に直線な川</ZMD_riverStyleCanalDesc>
+  <ZMD_riverStyleConfluence>合流</ZMD_riverStyleConfluence>
+  <ZMD_riverStyleConfluenceDesc>2つの川が1つに合流しています</ZMD_riverStyleConfluenceDesc>
+  <ZMD_riverStyleFork>分岐</ZMD_riverStyleFork>
+  <ZMD_riverStyleForkDesc>1つの川が2つに分岐しています</ZMD_riverStyleForkDesc>
+  <ZMD_riverStyleOxbow>三日月</ZMD_riverStyleOxbow>
+  <ZMD_riverStyleOxbowDesc>大きく滑らかなコーナーのある曲がりくねった川</ZMD_riverStyleOxbowDesc>
+  <ZMD_riverStyleIsland>中州</ZMD_riverStyleIsland>
+  <ZMD_riverStyleIslandDesc>川が別れて島(中州)を形成して反対側でまた合流します</ZMD_riverStyleIslandDesc>
+
+
+  <ZMD_riverPosition>川の位置を変更する</ZMD_riverPosition>
+  <ZMD_north>北</ZMD_north>
+  <ZMD_south>南</ZMD_south>
+  <ZMD_east>東</ZMD_east>
+  <ZMD_west>西</ZMD_west>
+  <ZMD_riverLocRel>相対配置</ZMD_riverLocRel>
+  <ZMD_riverLocRelDesc>バニラの位置を基準にしています</ZMD_riverLocRelDesc>
+  <ZMD_riverLocAbs>中心配置</ZMD_riverLocAbs>
+  <ZMD_riverLocAbsDesc>どこに配置してもランダムにはなりません</ZMD_riverLocAbsDesc>
+
+
+  <!-- Beaches -->
+
+  <ZMD_coastDir>海岸方向</ZMD_coastDir>
+  <ZMD_coastDirVanilla>バニラ</ZMD_coastDirVanilla>
+
+  <ZMD_coastTerr>浜辺の地形</ZMD_coastTerr>
+  <ZMD_coastTerrVanilla>バニラ</ZMD_coastTerrVanilla>
+
+  <!-- Features -->
+  <!-- Tabs -->
+
+  <ZMD_featureTab>特徴的なマップ</ZMD_featureTab>
+  <ZMD_featureTabInfo>拠点のマップに特定の機能を追加します。これらの機能はクエストのマップのような他のマップには適用されません。\n\nこの設定内容はプレビュー表示されませんが再ロールすることはできます。</ZMD_featureTabInfo>
+
+  <!-- Features -->
+  <ZMD_selectFeature>特徴を選択</ZMD_selectFeature>
+
+  <ZMD_featureNone>なし</ZMD_featureNone>
+  <ZMD_featureNoneInfo>基本マップ</ZMD_featureNoneInfo>
+
+  <ZMD_featurePRI>丸い島々</ZMD_featurePRI>
+  <ZMD_featurePRIInfo>浅瀬に囲まれた１つ以上の丸い島。交易やキャラバン、宙賊、野生動物が普通にやってきます。</ZMD_featurePRIInfo>
+
+  <ZMD_featureLake>湖</ZMD_featureLake>
+  <ZMD_featureLakeInfo>自然に見える湖。</ZMD_featureLakeInfo>
+
+  <ZMD_featureNI>自然な島</ZMD_featureNI>
+  <ZMD_featureNiInfo>浅瀬と海に囲まれた自然の島です。トレードキャラバンや襲撃や野生動物は従来通りマップ側面から入って来て、通行可能な水面の上を通ります。</ZMD_featureNiInfo>
+
+  <!-- Perfectly Round Islands -->
+  <ZMD_priIslandStyle>島の形</ZMD_priIslandStyle>
+  <ZMD_priIslandSizeLabel>島の大きさ</ZMD_priIslandSizeLabel>
+  <ZMD_priBeachSizeLabel>浜辺の大きさ</ZMD_priBeachSizeLabel>
+  <ZMD_priSingleLabel>孤島</ZMD_priSingleLabel>
+  <ZMD_priSingleDesc>大きな円い形の孤島</ZMD_priSingleDesc>
+  <ZMD_priMultiLabel>複数の島々</ZMD_priMultiLabel>
+  <ZMD_priMultiDesc>ランダム配置された諸島です。中央の島が最大になります。</ZMD_priMultiDesc>
+
+  <!-- Lakes -->
+
+  <ZMD_lakeSize>湖の大きさ：マップの{0} %</ZMD_lakeSize>
+  <ZMD_lakeRoundness>丸さ</ZMD_lakeRoundness>
+  <ZMD_lakeBeachSize>湖の岸辺の大きさ</ZMD_lakeBeachSize>
+  <ZMD_lakeDepth>湖の深さ</ZMD_lakeDepth>
+  <ZMD_flagLakeSalty>塩水湖</ZMD_flagLakeSalty>
+  <ZMD_lakeShore>岸の地形</ZMD_lakeShore>
+
+  <ZMD_lakeDepth0>とても浅い</ZMD_lakeDepth0>
+  <ZMD_lakeDepth1>浅い</ZMD_lakeDepth1>
+  <ZMD_lakeDepth2>普通</ZMD_lakeDepth2>
+  <ZMD_lakeDepth3>深い</ZMD_lakeDepth3>
+  <ZMD_lakeDepth4>とても深い</ZMD_lakeDepth4>
+
+  <ZMD_lakeRoundness0>完全な円</ZMD_lakeRoundness0>
+  <ZMD_lakeRoundness1>ほぼ円</ZMD_lakeRoundness1>
+  <ZMD_lakeRoundness2>普通</ZMD_lakeRoundness2>
+  <ZMD_lakeRoundness3>やや丸い</ZMD_lakeRoundness3>
+  <ZMD_lakeRoundness4>不定形</ZMD_lakeRoundness4>
+
+  <!-- Natural Islands -->
+
+  <ZMD_niRoundness>島の滑らかさ</ZMD_niRoundness>
+  <ZMD_niRoundness0>完璧な幾何学形</ZMD_niRoundness0>
+  <ZMD_niRoundness1>ほとんど幾何学形</ZMD_niRoundness1>
+  <ZMD_niRoundness2>平均的</ZMD_niRoundness2>
+  <ZMD_niRoundness3>やや球形</ZMD_niRoundness3>
+  <ZMD_niRoundness4>不定形</ZMD_niRoundness4>
+
+  <ZMD_niStyle>定型</ZMD_niStyle>
+  <ZMD_niSelStyle>定型を選択</ZMD_niSelStyle>
+  <ZMD_niStyleRound>円形</ZMD_niStyleRound>
+  <ZMD_niStyleSquare>四角</ZMD_niStyleSquare>
+  <ZMD_niStyleSquareRing>四角形環礁</ZMD_niStyleSquareRing>
+  <ZMD_niStyleRing>環礁</ZMD_niStyleRing>
+
+  <ZMD_niWaterDepth>外洋(歩行不可)</ZMD_niWaterDepth>
+  <ZMD_niWaterDepthWarning>警告：小川や外洋は、歩いて渡れない島を作成する可能性があります！</ZMD_niWaterDepthWarning>
+
+
+  <!-- Terrain -->
+
+  <!-- Tabs -->
+
+  <ZMD_terrainTab>地形</ZMD_terrainTab>
+  <ZMD_terrainTabInfo>肥沃度や水位や岩の種類など。\n\n水位を上げると、沼地や湖の大きさと数を増加させますが、そうしなければ本来湖を持たない気候環境(砂漠など)に新しい湖を追加されることはありません。</ZMD_terrainTabInfo>
+
+  <ZMD_rockTypeRange>マップごとの岩の種類</ZMD_rockTypeRange>
+  <ZMD_flagBiomeRocks>「Atolls」や「Ocular-Forest」等のModで追加される特殊な岩を使って改造気候環境に他の種類の岩を追加可能にする</ZMD_flagBiomeRocks>
+  <ZMD_flagBiomeRocksTooltip>これによって、一部のModで追加される気候環境でゲームバランスが大幅に変わる可能性があります。特殊な岩を削除すると、必要となる資源が削除されるかもしれません。</ZMD_flagBiomeRocksTooltip>
+
+  <ZMD_allRockTypes>全種類の岩を許可</ZMD_allRockTypes>
+  <ZMD_chooseRockTypes>岩の種類を選択...</ZMD_chooseRockTypes>
+
+  <ZMD_terrainFertAmt>肥沃度：{0}％：</ZMD_terrainFertAmt>
+
+  <ZMD_terrainWaterAmt>水域レベル：{0}％：</ZMD_terrainWaterAmt>
+  <ZMD_terrainWaterTooltip>湖のサイズや数などです。川や海岸線やその他の特徴には影響しません。</ZMD_terrainWaterTooltip>
+
+  <ZMD_flagTerrainWater>全ての建築不可能な地形を水タイルとして計上</ZMD_flagTerrainWater>
+  <ZMD_flagTerrainWaterTooltip>重い建築物を支えられない全ての地形は水タイルとして計上されます。泥や湿地や柔らかい砂が含まれます</ZMD_flagTerrainWaterTooltip>
+
+
+
+  <!-- Beta -->
+  <!-- Tabs -->
+
+  <ZMD_betaTab>ベータ機能</ZMD_betaTab>
+  <ZMD_betaTabInfo>警告！これらは開発用のオプション機能です。それらは間違ったラベル付けがされている可能性や何も起きないこともあり、おそらくエラーをログに大量に記録します。\n\n問題がある場合は、それらのエラーログを添付して報告してください。これらが機能する場合は、それも報告してください。バージョンアップで変更されたり削除される可能性があります。</ZMD_betaTabInfo>
+
+</LanguageData>

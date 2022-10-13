@@ -11,26 +11,39 @@ using Verse.Noise;
 
 namespace MapDesigner.Patches
 {
+    public static class MapGenSize
+    {
+        public static IntVec3 mapgensize { get; set; }
+    }
+
+    [HarmonyPatch(typeof(Verse.MapGenerator), "GenerateMap")]
+    static class SetMapGenSize
+    {
+        static void Prefix(IntVec3 mapSize)
+        {
+            MapGenSize.mapgensize = mapSize;
+        }
+    }
+
     [HarmonyPatch(typeof(RimWorld.RiverMaker))]
     [HarmonyPatch(MethodType.Constructor)]
     [HarmonyPatch(new Type[] { typeof(Vector3), typeof(float), typeof(RiverDef) })]
     static class RiverStylePatch
     {
 
-        static bool Prefix (ref Vector3 center)
+        static bool Prefix(ref Vector3 center)
         {
             if (MapDesignerMod.mod.settings.flagRiverLoc)
             {
-                if(MapDesignerMod.mod.settings.flagRiverLocAbs)
+                if (MapDesignerMod.mod.settings.flagRiverLocAbs)
                 {
-                    center.x =  Find.World.info.initialMapSize.x * (0.5f + MapDesignerMod.mod.settings.riverCenterDisp.x);
-                    center.z = Find.World.info.initialMapSize.z * (0.5f + MapDesignerMod.mod.settings.riverCenterDisp.z);
-          
+                    center.x = MapGenSize.mapgensize.x * (0.5f + MapDesignerMod.mod.settings.riverCenterDisp.x);
+                    center.z = MapGenSize.mapgensize.z * (0.5f + MapDesignerMod.mod.settings.riverCenterDisp.z);
                 }
                 else
                 {
-                    center.x += Find.World.info.initialMapSize.x * MapDesignerMod.mod.settings.riverCenterDisp.x;
-                    center.z += Find.World.info.initialMapSize.z * MapDesignerMod.mod.settings.riverCenterDisp.z;
+                    center.x += MapGenSize.mapgensize.x * MapDesignerMod.mod.settings.riverCenterDisp.x;
+                    center.z += MapGenSize.mapgensize.z * MapDesignerMod.mod.settings.riverCenterDisp.z;
                 }
                 center.x -= 0.5f;
                 center.z -= 0.5f;

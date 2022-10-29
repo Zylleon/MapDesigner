@@ -8,6 +8,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 using Verse;
 
 namespace MapDesigner
@@ -279,7 +280,7 @@ namespace MapDesigner
             // VPE
             if (GenTypes.GetTypeInAnyAssembly("VanillaPowerExpanded.SpecialPowerSpawnsDef") != null)
             {
-                ApplyVPEPatches();
+                //ApplyVPEPatches();
             }
 
             // rivers
@@ -447,6 +448,7 @@ namespace MapDesigner
 
 
 
+        /*
         // Compatibility 
         public static void ApplyMapRerollPatches()
         {
@@ -467,12 +469,27 @@ namespace MapDesigner
                 Log.Message("[Map Designer] Could not apply VFE settings");
             }
         }
+        */
 
         public static event Action OnSettingsChanged;
 
         internal static void InvokeOnSettingsChanged()
         {
             OnSettingsChanged?.Invoke();
+        }
+
+        private static bool wasGuiChanged;
+
+        internal static void BeginChangeCheck()
+        {
+            wasGuiChanged = GUI.changed;
+            GUI.changed = false;
+        }
+        
+        internal static void EndChangeCheck()
+        {
+            if (GUI.changed) InvokeOnSettingsChanged();
+            GUI.changed = GUI.changed || wasGuiChanged;
         }
 
         public static float GetMaxFertByBiome(BiomeDef biome)

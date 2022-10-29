@@ -28,8 +28,7 @@ namespace MapDesigner.UI
 
         public override void DoWindowContents(Rect inRect)
         {
-            bool prevChanged = GUI.changed;
-            GUI.changed = false;
+            HelperMethods.BeginChangeCheck();
 
             MapDesignerSettings settings = MapDesignerMod.mod.settings;
             List<ThingDef> list = HelperMethods.GetRockList();
@@ -62,11 +61,9 @@ namespace MapDesigner.UI
 
             Widgets.EndScrollView();
 
-            if (GUI.changed)
-            {
-                HelperMethods.InvokeOnSettingsChanged();
-            }
-            GUI.changed = GUI.changed || prevChanged;
+            outerListing.End();
+
+            HelperMethods.EndChangeCheck();
         }
 
 

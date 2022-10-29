@@ -15,9 +15,7 @@ namespace MapDesigner.UI
 
         public static void DrawThingsCard(Rect rect)
         {
-            bool prevChanged = GUI.changed;
-            GUI.changed = false;
-
+            HelperMethods.BeginChangeCheck();
 
             Listing_Standard wrapperListing = new Listing_Standard();
             wrapperListing.Begin(rect);
@@ -44,11 +42,15 @@ namespace MapDesigner.UI
             settings.densityDanger = ThingsSlider(mainListing, settings.densityDanger, 3, "ZMD_densityDanger");
             settings.densityGeyser = ThingsSlider(mainListing, settings.densityGeyser, 2, "ZMD_densityGeyser");
             settings.densityOre = ThingsSlider(mainListing, settings.densityOre, 2, "ZMD_densityOre");
+            
+            HelperMethods.EndChangeCheck();
 
             if (InterfaceUtility.SizedTextButton(mainListing, "ZMD_chooseOreTypes".Translate()))
             {
                 Find.WindowStack.Add(new OreSelectionDialog());
             }
+            
+            HelperMethods.BeginChangeCheck();
 
             mainListing.CheckboxLabeled("ZMD_flagRockChunks".Translate(), ref settings.flagRockChunks, "ZMD_flagRockChunks".Translate());
 
@@ -103,8 +105,7 @@ namespace MapDesigner.UI
                 InterfaceUtility.LabeledIntRange(mainListing, ref settings.vpe_HelixienVents, 0, 20, "ZMD_VPE_helixienVents".Translate());
             }
 
-
-
+            HelperMethods.EndChangeCheck();
 
             mainListing.End();
 
@@ -114,12 +115,6 @@ namespace MapDesigner.UI
                 ResetThingsSettings();
             }
             wrapperListing.End();
-
-            if (GUI.changed)
-            {
-                HelperMethods.InvokeOnSettingsChanged();
-            }
-            GUI.changed = GUI.changed || prevChanged;
         }
 
 

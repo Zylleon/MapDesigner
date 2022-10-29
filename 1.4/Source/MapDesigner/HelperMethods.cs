@@ -280,7 +280,7 @@ namespace MapDesigner
             // VPE
             if (GenTypes.GetTypeInAnyAssembly("VanillaPowerExpanded.SpecialPowerSpawnsDef") != null)
             {
-                //ApplyVPEPatches();
+                ApplyVPEPatches();
             }
 
             // rivers
@@ -448,7 +448,6 @@ namespace MapDesigner
 
 
 
-        /*
         // Compatibility 
         public static void ApplyMapRerollPatches()
         {
@@ -469,7 +468,6 @@ namespace MapDesigner
                 Log.Message("[Map Designer] Could not apply VFE settings");
             }
         }
-        */
 
         public static event Action OnSettingsChanged;
 

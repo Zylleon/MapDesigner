@@ -18,9 +18,7 @@ namespace MapDesigner.UI
 
         public static void DrawMountainCard(Rect rect)
         {
-            bool prevChanged = GUI.changed;
-            GUI.changed = false;
-
+            HelperMethods.BeginChangeCheck();
 
             Rect rect2 = rect.ContractedBy(4f);
 
@@ -146,6 +144,7 @@ namespace MapDesigner.UI
                 hillDonutListing.End();
             }
 
+            HelperMethods.EndChangeCheck();
 
             // reset
             listingStandard.GapLine();
@@ -156,13 +155,6 @@ namespace MapDesigner.UI
             }
 
             listingStandard.End();
-
-
-            if (GUI.changed)
-            {
-                HelperMethods.InvokeOnSettingsChanged();
-            }
-            GUI.changed = GUI.changed || prevChanged;
 
             viewHeight = listingStandard.CurHeight;
             Widgets.EndScrollView();

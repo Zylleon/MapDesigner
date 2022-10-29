@@ -20,9 +20,7 @@ namespace MapDesigner.UI
 
         public static void DrawTerrainCard(Rect rect)
         {
-
-            bool prevChanged = GUI.changed;
-            GUI.changed = false;
+            HelperMethods.BeginChangeCheck();
 
             Listing_Standard listing = new Listing_Standard();
             listing.Begin(rect);
@@ -45,6 +43,8 @@ namespace MapDesigner.UI
 
             listing.CheckboxLabeled("ZMD_flagBiomeRocks".Translate(), ref settings.flagBiomeRocks, "ZMD_flagBiomeRocksTooltip".Translate());
 
+            HelperMethods.EndChangeCheck();
+            
             if (InterfaceUtility.SizedTextButton(listing, "ZMD_chooseRockTypes".Translate()))
             {
                 Find.WindowStack.Add(new RockSelectionDialog());
@@ -58,12 +58,6 @@ namespace MapDesigner.UI
             }
 
             listing.End();
-
-            if (GUI.changed)
-            {
-                HelperMethods.InvokeOnSettingsChanged();
-            }
-            GUI.changed = GUI.changed || prevChanged;
         }
 
 

@@ -214,6 +214,7 @@ namespace MapDesigner.UI
                 SoundDefOf.Click.PlayOneShotOnCamera(null);
                 ResetAllSettings();
                 Messages.Message("ZMD_resetSuccess".Translate(), MessageTypeDefOf.TaskCompletion, false);
+                HelperMethods.InvokeOnSettingsChanged();
             }
 
             listing.End();
@@ -259,6 +260,7 @@ namespace MapDesigner.UI
                     break;
             }
             HelperMethods.ApplyBiomeSettings();
+            HelperMethods.InvokeOnSettingsChanged();
         }
 
         private static string GetPresetLabel()

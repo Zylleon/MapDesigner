@@ -19,6 +19,9 @@ namespace MapDesigner.UI
 
         public static void DrawRiversCard(Rect rect)
         {
+            bool prevChanged = GUI.changed;
+            GUI.changed = false;
+
             // setting up the scrollbar
             Rect rect2 = rect.ContractedBy(4f);
 
@@ -254,6 +257,11 @@ namespace MapDesigner.UI
 
             viewHeight = listing.CurHeight;
             Widgets.EndScrollView();
+            if (GUI.changed)
+            {
+                HelperMethods.InvokeOnSettingsChanged();
+            }
+            GUI.changed = GUI.changed || prevChanged;
         }
 
 
@@ -274,6 +282,8 @@ namespace MapDesigner.UI
             //Beaches
             settings.coastDir = MapDesignerSettings.CoastDirection.Vanilla;
             settings.beachTerr = "Vanilla";
+
+            HelperMethods.InvokeOnSettingsChanged();
         }
 
 

@@ -28,6 +28,9 @@ namespace MapDesigner.UI
 
         public override void DoWindowContents(Rect inRect)
         {
+            bool prevChanged = GUI.changed;
+            GUI.changed = false;
+
             MapDesignerSettings settings = MapDesignerMod.mod.settings;
             List<ThingDef> list = HelperMethods.GetMineableList();
 
@@ -63,6 +66,12 @@ namespace MapDesigner.UI
 
             Widgets.EndScrollView();
 
+
+            if (GUI.changed)
+            {
+                HelperMethods.InvokeOnSettingsChanged();
+            }
+            GUI.changed = GUI.changed || prevChanged;
         }
 
 

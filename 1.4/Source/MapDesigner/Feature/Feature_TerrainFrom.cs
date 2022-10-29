@@ -27,6 +27,7 @@ namespace MapDesigner.Feature
          090 rich soil
     */
     [HarmonyPatch(typeof(RimWorld.GenStep_Terrain), "TerrainFrom")]
+    [HarmonyBefore("GeologicalLandforms.Main")]
     public static class Feature_TerrainFrom
     {
         static bool Prefix(IntVec3 c, Map map, RiverMaker river, float fertility, ref TerrainDef __result)

@@ -15,6 +15,10 @@ namespace MapDesigner.UI
 
         public static void DrawThingsCard(Rect rect)
         {
+            bool prevChanged = GUI.changed;
+            GUI.changed = false;
+
+
             Listing_Standard wrapperListing = new Listing_Standard();
             wrapperListing.Begin(rect);
 
@@ -110,6 +114,12 @@ namespace MapDesigner.UI
                 ResetThingsSettings();
             }
             wrapperListing.End();
+
+            if (GUI.changed)
+            {
+                HelperMethods.InvokeOnSettingsChanged();
+            }
+            GUI.changed = GUI.changed || prevChanged;
         }
 
 
@@ -142,6 +152,8 @@ namespace MapDesigner.UI
             settings.vpe_HelixienVents = new IntRange(1, 2);
 
             new OreSelectionDialog().ResetAllOre(settings, HelperMethods.GetMineableList());
+            HelperMethods.InvokeOnSettingsChanged();
+
         }
 
         private static float ThingsSlider(Listing_Standard listing, float val = 1f, float power = 1f, string label = null)

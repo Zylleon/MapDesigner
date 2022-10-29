@@ -20,6 +20,10 @@ namespace MapDesigner.UI
 
         public static void DrawTerrainCard(Rect rect)
         {
+
+            bool prevChanged = GUI.changed;
+            GUI.changed = false;
+
             Listing_Standard listing = new Listing_Standard();
             listing.Begin(rect);
             listing.Label("ZMD_terrainTabInfo".Translate());
@@ -54,6 +58,12 @@ namespace MapDesigner.UI
             }
 
             listing.End();
+
+            if (GUI.changed)
+            {
+                HelperMethods.InvokeOnSettingsChanged();
+            }
+            GUI.changed = GUI.changed || prevChanged;
         }
 
 
@@ -71,6 +81,8 @@ namespace MapDesigner.UI
                 newRocks.Add(rock.defName, true);
             }
             settings.allowedRocks = newRocks;
+            HelperMethods.InvokeOnSettingsChanged();
+
         }
     }
 

@@ -455,7 +455,6 @@ namespace MapDesigner
             new Harmony("zylle.MapDesigner_RerollCompat").Patch(targetmethod, prefixmethod);
         }
 
-
         public static void ApplyVPEPatches()
         {
             try
@@ -467,6 +466,13 @@ namespace MapDesigner
             {
                 Log.Message("[Map Designer] Could not apply VFE settings");
             }
+        }
+
+        public static event Action OnSettingsChanged;
+
+        internal static void InvokeOnSettingsChanged()
+        {
+            OnSettingsChanged?.Invoke();
         }
 
         public static float GetMaxFertByBiome(BiomeDef biome)

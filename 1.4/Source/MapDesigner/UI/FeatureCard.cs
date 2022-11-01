@@ -17,7 +17,6 @@ namespace MapDesigner.UI
 
         public static void DrawFeaturesCard(Rect rect)
         {
-
             Listing_Standard listingStandard = new Listing_Standard();
             listingStandard.Begin(rect);
 
@@ -35,19 +34,23 @@ namespace MapDesigner.UI
                 featureList.Add(new FloatMenuOption("ZMD_featureNone".Translate(), delegate
                 {
                     settings.selectedFeature = MapDesignerSettings.Features.None;
+                    HelperMethods.InvokeOnSettingsChanged();
                 }, MenuOptionPriority.Default, null, null, 0f, null, null));
 
                 featureList.Add(new FloatMenuOption("ZMD_featurePRI".Translate(), delegate
                 {
                     settings.selectedFeature = MapDesignerSettings.Features.RoundIsland;
+                    HelperMethods.InvokeOnSettingsChanged();
                 }, MenuOptionPriority.Default, null, null, 0f, null, null));
                 featureList.Add(new FloatMenuOption("ZMD_featureLake".Translate(), delegate
                 {
                     settings.selectedFeature = MapDesignerSettings.Features.Lake;
+                    HelperMethods.InvokeOnSettingsChanged();
                 }, MenuOptionPriority.Default, null, null, 0f, null, null));
                 featureList.Add(new FloatMenuOption("ZMD_featureNI".Translate(), delegate
                 {
                     settings.selectedFeature = MapDesignerSettings.Features.NatIsland;
+                    HelperMethods.InvokeOnSettingsChanged();
                 }, MenuOptionPriority.Default, null, null, 0f, null, null));
 
                 Find.WindowStack.Add(new FloatMenu(featureList));
@@ -59,7 +62,6 @@ namespace MapDesigner.UI
             DrawFeatureOptions(listingStandard);
 
             listingStandard.End();
-
         }
 
 
@@ -111,15 +113,19 @@ namespace MapDesigner.UI
                 featureList.Add(new FloatMenuOption("ZMD_priSingleLabel".Translate(), delegate
                 {
                     settings.priStyle = MapDesignerSettings.PriStyle.Single;
+                    HelperMethods.InvokeOnSettingsChanged();
                 }, MenuOptionPriority.Default, null, null, 0f, null, null));
 
                 featureList.Add(new FloatMenuOption("ZMD_priMultiLabel".Translate(), delegate
                 {
                     settings.priStyle = MapDesignerSettings.PriStyle.Multi;
+                    HelperMethods.InvokeOnSettingsChanged();
                 }, MenuOptionPriority.Default, null, null, 0f, null, null));
 
                 Find.WindowStack.Add(new FloatMenu(featureList));
             }
+            
+            HelperMethods.BeginChangeCheck();
 
             listing.CheckboxLabeled("ZMD_flagLakeSalty".Translate(), ref settings.flagPriSalty, "ZMD_flagLakeSalty".Translate());
 
@@ -143,13 +149,15 @@ namespace MapDesigner.UI
 
             //listing.CheckboxLabeled("ZMD_priMultiSpawnLabel".Translate(), ref settings.priMultiSpawn);
 
-          
+            HelperMethods.EndChangeCheck();
 
         }
 
 
         public static void DrawLakeOptions(Listing_Standard listing)
         {
+            HelperMethods.BeginChangeCheck();
+            
             listing.Label("ZMD_featureLakeInfo".Translate());
 
             settings.lakeSize = InterfaceUtility.LabeledSlider(listing, settings.lakeSize, 0.04f, 1.5f, String.Format("ZMD_lakeSize".Translate(), Math.Round(100 * settings.lakeSize)));
@@ -163,6 +171,8 @@ namespace MapDesigner.UI
             settings.lakeDepth = InterfaceUtility.LabeledSlider(listing, settings.lakeDepth, 0f, 1f, lakeDepthLabel, "ZMD_lakeDepth0".Translate(), "ZMD_lakeDepth4".Translate());
 
             listing.CheckboxLabeled("ZMD_flagLakeSalty".Translate(), ref settings.flagLakeSalty, "ZMD_flagLakeSalty".Translate());
+            
+            HelperMethods.EndChangeCheck();
 
             List<TerrainDef> shoreOptions = new List<TerrainDef>();
 
@@ -179,7 +189,11 @@ namespace MapDesigner.UI
 
                 foreach (TerrainDef terr in shoreOptions)
                 {
-                    shoreTerrList.Add(new FloatMenuOption(terr.label, delegate { settings.lakeShore = terr.defName; }, MenuOptionPriority.Default));
+                    shoreTerrList.Add(new FloatMenuOption(terr.label, delegate
+                    {
+                        settings.lakeShore = terr.defName;
+                        HelperMethods.InvokeOnSettingsChanged();
+                    }, MenuOptionPriority.Default));
                 }
 
                 Find.WindowStack.Add(new FloatMenu(shoreTerrList));
@@ -203,25 +217,31 @@ namespace MapDesigner.UI
                 styleList.Add(new FloatMenuOption("ZMD_niStyleRound".Translate(), delegate
                 {
                     settings.niStyle = MapDesignerSettings.NiStyle.Round;
+                    HelperMethods.InvokeOnSettingsChanged();
                 }, MenuOptionPriority.Default, null, null, 0f, null, null));
 
                 styleList.Add(new FloatMenuOption("ZMD_niStyleSquare".Translate(), delegate
                 {
                     settings.niStyle = MapDesignerSettings.NiStyle.Square;
+                    HelperMethods.InvokeOnSettingsChanged();
                 }, MenuOptionPriority.Default, null, null, 0f, null, null));
 
                 styleList.Add(new FloatMenuOption("ZMD_niStyleRing".Translate(), delegate
                 {
                     settings.niStyle = MapDesignerSettings.NiStyle.Ring;
+                    HelperMethods.InvokeOnSettingsChanged();
                 }, MenuOptionPriority.Default, null, null, 0f, null, null));
 
                 styleList.Add(new FloatMenuOption("ZMD_niStyleSquareRing".Translate(), delegate
                 {
                     settings.niStyle = MapDesignerSettings.NiStyle.SquareRing;
+                    HelperMethods.InvokeOnSettingsChanged();
                 }, MenuOptionPriority.Default, null, null, 0f, null, null));
                 Find.WindowStack.Add(new FloatMenu(styleList));
             }
             niStyleSelectListing.End();
+            
+            HelperMethods.BeginChangeCheck();
 
             settings.niSize = InterfaceUtility.LabeledSlider(listing, settings.niSize, 0.04f, 1.5f, String.Format("ZMD_priIslandSizeLabel".Translate(), Math.Round(100 * settings.niSize)));
 
@@ -231,6 +251,8 @@ namespace MapDesigner.UI
 
             settings.niBeachSize = InterfaceUtility.LabeledSlider(listing, settings.niBeachSize, 0f, 35f, "ZMD_priBeachSizeLabel".Translate(), "ZMD_size0".Translate(), "ZMD_size6".Translate());
 
+            HelperMethods.EndChangeCheck();
+            
             List<TerrainDef> shoreOptions = new List<TerrainDef>();
 
             shoreOptions.Add(TerrainDefOf.Soil);
@@ -250,12 +272,18 @@ namespace MapDesigner.UI
 
                 foreach (TerrainDef terr in shoreOptions)
                 {
-                    shoreTerrList.Add(new FloatMenuOption(terr.label, delegate { settings.niShore = terr.defName; }, MenuOptionPriority.Default));
+                    shoreTerrList.Add(new FloatMenuOption(terr.label, delegate
+                    {
+                        settings.niShore = terr.defName;
+                        HelperMethods.InvokeOnSettingsChanged();
+                    }, MenuOptionPriority.Default));
                 }
 
                 Find.WindowStack.Add(new FloatMenu(shoreTerrList));
             }
             niShoreSelectListing.End();
+            
+            HelperMethods.BeginChangeCheck();
 
             settings.niWaterDepth = InterfaceUtility.LabeledSlider(listing, settings.niWaterDepth, -0.2f, 1.3f, niWaterDepthLabel, "ZMD_lakeDepth0".Translate(), "ZMD_lakeDepth4".Translate());
             if (settings.niWaterDepth >= 0.5f)
@@ -268,7 +296,7 @@ namespace MapDesigner.UI
 
             listing.CheckboxLabeled("ZMD_flagLakeSalty".Translate(), ref settings.flagNiSalty, "ZMD_flagLakeSalty".Translate());
 
-           
+            HelperMethods.EndChangeCheck();
 
         }
 
@@ -494,6 +522,7 @@ namespace MapDesigner.UI
             settings.niStyle = NiStyle.Round;
             settings.niWaterDepth = 0.4f;
 
+            HelperMethods.InvokeOnSettingsChanged();
         }
     }
 }

@@ -28,6 +28,8 @@ namespace MapDesigner.UI
 
         public override void DoWindowContents(Rect inRect)
         {
+            HelperMethods.BeginChangeCheck();
+
             MapDesignerSettings settings = MapDesignerMod.mod.settings;
             List<ThingDef> list = HelperMethods.GetRockList();
 
@@ -59,6 +61,9 @@ namespace MapDesigner.UI
 
             Widgets.EndScrollView();
 
+            outerListing.End();
+
+            HelperMethods.EndChangeCheck();
         }
 
 
@@ -72,6 +77,8 @@ namespace MapDesigner.UI
             }
 
             settings.allowedRocks = newRocks;
+
+            HelperMethods.InvokeOnSettingsChanged();
         }
 
         

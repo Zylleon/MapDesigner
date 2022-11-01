@@ -28,6 +28,8 @@ namespace MapDesigner.UI
 
         public override void DoWindowContents(Rect inRect)
         {
+            HelperMethods.BeginChangeCheck();
+
             MapDesignerSettings settings = MapDesignerMod.mod.settings;
             List<ThingDef> list = HelperMethods.GetMineableList();
 
@@ -63,6 +65,9 @@ namespace MapDesigner.UI
 
             Widgets.EndScrollView();
 
+            outerListing.End();
+
+            HelperMethods.EndChangeCheck();
         }
 
 

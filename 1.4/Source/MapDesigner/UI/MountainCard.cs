@@ -18,6 +18,8 @@ namespace MapDesigner.UI
 
         public static void DrawMountainCard(Rect rect)
         {
+            HelperMethods.BeginChangeCheck();
+
             Rect rect2 = rect.ContractedBy(4f);
 
             // to correctly initialize scrollview height
@@ -142,6 +144,7 @@ namespace MapDesigner.UI
                 hillDonutListing.End();
             }
 
+            HelperMethods.EndChangeCheck();
 
             // reset
             listingStandard.GapLine();
@@ -187,7 +190,9 @@ namespace MapDesigner.UI
             settings.hillDonutSize = 0.75f;
             settings.hillDonutDisp = new Vector3(0.0f, 0.0f, 0.0f);
 
-    }
+            HelperMethods.InvokeOnSettingsChanged();
+
+        }
 
 
         private static string GetHillRadialAmtLabel(float val)

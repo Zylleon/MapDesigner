@@ -19,6 +19,8 @@ namespace MapDesigner.UI
 
         public static void DrawRiversCard(Rect rect)
         {
+            HelperMethods.BeginChangeCheck();
+
             // setting up the scrollbar
             Rect rect2 = rect.ContractedBy(4f);
 
@@ -65,6 +67,8 @@ namespace MapDesigner.UI
             Widgets.Label(descRect, (GetRiverStyleLabel(settings.selRiverStyle) + "Desc").Translate());
             Listing_Standard Listing_selRiverStyle = new Listing_Standard();
             Listing_selRiverStyle.Begin(selButtonRect);
+            
+            HelperMethods.EndChangeCheck();
 
             // river style selection
             if (Listing_selRiverStyle.ButtonTextLabeled("ZMD_riverStyle".Translate(), GetRiverStyleLabel(settings.selRiverStyle).Translate()))
@@ -74,33 +78,41 @@ namespace MapDesigner.UI
                 riverStyleList.Add(new FloatMenuOption("ZMD_riverStyleVanilla".Translate(), delegate
                 {
                     settings.selRiverStyle = MapDesignerSettings.RiverStyle.Vanilla;
+                    HelperMethods.InvokeOnSettingsChanged();
                 }));
                 riverStyleList.Add(new FloatMenuOption("ZMD_riverStyleSpring".Translate(), delegate
                 {
                     settings.selRiverStyle = MapDesignerSettings.RiverStyle.Spring;
+                    HelperMethods.InvokeOnSettingsChanged();
                 }));
                 riverStyleList.Add(new FloatMenuOption("ZMD_riverStyleCanal".Translate(), delegate
                 {
                     settings.selRiverStyle = MapDesignerSettings.RiverStyle.Canal;
+                    HelperMethods.InvokeOnSettingsChanged();
                 }));
 
                 riverStyleList.Add(new FloatMenuOption("ZMD_riverStyleConfluence".Translate(), delegate
                 {
                     settings.selRiverStyle = MapDesignerSettings.RiverStyle.Confluence;
+                    HelperMethods.InvokeOnSettingsChanged();
                 }));
                 riverStyleList.Add(new FloatMenuOption("ZMD_riverStyleFork".Translate(), delegate
                 {
                     settings.selRiverStyle = MapDesignerSettings.RiverStyle.Fork;
+                    HelperMethods.InvokeOnSettingsChanged();
                 }));
                 riverStyleList.Add(new FloatMenuOption("ZMD_riverStyleOxbow".Translate(), delegate
                 {
                     settings.selRiverStyle = MapDesignerSettings.RiverStyle.Oxbow;
+                    HelperMethods.InvokeOnSettingsChanged();
                 }));
                 Find.WindowStack.Add(new FloatMenu(riverStyleList));
             }
             Listing_selRiverStyle.End();
 
             listing.Gap(listing.verticalSpacing);
+            
+            HelperMethods.BeginChangeCheck();
 
             // river banks
             listing.CheckboxLabeled("ZMD_flagRiverBeach".Translate(), ref settings.flagRiverBeach, "ZMD_flagRiverBeach".Translate());
@@ -115,6 +127,8 @@ namespace MapDesigner.UI
 
                 settings.riverBeachSize = InterfaceUtility.LabeledSlider(riverBeachListing, settings.riverBeachSize, 0f, 35f, "ZMD_riverBeachSize".Translate(), "ZMD_size0".Translate(), "ZMD_size6".Translate());
 
+                HelperMethods.EndChangeCheck();
+                
                 List<TerrainDef> shoreOptions = new List<TerrainDef>();
 
                 shoreOptions.Add(TerrainDefOf.Soil);
@@ -133,12 +147,18 @@ namespace MapDesigner.UI
                     List<FloatMenuOption> shoreTerrList = new List<FloatMenuOption>();
                     foreach (TerrainDef terr in shoreOptions)
                     {
-                        shoreTerrList.Add(new FloatMenuOption(terr.label, delegate { settings.riverShore = terr.defName; }, MenuOptionPriority.Default));
+                        shoreTerrList.Add(new FloatMenuOption(terr.label, delegate
+                        {
+                            settings.riverShore = terr.defName;
+                            HelperMethods.InvokeOnSettingsChanged();
+                        }, MenuOptionPriority.Default));
                     }
                     Find.WindowStack.Add(new FloatMenu(shoreTerrList));
                 }
                 terrainListing.End();
                 riverBeachListing.End();
+                
+                HelperMethods.BeginChangeCheck();
             }
 
             // river direction
@@ -166,7 +186,7 @@ namespace MapDesigner.UI
                 InterfaceUtility.LocationPicker(listing, 0.3f, ref settings.riverCenterDisp, 40f);
             }
 
-
+            HelperMethods.EndChangeCheck();
 
             // Beaches
             listing.GapLine();
@@ -184,22 +204,27 @@ namespace MapDesigner.UI
                 coastDirList.Add(new FloatMenuOption("ZMD_coastDirVanilla".Translate(), delegate
                 {
                     settings.coastDir = MapDesignerSettings.CoastDirection.Vanilla;
+                    HelperMethods.InvokeOnSettingsChanged();
                 }));
                 coastDirList.Add(new FloatMenuOption("ZMD_north".Translate(), delegate
                 {
                     settings.coastDir = MapDesignerSettings.CoastDirection.North;
+                    HelperMethods.InvokeOnSettingsChanged();
                 }));
                 coastDirList.Add(new FloatMenuOption("ZMD_east".Translate(), delegate
                 {
                     settings.coastDir = MapDesignerSettings.CoastDirection.East;
+                    HelperMethods.InvokeOnSettingsChanged();
                 }));
                 coastDirList.Add(new FloatMenuOption("ZMD_south".Translate(), delegate
                 {
                     settings.coastDir = MapDesignerSettings.CoastDirection.South;
+                    HelperMethods.InvokeOnSettingsChanged();
                 }));
                 coastDirList.Add(new FloatMenuOption("ZMD_west".Translate(), delegate
                 {
                     settings.coastDir = MapDesignerSettings.CoastDirection.West;
+                    HelperMethods.InvokeOnSettingsChanged();
                 }));
 
                 Find.WindowStack.Add(new FloatMenu(coastDirList));
@@ -234,7 +259,11 @@ namespace MapDesigner.UI
 
                 foreach (string terr in beachTerrOptions)
                 {
-                    beachTerrList.Add(new FloatMenuOption(TerrainDef.Named(terr).label, delegate { settings.beachTerr = terr; }, MenuOptionPriority.Default));
+                    beachTerrList.Add(new FloatMenuOption(TerrainDef.Named(terr).label, delegate
+                    {
+                        settings.beachTerr = terr;
+                        HelperMethods.InvokeOnSettingsChanged();
+                    }, MenuOptionPriority.Default));
                 }
                 Find.WindowStack.Add(new FloatMenu(beachTerrList));
             }
@@ -274,6 +303,8 @@ namespace MapDesigner.UI
             //Beaches
             settings.coastDir = MapDesignerSettings.CoastDirection.Vanilla;
             settings.beachTerr = "Vanilla";
+
+            HelperMethods.InvokeOnSettingsChanged();
         }
 
 

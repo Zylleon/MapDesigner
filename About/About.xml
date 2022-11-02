@@ -45,22 +45,25 @@ Things - increase or decrease amount of:
 	
 Rivers:
 	- size
-	- add "beaches" of rand, rich soil, or other terrain around rivers
-	- pick river location
+	- style: vanilla, forked, confluence, oxbow, or spring
+	- add river banks of sand, rich soil, or other terrain around rivers
+	- pick river location and direction
 	
 Beaches:
 	- pick coast direction
 	- custom beach terrain
 	
-	
 Map Features: optional special features you can add to your home map.
 	- perfectly round islands: your map will generate as one or more perfectly round islands, surrounded by shallow water. Raids and trade caravans will still path in normally from the sides.
-	- natural lakes: adds a configurable lake to the center of your map.
+	- natural lakes: adds a configurable lake to your map.
+	- natural islands: turns any map into an island, your choice of island shape and placement
 
 -----
 
 Compatibility:
-Compatible with Map Reroll. You can change settings between rerolling!
+Map Reroll - Compatible. You can change settings between rerolling!
+Map Preview - Compatible. You can access Map Designer settings from the preview, and the preview will update as you make changes! (Thanks to m00nl1ght for the integration)
+
 Compatible with most modded biomes. 
 Biomes! Islands-- Islands should generate normally, terrain will not be changed. Plant and animal density adjustments will work. 
 Coastlines-- compatible

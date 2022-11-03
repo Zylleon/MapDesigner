@@ -311,10 +311,10 @@ namespace MapDesigner.UI
         public static void PresetRandom()
         {
             // Mountains
-            settings.hillAmount = Rand.Range(0.70f, 1.40f);
+            settings.hillAmount = Rand.Range(0.50f, 1.60f);
 
             // doing it this way prevents randomized hills from usually being too tiny
-            settings.hillSize = Rand.Range(0.10f, 0.3f);
+            settings.hillSize = Rand.Range(0.10f, 0.316f);
             settings.hillSize *= settings.hillSize;
 
             settings.hillSmoothness = Rand.Range(0f, 5f);
@@ -325,29 +325,58 @@ namespace MapDesigner.UI
             settings.flagHillRadial = false;
             settings.flagHillSplit = false;
             settings.flagHillSide = false;
+            settings.flagHillDonut = false;
 
-            int mountainShape = Rand.Range(0, 3);
-            switch (mountainShape)
+            if (Rand.Chance(0.33f))
             {
-                case 0:
-                    settings.flagHillRadial = true;
-                    settings.hillRadialAmt = Rand.Range(-3f, 3f);
-                    settings.hillRadialSize = Rand.Range(0.2f, 1.1f);
-                    break;
-                case 1:
-                    settings.flagHillSplit = true;
-                    settings.hillSplitAmt = Rand.Range(-3f, 3f);
-                    settings.hillSplitDir = 10f * (float)Math.Round(Rand.Range(0f, 17f));
-                    settings.hillSplitSize = Rand.Range(0.05f, 1.1f);
-                    break;
-                case 2:
-                    settings.flagHillSide = true;
-                    settings.hillSideAmt = Rand.Range(0.2f, 3f);
-                    settings.hillSideDir = 10f * (float)Math.Round(Rand.Range(0f, 35f));
-                    break;
-                default:
-                    break;
+                settings.flagHillRadial = true;
+                settings.hillRadialAmt = Rand.Range(-3f, 3f);
+                settings.hillRadialSize = Rand.Range(0.2f, 1.1f);
             }
+            if (Rand.Chance(0.33f))
+            {
+                settings.flagHillSplit = true;
+                settings.hillSplitAmt = Rand.Range(-3f, 3f);
+                settings.hillSplitDir = 10f * (float)Math.Round(Rand.Range(0f, 17f));
+                settings.hillSplitSize = Rand.Range(0.05f, 1.1f);
+            }
+            if (Rand.Chance(0.33f))
+            {
+                settings.flagHillSide = true;
+                settings.hillSideAmt = Rand.Range(0.2f, 3f);
+                settings.hillSideDir = 10f * (float)Math.Round(Rand.Range(0f, 35f));
+            }
+            if (Rand.Chance(0.33f))
+            {
+                settings.flagHillDonut = true;
+                settings.hillDonutAmt = Rand.Range(-1.5f, 1.5f);
+                settings.hillDonutSize = Rand.Range(0.1f, 1.2f);
+                settings.hillDonutDisp = new Vector3(Rand.Range(-0.45f, 0.45f), 0f, Rand.Range(-0.45f, 0.45f));
+            }
+
+
+            //int mountainShape = Rand.Range(0, 3);
+            //switch (mountainShape)
+            //{
+            //    case 0:
+            //        settings.flagHillRadial = true;
+            //        settings.hillRadialAmt = Rand.Range(-3f, 3f);
+            //        settings.hillRadialSize = Rand.Range(0.2f, 1.1f);
+            //        break;
+            //    case 1:
+            //        settings.flagHillSplit = true;
+            //        settings.hillSplitAmt = Rand.Range(-3f, 3f);
+            //        settings.hillSplitDir = 10f * (float)Math.Round(Rand.Range(0f, 17f));
+            //        settings.hillSplitSize = Rand.Range(0.05f, 1.1f);
+            //        break;
+            //    case 2:
+            //        settings.flagHillSide = true;
+            //        settings.hillSideAmt = Rand.Range(0.2f, 3f);
+            //        settings.hillSideDir = 10f * (float)Math.Round(Rand.Range(0f, 35f));
+            //        break;
+            //    default:
+            //        break;
+            //}
 
             // Things
             settings.densityPlant = Rand.Range(0f, 2.5f);
@@ -364,11 +393,40 @@ namespace MapDesigner.UI
             MapDesignerMod.mod.settings.flagBiomeRocks = true;
 
             // Rivers
-            //Log.Message("Randomizing rivers");
             settings.sizeRiver = Rand.Range(0.1f, 3f);
             settings.flagRiverBeach = Rand.Bool;
             //settings.riverShore = RiversCardUtility.terrainOptions.RandomElement().defName;
             settings.riverBeachSize = Rand.Range(2f, 35f);
+
+            settings.flagRiverDir = true;
+            settings.riverDir = Rand.Range(0f, 359f);
+
+            settings.flagRiverLoc = true;
+            settings.riverCenterDisp = new Vector3(Rand.Range(-0.3f, 0.3f), 0f, Rand.Range(-0.3f, 0.3f));
+
+            int riverStyle = Rand.Range(0, 6);
+            switch (riverStyle)
+            {
+                case 0:
+                    settings.selRiverStyle = MapDesignerSettings.RiverStyle.Oxbow;
+                    break;
+                case 1:
+                    settings.selRiverStyle = MapDesignerSettings.RiverStyle.Spring;
+                    break;
+                case 2:
+                    settings.selRiverStyle = MapDesignerSettings.RiverStyle.Canal;
+                    break;
+                case 3:
+                    settings.selRiverStyle = MapDesignerSettings.RiverStyle.Fork;
+                    break;
+                case 4:
+                    settings.selRiverStyle = MapDesignerSettings.RiverStyle.Confluence;
+                    break;
+                default:
+                    settings.selRiverStyle = MapDesignerSettings.RiverStyle.Vanilla;
+                    break;
+            }
+
 
             // Terrain
             settings.terrainFert = Rand.Range(0.3f, 2f);
@@ -385,6 +443,7 @@ namespace MapDesigner.UI
                     settings.priIslandSize = Rand.Range(5f, 45f);
                     settings.priBeachSize = Rand.Range(1f, 18f);
                     settings.flagPriSalty = Rand.Bool;
+                    settings.priSingleCenterDisp = new Vector3(Rand.Range(-0.5f, 0.5f), 0f, Rand.Range(-0.5f, 0.5f));
                     if (Rand.Bool)
                     {
                         settings.priStyle = MapDesignerSettings.PriStyle.Multi;
@@ -398,11 +457,38 @@ namespace MapDesigner.UI
                     // Lake
                     settings.selectedFeature = MapDesignerSettings.Features.Lake;
                     settings.lakeSize = Rand.Range(0.04f, 1.0f);
-                    settings.lakeRoundness = Rand.Range(0f, 3.5f);
+                    settings.lakeRoundness = Rand.Range(0f, 6f);
                     settings.lakeBeachSize = Rand.Range(0f, 35f);
                     settings.lakeDepth = Rand.Range(0f, 1f);
                     settings.flagLakeSalty = Rand.Bool;
+                    settings.lakeCenterDisp = new Vector3(Rand.Range(-0.5f, 0.5f), 0f, Rand.Range(-0.5f, 0.5f));
                     //settings.lakeShore = RiversCardUtility.terrainOptions.RandomElement().defName;
+                    break;
+                case 2:
+                    // Natural Island
+                    settings.selectedFeature = MapDesignerSettings.Features.NatIsland;
+
+                    int niStyle = Rand.Range(0, 3);
+                    switch (niStyle)
+                    {
+                        case 0:
+                            settings.niStyle = MapDesignerSettings.NiStyle.Ring;
+                            break;
+                        case 1:
+                            settings.niStyle = MapDesignerSettings.NiStyle.SquareRing;
+                            break;
+                        case 2:
+                            settings.niStyle = MapDesignerSettings.NiStyle.Round;
+                            break;
+                        case 3:
+                            settings.niStyle = MapDesignerSettings.NiStyle.Square;
+                            break;
+                    }
+                    settings.niSize = Rand.Range(0.20f, 1.5f);
+                    settings.niRoundness = Rand.Range(0f, 6f);
+                    settings.niBeachSize = Rand.Range(0f, 35f);
+                    settings.niCenterDisp = new Vector3(Rand.Range(-0.5f, 0.5f), 0f, Rand.Range(-0.5f, 0.5f));
+                    settings.niWaterDepth = Rand.Range(-0.2f, 1.3f);
                     break;
                 default:
                     settings.selectedFeature = MapDesignerSettings.Features.None;

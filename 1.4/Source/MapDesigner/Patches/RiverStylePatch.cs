@@ -16,14 +16,6 @@ namespace MapDesigner.Patches
         public static IntVec3 mapgensize { get; set; }
     }
 
-    [HarmonyPatch(typeof(Verse.MapGenerator), "GenerateMap")]
-    static class SetMapGenSize
-    {
-        static void Prefix(IntVec3 mapSize)
-        {
-            MapGenSize.mapgensize = mapSize;
-        }
-    }
 
     [HarmonyPatch(typeof(RimWorld.RiverMaker))]
     [HarmonyPatch(MethodType.Constructor)]

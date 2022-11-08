@@ -89,17 +89,11 @@ namespace MapDesigner.UI
 
 
             // VPE
-            if (GenTypes.GetTypeInAnyAssembly("VanillaPowerExpanded.SpecialPowerSpawnsDef") != null)
+            if (ModsConfig.IsActive("VanillaExpanded.VFEPower"))
             {
                 Text.Font = GameFont.Medium;
                 mainListing.Label("ZMD_thingsVPE".Translate());
                 Text.Font = GameFont.Small;
-
-                //string test = "ZMD_VPE_chemfuelPonds".Translate();
-                //string chemfuelLabel = String.Format("{0}: {1} - {2}", test, settings.vpe_ChemfuelPonds.min, settings.vpe_ChemfuelPonds.max);
-                //Widgets.IntRange(mainListing.GetRect(28f), (int)mainListing.CurHeight, ref settings.vpe_ChemfuelPonds, 0, 20, chemfuelLabel, 0);
-                //Widgets.IntRange(mainListing.GetRect(28f), (int)mainListing.CurHeight, ref settings.vpe_ChemfuelPonds, 0, 20, "ZMD_VPE_chemfuelPonds".Translate(), 0);
-
 
                 InterfaceUtility.LabeledIntRange(mainListing, ref settings.vpe_ChemfuelPonds, 0, 20, "ZMD_VPE_chemfuelPonds".Translate());
                 InterfaceUtility.LabeledIntRange(mainListing, ref settings.vpe_HelixienVents, 0, 20, "ZMD_VPE_helixienVents".Translate());

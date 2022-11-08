@@ -16,9 +16,10 @@ namespace MapDesigner.Patches
     [HarmonyPatch(nameof(RimWorld.GenStep_ElevationFertility.Generate))]
     internal static class MountainSettingsPatch
     {
-        static void Prefix()
+        static void Prefix(Map map)
         {
             HelperMethods.ApplyBiomeSettings();
+            MapGenSize.mapgensize = map.Size;
         }
 
         /// <summary>

@@ -90,6 +90,23 @@ namespace MapDesigner
                     }
                 }
 
+                if (ModsConfig.BiotechActive)
+                {
+                    try
+                    {
+                        step = DefDatabase<GenStepDef>.GetNamed("AncientPollutionJunk");
+                        densityDefaults.Add(step.defName, (step.genStep as GenStep_ScatterGroup).countPer10kCellsRange);
+
+                        //step = DefDatabase<GenStepDef>.GetNamed("AncientExostriderRemains");
+                        //int count = (step.genStep as GenStep_ScatterLayout).count;
+                        //densityDefaults.Add(step.defName, new FloatRange(count, count));
+                    }
+                    catch
+                    {
+                        Log.Message("[Map Designer] Couldn't initialize Biotech Things. Biotech settings may not work.");
+                    }
+                }
+
             }
             catch
             {
@@ -273,6 +290,30 @@ namespace MapDesigner
                 catch
                 {
                     Log.Message("[Map Designer] Couldn't apply settings to Ideology Things. Ideology settings may not work.");
+                }
+
+            }
+
+
+            // Biotech
+            if (ModsConfig.BiotechActive)
+            {
+                try
+                {
+                    float densityPollutionJunk = settings.densityAncientPollutionJunk;
+                    if (densityPollutionJunk > 1)
+                    {
+                        densityPollutionJunk = (float)Math.Pow(densityPollutionJunk, 3);
+                    }
+                    (DefDatabase<GenStepDef>.GetNamed("AncientPollutionJunk").genStep as GenStep_ScatterGroup).countPer10kCellsRange.min = densityDefaults["AncientPollutionJunk"].min * densityPollutionJunk;
+                    (DefDatabase<GenStepDef>.GetNamed("AncientPollutionJunk").genStep as GenStep_ScatterGroup).countPer10kCellsRange.max = densityDefaults["AncientPollutionJunk"].max * densityPollutionJunk;
+
+                    int countExostrider = settings.countAncientExostriderRemains;
+                    (DefDatabase<GenStepDef>.GetNamed("AncientExostriderRemains").genStep as GenStep_ScatterLayout).count = countExostrider;
+                }
+                catch
+                {
+                    Log.Message("[Map Designer] Couldn't apply settings to Biotech Things. Biotech settings may not work.");
                 }
 
             }

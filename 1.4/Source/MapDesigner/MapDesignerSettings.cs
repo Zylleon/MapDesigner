@@ -117,6 +117,12 @@ namespace MapDesigner
         public float densityAncientPipelineSection = 1f;
         public float densityAncientJunkClusters = 1f;
 
+        // Biotech
+        public int countAncientExostriderRemains = 1;
+        public float densityAncientPollutionJunk = 1f;
+        public float densityPoluxTrees = 1f;
+        public float pollutionLevel = 1f;
+
         // Vanilla Power Expanded
         public IntRange vpe_HelixienVents = new IntRange(1, 2);
         public IntRange vpe_ChemfuelPonds = new IntRange(1, 3);
@@ -436,6 +442,12 @@ namespace MapDesigner
             Scribe_Values.Look(ref countMechanoidRemains, "countMechanoidRemains", 1);
             Scribe_Values.Look(ref densityAncientPipelineSection, "densityAncientPipelineSection", 1f);
             Scribe_Values.Look(ref densityAncientJunkClusters, "densityAncientJunkClusters", 1f);
+
+            // Biotech
+            Scribe_Values.Look(ref countAncientExostriderRemains, "countAncientExostriderRemains", 1);
+            Scribe_Values.Look(ref densityAncientPollutionJunk, "densityAncientPollutionJunk", 1f);
+            Scribe_Values.Look(ref densityPoluxTrees, "densityPoluxTrees", 1f);
+            Scribe_Values.Look(ref pollutionLevel, "pollutionLevel", 1f);
 
             // Vanilla Power Expanded
             Scribe_Values.Look(ref vpe_HelixienVents, "vpe_HelixienVents", new IntRange(1, 2));

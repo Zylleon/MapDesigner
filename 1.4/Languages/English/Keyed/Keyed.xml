@@ -210,6 +210,7 @@
 	<ZMD_thingsClassic>Classic</ZMD_thingsClassic>
 	<ZMD_thingsRoyalty>Royalty</ZMD_thingsRoyalty>
 	<ZMD_thingsIdeology>Ideology</ZMD_thingsIdeology>
+	<ZMD_thingsBiotech>Biotech</ZMD_thingsBiotech>
 	<ZMD_thingsVPE>Vanilla Power Expanded</ZMD_thingsVPE>
 	
 	
@@ -251,6 +252,12 @@
 	<ZMD_countMechanoidRemains>Mechanoid remains</ZMD_countMechanoidRemains>
 	<ZMD_densityAncientJunkClusters>Ancient junk clusters</ZMD_densityAncientJunkClusters>
 	<ZMD_densityAncientPipelineSection>Ancient pipline</ZMD_densityAncientPipelineSection>
+	
+<!-- Biotech -->
+	<ZMD_countAncientExostriderRemains>Ancient exostrider remains</ZMD_countAncientExostriderRemains>
+	<ZMD_densityAncientPollutionJunk>Ancient polllution junk</ZMD_densityAncientPollutionJunk>
+	<ZMD_densityPoluxTrees>Pollux trees</ZMD_densityPoluxTrees>
+	<ZMD_pollutionLevel>Pollution level</ZMD_pollutionLevel>
 	
 <!-- Vanilla Power Expanded -->
 	<ZMD_VPE_chemfuelPonds>Chemfuel ponds</ZMD_VPE_chemfuelPonds>

@@ -67,7 +67,25 @@ namespace MapDesigner.Patches
                 }
 
 
+                if (ModsConfig.BiotechActive)
+                {
+                    try
+                    {
+                        MethodInfo targetmethod = AccessTools.Method(typeof(RimWorld.GenStep_PoluxTrees), "DesiredTreeCountForMap");
+                        //HarmonyMethod postfix = new HarmonyMethod(typeof(MapDesigner).GetMethod("AnimaTreePatch"));
+                        HarmonyMethod postfix = new HarmonyMethod(typeof(PoluxTreesPatch).GetMethod("Postfix", BindingFlags.NonPublic | BindingFlags.Static));
+                        harmony.Patch(targetmethod, null, postfix);
 
+                        targetmethod = AccessTools.Method(typeof(Verse.PollutionUtility), "PolluteMapToPercent");
+                        //HarmonyMethod postfix = new HarmonyMethod(typeof(MapDesigner).GetMethod("AnimaTreePatch"));
+                        HarmonyMethod prefix = new HarmonyMethod(typeof(PollutionLevelPatch).GetMethod("Prefix", BindingFlags.NonPublic | BindingFlags.Static));
+                        harmony.Patch(targetmethod, prefix);
+                    }
+                    catch
+                    {
+                        Log.Message("[Map Designer] ERROR: Failed to patch polux trees, pollution");
+                    }
+                }
 
 
 

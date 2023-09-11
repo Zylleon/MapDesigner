@@ -87,6 +87,18 @@ namespace MapDesigner.UI
                 mainListing.GapLine();
             }
 
+            if (ModsConfig.BiotechActive)
+            {
+                Text.Font = GameFont.Medium;
+                mainListing.Label("ZMD_thingsBiotech".Translate());
+                Text.Font = GameFont.Small;
+
+                settings.densityAncientPollutionJunk = ThingsSlider(mainListing, settings.densityAncientPollutionJunk, 3, "ZMD_densityAncientPollutionJunk");
+                settings.densityPoluxTrees = ThingsSlider(mainListing, settings.densityPoluxTrees, 3, "ZMD_densityPoluxTrees");
+                settings.countAncientExostriderRemains = (int)Math.Round(InterfaceUtility.LabeledSlider(mainListing, settings.countAncientExostriderRemains, 0, 15, null, "ZMD_countAncientExostriderRemains".Translate(), settings.countAncientExostriderRemains.ToString()));
+                settings.pollutionLevel = ThingsSlider(mainListing, settings.pollutionLevel, 3, "ZMD_pollutionLevel");
+            }
+
 
             // VPE
             if (ModsConfig.IsActive("VanillaExpanded.VFEPower"))
@@ -135,6 +147,12 @@ namespace MapDesigner.UI
             settings.countMechanoidRemains = 1;
             settings.densityAncientPipelineSection = 1f;
             settings.densityAncientJunkClusters = 1f;
+
+            // Biotech
+            settings.densityAncientPollutionJunk = 1f;
+            settings.countAncientExostriderRemains = 1;
+            settings.densityPoluxTrees = 1f;
+            settings.pollutionLevel = 1;
 
             // VPE
             settings.vpe_ChemfuelPonds = new IntRange(1, 3);

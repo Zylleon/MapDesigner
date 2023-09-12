@@ -104,6 +104,11 @@
     <Compile Include="Patches\RockTypesPatch.cs" />
     <Compile Include="TerrainDefault.cs" />
     <Compile Include="TerrainUtility.cs" />
+    <Compile Include="UI\ThingsVEDialog.cs" />
+    <Compile Include="UI\ThingsMODialog.cs" />
+    <Compile Include="UI\ThingsBiotechDialog.cs" />
+    <Compile Include="UI\ThingsIdeologyDialog.cs" />
+    <Compile Include="UI\ThingsRoyaltyDialog.cs" />
     <Compile Include="UI\OreSelectionDialog.cs" />
     <Compile Include="UI\TerrainCard.cs" />
     <Compile Include="UI\GeneralCard.cs" />

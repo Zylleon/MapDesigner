@@ -107,6 +107,28 @@ namespace MapDesigner
                     }
                 }
 
+                if (ModsConfig.IsActive("DankPyon.Medieval.Overhaul") || ModsConfig.IsActive("DankPyon.Medieval.Overhaul_steam"))
+                {
+                    try
+                    {
+                        step = DefDatabase<GenStepDef>.GetNamed("DankPyon_BattlefieldRemains");
+                        densityDefaults.Add(step.defName, (step.genStep as GenStep_ScatterGroup).countPer10kCellsRange);
+
+                        step = DefDatabase<GenStepDef>.GetNamed("DankPyon_TarPits");
+                        densityDefaults.Add(step.defName, (step.genStep as GenStep_ScatterThings).countPer10kCellsRange);
+
+                        step = DefDatabase<GenStepDef>.GetNamed("DankPyon_BeeHives");
+                        densityDefaults.Add(step.defName, (step.genStep as GenStep_ScatterThings).countPer10kCellsRange);
+
+                        step = DefDatabase<GenStepDef>.GetNamed("DankPyon_HornetNest");
+                        densityDefaults.Add(step.defName, (step.genStep as GenStep_ScatterThings).countPer10kCellsRange);
+                    }
+                    catch
+                    {
+                        Log.Message("[Map Designer] Couldn't initialize Medieval Overhaul Things. Medieval Overhaul settings may not work.");
+                    }
+                }
+
             }
             catch
             {
@@ -260,13 +282,9 @@ namespace MapDesigner
             // Ideology
             if (ModsConfig.IdeologyActive)
             {
-
                 try
                 {
-
-
                     int countMechs = settings.countMechanoidRemains;
-
                     (DefDatabase<GenStepDef>.GetNamed("MechanoidRemains").genStep as GenStep_ScatterGroup).count = countMechs;
 
 
@@ -315,7 +333,65 @@ namespace MapDesigner
                 {
                     Log.Message("[Map Designer] Couldn't apply settings to Biotech Things. Biotech settings may not work.");
                 }
+            }
 
+            // Medieval Overhaul
+            if (ModsConfig.IsActive("DankPyon.Medieval.Overhaul") || ModsConfig.IsActive("DankPyon.Medieval.Overhaul_steam"))
+            {
+                try
+                {
+                    float densityMO = settings.densityMOBattlefield;
+                    if (densityMO > 1)
+                    {
+                        densityMO = (float)Math.Pow(densityMO, 3); (DefDatabase<GenStepDef>.GetNamed("DankPyon_BeeHives").genStep as GenStep_ScatterThings).minSpacing = 25;
+                    }
+                    else
+                    {
+                        (DefDatabase<GenStepDef>.GetNamed("DankPyon_BattlefieldRemains").genStep as GenStep_ScatterGroup).minSpacing = 85;
+                    }
+                    (DefDatabase<GenStepDef>.GetNamed("DankPyon_BattlefieldRemains").genStep as GenStep_ScatterGroup).countPer10kCellsRange.min = densityDefaults["DankPyon_BattlefieldRemains"].min * densityMO;
+                    (DefDatabase<GenStepDef>.GetNamed("DankPyon_BattlefieldRemains").genStep as GenStep_ScatterGroup).countPer10kCellsRange.max = densityDefaults["DankPyon_BattlefieldRemains"].max * densityMO;
+
+                    densityMO = settings.densityMOTarPit;
+                    if (densityMO > 1)
+                    {
+                        densityMO = (float)Math.Pow(densityMO, 3);
+                    }
+                    (DefDatabase<GenStepDef>.GetNamed("DankPyon_TarPits").genStep as GenStep_ScatterThings).countPer10kCellsRange.min = densityDefaults["DankPyon_TarPits"].min * densityMO;
+                    (DefDatabase<GenStepDef>.GetNamed("DankPyon_TarPits").genStep as GenStep_ScatterThings).countPer10kCellsRange.max = densityDefaults["DankPyon_TarPits"].max * densityMO;
+                    
+                    densityMO = settings.densityMOBeeHive;
+                    if (densityMO > 1)
+                    {
+                        densityMO = (float)Math.Pow(densityMO, 3);
+                        (DefDatabase<GenStepDef>.GetNamed("DankPyon_BeeHives").genStep as GenStep_ScatterThings).minSpacing = 50;
+                    }
+                    else
+                    {
+                        (DefDatabase<GenStepDef>.GetNamed("DankPyon_BeeHives").genStep as GenStep_ScatterThings).minSpacing = 200;
+                    }
+                    (DefDatabase<GenStepDef>.GetNamed("DankPyon_BeeHives").genStep as GenStep_ScatterThings).countPer10kCellsRange.min = densityDefaults["DankPyon_BeeHives"].min * densityMO;
+                    (DefDatabase<GenStepDef>.GetNamed("DankPyon_BeeHives").genStep as GenStep_ScatterThings).countPer10kCellsRange.max = densityDefaults["DankPyon_BeeHives"].max * densityMO;
+                    
+                    
+                    densityMO = settings.densityMOHornet;
+                    if (densityMO > 1)
+                    {
+                        densityMO = (float)Math.Pow(densityMO, 3);
+                        (DefDatabase<GenStepDef>.GetNamed("DankPyon_HornetNest").genStep as GenStep_ScatterThings).minSpacing = 50;
+                    }
+                    else
+                    {
+                        (DefDatabase<GenStepDef>.GetNamed("DankPyon_HornetNest").genStep as GenStep_ScatterThings).minSpacing = 200;
+                    }
+                    (DefDatabase<GenStepDef>.GetNamed("DankPyon_HornetNest").genStep as GenStep_ScatterThings).countPer10kCellsRange.min = densityDefaults["DankPyon_HornetNest"].min * densityMO;
+                    (DefDatabase<GenStepDef>.GetNamed("DankPyon_HornetNest").genStep as GenStep_ScatterThings).countPer10kCellsRange.max = densityDefaults["DankPyon_HornetNest"].max * densityMO;
+
+                }
+                catch
+                {
+                    Log.Message("[Map Designer] Couldn't initialize Medieval Overhaul Things. Medieval Overhaul settings may not work.");
+                }
             }
 
             // VPE

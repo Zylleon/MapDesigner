@@ -25,7 +25,7 @@ namespace MapDesigner.UI
             //mainListing.ColumnWidth = 0.333f * rect.width - 34f;
 
 
-            Rect mainRect = wrapperListing.GetRect(rect.height - 26f);
+            Rect mainRect = wrapperListing.GetRect(rect.height - 36f);
             //Rect mainRect = new Rect(rect.xMin, rect.yMin, rect.width, rect.height );
 
             mainListing.Begin(mainRect);
@@ -54,69 +54,70 @@ namespace MapDesigner.UI
 
             mainListing.CheckboxLabeled("ZMD_flagRockChunks".Translate(), ref settings.flagRockChunks, "ZMD_flagRockChunks".Translate());
 
+            mainListing.NewColumn();
 
+            //Text.Font = GameFont.Medium;
+            Text.Font = GameFont.Medium;
+            mainListing.Label("ZMD_thingsDlcAndMods".Translate());
+            Text.Font = GameFont.Small; 
+            
             if (ModsConfig.RoyaltyActive)
             {
-                mainListing.GapLine();
-                Text.Font = GameFont.Medium;
-                mainListing.Label("ZMD_thingsRoyalty".Translate());
-                Text.Font = GameFont.Small;
-                settings.animaCount = (float)Math.Round(InterfaceUtility.LabeledSlider(mainListing, settings.animaCount, 0f, 15f, null, "ZMD_animaCount".Translate(), settings.animaCount.ToString()));
+                if (InterfaceUtility.SizedTextButton(mainListing, "ZMD_thingsRoyalty".Translate(), 300f, true))
+                {
+                    Find.WindowStack.Add(new ThingsRoyaltyDialog());
+                }
             }
 
-            mainListing.NewColumn();
 
             if (ModsConfig.IdeologyActive)
             {
-                Text.Font = GameFont.Medium;
-                mainListing.Label("ZMD_thingsIdeology".Translate());
-                Text.Font = GameFont.Small;
-
-                settings.countMechanoidRemains = (int)Math.Round(InterfaceUtility.LabeledSlider(mainListing, settings.countMechanoidRemains, 0, 15, null, "ZMD_countMechanoidRemains".Translate(), settings.countMechanoidRemains.ToString()));
-                settings.densityAncientPipelineSection = ThingsSlider(mainListing, settings.densityAncientPipelineSection, 2, "ZMD_densityAncientPipelineSection");
-                settings.densityAncientJunkClusters = ThingsSlider(mainListing, settings.densityAncientJunkClusters, 2, "ZMD_densityAncientJunkClusters");
-
-
-                mainListing.CheckboxLabeled("ZMD_flagRoadDebris".Translate(), ref settings.flagRoadDebris, "ZMD_flagRoadDebrisTooltip".Translate());
-                mainListing.CheckboxLabeled("ZMD_flagCaveDebris".Translate(), ref settings.flagCaveDebris, "ZMD_flagCaveDebrisTooltip".Translate());
-                mainListing.CheckboxLabeled("ZMD_flagAncientUtilityBuilding".Translate(), ref settings.flagAncientUtilityBuilding, "ZMD_flagAncientUtilityBuildingTooltip".Translate());
-                mainListing.CheckboxLabeled("ZMD_flagAncientTurret".Translate(), ref settings.flagAncientTurret, "ZMD_flagAncientTurret".Translate());
-                mainListing.CheckboxLabeled("ZMD_flagAncientMechs".Translate(), ref settings.flagAncientMechs, "ZMD_flagAncientMechs".Translate());
-                mainListing.CheckboxLabeled("ZMD_flagAncientLandingPad".Translate(), ref settings.flagAncientLandingPad, "ZMD_flagAncientLandingPad".Translate());
-                mainListing.CheckboxLabeled("ZMD_flagAncientFences".Translate(), ref settings.flagAncientFences, "ZMD_flagAncientFences".Translate());
-                mainListing.GapLine();
+                if (InterfaceUtility.SizedTextButton(mainListing, "ZMD_thingsIdeology".Translate(), 300f, true))
+                {
+                    Find.WindowStack.Add(new ThingsIdeologyDialog());
+                }
             }
+
 
             if (ModsConfig.BiotechActive)
             {
-                Text.Font = GameFont.Medium;
-                mainListing.Label("ZMD_thingsBiotech".Translate());
-                Text.Font = GameFont.Small;
+                if (InterfaceUtility.SizedTextButton(mainListing, "ZMD_thingsBiotech".Translate(), 300f, true))
+                {
+                    Find.WindowStack.Add(new ThingsIdeologyDialog());
+                }
 
-                settings.densityAncientPollutionJunk = ThingsSlider(mainListing, settings.densityAncientPollutionJunk, 3, "ZMD_densityAncientPollutionJunk");
-                settings.densityPoluxTrees = ThingsSlider(mainListing, settings.densityPoluxTrees, 3, "ZMD_densityPoluxTrees");
-                settings.countAncientExostriderRemains = (int)Math.Round(InterfaceUtility.LabeledSlider(mainListing, settings.countAncientExostriderRemains, 0, 15, null, "ZMD_countAncientExostriderRemains".Translate(), settings.countAncientExostriderRemains.ToString()));
-                settings.pollutionLevel = ThingsSlider(mainListing, settings.pollutionLevel, 3, "ZMD_pollutionLevel");
             }
 
+
+            if (ModsConfig.IsActive("DankPyon.Medieval.Overhaul") || ModsConfig.IsActive("DankPyon.Medieval.Overhaul_steam"))
+            {
+                if (InterfaceUtility.SizedTextButton(mainListing, "ZMD_thingsMedievalOverhaul".Translate(), 300f, true))
+                {
+                    Find.WindowStack.Add(new ThingsMODialog());
+                }
+            }
 
             // VPE
             if (ModsConfig.IsActive("VanillaExpanded.VFEPower"))
             {
-                Text.Font = GameFont.Medium;
-                mainListing.Label("ZMD_thingsVPE".Translate());
-                Text.Font = GameFont.Small;
-
-                InterfaceUtility.LabeledIntRange(mainListing, ref settings.vpe_ChemfuelPonds, 0, 20, "ZMD_VPE_chemfuelPonds".Translate());
-                InterfaceUtility.LabeledIntRange(mainListing, ref settings.vpe_HelixienVents, 0, 20, "ZMD_VPE_helixienVents".Translate());
+                if (InterfaceUtility.SizedTextButton(mainListing, "ZMD_thingsVPE".Translate(), 300f, true))
+                {
+                    Find.WindowStack.Add(new ThingsVEDialog());
+                }
             }
+            //Text.Font = GameFont.Small;
 
             HelperMethods.EndChangeCheck();
 
             mainListing.End();
 
             // Reset
-            if (wrapperListing.ButtonText("ZMD_resetThings".Translate()))
+            //if (wrapperListing.ButtonText("ZMD_resetThings".Translate()))
+            //{
+            //    ResetThingsSettings();
+            //}
+
+            if (InterfaceUtility.SizedTextButton(wrapperListing, "ZMD_resetThings".Translate(), 300f, true))
             {
                 ResetThingsSettings();
             }
@@ -154,6 +155,12 @@ namespace MapDesigner.UI
             settings.densityPoluxTrees = 1f;
             settings.pollutionLevel = 1;
 
+            // MO
+            settings.densityMOBattlefield = 1f;
+            settings.densityMOTarPit = 1f;
+            settings.densityMOBeeHive = 1f;
+            settings.densityMOHornet = 1f;
+
             // VPE
             settings.vpe_ChemfuelPonds = new IntRange(1, 3);
             settings.vpe_HelixienVents = new IntRange(1, 2);
@@ -163,7 +170,7 @@ namespace MapDesigner.UI
 
         }
 
-        private static float ThingsSlider(Listing_Standard listing, float val = 1f, float power = 1f, string label = null)
+        public static float ThingsSlider(Listing_Standard listing, float val = 1f, float power = 1f, string label = null)
         {
             //return InterfaceUtility.LabeledSlider(listing, val, 0f, 2.5f, UI.InterfaceUtility.FormatLabel(label, "ZMD_density" + GetDensityLabel(val)), null, null, HelperMethods.GetDisplayValue(val, power) + " x");
             return InterfaceUtility.LabeledSlider(listing, val, 0f, 2.5f, null, label.Translate(), HelperMethods.GetDisplayValue(val, power) + " x");

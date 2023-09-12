@@ -123,6 +123,12 @@ namespace MapDesigner
         public float densityPoluxTrees = 1f;
         public float pollutionLevel = 1f;
 
+        // Medieval Overhaul
+        public float densityMOBattlefield = 1f;
+        public float densityMOTarPit = 1f;
+        public float densityMOBeeHive = 1f;
+        public float densityMOHornet = 1f;
+
         // Vanilla Power Expanded
         public IntRange vpe_HelixienVents = new IntRange(1, 2);
         public IntRange vpe_ChemfuelPonds = new IntRange(1, 3);
@@ -448,6 +454,12 @@ namespace MapDesigner
             Scribe_Values.Look(ref densityAncientPollutionJunk, "densityAncientPollutionJunk", 1f);
             Scribe_Values.Look(ref densityPoluxTrees, "densityPoluxTrees", 1f);
             Scribe_Values.Look(ref pollutionLevel, "pollutionLevel", 1f);
+
+            // Medieval Overhaul
+            Scribe_Values.Look(ref densityMOBattlefield, "densityMOBattlefield", 1f);
+            Scribe_Values.Look(ref densityMOTarPit, "densityMOTarPit", 1f);
+            Scribe_Values.Look(ref densityMOBeeHive, "densityMOBeeHive", 1f);
+            Scribe_Values.Look(ref densityMOHornet, "densityMOHornet", 1f);
 
             // Vanilla Power Expanded
             Scribe_Values.Look(ref vpe_HelixienVents, "vpe_HelixienVents", new IntRange(1, 2));

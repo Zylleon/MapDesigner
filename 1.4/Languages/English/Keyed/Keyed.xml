@@ -208,10 +208,12 @@
 	<ZMD_thingsTabInfo>Ore density, etc</ZMD_thingsTabInfo>
 	
 	<ZMD_thingsClassic>Classic</ZMD_thingsClassic>
+	<ZMD_thingsDlcAndMods>DLC and Mods</ZMD_thingsDlcAndMods>
 	<ZMD_thingsRoyalty>Royalty</ZMD_thingsRoyalty>
 	<ZMD_thingsIdeology>Ideology</ZMD_thingsIdeology>
 	<ZMD_thingsBiotech>Biotech</ZMD_thingsBiotech>
-	<ZMD_thingsVPE>Vanilla Power Expanded</ZMD_thingsVPE>
+	<ZMD_thingsMedievalOverhaul>Medieval Overhaul</ZMD_thingsMedievalOverhaul>
+	<ZMD_thingsVPE>Vanilla Expanded</ZMD_thingsVPE>
 	
 	
   <!-- Densities -->
@@ -258,7 +260,13 @@
 	<ZMD_densityAncientPollutionJunk>Ancient polllution junk</ZMD_densityAncientPollutionJunk>
 	<ZMD_densityPoluxTrees>Pollux trees</ZMD_densityPoluxTrees>
 	<ZMD_pollutionLevel>Pollution level</ZMD_pollutionLevel>
-	
+
+<!-- Medieval Overhaul -->
+	<ZMD_densityMOBattlefield>Battlefield remains</ZMD_densityMOBattlefield>
+	<ZMD_densityMOTarPit>Tar pits</ZMD_densityMOTarPit>
+	<ZMD_densityMOBeeHive>Bee hives</ZMD_densityMOBeeHive>
+	<ZMD_densityMOHornet>Hornets</ZMD_densityMOHornet>
+
 <!-- Vanilla Power Expanded -->
 	<ZMD_VPE_chemfuelPonds>Chemfuel ponds</ZMD_VPE_chemfuelPonds>
 	<ZMD_VPE_helixienVents>Helixien vents</ZMD_VPE_helixienVents>

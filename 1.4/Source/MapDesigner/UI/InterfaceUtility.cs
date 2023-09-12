@@ -41,7 +41,8 @@ namespace MapDesigner.UI
 
         public static bool SizedTextButton(Listing_Standard listing, string label, float width = -1f, bool centered = false)
         {
-            Rect rect = new Rect(listing.GetRect(30f));
+            float height = Text.CalcSize(label).y + 10f;
+            Rect rect = new Rect(listing.GetRect(height));
             if(width == -1f)
             {
                 width = Text.CalcSize(label).x + 50f;

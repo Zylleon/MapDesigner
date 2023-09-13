@@ -130,8 +130,8 @@ namespace MapDesigner
         public float densityMOHornet = 1f;
 
         // Vanilla Power Expanded
-        public IntRange vpe_HelixienVents = new IntRange(1, 2);
-        public IntRange vpe_ChemfuelPonds = new IntRange(1, 3);
+        //public IntRange vpe_HelixienVents = new IntRange(1, 2);
+        //public IntRange vpe_ChemfuelPonds = new IntRange(1, 3);
 
         // Rocks
         public IntRange rockTypeRange = new IntRange(2, 3);
@@ -462,8 +462,8 @@ namespace MapDesigner
             Scribe_Values.Look(ref densityMOHornet, "densityMOHornet", 1f);
 
             // Vanilla Power Expanded
-            Scribe_Values.Look(ref vpe_HelixienVents, "vpe_HelixienVents", new IntRange(1, 2));
-            Scribe_Values.Look(ref vpe_ChemfuelPonds, "vpe_ChemfuelPonds", new IntRange(1, 3));
+            //Scribe_Values.Look(ref vpe_HelixienVents, "vpe_HelixienVents", new IntRange(1, 2));
+            //Scribe_Values.Look(ref vpe_ChemfuelPonds, "vpe_ChemfuelPonds", new IntRange(1, 3));
 
             // Rocks
             Scribe_Values.Look(ref rockTypeRange, "rockTypeRange", new IntRange(2, 3));

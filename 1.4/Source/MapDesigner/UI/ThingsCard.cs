@@ -98,13 +98,13 @@ namespace MapDesigner.UI
             }
 
             // VPE
-            if (ModsConfig.IsActive("VanillaExpanded.VFEPower"))
-            {
-                if (InterfaceUtility.SizedTextButton(mainListing, "ZMD_thingsVPE".Translate(), 300f, true))
-                {
-                    Find.WindowStack.Add(new ThingsVEDialog());
-                }
-            }
+            //if (ModsConfig.IsActive("VanillaExpanded.VFEPower"))
+            //{
+            //    if (InterfaceUtility.SizedTextButton(mainListing, "ZMD_thingsVPE".Translate(), 300f, true))
+            //    {
+            //        Find.WindowStack.Add(new ThingsVEDialog());
+            //    }
+            //}
             //Text.Font = GameFont.Small;
 
             HelperMethods.EndChangeCheck();
@@ -162,8 +162,8 @@ namespace MapDesigner.UI
             settings.densityMOHornet = 1f;
 
             // VPE
-            settings.vpe_ChemfuelPonds = new IntRange(1, 3);
-            settings.vpe_HelixienVents = new IntRange(1, 2);
+            //settings.vpe_ChemfuelPonds = new IntRange(1, 3);
+            //settings.vpe_HelixienVents = new IntRange(1, 2);
 
             new OreSelectionDialog().ResetAllOre(settings, HelperMethods.GetMineableList());
             HelperMethods.InvokeOnSettingsChanged();

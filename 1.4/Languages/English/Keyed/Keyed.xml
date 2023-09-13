@@ -213,8 +213,9 @@
 	<ZMD_thingsIdeology>Ideology</ZMD_thingsIdeology>
 	<ZMD_thingsBiotech>Biotech</ZMD_thingsBiotech>
 	<ZMD_thingsMedievalOverhaul>Medieval Overhaul</ZMD_thingsMedievalOverhaul>
-	<ZMD_thingsVPE>Vanilla Expanded</ZMD_thingsVPE>
+	<!-- <ZMD_thingsVPE>Vanilla Expanded</ZMD_thingsVPE> -->
 	
+	<ZMD_thingsMissing>Missing a mod that adds map stuff? Let me know on Steam or Discord!</ZMD_thingsMissing>
 	
   <!-- Densities -->
 	<ZMD_densityPlant>Plants</ZMD_densityPlant>

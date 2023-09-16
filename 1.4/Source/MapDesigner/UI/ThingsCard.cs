@@ -107,8 +107,8 @@ namespace MapDesigner.UI
             //}
             //Text.Font = GameFont.Small;
 
-            mainListing.Gap();
-            mainListing.Label("ZMD_thingsMissing".Translate());
+            //mainListing.Gap();
+            //mainListing.Label("ZMD_thingsMissing".Translate());
 
             HelperMethods.EndChangeCheck();
 

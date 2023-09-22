@@ -207,10 +207,13 @@
   <ZMD_thingsTabInfo>鉱物密度など</ZMD_thingsTabInfo>
 
   <ZMD_thingsClassic>クラシック</ZMD_thingsClassic>
+  <ZMD_thingsDlcAndMods>DLCとMod</ZMD_thingsDlcAndMods>
   <ZMD_thingsRoyalty>Royalty</ZMD_thingsRoyalty>
   <ZMD_thingsIdeology>Ideology</ZMD_thingsIdeology>
-  <ZMD_thingsVPE>Vanilla Power Expanded</ZMD_thingsVPE>
+  <ZMD_thingsBiotech>Biotech</ZMD_thingsBiotech>
+  <!-- <ZMD_thingsVPE>Vanilla Power Expanded</ZMD_thingsVPE> -->
 
+  <ZMD_thingsMissing>マップに何かを追加するModが失われていませんか？SteamワークショｯプやDiscordで私に知らせてください！</ZMD_thingsMissing>
 
   <!-- Densities -->
   <ZMD_densityPlant>植物密度</ZMD_densityPlant>
@@ -250,6 +253,18 @@
   <ZMD_countMechanoidRemains>メカノイドの残骸</ZMD_countMechanoidRemains>
   <ZMD_densityAncientJunkClusters>古代のクラスターの残骸</ZMD_densityAncientJunkClusters>
   <ZMD_densityAncientPipelineSection>古代のパイプライン</ZMD_densityAncientPipelineSection>
+
+  <!-- Biotech -->
+  <ZMD_countAncientExostriderRemains>古代のエクソストライダーの残骸</ZMD_countAncientExostriderRemains>
+  <ZMD_densityAncientPollutionJunk>古代の汚染残骸</ZMD_densityAncientPollutionJunk>
+  <ZMD_densityPoluxTrees>ポルクスの木</ZMD_densityPoluxTrees>
+  <ZMD_pollutionLevel>汚染度</ZMD_pollutionLevel>
+
+  <!-- Medieval Overhaul -->
+  <ZMD_densityMOBattlefield>戦場の残骸</ZMD_densityMOBattlefield>
+  <ZMD_densityMOTarPit>タールピット</ZMD_densityMOTarPit>
+  <ZMD_densityMOBeeHive>ハチの巣</ZMD_densityMOBeeHive>
+  <ZMD_densityMOHornet>蜂</ZMD_densityMOHornet>
 
   <!-- Vanilla Power Expanded -->
   <ZMD_VPE_chemfuelPonds>化学燃料の池</ZMD_VPE_chemfuelPonds>

@@ -83,7 +83,7 @@ namespace MapDesigner.UI
             {
                 if (InterfaceUtility.SizedTextButton(mainListing, "ZMD_thingsBiotech".Translate(), 300f, true))
                 {
-                    Find.WindowStack.Add(new ThingsIdeologyDialog());
+                    Find.WindowStack.Add(new ThingsBiotechDialog());
                 }
 
             }

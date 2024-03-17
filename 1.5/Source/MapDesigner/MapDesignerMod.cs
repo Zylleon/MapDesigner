@@ -100,7 +100,7 @@ namespace MapDesigner
             //    list.Add(betaTab);
             //}
 
-            TabDrawer.DrawTabs(rect3, list, 1);
+            TabDrawer.DrawTabs(rect3, list);
             this.FillCard(rect3.ContractedBy(18f));
 
             listingStandard.End();

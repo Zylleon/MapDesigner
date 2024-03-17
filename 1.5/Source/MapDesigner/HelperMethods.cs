@@ -566,12 +566,12 @@ namespace MapDesigner
 
 
         // Compatibility 
-        public static void ApplyMapRerollPatches()
-        {
-            MethodInfo targetmethod = AccessTools.Method(typeof(MapReroll.MapPreviewGenerator), "TerrainFrom");
-            HarmonyMethod prefixmethod = new HarmonyMethod(typeof(Patches.MapReroll_TerrainFrom), "Prefix");
-            new Harmony("zylle.MapDesigner_RerollCompat").Patch(targetmethod, prefixmethod);
-        }
+        //public static void ApplyMapRerollPatches()
+        //{
+        //    MethodInfo targetmethod = AccessTools.Method(typeof(MapReroll.MapPreviewGenerator), "TerrainFrom");
+        //    HarmonyMethod prefixmethod = new HarmonyMethod(typeof(Patches.MapReroll_TerrainFrom), "Prefix");
+        //    new Harmony("zylle.MapDesigner_RerollCompat").Patch(targetmethod, prefixmethod);
+        //}
 
         //public static void ApplyVPEPatches()
         //{

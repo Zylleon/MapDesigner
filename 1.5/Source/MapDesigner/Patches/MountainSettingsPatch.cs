@@ -22,46 +22,47 @@ namespace MapDesigner.Patches
             MapGenSize.mapgensize = map.Size;
         }
 
+
+        // TODO: FIX THIS TRANSPILER!!
         /// <summary>
         /// Mountain size and smoothness
         /// </summary>
         /// <param name="instructions"></param>
         /// <returns></returns>
-        static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
-        {
-            var codes = new List<CodeInstruction>(instructions);
-            int hillSizeIndex = -1;
-            int hillSmoothnessIndex = -1;
-            float result = -1f;
+        //static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+        //{
+        //    var codes = new List<CodeInstruction>(instructions);
+        //    int hillSizeIndex = -1;
+        //    int hillSmoothnessIndex = -1;
+        //    float result = -1f;
 
-            for (int i = 0; i < codes.Count; i++)
-            {
-                if (codes[i].opcode == OpCodes.Ldc_R8)
-                {
-                    if (float.TryParse(codes[i].operand.ToString(), out result))
-                    {
-                        if (hillSmoothnessIndex == -1 && result == 2f)
-                        {
-                            hillSmoothnessIndex = i;
-                        }
-                        if (hillSizeIndex == -1 && result == 0.021f)
-                        {
-                            hillSizeIndex = i;
-                        }
-                    }
-                }
-                if (hillSizeIndex != -1 && hillSmoothnessIndex != -1)
-                {
-                    break;
-                }
-            }
-            //codes[8] = new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(HelperMethods), name: nameof(HelperMethods.GetHillSize)));
-            //codes[9] = new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(HelperMethods), name: nameof(HelperMethods.GetHillSmoothness)));
-            codes[hillSizeIndex] = new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(HelperMethods), name: nameof(HelperMethods.GetHillSize)));
-            codes[hillSmoothnessIndex] = new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(HelperMethods), name: nameof(HelperMethods.GetHillSmoothness)));
+        //    for (int i = 0; i < codes.Count; i++)
+        //    {
+        //        if (codes[i].opcode == OpCodes.Ldc_R8)
+        //        {
+        //            if (float.TryParse(codes[i].operand.ToString(), out result))
+        //            {
+        //                if (hillSmoothnessIndex == -1 && result == 2f)
+        //                {
+        //                    hillSmoothnessIndex = i;
+        //                }
+        //                if (hillSizeIndex == -1 && result == 0.021f)
+        //                {
+        //                    hillSizeIndex = i;
+        //                }
+        //            }
+        //        }
+        //        if (hillSizeIndex != -1 && hillSmoothnessIndex != -1)
+        //        {
+        //            break;
+        //        }
+        //    }
 
-            return codes.AsEnumerable();
-        }
+        //    codes[hillSizeIndex] = new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(HelperMethods), name: nameof(HelperMethods.GetHillSize)));
+        //    codes[hillSmoothnessIndex] = new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(HelperMethods), name: nameof(HelperMethods.GetHillSmoothness)));
+
+        //    return codes.AsEnumerable();
+        //}
 
         /// <summary>
         /// Mountain amount

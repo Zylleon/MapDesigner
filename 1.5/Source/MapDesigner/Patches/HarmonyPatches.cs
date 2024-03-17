@@ -89,12 +89,12 @@ namespace MapDesigner.Patches
 
 
 
-                if (GenTypes.GetTypeInAnyAssembly("MapReroll.MapPreviewGenerator") != null)
-                {
-                    Log.Message("Found Map Reroll");
-                    HelperMethods.ApplyMapRerollPatches();
+                //if (GenTypes.GetTypeInAnyAssembly("MapReroll.MapPreviewGenerator") != null)
+                //{
+                //    Log.Message("Found Map Reroll");
+                //    HelperMethods.ApplyMapRerollPatches();
                    
-                }
+                //}
 
                 HelperMethods.InitBiomeDefaults();
                 HelperMethods.ApplyBiomeSettings();

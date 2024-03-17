@@ -434,7 +434,7 @@ namespace MapDesigner.UI
             MapDesignerMod.mod.settings.flagTerrainWater = Rand.Bool;
 
             // Features
-            int mapFeature = Rand.Range(0, 4);
+            int mapFeature = Rand.Range(0, 6);
             switch (mapFeature)
             {
                 case 0:

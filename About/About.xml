@@ -9,6 +9,7 @@
 	<li>1.4</li>
 	<li>1.5</li>
   </supportedVersions>
+	<modIconPath IgnoreIfNoMatchingField="True">GUI/ZModLogo</modIconPath>
     <packageId>zylle.MapDesigner</packageId>
     <modDependencies>
 		<li>

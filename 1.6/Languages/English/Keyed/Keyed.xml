@@ -1,0 +1,425 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+<!-- ===================================	general use		================================= -->
+
+	<ZMD_ModName>Map Designer</ZMD_ModName>
+	
+<!-- ===================================	general mod settings	================================= -->
+
+	
+	<ZMD_resetPage>Reset these settings</ZMD_resetPage>
+	<ZMD_resetMountain>Reset Mountains</ZMD_resetMountain>
+	<ZMD_resetThings>Reset Things</ZMD_resetThings>
+	<ZMD_resetRivers>Reset Rivers and Beaches</ZMD_resetRivers>
+	<ZMD_resetTerrain>Reset Terrain</ZMD_resetTerrain>
+	<ZMD_resetFeatures>Reset all features to defaults</ZMD_resetFeatures>
+	
+	<ZMD_Angle>Angle</ZMD_Angle>
+	
+	<ZMD_numTiles>{0} tiles</ZMD_numTiles>
+	<ZMD_pctOfMap>{0} % of map width</ZMD_pctOfMap>
+
+<!-- Levels -->
+    <ZMD_size0>None</ZMD_size0>
+	<ZMD_size1>Tiny</ZMD_size1>
+	<ZMD_size2>Small</ZMD_size2>
+	<ZMD_size3>Average</ZMD_size3>
+	<ZMD_size4>Big</ZMD_size4>
+	<ZMD_size5>Huge</ZMD_size5>
+	<ZMD_size6>Enormous</ZMD_size6>
+
+	<ZMD_narrow>Narrow</ZMD_narrow>
+	<ZMD_wide>Wide</ZMD_wide>
+	
+	
+	
+    <!-- Tabs -->
+
+<!-- ===================================	General Tab	   ================================= -->
+
+	<ZMD_generalTab>General</ZMD_generalTab>
+	<ZMD_generalTabInfo>Get started with a preset, or explore detailed options are available on the other tabs.\n\nAll settings are relative to your base map. A barren rainforest will have more plants than a fertile valley desert; flat maps will always have less hills than mountainous maps with the same settings.</ZMD_generalTabInfo>
+	
+	<ZMD_presets>Presets</ZMD_presets>
+	
+	<ZMD_applyPreset>Apply Preset</ZMD_applyPreset>
+	<ZMD_reset>Reset Everything</ZMD_reset>
+	<ZMD_resetSuccess>All settings have been reset.</ZMD_resetSuccess>
+	
+	<ZMD_presetNone>None</ZMD_presetNone>
+	<ZMD_presetNoneDesc>No preset selected</ZMD_presetNoneDesc>
+	
+	<ZMD_presetVanilla>Vanilla</ZMD_presetVanilla>
+	<ZMD_presetVanillaDesc>Vanilla defaults.</ZMD_presetVanillaDesc>
+	
+	<ZMD_presetFertileValley>Fertile valley</ZMD_presetFertileValley>
+	<ZMD_presetFertileValleyDesc>A secluded valley surrounded by mountains. Higher fertility, more plants, and fewer ruins.</ZMD_presetFertileValleyDesc>
+	
+	<ZMD_presetBarrens>Barrens</ZMD_presetBarrens>
+	<ZMD_presetBarrensDesc>A relatively desolate landscape with small, spiky hills. Lower fertility and less plants than normal. Extra steam geysers.</ZMD_presetBarrensDesc>
+	
+	<ZMD_presetUnnatural>This isn't natural</ZMD_presetUnnatural>
+	<ZMD_presetUnnaturalDesc>Strange, unnatural mountains littered with ancient dangers.</ZMD_presetUnnaturalDesc>
+	
+	<ZMD_presetFishingVillage>Fishing village</ZMD_presetFishingVillage>
+	<ZMD_presetFishingVillageDesc>Large hills to dig into, but little solid ground otherwise. Swamps may have NO solid ground outside of the mountains!</ZMD_presetFishingVillageDesc>
+	
+	<ZMD_presetCanyon>Canyon</ZMD_presetCanyon>
+	<ZMD_presetCanyonDesc>A narrow canyon with several types of rock. If your tile has a river, the river will follow the canyon.</ZMD_presetCanyonDesc>
+	
+	<ZMD_presetZyllesChoice>Mod author's choice</ZMD_presetZyllesChoice>
+	<ZMD_presetZyllesChoiceDesc>I like these settings. Lots of chokepoints and half-closed valleys, with slightly increased fertile soil.</ZMD_presetZyllesChoiceDesc>
+
+	<ZMD_presetRandom>Randomize</ZMD_presetRandom>
+	<ZMD_presetRandomDesc>This will randomize settings every time you click "apply". Results may be unpredictable.</ZMD_presetRandomDesc>
+	
+
+	<ZMD_flagPopup>Show this for new maps</ZMD_flagPopup>
+	<ZMD_flagPopupDesc>You can access these settings any time from Menu -> Options -> Mod Settings -> Map Designer</ZMD_flagPopupDesc>
+	
+	<ZMD_flagHomeMapOnly>Limit settings to your home map</ZMD_flagHomeMapOnly>
+	<ZMD_flagHomeMapOnlyDesc>Currently applies to: Mountains\n\nIf checked, these things will be vanilla on quest maps, ai faction bases, and other non-home maps.</ZMD_flagHomeMapOnlyDesc>
+ 
+ 	
+<!-- saving and loading -->
+	<ZMD_addConfig>Add new config</ZMD_addConfig>
+	<ZMD_save>Save</ZMD_save>
+	<ZMD_saveCurrent>Save current settings as  </ZMD_saveCurrent>
+	<ZMD_applySettings>Apply settings</ZMD_applySettings>
+	<ZMD_saveSuccess>Settings saved as {0}</ZMD_saveSuccess>
+	<ZMD_saveFail1>A config with this name is already saved, delete it first.</ZMD_saveFail1>
+	<ZMD_saveFail2>Your config must have a name.</ZMD_saveFail2>
+	<ZMD_saveFail3>You have too many saved configs, delete some to make room.</ZMD_saveFail3>
+	
+	<ZMD_manageConfigs>Managed saved configs</ZMD_manageConfigs>
+	<ZMD_selConfig>Select config</ZMD_selConfig>
+	<ZMD_load>Apply</ZMD_load>
+	<ZMD_loadSuccess>Applied settings.</ZMD_loadSuccess>
+	<ZMD_randSuccess>Randomized settings.</ZMD_randSuccess>
+	<ZMD_delete>Delete</ZMD_delete>
+	<ZMD_delSuccess>Deleted settings: </ZMD_delSuccess>
+ 
+<!-- ===================================	Mountains	================================= -->
+
+  <!-- Tabs -->
+	<ZMD_mountainTab>Mountains</ZMD_mountainTab>
+	<ZMD_mountainTabInfo>Settings relating to hills</ZMD_mountainTabInfo>
+  <!-- Hills -->
+	<ZMD_hillAmountLabel>Amount</ZMD_hillAmountLabel>
+	<ZMD_hillAmountTooltip>How mountainous your map will be</ZMD_hillAmountTooltip>
+	
+	<ZMD_hillAmount0>Very flat</ZMD_hillAmount0>
+	<ZMD_hillAmount1>Low</ZMD_hillAmount1>
+	<ZMD_hillAmount2>Vanilla</ZMD_hillAmount2>
+	<ZMD_hillAmount3>High</ZMD_hillAmount3>
+	<ZMD_hillAmount4>Very high</ZMD_hillAmount4>
+	<ZMD_hillAmount5>Almost solid</ZMD_hillAmount5>
+
+	<ZMD_hillSizeLabel>Size</ZMD_hillSizeLabel>
+	<ZMD_hillSizeTooltip>Size of individual hills. Big hills for maps with 1-2 big mountains, small hills for jagged landscapes with lots of corners.</ZMD_hillSizeTooltip>
+	<ZMD_hillSize0>Huge. 1 or 2 large hills.</ZMD_hillSize0>
+	<ZMD_hillSize1>Vanilla</ZMD_hillSize1>
+	<ZMD_hillSize2>Small</ZMD_hillSize2>
+	<ZMD_hillSize3>Tiny. Underground bases may not be possible</ZMD_hillSize3>
+	<ZMD_hillSize4>Very tiny. Each hill may only be a few tiles.</ZMD_hillSize4>
+
+	<ZMD_hillSmoothnessLabel>Smoothness</ZMD_hillSmoothnessLabel>
+	<ZMD_hillSmoothness0>Very smooth</ZMD_hillSmoothness0>
+	<ZMD_hillSmoothness1>Smooth</ZMD_hillSmoothness1>
+	<ZMD_hillSmoothness2>Vanilla</ZMD_hillSmoothness2>
+	<ZMD_hillSmoothness3>Rough</ZMD_hillSmoothness3>
+	<ZMD_hillSmoothness4>Very rough</ZMD_hillSmoothness4>
+
+	
+
+<!-- Mountain distribution -->
+	<ZMD_hillArrangement>Arrange hills</ZMD_hillArrangement>
+	<ZMD_hillArrangementDesc>How hills are positioned on your map. Create customized valleys and mountains. Disable all = vanilla </ZMD_hillArrangementDesc>
+
+	<ZMD_flagHillClumping>Natural hill distribution</ZMD_flagHillClumping>
+	<ZMD_flagHillClumpingTooltip>For small hills. Will make hills vary naturally instead of being evenly distributed.</ZMD_flagHillClumpingTooltip>
+	
+	<ZMD_flagHillRadial>Centralized</ZMD_flagHillRadial>
+	<ZMD_flagHillRadialTooltip>Push the mountains to the edges of your map for a valley, or pull them to the center and build in a solid mountain.</ZMD_flagHillRadialTooltip>
+	<ZMD_hillRadialAmtLabel>Skew</ZMD_hillRadialAmtLabel>
+	<ZMD_hillRadialAmtTooltip>How much difference there is between the center and edges of the map</ZMD_hillRadialAmtTooltip>
+	<ZMD_hillRadialSizeLabel>Center size</ZMD_hillRadialSizeLabel>
+	<ZMD_hillRadialSizeTooltip>Push hills just out of the center, or all the way to the edges</ZMD_hillRadialSizeTooltip>
+	
+	<ZMD_hillRadialAmt0>Tightly clustered in the center</ZMD_hillRadialAmt0>
+	<ZMD_hillRadialAmt1>Moderate shift towards center</ZMD_hillRadialAmt1>
+	<ZMD_hillRadialAmt2>Slightly more in the center</ZMD_hillRadialAmt2>
+	<ZMD_hillRadialAmt3>Little to no change</ZMD_hillRadialAmt3>
+	<ZMD_hillRadialAmt4>Slightly more on the edges</ZMD_hillRadialAmt4>
+	<ZMD_hillRadialAmt5>Moderate shift towards edges</ZMD_hillRadialAmt5>
+	<ZMD_hillRadialAmt6>Almost entirely around the edges</ZMD_hillRadialAmt6>
+	
+	
+	<ZMD_center>Center</ZMD_center>
+	<ZMD_edges>Edges</ZMD_edges>
+	<ZMD_direction>Direction</ZMD_direction>
+	<ZMD_skew>Skew</ZMD_skew>
+	<ZMD_size>Size</ZMD_size>
+	
+	
+	<ZMD_hillRadialSize0>Tiny</ZMD_hillRadialSize0>
+	<ZMD_hillRadialSize1>Small</ZMD_hillRadialSize1>
+	<ZMD_hillRadialSize2>Average</ZMD_hillRadialSize2>
+	<ZMD_hillRadialSize3>Big</ZMD_hillRadialSize3>
+	<ZMD_hillRadialSize4>To the edge of the map</ZMD_hillRadialSize4>
+
+	<ZMD_flagHillSplit>Down the middle</ZMD_flagHillSplit>
+	
+	<ZMD_flagHillSide>To one side</ZMD_flagHillSide>
+	
+	<ZMD_hillSideAmt0>Almost even</ZMD_hillSideAmt0>
+	<ZMD_hillSideAmt1>Slight shift to one side</ZMD_hillSideAmt1>
+	<ZMD_hillSideAmt2>Moderate shift to one side</ZMD_hillSideAmt2>
+	<ZMD_hillSideAmt3>Strong shift to one side</ZMD_hillSideAmt3>
+
+	<ZMD_flagHillDonut>Donut-shaped</ZMD_flagHillDonut>
+	<ZMD_flagHillDonutTooltip>Ring-shaped mountains or valleys</ZMD_flagHillDonutTooltip>
+	<ZMD_hillDonutAmt0>Distinct ring hill</ZMD_hillDonutAmt0>
+	<ZMD_hillDonutAmt1>Broken ring hill</ZMD_hillDonutAmt1>
+	<ZMD_hillDonutAmt2>Slight ring hill</ZMD_hillDonutAmt2>
+	<ZMD_hillDonutAmt3>Little to no change</ZMD_hillDonutAmt3>
+	<ZMD_hillDonutAmt4>Slight ring valley</ZMD_hillDonutAmt4>
+	<ZMD_hillDonutAmt5>Partial ring valley</ZMD_hillDonutAmt5>
+	<ZMD_hillDonutAmt6>Distinct ring valley</ZMD_hillDonutAmt6>
+	
+	
+	
+  <!-- Misc settings -->
+  
+	<ZMD_flagCaves>Allow caves</ZMD_flagCaves>
+	<ZMD_flagCavesTooltip>Unchecking this prevents caves from ever spawning, even on tiles with mountains or large hills.</ZMD_flagCavesTooltip>
+	
+	<ZMD_flagMtnExit>Ensure exit</ZMD_flagMtnExit>
+	<ZMD_flagMtnExitTooltip>For very mountainous maps. Guarantees a clear path to the center of the map.</ZMD_flagMtnExitTooltip>
+	<ZMD_numMtnExit>Number of exits</ZMD_numMtnExit>
+	
+	
+	
+<!-- ===================================	Things	================================= -->
+    <!-- Tabs -->
+
+	<ZMD_thingsTab>Things</ZMD_thingsTab>
+	<ZMD_thingsTabInfo>Ore density, etc</ZMD_thingsTabInfo>
+	
+	<ZMD_thingsClassic>Classic</ZMD_thingsClassic>
+	<ZMD_thingsDlcAndMods>DLC and Mods</ZMD_thingsDlcAndMods>
+	<ZMD_thingsRoyalty>Royalty</ZMD_thingsRoyalty>
+	<ZMD_thingsIdeology>Ideology</ZMD_thingsIdeology>
+	<ZMD_thingsBiotech>Biotech</ZMD_thingsBiotech>
+	<ZMD_thingsMedievalOverhaul>Medieval Overhaul</ZMD_thingsMedievalOverhaul>
+	<!-- <ZMD_thingsVPE>Vanilla Expanded</ZMD_thingsVPE> -->
+	
+	<ZMD_thingsMissing>Missing a mod that adds map stuff? Let me know on Steam or Discord!</ZMD_thingsMissing>
+	
+  <!-- Densities -->
+	<ZMD_densityPlant>Plants</ZMD_densityPlant>
+	<ZMD_densityAnimal>Animals</ZMD_densityAnimal>
+	<ZMD_densityRuins>Ruins</ZMD_densityRuins>
+	<ZMD_densityDanger>Ancient dangers</ZMD_densityDanger>
+	<ZMD_densityDangerTooltip>NOTE: Ancient dangers will not spawn on completely flat maps</ZMD_densityDangerTooltip>
+	<ZMD_densityGeyser>Steam geysers</ZMD_densityGeyser>
+	<ZMD_densityOre>Ore</ZMD_densityOre>
+	<ZMD_animaCount>Anima trees: </ZMD_animaCount>
+	<ZMD_flagRockChunks>Rock chunks</ZMD_flagRockChunks>
+	<ZMD_flagRockChunksTooltip>If disabled, new maps will have NO chunks.</ZMD_flagRockChunksTooltip>
+	
+	<ZMD_chooseOreTypes>Choose ore types ...</ZMD_chooseOreTypes>
+	<ZMD_resetOreTypes>Reset ore</ZMD_resetOreTypes>
+
+	<ZMD_density0>None</ZMD_density0>
+	<ZMD_density1>Very few</ZMD_density1>
+	<ZMD_density2>Less than average</ZMD_density2>
+	<ZMD_density3>Average amount</ZMD_density3>
+	<ZMD_density4>More than average</ZMD_density4>
+	<ZMD_density5>A lot more</ZMD_density5>
+	<ZMD_density6>Max amount</ZMD_density6>
+	
+<!-- Ideology -->
+	<ZMD_flagRoadDebris>Road debris</ZMD_flagRoadDebris>
+	<ZMD_flagRoadDebrisTooltip>Rusted cars and tanks</ZMD_flagRoadDebrisTooltip>
+	<ZMD_flagCaveDebris>Cave debris</ZMD_flagCaveDebris>
+	<ZMD_flagCaveDebrisTooltip>Ancient beds, sometimes with old uniforms or scattered documents</ZMD_flagCaveDebrisTooltip>
+	<ZMD_flagAncientUtilityBuilding>Ancient utility buildings</ZMD_flagAncientUtilityBuilding>
+	<ZMD_flagAncientUtilityBuildingTooltip>Ancient power stations, sometimes including fences or buildings</ZMD_flagAncientUtilityBuildingTooltip>
+	<ZMD_flagAncientTurret>Ancient turrets</ZMD_flagAncientTurret>
+	<ZMD_flagAncientMechs>Ancient mechs</ZMD_flagAncientMechs>
+	<ZMD_flagAncientLandingPad>Ancient landing pads</ZMD_flagAncientLandingPad>
+	<ZMD_flagAncientFences>Ancient fences</ZMD_flagAncientFences>
+	
+	<ZMD_countMechanoidRemains>Mechanoid remains</ZMD_countMechanoidRemains>
+	<ZMD_densityAncientJunkClusters>Ancient junk clusters</ZMD_densityAncientJunkClusters>
+	<ZMD_densityAncientPipelineSection>Ancient pipline</ZMD_densityAncientPipelineSection>
+	
+<!-- Biotech -->
+	<ZMD_countAncientExostriderRemains>Ancient exostrider remains</ZMD_countAncientExostriderRemains>
+	<ZMD_densityAncientPollutionJunk>Ancient polllution junk</ZMD_densityAncientPollutionJunk>
+	<ZMD_densityPoluxTrees>Pollux trees</ZMD_densityPoluxTrees>
+	<ZMD_pollutionLevel>Pollution level</ZMD_pollutionLevel>
+
+<!-- Medieval Overhaul -->
+	<ZMD_densityMOBattlefield>Battlefield remains</ZMD_densityMOBattlefield>
+	<ZMD_densityMOTarPit>Tar pits</ZMD_densityMOTarPit>
+	<ZMD_densityMOBeeHive>Bee hives</ZMD_densityMOBeeHive>
+	<ZMD_densityMOHornet>Hornets</ZMD_densityMOHornet>
+
+<!-- Vanilla Power Expanded -->
+	<ZMD_VPE_chemfuelPonds>Chemfuel ponds</ZMD_VPE_chemfuelPonds>
+	<ZMD_VPE_helixienVents>Helixien vents</ZMD_VPE_helixienVents>
+
+
+	
+<!-- ===================================	Rivers	================================= -->
+	
+	<ZMD_riverTab>Rivers and Beaches</ZMD_riverTab>
+	
+	<ZMD_sizeRiver>River size</ZMD_sizeRiver>
+	
+	<ZMD_flagRiverBeach>River banks</ZMD_flagRiverBeach>
+	<ZMD_riverBeachSize>River bank size</ZMD_riverBeachSize>
+	
+	<ZMD_flagRiverDir>Pick river direction</ZMD_flagRiverDir>
+	
+	<ZMD_riverStyle>River style</ZMD_riverStyle>
+	<ZMD_riverStyleVanilla>Vanilla</ZMD_riverStyleVanilla>
+	<ZMD_riverStyleVanillaDesc>Normal river</ZMD_riverStyleVanillaDesc>
+	<ZMD_riverStyleSpring>Spring</ZMD_riverStyleSpring>
+	<ZMD_riverStyleSpringDesc>Rivers starts near the middle of the map and continues to the edge</ZMD_riverStyleSpringDesc>
+	<ZMD_riverStyleCanal>Canal</ZMD_riverStyleCanal>
+	<ZMD_riverStyleCanalDesc>Perfectly straight rivers</ZMD_riverStyleCanalDesc>
+	<ZMD_riverStyleConfluence>Confluence</ZMD_riverStyleConfluence>
+	<ZMD_riverStyleConfluenceDesc>Two rivers merge into one</ZMD_riverStyleConfluenceDesc>
+	<ZMD_riverStyleFork>Fork</ZMD_riverStyleFork>
+	<ZMD_riverStyleForkDesc>One river splits into two</ZMD_riverStyleForkDesc>
+	<ZMD_riverStyleOxbow>Oxbow</ZMD_riverStyleOxbow>
+	<ZMD_riverStyleOxbowDesc>A winding river with big, smooth loops</ZMD_riverStyleOxbowDesc>
+	<ZMD_riverStyleIsland>Island</ZMD_riverStyleIsland>
+	<ZMD_riverStyleIslandDesc>A river that splits to make an island, then joins back into one on the other side</ZMD_riverStyleIslandDesc>
+	
+	
+	<ZMD_riverPosition>Customize river position</ZMD_riverPosition>
+	<ZMD_north>North</ZMD_north>
+	<ZMD_south>South</ZMD_south>
+	<ZMD_east>East</ZMD_east>
+	<ZMD_west>West</ZMD_west>
+	<ZMD_riverLocRel>Relative</ZMD_riverLocRel>
+	<ZMD_riverLocRelDesc>Location is relative to the vanilla position</ZMD_riverLocRelDesc>
+	<ZMD_riverLocAbs>Absolute</ZMD_riverLocAbs>
+	<ZMD_riverLocAbsDesc>Exactly where you put it, no randomness</ZMD_riverLocAbsDesc>
+	
+	
+	<!-- Beaches -->
+	
+	<ZMD_coastDir>Coast direction</ZMD_coastDir>
+	<ZMD_coastDirVanilla>Vanilla</ZMD_coastDirVanilla>		<!-- whatever direction the coast would normally be on that tile -->
+	
+	<ZMD_coastTerr>Beach terrain</ZMD_coastTerr>
+	<ZMD_coastTerrVanilla>Vanilla</ZMD_coastTerrVanilla>	<!-- sand for most biomes, ice for sea ice -->
+
+<!-- ===================================	Features	================================= -->
+    <!-- Tabs -->
+
+	<ZMD_featureTab>Map Features</ZMD_featureTab>
+	<ZMD_featureTabInfo>Add a special feature to only your home map. These will not spawn on other maps, like quest maps.</ZMD_featureTabInfo>
+	
+  <!-- Features -->
+  <ZMD_selectFeature>Select feature</ZMD_selectFeature>
+  
+  <ZMD_featureNone>No added feature</ZMD_featureNone>
+  <ZMD_featureNoneInfo>Baseline map.</ZMD_featureNoneInfo>
+  
+  <ZMD_featurePRI>Perfectly round islands</ZMD_featurePRI>
+  <ZMD_featurePRIInfo>Your map is one or more perfectly round islands, surrounded by shallow water. Trade caravans, raids and wild animals will still enter normally from the sides.</ZMD_featurePRIInfo>
+  
+  <ZMD_featureLake>Natural Lake</ZMD_featureLake>
+  <ZMD_featureLakeInfo>A natural lake.\nMountains can spawn inside the lake by default. You can use the "Central hill distribution" option on the Mountains tab to prevent this, or to create a mountain island in the center.</ZMD_featureLakeInfo>
+  
+  <ZMD_featureNI>Natural islands</ZMD_featureNI>
+  <ZMD_featureNiInfo>A natural island, surrounded by a mix of shallow and deep water. Trade caravans, raids and wild animals will still enter normally from the sides, and will path over any passable water.</ZMD_featureNiInfo>
+  
+  <!-- Perfectly Round Islands -->
+  <ZMD_priIslandStyle>Island style</ZMD_priIslandStyle>
+  <ZMD_priIslandSizeLabel>Island size</ZMD_priIslandSizeLabel>
+  <ZMD_priBeachSizeLabel>Beach size</ZMD_priBeachSizeLabel>
+  <ZMD_priSingleLabel>Single island</ZMD_priSingleLabel>
+  <ZMD_priSingleDesc>A single large circular island.</ZMD_priSingleDesc>
+  <ZMD_priMultiLabel>Multiple islands</ZMD_priMultiLabel>
+  <ZMD_priMultiDesc>Multiple randomly placed islands, biggest in the middle.</ZMD_priMultiDesc>
+  
+  <!-- Lakes -->
+  
+  <ZMD_lakeSize>Lake size: {0} % of map</ZMD_lakeSize>
+  <ZMD_lakeRoundness>Roundness</ZMD_lakeRoundness>
+  <ZMD_lakeBeachSize>Lake beach size</ZMD_lakeBeachSize>
+  <ZMD_lakeDepth>Lake depth</ZMD_lakeDepth>
+  <ZMD_flagLakeSalty>Salt water</ZMD_flagLakeSalty>		<!-- same label is now used for both the Lake and Round Island features -->
+  <ZMD_lakeShore>Shore terrain</ZMD_lakeShore>
+  
+  <ZMD_lakeDepth0>Very shallow</ZMD_lakeDepth0>
+  <ZMD_lakeDepth1>Shallow</ZMD_lakeDepth1>
+  <ZMD_lakeDepth2>Average</ZMD_lakeDepth2>
+  <ZMD_lakeDepth3>Deep</ZMD_lakeDepth3>
+  <ZMD_lakeDepth4>Very deep</ZMD_lakeDepth4>
+
+  <ZMD_lakeRoundness0>Perfectly round</ZMD_lakeRoundness0>
+  <ZMD_lakeRoundness1>Mostly round</ZMD_lakeRoundness1>
+  <ZMD_lakeRoundness2>Average</ZMD_lakeRoundness2>
+  <ZMD_lakeRoundness3>Somewhat blobular</ZMD_lakeRoundness3>
+  <ZMD_lakeRoundness4>Shapeless</ZMD_lakeRoundness4>
+
+<!-- Natural Islands -->
+	 
+  <ZMD_niRoundness>Island Smoothness</ZMD_niRoundness>
+  <ZMD_niRoundness0>Geometrically perfect</ZMD_niRoundness0>
+  <ZMD_niRoundness1>Mostly geometric</ZMD_niRoundness1>
+  <ZMD_niRoundness2>Average</ZMD_niRoundness2>
+  <ZMD_niRoundness3>Somewhat blobular</ZMD_niRoundness3>
+  <ZMD_niRoundness4>Shapeless</ZMD_niRoundness4>
+  
+  <ZMD_niStyle>Style</ZMD_niStyle>
+  <ZMD_niSelStyle>Select Style</ZMD_niSelStyle>
+  <ZMD_niStyleRound>Round</ZMD_niStyleRound>
+  <ZMD_niStyleSquare>Square</ZMD_niStyleSquare>
+  <ZMD_niStyleSquareRing>Square Ring</ZMD_niStyleSquareRing>
+  <ZMD_niStyleRing>Ring</ZMD_niStyleRing>
+  
+  <ZMD_niWaterDepth>Water depth</ZMD_niWaterDepth>
+  <ZMD_niWaterDepthWarning>WARNING: Too much deep water can create unpathable islands!</ZMD_niWaterDepthWarning>
+
+
+<!-- ===================================	Terrain	================================= -->
+
+    <!-- Tabs -->
+
+	<ZMD_terrainTab>Terrain</ZMD_terrainTab>
+	<ZMD_terrainTabInfo>Fertility, water levels, and rock types.\n\nTurning up water levels will increase size and number of marshes and lakes, but will NOT add new lakes to biomes that don't otherwise have them.</ZMD_terrainTabInfo>
+	
+	<ZMD_rockTypeRange>Rock types per map</ZMD_rockTypeRange>
+	<ZMD_flagBiomeRocks>Allow modded biomes with special rocks, like Atolls or the Ocular Forest, to have other rock types.</ZMD_flagBiomeRocks>
+	<ZMD_flagBiomeRocksTooltip>This can drastically change game balance in some modded biomes. Removing special rocks might remove needed resources.</ZMD_flagBiomeRocksTooltip>
+	
+	<ZMD_allRockTypes>Allow all rock types</ZMD_allRockTypes>
+	<ZMD_chooseRockTypes>Choose rock types ...</ZMD_chooseRockTypes>
+	
+	<ZMD_terrainFertAmt>Fertility: {0} %: </ZMD_terrainFertAmt>
+	
+	<ZMD_terrainWaterAmt>Water level: {0} %: </ZMD_terrainWaterAmt>
+	<ZMD_terrainWaterTooltip>Size and number of lakes etc. Does not affect rivers, coastlines, or other features.</ZMD_terrainWaterTooltip>
+	
+	<ZMD_flagTerrainWater>All non-buildable terrain counts as water</ZMD_flagTerrainWater>
+	<ZMD_flagTerrainWaterTooltip>All terrains without heavy affordance count as water. Includes mud, marsh, soft sand</ZMD_flagTerrainWaterTooltip>
+	
+	
+	
+<!-- ===================================	Beta	================================= -->
+    <!-- Tabs -->
+
+	<ZMD_betaTab>Beta</ZMD_betaTab>
+	<ZMD_betaTabInfo>WARNING! These options are for development. They might be mislabeled, might do nothing, and will probably spam the error log.\n\n If there are issues, please report with the error log. If these work, please report that also.</ZMD_betaTabInfo>
+
+</LanguageData>

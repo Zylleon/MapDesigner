@@ -184,23 +184,14 @@ namespace MapDesigner.UI
             listing.CheckboxLabeled("ZMD_riverPosition".Translate(), ref MapDesignerMod.mod.settings.flagRiverLoc, "ZMD_riverPosition".Translate());
             if (MapDesignerMod.mod.settings.flagRiverLoc)
             {
-                //if(settings.flagRiverLocAbs)
-                //{
-                //    listing.CheckboxLabeled(String.Format("{0}: {1}", "ZMD_riverLocAbs".Translate(), "ZMD_riverLocAbsDesc".Translate()), ref MapDesignerMod.mod.settings.flagRiverLocAbs, "ZMD_riverLocAbsDesc".Translate());
-                //}
-                //else
-                //{
-                //    listing.CheckboxLabeled(String.Format("{0}: {1}", "ZMD_riverLocRel".Translate(), "ZMD_riverLocRelDesc".Translate()), ref MapDesignerMod.mod.settings.flagRiverLocAbs, "ZMD_riverLocRelDesc".Translate());
-
-                //}
-
                 InterfaceUtility.LocationPicker(listing, 0.3f, ref settings.riverCenterDisp, 40f);
+
             }
 
             HelperMethods.EndChangeCheck();
 
             // Beaches
-            /*
+            
 
             listing.GapLine();
 
@@ -246,6 +237,8 @@ namespace MapDesigner.UI
             }
             Listing_selCoastDir.End();
 
+
+            /*
             // beach terrain
             Rect beachTerrRect = listing.GetRect(35f);
             beachTerrRect.xMax -= 0.66f * viewRect.width;

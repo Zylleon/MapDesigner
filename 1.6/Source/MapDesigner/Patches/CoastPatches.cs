@@ -8,6 +8,7 @@ using RimWorld;
 using Verse;
 using static MapDesigner.MapDesignerSettings;
 using Verse.Noise;
+using RimWorld.Planet;
 
 namespace MapDesigner.Patches
 {
@@ -15,38 +16,38 @@ namespace MapDesigner.Patches
     /// Coast direction
     /// </summary>
     
-    /*
-    [HarmonyPatch(typeof(RimWorld.Planet.World), "CoastDirectionAt")]
+
+    [HarmonyPatch(typeof(RimWorld.Planet.World), "CoastAngleAt")]
     static class CoastDirPatch
     {
-        static void Postfix(int tileID, ref Rot4 __result)
+        static void Postfix(PlanetTile tile, ref float? __result)
         {
             if(MapDesignerMod.mod.settings.coastDir == CoastDirection.Vanilla)
             {
                 return;
             }
-            if(__result == Rot4.Invalid)
+            if(__result == null)
             {
                 return;
             }
             switch(MapDesignerMod.mod.settings.coastDir)
             {
                 case CoastDirection.North:
-                    __result = Rot4.North;
+                    __result = 270;
                     break;
                 case CoastDirection.East:
-                    __result = Rot4.East;
+                    __result = 180;
                     break;
                 case CoastDirection.South:
-                    __result = Rot4.South;
+                    __result = 90;
                     break;
                 case CoastDirection.West:
-                    __result = Rot4.West;
+                    __result = 0;
                     break;
             }
         }
     }
-    */
+    
 
     /// <summary>
     /// Coast terrain

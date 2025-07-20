@@ -25,7 +25,7 @@ namespace MapDesigner.UI
             Rect rect2 = rect.ContractedBy(4f);
 
             // initial height with everything collapsed
-            float height = 400f;
+            float height = 250f;
             if (settings.flagRiverBeach)
             {
                 height += 100f;
@@ -47,8 +47,13 @@ namespace MapDesigner.UI
             listing.Begin(viewRect);
             listing.GapLine();
 
-            // River size and style
+            // River size
+            
             settings.sizeRiver = InterfaceUtility.LabeledSlider(listing, settings.sizeRiver, 0.1f, 3f, InterfaceUtility.FormatLabel("ZMD_sizeRiver", "ZMD_size" + ThingsCard.GetDensityLabel(settings.sizeRiver)), "ZMD_size1".Translate(), "ZMD_size6".Translate());
+
+            // river style
+
+            /*
             Rect selStyleRect = listing.GetRect(40f);
 
             Rect selButtonRect = selStyleRect;
@@ -109,12 +114,15 @@ namespace MapDesigner.UI
                 Find.WindowStack.Add(new FloatMenu(riverStyleList));
             }
             Listing_selRiverStyle.End();
+            */
+
 
             listing.Gap(listing.verticalSpacing);
             
             HelperMethods.BeginChangeCheck();
 
             // river banks
+            /*
             listing.CheckboxLabeled("ZMD_flagRiverBeach".Translate(), ref settings.flagRiverBeach, "ZMD_flagRiverBeach".Translate());
 
             if(MapDesignerMod.mod.settings.flagRiverBeach)
@@ -161,6 +169,9 @@ namespace MapDesigner.UI
                 HelperMethods.BeginChangeCheck();
             }
 
+            */
+
+
             // river direction
             listing.CheckboxLabeled("ZMD_flagRiverDir".Translate(), ref MapDesignerMod.mod.settings.flagRiverDir, "ZMD_flagRiverDir".Translate());
             if (MapDesignerMod.mod.settings.flagRiverDir)
@@ -173,15 +184,15 @@ namespace MapDesigner.UI
             listing.CheckboxLabeled("ZMD_riverPosition".Translate(), ref MapDesignerMod.mod.settings.flagRiverLoc, "ZMD_riverPosition".Translate());
             if (MapDesignerMod.mod.settings.flagRiverLoc)
             {
-                if(settings.flagRiverLocAbs)
-                {
-                    listing.CheckboxLabeled(String.Format("{0}: {1}", "ZMD_riverLocAbs".Translate(), "ZMD_riverLocAbsDesc".Translate()), ref MapDesignerMod.mod.settings.flagRiverLocAbs, "ZMD_riverLocAbsDesc".Translate());
-                }
-                else
-                {
-                    listing.CheckboxLabeled(String.Format("{0}: {1}", "ZMD_riverLocRel".Translate(), "ZMD_riverLocRelDesc".Translate()), ref MapDesignerMod.mod.settings.flagRiverLocAbs, "ZMD_riverLocRelDesc".Translate());
+                //if(settings.flagRiverLocAbs)
+                //{
+                //    listing.CheckboxLabeled(String.Format("{0}: {1}", "ZMD_riverLocAbs".Translate(), "ZMD_riverLocAbsDesc".Translate()), ref MapDesignerMod.mod.settings.flagRiverLocAbs, "ZMD_riverLocAbsDesc".Translate());
+                //}
+                //else
+                //{
+                //    listing.CheckboxLabeled(String.Format("{0}: {1}", "ZMD_riverLocRel".Translate(), "ZMD_riverLocRelDesc".Translate()), ref MapDesignerMod.mod.settings.flagRiverLocAbs, "ZMD_riverLocRelDesc".Translate());
 
-                }
+                //}
 
                 InterfaceUtility.LocationPicker(listing, 0.3f, ref settings.riverCenterDisp, 40f);
             }
@@ -189,6 +200,8 @@ namespace MapDesigner.UI
             HelperMethods.EndChangeCheck();
 
             // Beaches
+            /*
+
             listing.GapLine();
 
             Rect selCoastDir = listing.GetRect(35f);
@@ -196,6 +209,8 @@ namespace MapDesigner.UI
             Listing_Standard Listing_selCoastDir = new Listing_Standard();
             Listing_selCoastDir.Begin(selCoastDir);
 
+
+            
             // beach direction
             if (Listing_selCoastDir.ButtonTextLabeled("ZMD_coastDir".Translate(), GetCoastDirLabel(settings.coastDir).Translate()))
             {
@@ -234,6 +249,8 @@ namespace MapDesigner.UI
             // beach terrain
             Rect beachTerrRect = listing.GetRect(35f);
             beachTerrRect.xMax -= 0.66f * viewRect.width;
+            
+
 
             //beachTerrRect.xMin += 20f;
             //beachTerrRect.xMax -= 20f;
@@ -269,7 +286,7 @@ namespace MapDesigner.UI
             }
             beachTerrListing.End();
 
-
+            */
 
             // reset
             listing.GapLine();

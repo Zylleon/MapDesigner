@@ -17,7 +17,7 @@ namespace MapDesigner
             Mountains,
             Terrain,
             Things,
-            //Rivers,
+            Rivers,
             //Feature,
         }
         private MapDesignerMod.InfoCardTab tab;
@@ -78,11 +78,11 @@ namespace MapDesigner
             }, this.tab == MapDesignerMod.InfoCardTab.Things);
             list.Add(ThingsTab);
 
-            //TabRecord riverTab = new TabRecord("ZMD_riverTab".Translate(), delegate
-            //{
-            //    this.tab = MapDesignerMod.InfoCardTab.Rivers;
-            //}, this.tab == MapDesignerMod.InfoCardTab.Rivers);
-            //list.Add(riverTab);
+            TabRecord riverTab = new TabRecord("ZMD_riverTab".Translate(), delegate
+            {
+                this.tab = MapDesignerMod.InfoCardTab.Rivers;
+            }, this.tab == MapDesignerMod.InfoCardTab.Rivers);
+            list.Add(riverTab);
 
             //TabRecord featureTab = new TabRecord("ZMD_featureTab".Translate(), delegate
             //{
@@ -116,9 +116,9 @@ namespace MapDesigner
                 case MapDesignerMod.InfoCardTab.Things:
                     UI.ThingsCard.DrawThingsCard(cardRect);
                     break;
-                //case MapDesignerMod.InfoCardTab.Rivers:
-                //    UI.RiversCard.DrawRiversCard(cardRect);
-                //    break;
+                case MapDesignerMod.InfoCardTab.Rivers:
+                    UI.RiversCard.DrawRiversCard(cardRect);
+                    break;
                 //case MapDesignerMod.InfoCardTab.Feature:
                 //    UI.FeatureCard.DrawFeaturesCard(cardRect);
                 //    break;

@@ -147,7 +147,7 @@ namespace MapDesigner
         public float riverDir = 180f;
 
         public bool flagRiverLoc = false;               // for whether the location is picked at all
-        public bool flagRiverLocAbs= false;
+        public bool flagRiverLocAbs= false;             // obsolete
         public Vector3 riverCenterDisp = new Vector3(0.0f, 0.0f, 0.0f);
 
         public MapDesignerSettings.RiverStyle selRiverStyle = RiverStyle.Vanilla;

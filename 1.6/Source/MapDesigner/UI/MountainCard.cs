@@ -55,7 +55,9 @@ namespace MapDesigner.UI
 
             // general mountain related
             listingStandard.CheckboxLabeled("ZMD_flagMtnExit".Translate(), ref MapDesignerMod.mod.settings.flagMtnExit, "ZMD_flagMtnExitTooltip".Translate());
-            listingStandard.CheckboxLabeled("ZMD_flagCaves".Translate(), ref MapDesignerMod.mod.settings.flagCaves, "ZMD_flagCavesTooltip".Translate());
+           
+            //TODO: CAVES
+            //listingStandard.CheckboxLabeled("ZMD_flagCaves".Translate(), ref MapDesignerMod.mod.settings.flagCaves, "ZMD_flagCavesTooltip".Translate());
 
             // hill distribution
             listingStandard.GapLine();

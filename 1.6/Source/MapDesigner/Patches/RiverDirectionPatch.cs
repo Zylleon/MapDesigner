@@ -13,38 +13,27 @@ using System.Reflection;
 namespace MapDesigner.Patches
 {
 
-    /*
-    [HarmonyPatch(typeof(RimWorld.GenStep_Terrain), "GenerateRiver")]
-    internal static class RiverDirectionPatch
+    [HarmonyPatch(typeof(RimWorld.TileMutatorWorker_River), "IsFlowingAToB")]
+    static class RiverDirectionPatch_Flowing
     {
-        static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+        static bool Prefix(Vector3 a, Vector3 b, ref float angle)
         {
-            var codes = new List<CodeInstruction>(instructions);
-            ConstructorInfo rivermaker = AccessTools.Constructor(typeof(RiverMaker), new Type[] { typeof(Vector3), typeof(float), typeof(RiverDef) });
-            int riverIndex = -1;
-            int replaceIndex = -1;
+            angle = HelperMethods.GetRiverDirection(angle);
 
-            for (int i = 0; i < codes.Count; i++)
-            {
-                if (codes[i].opcode == OpCodes.Newobj)
-                {
-                    if (codes[i].OperandIs(rivermaker))
-                    {
-                        riverIndex = i;
-                        //Log.Message("River index: " + riverIndex);
-                        break;
-                    }
-                }
-                if (codes[i].opcode == OpCodes.Ldloc_1)
-                {
-                    replaceIndex = i;
-                    //Log.Message("replace index: " + replaceIndex);
-                }
-            }
-            codes.Insert(replaceIndex + 1, new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(HelperMethods), name: nameof(HelperMethods.GetRiverDirection))));
-
-            return codes.AsEnumerable();
+            return true;
         }
     }
-    */
+
+    [HarmonyPatch(typeof(RimWorld.TileMutatorWorker_River), "GetMapEdgeNodes")]
+    static class RiverDirectionPatch_EdgeNodes
+    {
+        static bool Prefix(Map map, ref float angle)
+        {
+            angle = HelperMethods.GetRiverDirection(angle);
+
+            return true;
+        }
+    }
+
+
 }

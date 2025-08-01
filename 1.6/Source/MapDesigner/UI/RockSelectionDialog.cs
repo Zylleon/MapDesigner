@@ -59,7 +59,7 @@ namespace MapDesigner.UI
             // scroll window with rock list
             Rect windowRect = outerListing.GetRect(inRect.height - outerListing.CurHeight).ContractedBy(4f);
 
-            Rect viewRect = new Rect(0f, 0f, 200f, 50f + 29 * list.Count());
+            Rect viewRect = new Rect(0f, 0f, 200f, 50f + 29f * list.Count());
 
             Widgets.BeginScrollView(windowRect, ref scrollPosition, viewRect, true);
 
@@ -86,26 +86,26 @@ namespace MapDesigner.UI
                 bool foundColor = false;
 
                 // what color is it?
-                ThingDef chunk = rock.building.mineableThing;
+                ThingDef chunk = rock?.building?.mineableThing;
                 if (chunk != null)
                 {
-                    ThingDef brick = chunk.butcherProducts.FirstOrDefault().thingDef;
+                    ThingDef brick = chunk?.butcherProducts?.FirstOrDefault().thingDef;
                     if (brick != null)
                     {
-                        Color newColor = brick.stuffProps.color;
+                        Color? newColor = brick?.stuffProps?.color;
                         if(newColor != null)
                         {
                             foundColor = true;
-                            rockColor = newColor;
+                            rockColor = (Color)newColor;
                         }
                     }
                     else
                     {
-                        Color newColor = chunk.stuffProps.color;
+                        Color? newColor = chunk?.stuffProps?.color;
                         if (newColor != null)
                         {
                             foundColor = true;
-                            rockColor = newColor;
+                            rockColor = (Color)newColor;
                         }
                     }
                 }
@@ -115,6 +115,7 @@ namespace MapDesigner.UI
                 {
                     Texture2D noGraphicIcon = ContentFinder<Texture2D>.Get("GUI/ZMD_NoGraphic", true);
                     Widgets.DrawTextureRotated(colorRect, noGraphicIcon, 0);
+                    TooltipHandler.TipRegion(colorRect, "ZMD_noColorFound".Translate());
                 }
                 // draw the color
                 else

@@ -65,7 +65,7 @@ namespace MapDesigner.UI
             foreach(ThingDef rock in list)
             {
                 bool allowed = settings.allowedRocks[rock.defName];
-                listing.CheckboxLabeled(rock.label, ref allowed);
+                listing.CheckboxLabeled(rock.label, ref allowed, rock.description);
                 settings.allowedRocks[rock.defName] = allowed;
             }
 

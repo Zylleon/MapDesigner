@@ -404,6 +404,8 @@
 	<ZMD_flagBiomeRocksTooltip>This can drastically change game balance in some modded biomes. Removing special rocks might remove needed resources.</ZMD_flagBiomeRocksTooltip>
 	
 	<ZMD_allRockTypes>Allow all rock types</ZMD_allRockTypes>
+	<ZMD_noRockTypes>Disable all rock types</ZMD_noRockTypes>
+	<ZMD_noRockWarning>No rocks are allowed! Please enable at least one type.\nIf you leave all types disabled, maps will spawn with random rock types.</ZMD_noRockWarning>
 	<ZMD_chooseRockTypes>Choose rock types ...</ZMD_chooseRockTypes>
 	
 	<ZMD_terrainFertAmt>Fertility: {0} %: </ZMD_terrainFertAmt>

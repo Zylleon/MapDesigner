@@ -5,22 +5,24 @@ using System.Text;
 using System.Threading.Tasks;
 using HarmonyLib;
 using RimWorld;
+using RimWorld.Planet;
 using Verse;
 
 
 namespace MapDesigner.Patches
 {
 
-    /*
-     * TOOD: Re-enable rock types picker
+    
+     // TOOD: Re-enable rock types picker
     [HarmonyPatch(typeof(RimWorld.Planet.World))]
     [HarmonyPatch(nameof(RimWorld.Planet.World.NaturalRockTypesIn))]
     internal static class RockTypesPatch
     {
-        static void Finalizer(int tile, ref IEnumerable<ThingDef> __result)
+        static void Finalizer(PlanetTile tile, ref IEnumerable<ThingDef> __result)
         {
+            
             Rand.PushState();
-            Rand.Seed = tile;
+            Rand.Seed = tile.tileId;
             MapDesignerSettings settings = MapDesignerMod.mod.settings;
             IntRange rockTypeRange = settings.rockTypeRange;
 
@@ -33,11 +35,8 @@ namespace MapDesigner.Patches
                 return;
             }
 
-            List<ThingDef> tileRocks = __result.ToList();
 
-            //List<ThingDef> list = (from d in DefDatabase<ThingDef>.AllDefs
-            //                       where d.category == ThingCategory.Building && d.building.isNaturalRock && !d.building.isResourceRock && !d.IsSmoothed 
-            //                       select d).ToList<ThingDef>();
+            List<ThingDef> tileRocks = __result.ToList();
 
             List<ThingDef> list = HelperMethods.GetRockList();
 
@@ -69,9 +68,9 @@ namespace MapDesigner.Patches
             }
 
             Rand.PopState();
-
+            
         }
     }
 
-    */
+    
 }

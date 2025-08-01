@@ -40,6 +40,18 @@ namespace MapDesigner.UI
             {
                 AllowAllRocks(settings, list);
             }
+            if (outerListing.ButtonText("ZMD_noRockTypes".Translate()))
+            {
+                DisableAllRocks(settings, list);
+            }
+
+            if(!settings.allowedRocks.Any(r => r.Value == true))
+            {
+                GUI.color = new Color(255, 180, 0);
+                outerListing.Label("ZMD_noRockWarning".Translate());
+
+                GUI.color = Color.white;
+            }
 
             Rect windowRect = outerListing.GetRect(inRect.height - outerListing.CurHeight).ContractedBy(4f);
 
@@ -81,7 +93,21 @@ namespace MapDesigner.UI
             HelperMethods.InvokeOnSettingsChanged();
         }
 
-        
+
+        public void DisableAllRocks(MapDesignerSettings settings, List<ThingDef> list)
+        {
+            Dictionary<string, bool> newRocks = new Dictionary<string, bool>();
+
+            foreach (ThingDef rock in list)
+            {
+                newRocks.Add(rock.defName, false);
+            }
+
+            settings.allowedRocks = newRocks;
+
+            HelperMethods.InvokeOnSettingsChanged();
+        }
+
 
     }
 }

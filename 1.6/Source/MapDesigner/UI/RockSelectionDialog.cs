@@ -36,6 +36,8 @@ namespace MapDesigner.UI
             Listing_Standard outerListing = new Listing_Standard();
             outerListing.Begin(inRect);
 
+
+            // enable or disable all
             if (outerListing.ButtonText("ZMD_allRockTypes".Translate()))
             {
                 AllowAllRocks(settings, list);
@@ -53,9 +55,11 @@ namespace MapDesigner.UI
                 GUI.color = Color.white;
             }
 
+
+            // scroll window with rock list
             Rect windowRect = outerListing.GetRect(inRect.height - outerListing.CurHeight).ContractedBy(4f);
 
-            Rect viewRect = new Rect(0f, 0f, 200f, 50f + 24 * list.Count());
+            Rect viewRect = new Rect(0f, 0f, 200f, 50f + 29 * list.Count());
 
             Widgets.BeginScrollView(windowRect, ref scrollPosition, viewRect, true);
 
@@ -65,8 +69,58 @@ namespace MapDesigner.UI
             foreach(ThingDef rock in list)
             {
                 bool allowed = settings.allowedRocks[rock.defName];
-                listing.CheckboxLabeled(rock.label, ref allowed, rock.description);
+                Rect singleRockRect = listing.GetRect(5f + Text.LineHeight);
+
+                //the checkbox
+                Rect checkBoxRect = singleRockRect.RightPartPixels(singleRockRect.width - Text.LineHeight * 1.5f);
+                Listing_Standard checkboxListing = new Listing_Standard();
+                checkboxListing.Begin(checkBoxRect);
+                checkboxListing.CheckboxLabeled(rock.label, ref allowed, rock.description);
                 settings.allowedRocks[rock.defName] = allowed;
+                checkboxListing.End();
+
+                //the color block
+                Rect colorRect = singleRockRect.LeftPartPixels(Text.LineHeight);
+                colorRect.height = Text.LineHeight;
+                Color rockColor = new Color(1, 1, 1, 1);
+                bool foundColor = false;
+
+                // what color is it?
+                ThingDef chunk = rock.building.mineableThing;
+                if (chunk != null)
+                {
+                    ThingDef brick = chunk.butcherProducts.FirstOrDefault().thingDef;
+                    if (brick != null)
+                    {
+                        Color newColor = brick.stuffProps.color;
+                        if(newColor != null)
+                        {
+                            foundColor = true;
+                            rockColor = newColor;
+                        }
+                    }
+                    else
+                    {
+                        Color newColor = chunk.stuffProps.color;
+                        if (newColor != null)
+                        {
+                            foundColor = true;
+                            rockColor = newColor;
+                        }
+                    }
+                }
+
+                // If not found, draw the icon
+                if (!foundColor)
+                {
+                    Texture2D noGraphicIcon = ContentFinder<Texture2D>.Get("GUI/ZMD_NoGraphic", true);
+                    Widgets.DrawTextureRotated(colorRect, noGraphicIcon, 0);
+                }
+                // draw the color
+                else
+                {
+                    Widgets.DrawBoxSolid(colorRect, rockColor);
+                }
             }
 
             listing.End();

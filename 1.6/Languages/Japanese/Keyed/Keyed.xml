@@ -189,6 +189,7 @@
   <ZMD_hillDonutAmt6>完全なリング状渓谷</ZMD_hillDonutAmt6>
 
 
+
   <!-- Misc settings -->
 
   <ZMD_flagCaves>洞窟を許可</ZMD_flagCaves>
@@ -211,6 +212,7 @@
   <ZMD_thingsRoyalty>Royalty</ZMD_thingsRoyalty>
   <ZMD_thingsIdeology>Ideology</ZMD_thingsIdeology>
   <ZMD_thingsBiotech>Biotech</ZMD_thingsBiotech>
+  <ZMD_thingsMedievalOverhaul>Medieval Overhaul</ZMD_thingsMedievalOverhaul>
   <!-- <ZMD_thingsVPE>Vanilla Power Expanded</ZMD_thingsVPE> -->
 
   <ZMD_thingsMissing>マップに何かを追加するModが失われていませんか？SteamワークショｯプやDiscordで私に知らせてください！</ZMD_thingsMissing>
@@ -356,7 +358,6 @@
   <ZMD_lakeBeachSize>湖の岸辺の大きさ</ZMD_lakeBeachSize>
   <ZMD_lakeDepth>湖の深さ</ZMD_lakeDepth>
   <ZMD_flagLakeSalty>塩水湖</ZMD_flagLakeSalty>
-  <ZMD_lakeShore>岸の地形</ZMD_lakeShore>
 
   <ZMD_lakeDepth0>とても浅い</ZMD_lakeDepth0>
   <ZMD_lakeDepth1>浅い</ZMD_lakeDepth1>
@@ -398,10 +399,13 @@
   <ZMD_terrainTabInfo>肥沃度や水位や岩の種類など。\n\n水位を上げると、沼地や湖の大きさと数を増加させますが、そうしなければ本来湖を持たない気候環境(砂漠など)に新しい湖を追加されることはありません。</ZMD_terrainTabInfo>
 
   <ZMD_rockTypeRange>マップごとの岩の種類</ZMD_rockTypeRange>
-  <ZMD_flagBiomeRocks>「Atolls」や「Ocular-Forest」等のModで追加される特殊な岩を使って改造気候環境に他の種類の岩を追加可能にする</ZMD_flagBiomeRocks>
+  <ZMD_flagBiomeRocks>「Atolls」や「Ocular&#160;Forest」等のModで追加される特殊な岩を使って改造気候環境に他の種類の岩を追加可能にする</ZMD_flagBiomeRocks>
   <ZMD_flagBiomeRocksTooltip>これによって、一部のModで追加される気候環境でゲームバランスが大幅に変わる可能性があります。特殊な岩を削除すると、必要となる資源が削除されるかもしれません。</ZMD_flagBiomeRocksTooltip>
 
   <ZMD_allRockTypes>全種類の岩を許可</ZMD_allRockTypes>
+  <ZMD_noRockTypes>全種類の岩を無効</ZMD_noRockTypes>
+  <ZMD_noRockWarning>岩は許可されていません.最低でも1種類を有効にしてください.\n全種類の岩を無効にしたままにすると,ランダムな岩の種類でマップが生成されます.</ZMD_noRockWarning>
+  <ZMD_noColorFound>この岩の色が見つかりません.</ZMD_noColorFound>
   <ZMD_chooseRockTypes>岩の種類を選択...</ZMD_chooseRockTypes>
 
   <ZMD_terrainFertAmt>肥沃度：{0}％：</ZMD_terrainFertAmt>

@@ -391,6 +391,7 @@ namespace MapDesigner.UI
             // Rocks
             settings.rockTypeRange = new IntRange(1, 5);
             MapDesignerMod.mod.settings.flagBiomeRocks = true;
+            MapDesignerMod.mod.settings.flagSpaceRocks = true;
 
             // Rivers
             settings.sizeRiver = Rand.Range(0.1f, 3f);

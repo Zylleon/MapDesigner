@@ -551,7 +551,7 @@ namespace MapDesigner
         public static List<ThingDef> GetRockList()
         {
             List<ThingDef> rockList = (from d in DefDatabase<ThingDef>.AllDefs
-                                       where d.category == ThingCategory.Building && d.building.isNaturalRock && !d.building.isResourceRock && !d.IsSmoothed
+                                       where d.IsNonResourceNaturalRock
                                        select d).ToList<ThingDef>();
             return rockList;
         }

@@ -42,6 +42,7 @@ namespace MapDesigner.UI
             InterfaceUtility.LabeledIntRange(listing, ref settings.rockTypeRange, 1, maxRocks, "ZMD_rockTypeRange".Translate());
 
             listing.CheckboxLabeled("ZMD_flagBiomeRocks".Translate(), ref settings.flagBiomeRocks, "ZMD_flagBiomeRocksTooltip".Translate());
+            //listing.CheckboxLabeled("ZMD_flagSpaceRocks".Translate(), ref settings.flagSpaceRocks, "ZMD_flagSpaceTooltip".Translate());
 
             HelperMethods.EndChangeCheck();
 
@@ -67,6 +68,7 @@ namespace MapDesigner.UI
             settings.terrainWater = 1f;
             settings.rockTypeRange = new IntRange(2, 3);
             settings.flagBiomeRocks = false;
+            settings.flagSpaceRocks = false;
 
             List<ThingDef> list = HelperMethods.GetRockList();
             Dictionary<string, bool> newRocks = new Dictionary<string, bool>();

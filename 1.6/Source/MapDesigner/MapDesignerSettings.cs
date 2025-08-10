@@ -136,6 +136,7 @@ namespace MapDesigner
         // Rocks
         public IntRange rockTypeRange = new IntRange(2, 3);
         public bool flagBiomeRocks = false;
+        public bool flagSpaceRocks = false;
         public Dictionary<string, bool> allowedRocks = new Dictionary<string, bool>();
 
         // Rivers
@@ -479,6 +480,7 @@ namespace MapDesigner
             // Rocks
             Scribe_Values.Look(ref rockTypeRange, "rockTypeRange", new IntRange(2, 3));
             Scribe_Values.Look(ref flagBiomeRocks, "flagBiomeRocks", false);
+            Scribe_Values.Look(ref flagSpaceRocks, "flagSpaceRocks", false);
             Scribe_Collections.Look(ref allowedRocks, "allowedRocks", LookMode.Value, LookMode.Value);
 
 

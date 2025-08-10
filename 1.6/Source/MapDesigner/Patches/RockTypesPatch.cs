@@ -20,30 +20,24 @@ namespace MapDesigner.Patches
     {
         static void Finalizer(PlanetTile tile, ref IEnumerable<ThingDef> __result)
         {
-            
             Rand.PushState();
-            Rand.Seed = tile.tileId;
+            Rand.Seed = tile.GetHashCode();
             MapDesignerSettings settings = MapDesignerMod.mod.settings;
             IntRange rockTypeRange = settings.rockTypeRange;
 
             int num = Rand.RangeInclusive(rockTypeRange.min, rockTypeRange.max);
-
-            // If it's a modded biome with special stone, check that the user allows this to change before continuing
-            if (__result.Count() == 1 && !settings.flagBiomeRocks)
-            {
-                Rand.PopState();
-                return;
-            }
-
-
             List<ThingDef> tileRocks = __result.ToList();
-
             List<ThingDef> list = HelperMethods.GetRockList();
-
             List<ThingDef> allowedRocks = list.Where(t => settings.allowedRocks[t.defName]).ToList();
 
+            // remove biome-specific rocks from the list as appropriate
+            if (!settings.flagBiomeRocks)
+            {
+                allowedRocks.RemoveAll(x => x.building.biomeSpecific && !tile.Tile.PrimaryBiome.extraRockTypes.NotNullAndContains(x));
+            }
+
             // if nothing is selected, all rock types are allowed
-            if(allowedRocks.Count == 0)
+            if (allowedRocks.Count == 0)
             {
                 allowedRocks = list;
             }
@@ -51,11 +45,12 @@ namespace MapDesigner.Patches
             tileRocks.RemoveAll(t => !allowedRocks.Contains(t));
             allowedRocks.RemoveAll(t => tileRocks.Contains(t));
 
-            // shorten if the list is already long enough
+            // shorten if the list is too long
             if (tileRocks.Count() >= num)
             {
                 __result = tileRocks.Take(num);
             }
+            //pad if the list is too short
             else
             {
                 while (tileRocks.Count() < num && allowedRocks.Count() > 0)

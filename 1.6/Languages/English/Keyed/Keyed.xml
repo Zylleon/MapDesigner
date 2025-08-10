@@ -400,8 +400,10 @@
 	<ZMD_terrainTabInfo>Fertility, water levels, and rock types.\n\nTurning up water levels will increase size and number of marshes and lakes, but will NOT add new lakes to biomes that don't otherwise have them.</ZMD_terrainTabInfo>
 	
 	<ZMD_rockTypeRange>Rock types per map</ZMD_rockTypeRange>
-	<ZMD_flagBiomeRocks>Allow modded biomes with special rocks, like Atolls or the Ocular Forest, to have other rock types.</ZMD_flagBiomeRocks>
-	<ZMD_flagBiomeRocksTooltip>This can drastically change game balance in some modded biomes. Removing special rocks might remove needed resources.</ZMD_flagBiomeRocksTooltip>
+	<ZMD_flagBiomeRocks>Allow biome-specific rocks, such as solid ice, to spawn in any biome.</ZMD_flagBiomeRocks>
+	<ZMD_flagBiomeRocksTooltip>This can drastically change game balance in some biomes.</ZMD_flagBiomeRocksTooltip>
+	<ZMD_flagSpaceRocks>Allow space ruckss, such as vacstone, to spawn on the planet's surface.</ZMD_flagSpaceRocks>
+	<ZMD_flagSpaceTooltip>Allow space ruckss, such as vacstone, to spawn on the planet's surface.</ZMD_flagSpaceTooltip>
 	
 	<ZMD_allRockTypes>Allow all rock types</ZMD_allRockTypes>
 	<ZMD_noRockTypes>Disable all rock types</ZMD_noRockTypes>

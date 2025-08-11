@@ -33,7 +33,7 @@ namespace MapDesigner.Patches
             // remove biome-specific rocks from the list as appropriate
             if (!settings.flagBiomeRocks)
             {
-                allowedRocks.RemoveAll(x => x.building.biomeSpecific && !tile.Tile.PrimaryBiome.extraRockTypes.NotNullAndContains(x));
+                allowedRocks.RemoveAll(x => x.building.biomeSpecific && !tile.Tile?.PrimaryBiome?.extraRockTypes?.NotNullAndContains(x) == true);
             }
 
             // if nothing is selected, all rock types are allowed

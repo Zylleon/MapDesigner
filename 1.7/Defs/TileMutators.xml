@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <TileMutatorDef>
+    <defName>ZMD_NoMutator</defName>
+    <label>none</label>
+    <description>no added feature in this category</description>
+    <chanceOnNonLandmarkTile>0</chanceOnNonLandmarkTile>
+	<canSpawnOnLandmark>False</canSpawnOnLandmark>
+
+  </TileMutatorDef>
+
+</Defs>

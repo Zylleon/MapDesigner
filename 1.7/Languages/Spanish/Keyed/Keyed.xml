@@ -1,0 +1,339 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+<!-- ===================================	general use		================================= -->
+
+	<ZMD_ModName>Map Designer</ZMD_ModName>
+	
+<!-- ===================================	general mod settings	================================= -->
+
+	
+	<ZMD_resetPage>Restablecer esta configuración</ZMD_resetPage>
+	<ZMD_resetMountain>Restablecer las montañas al valor predeterminado</ZMD_resetMountain>
+	<ZMD_resetThings>Restablecer cosas al valor predeterminado</ZMD_resetThings>
+	<ZMD_resetRivers>Restablecer ríos al valor predeterminado</ZMD_resetRivers>
+	<ZMD_resetTerrain>Restablecer terreno</ZMD_resetTerrain>
+	<ZMD_Angle>Ángulo</ZMD_Angle>
+	
+	<ZMD_numTiles>{0} losas</ZMD_numTiles>
+	<ZMD_pctOfMap>{0} % de ancho de mapa</ZMD_pctOfMap>
+	
+<!-- Levels -->
+    <ZMD_size0>Ninguno</ZMD_size0>
+	<ZMD_size1>Diminuto</ZMD_size1>
+	<ZMD_size2>Pequeño</ZMD_size2>
+	<ZMD_size3>Medio</ZMD_size3>
+	<ZMD_size4>Grande</ZMD_size4>
+	<ZMD_size5>Enorme</ZMD_size5>
+	<ZMD_size6>Gigantesco</ZMD_size6>
+
+	<ZMD_narrow>Estrecho</ZMD_narrow>
+	<ZMD_wide>Extenso</ZMD_wide>
+	
+	
+	
+    <!-- Tabs -->
+
+<!-- ===================================	General Tab	================================= -->
+
+	<ZMD_generalTab>General</ZMD_generalTab>
+	<ZMD_generalTabInfo>Comience con un ajuste preestablecido o explore las opciones detalladas que están disponibles en las otras pestañas.\n\nToda la configuración es relativa al mapa base. Una selva tropical árida tendrá más plantas que un fértil desierto de valle; los mapas planos siempre tendrán menos colinas que los mapas montañosos con la misma configuración.\n\nToda la configuración es relativa al mapa base. Una selva tropical árida tendrá más plantas que un fértil desierto de valle; los mapas planos siempre tendrán menos colinas que los mapas montañosos con la misma configuración.</ZMD_generalTabInfo>
+	
+	<ZMD_presets>Ajuste preestablecido</ZMD_presets>
+	
+	<ZMD_applyPreset>Aplicar ajuste preestablecido</ZMD_applyPreset>
+	<ZMD_reset>Restablecer todo</ZMD_reset>
+	
+	<ZMD_presetNone>Ninguno</ZMD_presetNone>
+	<ZMD_presetNoneDesc>No se ha seleccionado ningún ajuste preestablecido</ZMD_presetNoneDesc>
+	
+	<ZMD_presetVanilla>Vanilla</ZMD_presetVanilla>
+	<ZMD_presetVanillaDesc>Vainilla por defecto.</ZMD_presetVanillaDesc>
+	
+	<ZMD_presetFertileValley>Valle fértil</ZMD_presetFertileValley>
+	<ZMD_presetFertileValleyDesc>Un valle aislado rodeado de montañas. Mayor fertilidad, más plantas y menos ruinas.</ZMD_presetFertileValleyDesc>
+	
+	<ZMD_presetBarrens>Baldíos</ZMD_presetBarrens>
+	<ZMD_presetBarrensDesc>Un paisaje relativamente desolado con pequeñas colinas puntiagudas. Menor fertilidad y menos plantas de lo normal. Géiseres de vapor adicionales.</ZMD_presetBarrensDesc>
+	
+	<ZMD_presetUnnatural>Esto no es natural</ZMD_presetUnnatural>
+	<ZMD_presetUnnaturalDesc>Montañas extrañas y antinaturales llenas de peligros antiguos.</ZMD_presetUnnaturalDesc>
+	
+	<ZMD_presetFishingVillage>Pueblo de pescadores</ZMD_presetFishingVillage>
+	<ZMD_presetFishingVillageDesc>Grandes colinas para cavar, pero poco terreno sólido. ¡Los pantanos pueden no tener tierra firme fuera de las montañas!</ZMD_presetFishingVillageDesc>
+	
+	<ZMD_presetCanyon>Cañón</ZMD_presetCanyon>
+	<ZMD_presetCanyonDesc>Un cañón estrecho con varios tipos de roca. Si su baldosa tiene un río, el río seguirá el cañón.</ZMD_presetCanyonDesc>
+	
+	<ZMD_presetZyllesChoice>Elección del autor del mod</ZMD_presetZyllesChoice>
+	<ZMD_presetZyllesChoiceDesc>Me gustan estos ajustes. Muchos puntos de estrangulamiento y valles semicerrados, con un suelo fértil ligeramente aumentado.</ZMD_presetZyllesChoiceDesc>
+	
+	
+	
+	<ZMD_presetRandom>Aleatorio</ZMD_presetRandom>
+	<ZMD_presetRandomDesc>Esto aleatorizará la configuración cada vez que haga clic en "aplicar". Los resultados pueden ser impredecibles.</ZMD_presetRandomDesc>
+	
+
+	<ZMD_flagPopup>Mostrar esto para nuevos mapas</ZMD_flagPopup>
+	<ZMD_flagPopupDesc>Puede acceder a estos ajustes en cualquier momento desde Menú -Opciones de > -> Configuración de mod -> Map Designer</ZMD_flagPopupDesc>
+	
+	<ZMD_flagHomeMapOnly>Limitar la configuración a su mapa de inicio</ZMD_flagHomeMapOnly>
+	<ZMD_flagHomeMapOnlyDesc>Actualmente se aplica a: Montañas\n\nSi se activa, estas cosas serán vainilla en los mapas de misiones, bases de facciones de inteligencia artificial y otros mapas que no son de inicio.</ZMD_flagHomeMapOnlyDesc>
+ 
+ 
+ 
+<!-- ===================================	Mountains	================================= -->
+
+  <!-- Tabs -->
+	<ZMD_mountainTab>Montañas</ZMD_mountainTab>
+	<ZMD_mountainTabInfo>Configuración relacionada con las montañas</ZMD_mountainTabInfo>
+  <!-- Hills -->
+	<ZMD_hillAmountLabel>Total</ZMD_hillAmountLabel>
+	<ZMD_hillAmountTooltip>Qué tan montañoso será tu mapa</ZMD_hillAmountTooltip>
+	
+	<ZMD_hillAmount0>Muy plano</ZMD_hillAmount0>
+	<ZMD_hillAmount1>Bajo</ZMD_hillAmount1>
+	<ZMD_hillAmount2>Vanilla</ZMD_hillAmount2>
+	<ZMD_hillAmount3>Alto</ZMD_hillAmount3>
+	<ZMD_hillAmount4>Muy alto</ZMD_hillAmount4>
+	<ZMD_hillAmount5>Casi sólido</ZMD_hillAmount5>
+
+	<ZMD_hillSizeLabel>Tamaño</ZMD_hillSizeLabel>
+	<ZMD_hillSizeTooltip>Tamaño de las colinas individuales. Grandes colinas para mapas con 1-2 grandes montañas, pequeñas colinas para paisajes dentados con un montón de rincones.</ZMD_hillSizeTooltip>
+	<ZMD_hillSize0>Enorme. 1 o 2 grandes colinas.</ZMD_hillSize0>
+	<ZMD_hillSize1>Vanilla</ZMD_hillSize1>
+	<ZMD_hillSize2>Pequeñas</ZMD_hillSize2>
+	<ZMD_hillSize3>Diminuto. Las bases subterráneas pueden no ser posibles</ZMD_hillSize3>
+	<ZMD_hillSize4>Muy pequeñito. Cada colina puede ser sólo unas pocas baldosas.</ZMD_hillSize4>
+
+	<ZMD_hillSmoothnessLabel>Suavidad</ZMD_hillSmoothnessLabel>
+	<ZMD_hillSmoothness0>Muy suave</ZMD_hillSmoothness0>
+	<ZMD_hillSmoothness1>Suave</ZMD_hillSmoothness1>
+	<ZMD_hillSmoothness2>Vanilla</ZMD_hillSmoothness2>
+	<ZMD_hillSmoothness3>Áspero</ZMD_hillSmoothness3>
+	<ZMD_hillSmoothness4>Muy áspero</ZMD_hillSmoothness4>
+
+	
+
+<!-- Mountain distribution -->
+	<ZMD_hillArrangement>Arregle las montañas</ZMD_hillArrangement>
+	<ZMD_hillArrangementDesc>Cómo se colocan las montañas en el mapa. Crea valles y montañas personalizados. Desactivar todo = vainilla </ZMD_hillArrangementDesc>
+
+	<ZMD_flagHillClumping>Distribución natural de las colinas</ZMD_flagHillClumping>
+	<ZMD_flagHillClumpingTooltip>Para pequeñas colinas. Hará que las colinas varíen naturalmente en lugar de estar distribuidas uniformemente.</ZMD_flagHillClumpingTooltip>
+	
+	<ZMD_flagHillRadial>Centralizado</ZMD_flagHillRadial>
+	<ZMD_flagHillRadialTooltip>Empuje las montañas a los bordes de su mapa para un valle, o tire de ellos hacia el centro y construya en una montaña sólida.</ZMD_flagHillRadialTooltip>
+	<ZMD_hillRadialAmtLabel>Inclinación</ZMD_hillRadialAmtLabel>
+	<ZMD_hillRadialAmtTooltip>Cuánta diferencia hay entre el centro y los bordes del mapa</ZMD_hillRadialAmtTooltip>
+	<ZMD_hillRadialSizeLabel>Tamaño del centro</ZMD_hillRadialSizeLabel>
+	<ZMD_hillRadialSizeTooltip>Empuje las colinas justo fuera del centro, o todo el camino hasta los bordes</ZMD_hillRadialSizeTooltip>
+	
+	<ZMD_hillRadialAmt0>Estrechamente agrupados en el centro</ZMD_hillRadialAmt0>
+	<ZMD_hillRadialAmt1>Cambio moderado hacia el centro</ZMD_hillRadialAmt1>
+	<ZMD_hillRadialAmt2>Un poco más en el centro</ZMD_hillRadialAmt2>
+	<ZMD_hillRadialAmt3>Poco o ningún cambio</ZMD_hillRadialAmt3>
+	<ZMD_hillRadialAmt4>Un poco más en los bordes</ZMD_hillRadialAmt4>
+	<ZMD_hillRadialAmt5>Desplazamiento moderado hacia los bordes</ZMD_hillRadialAmt5>
+	<ZMD_hillRadialAmt6>Casi en su totalidad alrededor de los bordes</ZMD_hillRadialAmt6>
+	
+	
+	<ZMD_center>Centro</ZMD_center>
+	<ZMD_edges>Bordes</ZMD_edges>
+	<ZMD_direction>Dirección</ZMD_direction>
+	<ZMD_skew>Inclinación</ZMD_skew>
+	<ZMD_size>Tamaño</ZMD_size>
+	
+	
+	<ZMD_hillRadialSize0>Diminuto</ZMD_hillRadialSize0>
+	<ZMD_hillRadialSize1>Pequeño</ZMD_hillRadialSize1>
+	<ZMD_hillRadialSize2>Promedio</ZMD_hillRadialSize2>
+	<ZMD_hillRadialSize3>Grande</ZMD_hillRadialSize3>
+	<ZMD_hillRadialSize4>Al borde del mapa</ZMD_hillRadialSize4>
+
+	<ZMD_flagHillSplit>Por el medio</ZMD_flagHillSplit>
+	
+	<ZMD_flagHillSide>A un lado</ZMD_flagHillSide>
+	
+	<ZMD_hillSideAmt0>Casi parejo</ZMD_hillSideAmt0>
+	<ZMD_hillSideAmt1>Ligero desplazamiento hacia un lado</ZMD_hillSideAmt1>
+	<ZMD_hillSideAmt2>Cambio moderado hacia un lado</ZMD_hillSideAmt2>
+	<ZMD_hillSideAmt3>Fuerte cambio hacia un lado</ZMD_hillSideAmt3>
+
+	<ZMD_flagHillDonut>En forma de rosquilla</ZMD_flagHillDonut>
+	<ZMD_flagHillDonutTooltip>Montañas o valles en forma de anillo</ZMD_flagHillDonutTooltip>
+	<ZMD_hillDonutAmt0>Colina distinta del anillo</ZMD_hillDonutAmt0>
+	<ZMD_hillDonutAmt1>Colina en el anillo</ZMD_hillDonutAmt1>
+	<ZMD_hillDonutAmt2>Poco o ningún cambio</ZMD_hillDonutAmt2>
+	<ZMD_hillDonutAmt3>Valle en el anillo</ZMD_hillDonutAmt3>
+	<ZMD_hillDonutAmt4>Valle distinto del anillo</ZMD_hillDonutAmt4>
+	
+	
+	
+  <!-- Misc settings -->
+  
+	<ZMD_flagCaves>Permitir cuevas</ZMD_flagCaves>
+	<ZMD_flagCavesTooltip>Desmarcar esto evita que las cuevas aparezcan, incluso en azulejos con montañas o grandes colinas.</ZMD_flagCavesTooltip>
+	
+	<ZMD_flagMtnExit>Asegurar la salida</ZMD_flagMtnExit>
+	<ZMD_flagMtnExitTooltip>Para mapas muy montañosos. Garantiza una ruta clara al centro del mapa.</ZMD_flagMtnExitTooltip>
+	<ZMD_numMtnExit>Número de salidas</ZMD_numMtnExit>
+	
+	
+	
+<!-- ===================================	Things	================================= -->
+    <!-- Tabs -->
+
+	<ZMD_thingsTab>Varios</ZMD_thingsTab>
+	<ZMD_thingsTabInfo>Densidad del mineral, etc.</ZMD_thingsTabInfo>
+	
+  <!-- Densities -->
+	<ZMD_densityPlant>Plantas</ZMD_densityPlant>
+	<ZMD_densityAnimal>Animales</ZMD_densityAnimal>
+	<ZMD_densityRuins>Ruinas</ZMD_densityRuins>
+	<ZMD_densityDanger>Peligros antiguos</ZMD_densityDanger>
+	<ZMD_densityDangerTooltip>NOTA: Los peligros antiguos no aparecerán en mapas completamente planos</ZMD_densityDangerTooltip>
+	<ZMD_densityGeyser>Géiseres de vapor</ZMD_densityGeyser>
+	<ZMD_densityOre>Mineral</ZMD_densityOre>
+	<ZMD_animaCount>Anima árboles: </ZMD_animaCount>
+	<ZMD_flagRockChunks>Trozos de roca permitidos</ZMD_flagRockChunks>
+	<ZMD_flagRockChunksTooltip>Si está deshabilitado, los nuevos mapas NO tendrán fragmentos.</ZMD_flagRockChunksTooltip>
+	
+	<ZMD_chooseOreTypes>Elegir tipos de mineral ...</ZMD_chooseOreTypes>
+	<ZMD_resetOreTypes>Restablecer el mineral</ZMD_resetOreTypes>
+
+	<ZMD_density0>Ninguno</ZMD_density0>
+	<ZMD_density1>Muy pocos</ZMD_density1>
+	<ZMD_density2>Menor que la media</ZMD_density2>
+	<ZMD_density3>Importe medio</ZMD_density3>
+	<ZMD_density4>Más que la media</ZMD_density4>
+	<ZMD_density5>Mucho más</ZMD_density5>
+	<ZMD_density6>Importe máximo</ZMD_density6>
+	<!-- ===================================	Rivers	================================= -->
+	
+	<ZMD_riverTab>Ríos y Playas</ZMD_riverTab>
+	
+	<ZMD_sizeRiver>Tamaño del río</ZMD_sizeRiver>
+	
+	<ZMD_flagRiverBeach>Riberas de los ríos</ZMD_flagRiverBeach>
+	<ZMD_riverBeachSize>Tamaño de la orilla del río</ZMD_riverBeachSize>
+	
+	<ZMD_flagRiverDir>Elija la dirección del río</ZMD_flagRiverDir>
+	
+	<ZMD_riverStyle>Estilo fluvial</ZMD_riverStyle>
+	<ZMD_riverStyleVanilla>Vanilla</ZMD_riverStyleVanilla>
+	<ZMD_riverStyleVanillaDesc>Río normal</ZMD_riverStyleVanillaDesc>
+	<ZMD_riverStyleSpring>Manantial</ZMD_riverStyleSpring>
+	<ZMD_riverStyleSpringDesc>Los ríos comienzan cerca de la mitad del mapa y continúan hasta el borde</ZMD_riverStyleSpringDesc>
+	<ZMD_riverStyleCanal>Canal</ZMD_riverStyleCanal>
+	<ZMD_riverStyleCanalDesc>Ríos perfectamente rectos</ZMD_riverStyleCanalDesc>
+	<ZMD_riverStyleConfluence>Confluyentes</ZMD_riverStyleConfluence>
+	<ZMD_riverStyleConfluenceDesc>Dos ríos se funden en uno solo</ZMD_riverStyleConfluenceDesc>
+	<ZMD_riverStyleFork>Bifurcación</ZMD_riverStyleFork>
+	<ZMD_riverStyleForkDesc>Un río se divide en dos</ZMD_riverStyleForkDesc>
+	<ZMD_riverStyleOxbow>Arcos</ZMD_riverStyleOxbow>
+	<ZMD_riverStyleOxbowDesc>Un río sinuoso con bucles grandes y suaves</ZMD_riverStyleOxbowDesc>
+	<ZMD_riverStyleIsland>Isla</ZMD_riverStyleIsland>
+	<ZMD_riverStyleIslandDesc>Un río que se divide para hacer una isla, luego se reunifica en el otro lado</ZMD_riverStyleIslandDesc>
+	
+	
+	<ZMD_riverPosition>Personalizar la posición del río</ZMD_riverPosition>
+	<ZMD_north>Norte</ZMD_north>
+	<ZMD_south>Sur</ZMD_south>
+	<ZMD_east>Este</ZMD_east>
+	<ZMD_west>Oeste</ZMD_west>
+	<ZMD_riverLocRel>Relativo</ZMD_riverLocRel>
+	<ZMD_riverLocRelDesc>La ubicación es relativa a la posición de vainilla</ZMD_riverLocRelDesc>
+	<ZMD_riverLocAbs>Absoluto</ZMD_riverLocAbs>
+	<ZMD_riverLocAbsDesc>Exactamente donde lo pones, sin aleatoriedad</ZMD_riverLocAbsDesc>
+	
+	
+	<!-- Beaches -->
+	
+	<ZMD_coastDir>Dirección de la costa</ZMD_coastDir>
+	<ZMD_coastDirVanilla>Vanilla</ZMD_coastDirVanilla>		<!-- whatever direction the coast would normally be on that tile -->
+	
+	<ZMD_coastTerr>Terreno de playa</ZMD_coastTerr>
+	<ZMD_coastTerrVanilla>Vanilla</ZMD_coastTerrVanilla>	<!-- sand for most biomes, ice for sea ice -->
+
+<!-- ===================================	Features	================================= -->
+    <!-- Tabs -->
+
+	<ZMD_featureTab>Características del mapa</ZMD_featureTab>
+	<ZMD_featureTabInfo>Agregue una entidad especial solo a su mapa de inicio. Estos no aparecerán en otros mapas, como los mapas de misiones.</ZMD_featureTabInfo>
+	
+  <!-- Features -->
+  <ZMD_selectFeature>Seleccionar característica</ZMD_selectFeature>
+  
+  <ZMD_featureNone>Sin característica agregada</ZMD_featureNone>
+  <ZMD_featureNoneInfo>Mapa de línea base.</ZMD_featureNoneInfo>
+  
+  <ZMD_featurePRI>Islas perfectamente redondas.</ZMD_featurePRI>
+  <ZMD_featurePRIInfo>Su mapa es una o más islas perfectamente redondas, rodeadas de aguas poco profundas. Caravanas comerciales, incursiones y animales salvajes todavía entrarán normalmente por los lados.</ZMD_featurePRIInfo>
+  
+  <ZMD_featureLake>Lago Natural</ZMD_featureLake>
+  <ZMD_featureLakeInfo>Un lago natural.\nLas montañas pueden desovar dentro del lago de forma predeterminada. Puede usar la opción "Distribución de colina central" en la pestaña Montañas para evitar esto, o para crear una isla de montaña en el centro.</ZMD_featureLakeInfo>
+  
+  
+  <!-- Perfectly Round Islands -->
+  <ZMD_priIslandStyle>Estilo isla.</ZMD_priIslandStyle>
+  <ZMD_priIslandSizeLabel>Tamaño de la isla</ZMD_priIslandSizeLabel>
+  <ZMD_priBeachSizeLabel>Tamaño de la playa</ZMD_priBeachSizeLabel>
+  <ZMD_priSingleLabel>Isla única</ZMD_priSingleLabel>
+  <ZMD_priSingleDesc>Una sola gran isla circular.</ZMD_priSingleDesc>
+  <ZMD_priMultiLabel>Múltiples islas</ZMD_priMultiLabel>
+  <ZMD_priMultiDesc>Múltiples islas colocadas al azar, las más grandes en el medio.</ZMD_priMultiDesc>
+  
+  <!-- Lakes -->
+  
+  <ZMD_lakeSize>Tamaño del lago: {0} % del mapa</ZMD_lakeSize>
+  <ZMD_lakeRoundness>Redondez del lago</ZMD_lakeRoundness>
+  <ZMD_lakeBeachSize>Tamaño de la playa del lago</ZMD_lakeBeachSize>
+  <ZMD_lakeDepth>Profundidad del lago</ZMD_lakeDepth>
+  <ZMD_flagLakeSalty>Lago de agua salada</ZMD_flagLakeSalty>
+  <ZMD_lakeShore>Terreno costero</ZMD_lakeShore>
+  
+  <ZMD_lakeDepth0>Muy poco profundo</ZMD_lakeDepth0>
+  <ZMD_lakeDepth1>Poco profundo</ZMD_lakeDepth1>
+  <ZMD_lakeDepth2>Promedio</ZMD_lakeDepth2>
+  <ZMD_lakeDepth3>Profundo</ZMD_lakeDepth3>
+  <ZMD_lakeDepth4>Muy profundo</ZMD_lakeDepth4>
+
+  <ZMD_lakeRoundness0>Perfectamente redondo</ZMD_lakeRoundness0>
+  <ZMD_lakeRoundness1>Sobre todo redondo</ZMD_lakeRoundness1>
+  <ZMD_lakeRoundness2>Promedio</ZMD_lakeRoundness2>
+  <ZMD_lakeRoundness3>Algo deforme</ZMD_lakeRoundness3>
+  <ZMD_lakeRoundness4>Irregular</ZMD_lakeRoundness4>
+
+
+<!-- ===================================	Terrain	================================= -->
+
+    <!-- Tabs -->
+
+	<ZMD_terrainTab>Terreno</ZMD_terrainTab>
+	<ZMD_terrainTabInfo>Fertilidad, niveles de agua y tipos de roca.\n\nSubir los niveles de agua aumentará el tamaño y el número de pantanos y lagos, pero NO agregará nuevos lagos a los biomas que de otra manera no los tienen.</ZMD_terrainTabInfo>
+	
+	<ZMD_rockTypeRange>Tipos de rocas por mapa</ZMD_rockTypeRange>
+	<ZMD_flagBiomeRocks>Permita que los biomas modelados con rocas especiales, como los atolones o el bosque ocular, tengan otros tipos de rocas.</ZMD_flagBiomeRocks>
+	<ZMD_flagBiomeRocksTooltip>Esto puede cambiar drásticamente el equilibrio del juego en algunos biomas modelados. La eliminación de rocas especiales podría eliminar los recursos necesarios.</ZMD_flagBiomeRocksTooltip>
+	
+	<ZMD_allRockTypes>Permitir todos los tipos de rocas</ZMD_allRockTypes>
+	<ZMD_chooseRockTypes>Elija los tipos de roca ...</ZMD_chooseRockTypes>
+	
+	<ZMD_terrainFertAmt>Fertilidad: {0} %: </ZMD_terrainFertAmt>
+	
+	<ZMD_terrainWaterAmt>Nivel del agua: {0} %: </ZMD_terrainWaterAmt>
+	<ZMD_terrainWaterTooltip>Tamaño y número de lagos, etc. No afecta a ríos, costas u otras entidades.</ZMD_terrainWaterTooltip>
+	
+	<ZMD_flagTerrainWater>TODO el terreno no edificable cuenta como agua</ZMD_flagTerrainWater>
+	<ZMD_flagTerrainWaterTooltip>Todos los terrenos sin suelo pesado cuentan como agua. Incluye barro, pantano, arena blanda</ZMD_flagTerrainWaterTooltip>
+	
+	
+	
+<!-- ===================================	Beta	================================= -->
+    <!-- Tabs -->
+
+	<ZMD_betaTab>Beta</ZMD_betaTab>
+	<ZMD_betaTabInfo>¡advertencia! Estas opciones son para el desarrollo. Es posible que estén mal etiquetadas, que no hagan nada y que probablemente envíen spam al registro de errores.\n\n Si hay problemas, informe con el registro de errores. Si estos funcionan, por favor informe de que también.</ZMD_betaTabInfo>
+
+</LanguageData>

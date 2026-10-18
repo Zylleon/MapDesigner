@@ -1,0 +1,41 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "MapDesigner/1.0.0": {
+        "dependencies": {
+          "Lib.Harmony": "3.0.0-rc.3"
+        },
+        "runtime": {
+          "MapDesigner.dll": {}
+        }
+      },
+      "Lib.Harmony/3.0.0-rc.3": {
+        "runtime": {
+          "lib/net10.0/0Harmony.dll": {
+            "assemblyVersion": "3.0.0.0",
+            "fileVersion": "3.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "MapDesigner/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Lib.Harmony/3.0.0-rc.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-bW1UU49jqW9w5NxdTs7G+h7Nyi9FGs4cX4lHN3rP7+q62zwLk+cO4ypD/cRboAeq5jtgACt7u37o2KAE+O0RNg==",
+      "path": "lib.harmony/3.0.0-rc.3",
+      "hashPath": "lib.harmony.3.0.0-rc.3.nupkg.sha512"
+    }
+  }
+}

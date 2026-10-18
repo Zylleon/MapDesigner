@@ -39,7 +39,7 @@
   <!-- General Tab -->
 
   <ZMD_generalTab>総合</ZMD_generalTab>
-  <ZMD_generalTabInfo>プリセットを使用して作業を開始するか、他のタブで詳細なオプションを使用できます。\n\nすべての設定は、ベースとなったマップを基準にしています。不毛の熱帯雨林には肥沃な砂漠よりも多くの植物が生えているでしょう。平面マップは同じ設定の山岳マップよりも丘の数が少なくなります。</ZMD_generalTabInfo>
+  <ZMD_generalTabInfo>プリセットを使用して作業を開始するか,他のタブで詳細なオプションを使用できます.\n\nすべての設定は,ベースとなったマップを基準にしています.不毛の熱帯雨林には肥沃な砂漠よりも多くの植物が生えているでしょう.平面マップは同じ設定の山岳マップよりも丘の数が少なくなります.</ZMD_generalTabInfo>
 
   <ZMD_presets>プリセット</ZMD_presets>
 
@@ -51,35 +51,35 @@
   <ZMD_presetNoneDesc>プリセットが選択されていません</ZMD_presetNoneDesc>
 
   <ZMD_presetVanilla>バニラ</ZMD_presetVanilla>
-  <ZMD_presetVanillaDesc>デフォルトのバニラ状態です。</ZMD_presetVanillaDesc>
+  <ZMD_presetVanillaDesc>デフォルトのバニラ状態です.</ZMD_presetVanillaDesc>
 
   <ZMD_presetFertileValley>肥沃な谷</ZMD_presetFertileValley>
-  <ZMD_presetFertileValleyDesc>山々に囲まれた人里離れた谷です。肥沃度な土も植物も多くて、遺跡が少ない。</ZMD_presetFertileValleyDesc>
+  <ZMD_presetFertileValleyDesc>山々に囲まれた人里離れた谷です.肥沃度な土も植物も多くて,遺跡が少ない.</ZMD_presetFertileValleyDesc>
 
   <ZMD_presetBarrens>荒れ地</ZMD_presetBarrens>
-  <ZMD_presetBarrensDesc>比較的荒涼とした風景が広がり、小さな山がそびえ立っています。通常よりも少ない肥沃度な土と植物。追加された間欠泉があります。</ZMD_presetBarrensDesc>
+  <ZMD_presetBarrensDesc>比較的荒涼とした風景が広がり,小さな山がそびえ立っています.通常よりも少ない肥沃度な土と植物.追加された間欠泉があります.</ZMD_presetBarrensDesc>
 
   <ZMD_presetUnnatural>不自然な場所</ZMD_presetUnnatural>
-  <ZMD_presetUnnaturalDesc>奇妙で不自然な山々には、古代の危険が散在しています。</ZMD_presetUnnaturalDesc>
+  <ZMD_presetUnnaturalDesc>奇妙で不自然な山々には,古代の危険が散在しています.</ZMD_presetUnnaturalDesc>
 
   <ZMD_presetFishingVillage>漁村</ZMD_presetFishingVillage>
-  <ZMD_presetFishingVillageDesc>採掘するには大きくて良い丘がありますが、それ以外の場所は硬い地面が少しだけです。沼地では山以外に固い地面がないかもしれません！</ZMD_presetFishingVillageDesc>
+  <ZMD_presetFishingVillageDesc>採掘するには大きくて良い丘がありますが,それ以外の場所は硬い地面が少しだけです.沼地では山以外に固い地面がないかもしれません！</ZMD_presetFishingVillageDesc>
 
   <ZMD_presetCanyon>渓谷</ZMD_presetCanyon>
-  <ZMD_presetCanyonDesc>岩の種類が豊富な狭い渓谷です。マップタイル上に川がある場合、川は渓谷に沿って流れます。</ZMD_presetCanyonDesc>
+  <ZMD_presetCanyonDesc>岩の種類が豊富な狭い渓谷です.マップタイル上に川がある場合,川は渓谷に沿って流れます.</ZMD_presetCanyonDesc>
 
   <ZMD_presetZyllesChoice>Mod作成者の選択</ZMD_presetZyllesChoice>
-  <ZMD_presetZyllesChoiceDesc>私のオオスメ設定です。</ZMD_presetZyllesChoiceDesc>
+  <ZMD_presetZyllesChoiceDesc>私のオオスメ設定です.</ZMD_presetZyllesChoiceDesc>
 
   <ZMD_presetRandom>ランダム</ZMD_presetRandom>
-  <ZMD_presetRandomDesc>これを選択すると、「プリセットを許可」をクリックするたびに設定がランダム化されます。結果は予測できません。</ZMD_presetRandomDesc>
+  <ZMD_presetRandomDesc>これを選択すると,「プリセットを許可」をクリックするたびに設定がランダム化されます.結果は予測できません.</ZMD_presetRandomDesc>
 
 
   <ZMD_flagPopup>新しいマップにこれを表示</ZMD_flagPopup>
-  <ZMD_flagPopupDesc>これらの設定には、スタートメニューからオプションを開きMod設定からMap-Designerを開くことでいつでも設定可能です。</ZMD_flagPopupDesc>
+  <ZMD_flagPopupDesc>これらの設定には,スタートメニューからオプションを開きMod設定からMap-Designerを開くことでいつでも設定可能です.</ZMD_flagPopupDesc>
 
   <ZMD_flagHomeMapOnly>一部の設定をホームマップに制限</ZMD_flagHomeMapOnly>
-  <ZMD_flagHomeMapOnlyDesc>制限後に適用される設定：山と丘だけ\n\nチェックした場合、これらはクエストマップや、AI派閥の拠点とその他のホームマップで無いマップがバニラと同じになります。</ZMD_flagHomeMapOnlyDesc>
+  <ZMD_flagHomeMapOnlyDesc>制限後に適用される設定：山と丘だけ\n\nチェックした場合,これらはクエストマップや,AI派閥の拠点とその他のホームマップで無いマップがバニラと同じになります.</ZMD_flagHomeMapOnlyDesc>
 
 
   <!-- saving and loading -->
@@ -117,7 +117,7 @@
   <ZMD_hillAmount5>みっちり</ZMD_hillAmount5>
 
   <ZMD_hillSizeLabel>丘陵の大きさ</ZMD_hillSizeLabel>
-  <ZMD_hillSizeTooltip>1つ1つの山や丘の大きさです。1つか2つの大きな山を持つマップには大きな丘を、多くの角を持つギザギザのマップには小さな丘になります。</ZMD_hillSizeTooltip>
+  <ZMD_hillSizeTooltip>1つ1つの山や丘の大きさです.1つか2つの大きな山を持つマップには大きな丘を,多くの角を持つギザギザのマップには小さな丘になります.</ZMD_hillSizeTooltip>
   <ZMD_hillSize0>大</ZMD_hillSize0>
   <ZMD_hillSize1>バニラ</ZMD_hillSize1>
   <ZMD_hillSize2>小</ZMD_hillSize2>
@@ -135,10 +135,10 @@
 
   <!-- Mountain distribution -->
   <ZMD_hillArrangement>山や丘をカスタムする</ZMD_hillArrangement>
-  <ZMD_hillArrangementDesc>マップ上での山や丘の分布を編集します。カスタマイズされた谷や山岳を形成します。すべてを無効にするとバニラと同じになります</ZMD_hillArrangementDesc>
+  <ZMD_hillArrangementDesc>マップ上での山や丘の分布を編集します.カスタマイズされた谷や山岳を形成します.すべてを無効にするとバニラと同じになります</ZMD_hillArrangementDesc>
 
   <ZMD_flagHillClumping>丘陵の分布</ZMD_flagHillClumping>
-  <ZMD_flagHillClumpingTooltip>小さな丘のための設定。丘陵が均等になるのではなく自然な塊になるようにします。</ZMD_flagHillClumpingTooltip>
+  <ZMD_flagHillClumpingTooltip>小さな丘のための設定.丘陵が均等になるのではなく自然な塊になるようにします.</ZMD_flagHillClumpingTooltip>
 
   <ZMD_flagHillRadial>中央分布</ZMD_flagHillRadial>
   <ZMD_flagHillRadialTooltip>山や丘がマップの端や中央に纏まって作成されます</ZMD_flagHillRadialTooltip>
@@ -193,10 +193,10 @@
   <!-- Misc settings -->
 
   <ZMD_flagCaves>洞窟を許可</ZMD_flagCaves>
-  <ZMD_flagCavesTooltip>チェックを外すと洞窟が生成されなくなります。</ZMD_flagCavesTooltip>
+  <ZMD_flagCavesTooltip>チェックを外すと洞窟が生成されなくなります.</ZMD_flagCavesTooltip>
 
   <ZMD_flagMtnExit>出入口を確保</ZMD_flagMtnExit>
-  <ZMD_flagMtnExitTooltip>山が多いマップ用です。マップ中心部へ確実に経路ができるようにします。</ZMD_flagMtnExitTooltip>
+  <ZMD_flagMtnExitTooltip>山が多いマップ用です.マップ中心部へ確実に経路ができるようにします.</ZMD_flagMtnExitTooltip>
   <ZMD_numMtnExit>出口の数</ZMD_numMtnExit>
 
 
@@ -227,7 +227,7 @@
   <ZMD_densityOre>鉱物密度</ZMD_densityOre>
   <ZMD_animaCount>アニマツリーの数：</ZMD_animaCount>
   <ZMD_flagRockChunks>岩の塊を許可</ZMD_flagRockChunks>
-  <ZMD_flagRockChunksTooltip>無効にすると、新しいマップにはチャンクがなくなります。</ZMD_flagRockChunksTooltip>
+  <ZMD_flagRockChunksTooltip>無効にすると,新しいマップにはチャンクがなくなります.</ZMD_flagRockChunksTooltip>
 
   <ZMD_chooseOreTypes>鉱石の種類を選択...</ZMD_chooseOreTypes>
   <ZMD_resetOreTypes>鉱石をリセット</ZMD_resetOreTypes>
@@ -289,7 +289,7 @@
   <ZMD_riverStyleVanilla>バニラ</ZMD_riverStyleVanilla>
   <ZMD_riverStyleVanillaDesc>普通の河川</ZMD_riverStyleVanillaDesc>
   <ZMD_riverStyleSpring>泉</ZMD_riverStyleSpring>
-  <ZMD_riverStyleSpringDesc>河川はマップ中央付近から始まり、マップの端まで続いています</ZMD_riverStyleSpringDesc>
+  <ZMD_riverStyleSpringDesc>河川はマップ中央付近から始まり,マップの端まで続いています</ZMD_riverStyleSpringDesc>
   <ZMD_riverStyleCanal>運河</ZMD_riverStyleCanal>
   <ZMD_riverStyleCanalDesc>完全に直線な川</ZMD_riverStyleCanalDesc>
   <ZMD_riverStyleConfluence>合流</ZMD_riverStyleConfluence>
@@ -321,11 +321,23 @@
   <ZMD_coastTerr>浜辺の地形</ZMD_coastTerr>
   <ZMD_coastTerrVanilla>バニラ</ZMD_coastTerrVanilla>
 
+
+  <!-- Odyssey -->
+  <ZMD_odysseyTab>Odyssey DLC</ZMD_odysseyTab>
+  <ZMD_odysseyTabInfo>特殊機能を有効または無効にします.これはホームマップにのみ適用されます.\n\n各カテゴリから選択できるのは最大1つです.一部の機能は複数のカテゴリに属しています.選択した機能は,タイルのバニラ機能（洞窟,海岸,山岳,川,地下洞窟を含む)をすべて上書きします.\n\n河川の機能を使用するには,あらかじめ河川が存在している必要があります.また,川の三角州にはあらかじめ海岸が存在している必要があります.</ZMD_odysseyTabInfo>
+  <ZMD_betaWarning>このタブはベータ版です</ZMD_betaWarning>
+  <ZMD_flagOdyBeta>ベータ版に参加する</ZMD_flagOdyBeta>
+  <ZMD_flagOdyBetaDesc>ベータ版に参加しない場合,マップを変更するコードは無効になります.\n\n既知の問題:\n1．Rimworldを再起動すると,選択した機能が保存されない場合があります\n2．選択した機能がホームタイルのみに正しく制限されない場合があります\n3．マッププレビューと併用すると,ホームマップを生成する前にプレビューしたタイルが,追加機能を持つ「ホーム」タイルとして扱われる場合があります.プレビュー後にベータ版への参加を取りやめた場合も同様です.\n4．機能の組み合わせによっては,選択可能であっても互換性がない場合があります.</ZMD_flagOdyBetaDesc>
+  <ZMD_categories>カテゴリ: </ZMD_categories>
+  <ZMD_disableMutators>すべて無効化</ZMD_disableMutators>
+
+
+
   <!-- Features -->
   <!-- Tabs -->
 
   <ZMD_featureTab>特徴的なマップ</ZMD_featureTab>
-  <ZMD_featureTabInfo>拠点のマップに特定の機能を追加します。これらの機能はクエストのマップのような他のマップには適用されません。\n\nこの設定内容はプレビュー表示されませんが再ロールすることはできます。</ZMD_featureTabInfo>
+  <ZMD_featureTabInfo>拠点のマップに特定の機能を追加します.これらの機能はクエストのマップのような他のマップには適用されません.\n\nこの設定内容はプレビュー表示されませんが再ロールすることはできます.</ZMD_featureTabInfo>
 
   <!-- Features -->
   <ZMD_selectFeature>特徴を選択</ZMD_selectFeature>
@@ -334,13 +346,13 @@
   <ZMD_featureNoneInfo>基本マップ</ZMD_featureNoneInfo>
 
   <ZMD_featurePRI>丸い島々</ZMD_featurePRI>
-  <ZMD_featurePRIInfo>浅瀬に囲まれた１つ以上の丸い島。交易やキャラバン、宙賊、野生動物が普通にやってきます。</ZMD_featurePRIInfo>
+  <ZMD_featurePRIInfo>浅瀬に囲まれた１つ以上の丸い島.交易やキャラバン,宙賊,野生動物が普通にやってきます.</ZMD_featurePRIInfo>
 
   <ZMD_featureLake>湖</ZMD_featureLake>
-  <ZMD_featureLakeInfo>自然に見える湖。</ZMD_featureLakeInfo>
+  <ZMD_featureLakeInfo>自然に見える湖.</ZMD_featureLakeInfo>
 
   <ZMD_featureNI>自然な島</ZMD_featureNI>
-  <ZMD_featureNiInfo>浅瀬と海に囲まれた自然の島です。トレードキャラバンや襲撃や野生動物は従来通りマップ側面から入って来て、通行可能な水面の上を通ります。</ZMD_featureNiInfo>
+  <ZMD_featureNiInfo>浅瀬と海に囲まれた自然の島です.トレードキャラバンや襲撃や野生動物は従来通りマップ側面から入って来て,通行可能な水面の上を通ります.</ZMD_featureNiInfo>
 
   <!-- Perfectly Round Islands -->
   <ZMD_priIslandStyle>島の形</ZMD_priIslandStyle>
@@ -349,7 +361,7 @@
   <ZMD_priSingleLabel>孤島</ZMD_priSingleLabel>
   <ZMD_priSingleDesc>大きな円い形の孤島</ZMD_priSingleDesc>
   <ZMD_priMultiLabel>複数の島々</ZMD_priMultiLabel>
-  <ZMD_priMultiDesc>ランダム配置された諸島です。中央の島が最大になります。</ZMD_priMultiDesc>
+  <ZMD_priMultiDesc>ランダム配置された諸島です.中央の島が最大になります.</ZMD_priMultiDesc>
 
   <!-- Lakes -->
 
@@ -388,7 +400,7 @@
   <ZMD_niStyleRing>環礁</ZMD_niStyleRing>
 
   <ZMD_niWaterDepth>外洋(歩行不可)</ZMD_niWaterDepth>
-  <ZMD_niWaterDepthWarning>警告：小川や外洋は、歩いて渡れない島を作成する可能性があります！</ZMD_niWaterDepthWarning>
+  <ZMD_niWaterDepthWarning>警告：小川や外洋は,歩いて渡れない島を作成する可能性があります！</ZMD_niWaterDepthWarning>
 
 
   <!-- Terrain -->
@@ -396,11 +408,13 @@
   <!-- Tabs -->
 
   <ZMD_terrainTab>地形</ZMD_terrainTab>
-  <ZMD_terrainTabInfo>肥沃度や水位や岩の種類など。\n\n水位を上げると、沼地や湖の大きさと数を増加させますが、そうしなければ本来湖を持たない気候環境(砂漠など)に新しい湖を追加されることはありません。</ZMD_terrainTabInfo>
+  <ZMD_terrainTabInfo>肥沃度や水位や岩の種類など.\n\n水位を上げると,沼地や湖の大きさと数を増加させますが,そうしなければ本来湖を持たない気候環境(砂漠など)に新しい湖を追加されることはありません.</ZMD_terrainTabInfo>
 
   <ZMD_rockTypeRange>マップごとの岩の種類</ZMD_rockTypeRange>
   <ZMD_flagBiomeRocks>「Atolls」や「Ocular&#160;Forest」等のModで追加される特殊な岩を使って改造気候環境に他の種類の岩を追加可能にする</ZMD_flagBiomeRocks>
-  <ZMD_flagBiomeRocksTooltip>これによって、一部のModで追加される気候環境でゲームバランスが大幅に変わる可能性があります。特殊な岩を削除すると、必要となる資源が削除されるかもしれません。</ZMD_flagBiomeRocksTooltip>
+  <ZMD_flagBiomeRocksTooltip>これにより,一部のModで追加される固い氷などの本来特定のバイオームに固有の岩石を,どのバイオームでも生成されるようにします.この種の特殊な岩を削除すると,必要となる資源が削除されるかもしれません.</ZMD_flagBiomeRocksTooltip>
+  <ZMD_flagSpaceRocks>真空岩(宇宙空間専用)が惑星地表に生成可能にする</ZMD_flagSpaceRocks>
+  <ZMD_flagSpaceTooltip>真空岩などの宇宙空間専用の岩石が惑星の地表面に生成されることを許可します.</ZMD_flagSpaceTooltip>
 
   <ZMD_allRockTypes>全種類の岩を許可</ZMD_allRockTypes>
   <ZMD_noRockTypes>全種類の岩を無効</ZMD_noRockTypes>
@@ -411,10 +425,10 @@
   <ZMD_terrainFertAmt>肥沃度：{0}％：</ZMD_terrainFertAmt>
 
   <ZMD_terrainWaterAmt>水域レベル：{0}％：</ZMD_terrainWaterAmt>
-  <ZMD_terrainWaterTooltip>湖のサイズや数などです。川や海岸線やその他の特徴には影響しません。</ZMD_terrainWaterTooltip>
+  <ZMD_terrainWaterTooltip>湖のサイズや数などです.川や海岸線やその他の特徴には影響しません.</ZMD_terrainWaterTooltip>
 
   <ZMD_flagTerrainWater>全ての建築不可能な地形を水タイルとして計上</ZMD_flagTerrainWater>
-  <ZMD_flagTerrainWaterTooltip>重い建築物を支えられない全ての地形は水タイルとして計上されます。泥や湿地や柔らかい砂が含まれます</ZMD_flagTerrainWaterTooltip>
+  <ZMD_flagTerrainWaterTooltip>重い建築物を支えられない全ての地形は水タイルとして計上されます.泥や湿地や柔らかい砂が含まれます</ZMD_flagTerrainWaterTooltip>
 
 
 
@@ -422,6 +436,6 @@
   <!-- Tabs -->
 
   <ZMD_betaTab>ベータ機能</ZMD_betaTab>
-  <ZMD_betaTabInfo>警告！これらは開発用のオプション機能です。それらは間違ったラベル付けがされている可能性や何も起きないこともあり、おそらくエラーをログに大量に記録します。\n\n問題がある場合は、それらのエラーログを添付して報告してください。これらが機能する場合は、それも報告してください。バージョンアップで変更されたり削除される可能性があります。</ZMD_betaTabInfo>
+  <ZMD_betaTabInfo>警告！これらは開発用のオプション機能です.それらは間違ったラベル付けがされている可能性や何も起きないこともあり,おそらくエラーをログに大量に記録します.\n\n問題がある場合は,それらのエラーログを添付して報告してください.これらが機能する場合は,それも報告してください.バージョンアップで変更されたり削除される可能性があります.</ZMD_betaTabInfo>
 
 </LanguageData>
